@@ -437,7 +437,7 @@ const About = () => {
             <h1 className={`text-6xl md:text-7xl font-black mb-8 leading-tight ${
               isDark ? 'text-white' : 'text-deep-ocean'
             }`}>
-              India's Premier
+              India&apos;s Premier
               <span className="text-sunset-orange block">
                 FREE Cybersecurity
               </span>
@@ -484,7 +484,7 @@ const About = () => {
                     ? 'bg-slate-700/50 border-cyan-400 text-cyan-100'
                     : 'bg-blue-50 border-blue-400 text-blue-800'
                 }`}>
-                  "We believe that cybersecurity knowledge should be a fundamental right, not a luxury."
+                  &quot;We believe that cybersecurity knowledge should be a fundamental right, not a luxury.&quot;
                 </blockquote>
               </div>
 
@@ -525,7 +525,7 @@ const About = () => {
               </h2>
 
               <p className={`text-xl leading-relaxed max-w-4xl mx-auto ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
-                Our mission transcends traditional conference boundaries. We're building a movement that transforms how cybersecurity education is delivered, consumed, and scaled across communities.
+                Our mission transcends traditional conference boundaries. We&apos;re building a movement that transforms how cybersecurity education is delivered, consumed, and scaled across communities.
               </p>
             </div>
 

@@ -28,26 +28,83 @@ const LoadingScreen = () => {
     <div
       className={`fixed inset-0 z-50 overflow-hidden transition-all duration-1000 ${
         isDark
-          ? 'bg-gradient-to-b from-[#0d1b2a] via-[#1b263b] to-[#415a77]'
-          : 'bg-gradient-to-b from-[#87ceeb] via-[#b0e0e6] to-[#f0f8ff]'
+          ? 'bg-gradient-to-b from-[#1a0f0a] via-[#2d1b14] to-[#4a3428]'
+          : 'bg-gradient-to-b from-[#ff7f50] via-[#ff8f65] to-[#ffa85c]'
       }`}
     >
-      {/* Sun/Moon */}
+      {/* Sunset Gradient Overlays */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Upper sunset glow */}
+        <div className={`absolute top-0 left-0 w-full h-1/2 ${
+          isDark
+            ? 'bg-gradient-to-b from-orange-900/20 via-red-800/15 to-transparent'
+            : 'bg-gradient-to-b from-yellow-200/30 via-orange-300/20 to-transparent'
+        }`} />
+
+        {/* Lower warmth */}
+        <div className={`absolute bottom-0 left-0 w-full h-1/3 ${
+          isDark
+            ? 'bg-gradient-to-t from-amber-900/30 via-orange-800/15 to-transparent'
+            : 'bg-gradient-to-t from-orange-200/40 via-amber-200/20 to-transparent'
+        }`} />
+
+        {/* Soft center glow around sun area */}
+        <div
+          className="absolute top-0 right-0 w-2/5 h-2/5 rounded-full blur-3xl"
+          style={{
+            background: isDark
+              ? 'radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(245,158,11,0.05) 50%, transparent 100%)'
+              : 'radial-gradient(circle, rgba(253,224,71,0.2) 0%, rgba(251,146,60,0.1) 50%, transparent 100%)'
+          }}
+        />
+      </div>
+
+      {/* Sunset Sun */}
       <div
-        className={`absolute w-32 h-32 rounded-full blur-sm transition-all duration-1000 ${
-          isDark 
-            ? 'top-20 right-20 bg-gradient-to-br from-yellow-200 to-orange-300 shadow-[0_0_100px_rgba(255,215,0,0.6)]' 
-            : 'top-16 right-16 bg-gradient-to-br from-yellow-300 to-orange-400 shadow-[0_0_120px_rgba(255,165,0,0.8)]'
+        className={`absolute w-40 h-40 rounded-full transition-all duration-1000 ${
+          isDark
+            ? 'top-16 right-16 bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 shadow-[0_0_150px_rgba(255,140,0,0.8)]'
+            : 'top-12 right-12 bg-gradient-to-br from-yellow-200 via-orange-400 to-red-500 shadow-[0_0_200px_rgba(255,165,0,1)]'
         }`}
-        style={{ animation: 'sunPulse 4s ease-in-out infinite' }}
-      />
+        style={{ animation: 'sunsetGlow 6s ease-in-out infinite' }}
+      >
+        {/* Sun rays */}
+        <div className="absolute inset-0 rounded-full">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className={`absolute w-1 bg-gradient-to-t ${
+                isDark
+                  ? 'from-orange-400 to-transparent'
+                  : 'from-yellow-300 to-transparent'
+              }`}
+              style={{
+                height: '60px',
+                left: '50%',
+                top: '-30px',
+                transformOrigin: '50% 60px',
+                transform: `rotate(${i * 45}deg)`,
+                animation: `sunRays ${4 + i * 0.5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.2}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Inner sun core */}
+        <div className={`absolute inset-4 rounded-full ${
+          isDark
+            ? 'bg-gradient-to-br from-yellow-300 to-orange-400'
+            : 'bg-gradient-to-br from-white to-yellow-200'
+        } animate-pulse`} />
+      </div>
 
       {/* Floating clouds - simplified on mobile */}
       {!isMobile && (
         <div className="absolute inset-0">
-          <div 
+          <div
             className={`absolute w-24 h-12 rounded-full opacity-60 ${
-              isDark ? 'bg-gray-600/40' : 'bg-white/70'
+              isDark ? 'bg-orange-600/40' : 'bg-orange-200/70'
             }`}
             style={{ 
               top: '15%', 
@@ -55,9 +112,9 @@ const LoadingScreen = () => {
               animation: 'floatSlow 20s linear infinite'
             }}
           />
-          <div 
+          <div
             className={`absolute w-32 h-16 rounded-full opacity-40 ${
-              isDark ? 'bg-gray-500/30' : 'bg-white/80'
+              isDark ? 'bg-orange-500/30' : 'bg-orange-100/80'
             }`}
             style={{ 
               top: '25%', 
@@ -65,9 +122,9 @@ const LoadingScreen = () => {
               animation: 'floatSlow 25s linear infinite reverse'
             }}
           />
-          <div 
+          <div
             className={`absolute w-20 h-10 rounded-full opacity-50 ${
-              isDark ? 'bg-gray-600/35' : 'bg-white/75'
+              isDark ? 'bg-orange-600/35' : 'bg-orange-200/75'
             }`}
             style={{ 
               top: '35%', 
@@ -153,7 +210,7 @@ const LoadingScreen = () => {
               speed={20}
               amplitude={10}
               opacity={isDark ? 0.4 : 0.3}
-              color={isDark ? '#2563eb' : '#0ea5e9'}
+              color={isDark ? '#ea580c' : '#f97316'}
               height="60%"
               waveType="medium"
               delay={-2}
@@ -162,7 +219,7 @@ const LoadingScreen = () => {
               speed={15}
               amplitude={14}
               opacity={isDark ? 0.6 : 0.5}
-              color={isDark ? '#dbeafe' : '#ffffff'}
+              color={isDark ? '#fed7aa' : '#fff7ed'}
               height="70%"
               waveType="foam"
               delay={0}
@@ -175,7 +232,7 @@ const LoadingScreen = () => {
               speed={28}
               amplitude={6}
               opacity={isDark ? 0.2 : 0.15}
-              color={isDark ? '#1e40af' : '#0284c7'}
+              color={isDark ? '#c2410c' : '#ea580c'}
               height="45%"
               waveType="deep"
               delay={-4}
@@ -184,7 +241,7 @@ const LoadingScreen = () => {
               speed={20}
               amplitude={10}
               opacity={isDark ? 0.4 : 0.3}
-              color={isDark ? '#2563eb' : '#0ea5e9'}
+              color={isDark ? '#ea580c' : '#f97316'}
               height="58%"
               waveType="medium"
               delay={-2.5}
@@ -193,7 +250,7 @@ const LoadingScreen = () => {
               speed={15}
               amplitude={14}
               opacity={isDark ? 0.6 : 0.5}
-              color={isDark ? '#3b82f6' : '#06b6d4'}
+              color={isDark ? '#fb923c' : '#fb923c'}
               height="68%"
               waveType="surface"
               delay={-1}
@@ -202,7 +259,7 @@ const LoadingScreen = () => {
               speed={12}
               amplitude={18}
               opacity={0.75}
-              color={isDark ? '#dbeafe' : '#ffffff'}
+              color={isDark ? '#fed7aa' : '#fff7ed'}
               height="75%"
               waveType="foam"
               delay={0}
@@ -211,7 +268,7 @@ const LoadingScreen = () => {
               speed={8}
               amplitude={22}
               opacity={0.4}
-              color={isDark ? '#f1f5f9' : '#f8fafc'}
+              color={isDark ? '#ffedd5' : '#fefcfb'}
               height="65%"
               waveType="splash"
               delay={-0.5}
@@ -366,14 +423,32 @@ const LoadingScreen = () => {
             transform: translateY(-8px) rotate(-1deg);
           }
         }
-        @keyframes sunPulse {
+        @keyframes sunsetGlow {
           0%, 100% {
-            transform: scale(1);
-            opacity: 0.8;
+            transform: scale(1) translateY(0);
+            opacity: 0.9;
+            filter: brightness(1) saturate(1);
+          }
+          33% {
+            transform: scale(1.05) translateY(-2px);
+            opacity: 1;
+            filter: brightness(1.2) saturate(1.3);
+          }
+          66% {
+            transform: scale(1.02) translateY(1px);
+            opacity: 0.95;
+            filter: brightness(1.1) saturate(1.1);
+          }
+        }
+
+        @keyframes sunRays {
+          0%, 100% {
+            opacity: 0.6;
+            transform: scaleY(1);
           }
           50% {
-            transform: scale(1.1);
             opacity: 1;
+            transform: scaleY(1.3);
           }
         }
         @keyframes floatSlow {

@@ -220,7 +220,7 @@ const SponsorsPage = () => {
                   }`}>
                     We are incredibly grateful to our <span className="text-sunset-orange font-bold">valued sponsors</span> who make this
                     <span className={`font-bold ${isDark ? 'text-blue-400' : 'text-deep-ocean'}`}> free conference possible</span> and support the
-                    <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}> cybersecurity community's growth</span>.
+                    <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}> cybersecurity community&apos;s growth</span>.
                   </p>
                 </div>
               </div>
@@ -317,7 +317,7 @@ const SponsorsPage = () => {
                   <p className={`text-base font-medium ${
                     isDark ? 'text-gray-300' : 'text-deep-ocean'
                   }`}>
-                    Looking for custom sponsorship packages? Let's discuss how we can create the perfect partnership for your brand.
+                    Looking for custom sponsorship packages? Let&apos;s discuss how we can create the perfect partnership for your brand.
                   </p>
                 </div>
               </div>

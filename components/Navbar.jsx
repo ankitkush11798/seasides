@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -12,7 +12,7 @@ const Navbar = () => {
   const { isDark } = useTheme();
 
   // Conference date: February 19, 2026
-  const conferenceDate = new Date('2026-02-19T00:00:00Z');
+  const conferenceDate = useMemo(() => new Date('2026-02-19T00:00:00Z'), []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,7 +33,7 @@ const Navbar = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [conferenceDate]);
 
   if (!isMounted) {
     return null; // Prevent hydration mismatch

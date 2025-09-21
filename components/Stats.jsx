@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Stats = () => {
@@ -21,7 +21,7 @@ const Stats = () => {
     }
   `;
 
-  const finalStats = [15, 100, 3, 1000];
+  const finalStats = useMemo(() => [15, 100, 3, 1000], []);
   const labels = ['Villages', '% FREE Conference', 'Days of Learning', 'Expected Attendees'];
   const icons = [
     <svg key="villages" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ const Stats = () => {
         setTimeout(() => animate(), index * 200);
       });
     }
-  }, [isVisible]);
+  }, [isVisible, finalStats]);
 
   return (
     <>

@@ -294,7 +294,7 @@ const NostalgiaGallery = () => {
             className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
             style={{ columnFill: 'balance' }}
           >
-            {masonryItems.map((item, index) => (
+            {masonryItems.map((item) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 50 }}
