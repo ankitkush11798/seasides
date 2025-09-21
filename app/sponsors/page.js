@@ -298,7 +298,7 @@ const SponsorsPage = () => {
                   </button>
 
                   <button
-                    onClick={() => window.open('/sponsors/sponsorship-info.pdf', '_blank')}
+                    onClick={() => window.open('https://village.scagoat.dev/static/media/pdf/SeasidesSponsorship_2025.pdf', '_blank')}
                     className="group relative px-10 py-4 bg-sunset-orange hover:bg-orange-600 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
