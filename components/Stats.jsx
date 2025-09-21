@@ -24,20 +24,19 @@ const Stats = () => {
   const finalStats = [15, 100, 3, 1000];
   const labels = ['Villages', '% FREE Conference', 'Days of Learning', 'Expected Attendees'];
   const icons = [
-    <svg key="villages" className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="villages" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
     </svg>,
-    <svg key="security" className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="security" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
     </svg>,
-    <svg key="days" className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="days" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
     </svg>,
-    <svg key="attendees" className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="attendees" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
     </svg>
   ];
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,7 +88,7 @@ const Stats = () => {
     <>
       <style jsx>{floatAnimation}</style>
       <section id="stats-section" className={`py-20 relative overflow-hidden ${
-        isDark ? 'bg-charcoal-gray' : 'bg-light-gray'
+        isDark ? 'bg-gradient-to-br from-gray-900 via-blue-900/20 to-cyan-900/20' : 'bg-gradient-to-br from-blue-50 via-white to-cyan-50'
       }`}>
       {/* Floating Elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -117,7 +116,7 @@ const Stats = () => {
               <span className="text-sunset-orange animate-pulse">
                 Glance
               </span>
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-sunset-orange rounded-full transform scale-x-0 animate-[scaleX_2s_ease-in-out_infinite]" />
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full transform scale-x-0 animate-[scaleX_2s_ease-in-out_infinite]" />
             </span>
           </h2>
           <p className={`text-xl max-w-3xl mx-auto ${
@@ -127,47 +126,37 @@ Join us for an unprecedented gathering of minds across coastal communities
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           {finalStats.map((stat, index) => {
             const cardColors = [
-              'bg-deep-ocean-blue',
+              'bg-deep-ocean',
               'bg-sunset-orange',
               'bg-sunny-yellow',
-              'bg-deep-ocean-blue'
+              'bg-deep-ocean'
             ];
 
             return (
               <div
                 key={index}
-                className={`group text-center p-6 rounded-2xl transition-all duration-300 hover:scale-105 ${
-                  isDark
-                    ? 'bg-gray-800/50 hover:bg-gray-800/70'
-                    : 'bg-white/80 hover:bg-white backdrop-blur-sm shadow-lg hover:shadow-xl'
-                }`}
-                style={{
-                  animation: `float 6s ease-in-out infinite`,
-                  animationDelay: `${index * 0.5}s`
-                }}
+                className="group text-center"
               >
-                <div className="flex flex-col items-center space-y-4">
-                  <div className={`p-4 ${cardColors[index]} rounded-2xl text-white transform group-hover:scale-110 transition-all duration-500`}>
+                <div className="flex flex-col items-center space-y-6">
+                  <div className={`p-4 bg-gradient-to-br ${cardColors[index]} rounded-2xl text-white transform group-hover:scale-110 transition-all duration-500`}>
                     {icons[index]}
                   </div>
 
                   <div className="relative inline-block">
-                    <div className={`text-5xl md:text-6xl font-black font-mono group-hover:scale-110 transition-transform duration-500 ${
-                      isDark ? cardColors[index].replace('bg-', 'text-') : 'text-gray-900'
-                    }`}>
+                    <div className={`text-6xl md:text-7xl font-black font-mono bg-gradient-to-r ${cardColors[index]} bg-clip-text text-transparent`}>
                       {animatedValues[index]}
                       {index === 1 && '%'}
                       {index === 3 && '+'}
                     </div>
                   </div>
 
-                  <p className={`text-lg font-bold transition-all duration-300 ${
+                  <p className={`text-lg font-bold ${
                     isDark
-                      ? 'text-gray-300 group-hover:text-white'
-                      : 'text-gray-700 group-hover:text-gray-900'
+                      ? 'text-gray-300'
+                      : 'text-gray-700'
                   }`}>
                     {labels[index]}
                   </p>

@@ -27,23 +27,7 @@ const About = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-8"
             >
-              {/* Kicker */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-block"
-              >
-                <span className={`text-sm font-bold tracking-wider uppercase px-4 py-2 rounded-full border ${
-                  isDark 
-                    ? 'text-cyan-400 border-cyan-400/30 bg-cyan-400/10' 
-                    : 'text-blue-600 border-blue-600/30 bg-blue-600/10'
-                }`}>
-                  WHY JOIN CONFERENCE
-                </span>
-              </motion.div>
-
+            
               {/* Main Heading */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}

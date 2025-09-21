@@ -180,19 +180,28 @@ const NostalgiaGallery = () => {
     setSelectedImage(filteredItems[newIndex]);
   }, [lightboxIndex, filteredItems]);
 
-  // Masonry layout helper
+  // Enhanced masonry layout helper with varied sizes
   const createMasonryLayout = (items) => {
-    const columns = 3;
-    const columnItems = Array.from({ length: columns }, () => []);
-    
-    items.forEach((item, index) => {
-      columnItems[index % columns].push(item);
-    });
-    
-    return columnItems;
+    // Define size patterns for better visual variety
+    const sizePatterns = [
+      { span: 'col-span-1', height: 'aspect-[4/3]', size: 'regular' },
+      { span: 'col-span-1', height: 'aspect-[3/4]', size: 'tall' },
+      { span: 'col-span-1', height: 'aspect-[16/9]', size: 'wide' },
+      { span: 'col-span-1', height: 'aspect-square', size: 'square' },
+      { span: 'col-span-1', height: 'aspect-[5/4]', size: 'medium' }
+    ];
+
+    // Assign size patterns to items for visual variety
+    const enhancedItems = items.map((item, index) => ({
+      ...item,
+      ...sizePatterns[index % sizePatterns.length],
+      delay: Math.random() * 0.3 // Random stagger for animations
+    }));
+
+    return enhancedItems;
   };
 
-  const masonryColumns = createMasonryLayout(filteredItems);
+  const masonryItems = createMasonryLayout(filteredItems);
 
   return (
     <section id="nostalgia" className={`relative py-20 scroll-mt-24 overflow-hidden ${
@@ -276,69 +285,88 @@ const NostalgiaGallery = () => {
             ))}
           </motion.div>
 
-          {/* Masonry Gallery */}
+          {/* Enhanced Masonry Gallery */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
+            style={{ columnFill: 'balance' }}
           >
-            {masonryColumns.map((column, columnIndex) => (
-              <div key={columnIndex} className="space-y-6">
-                {column.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.5 + (columnIndex * 0.1) + (index * 0.1) }}
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    onClick={() => openLightbox(item)}
-                    className={`group relative overflow-hidden rounded-2xl cursor-pointer backdrop-blur-sm ${
-                      isDark 
-                        ? 'bg-white/5 border border-white/10 hover:bg-white/10' 
-                        : 'bg-white border border-gray-200 shadow-lg hover:shadow-2xl'
-                    } transition-all duration-300`}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        openLightbox(item);
-                      }
-                    }}
-                    aria-label={`View ${item.title} in full size`}
-                  >
-                    {/* Image */}
-                    <div className="relative overflow-hidden">
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        width={400}
-                        height={300}
-                        className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                          <p className="text-sm text-gray-200 mb-2">{item.description}</p>
-                          <span className="text-xs text-pink-300 font-semibold">{item.year}</span>
+            {masonryItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 + item.delay }}
+                whileHover={{ scale: 1.02, y: -8 }}
+                onClick={() => openLightbox(item)}
+                className={`group relative overflow-hidden rounded-2xl cursor-pointer backdrop-blur-sm mb-6 break-inside-avoid ${
+                  isDark 
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10' 
+                    : 'bg-white border border-gray-200 shadow-lg hover:shadow-2xl'
+                } transition-all duration-300`}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    openLightbox(item);
+                  }
+                }}
+                aria-label={`View ${item.title} in full size`}
+              >
+                {/* Image Container with Dynamic Sizing */}
+                <div className={`relative overflow-hidden ${item.height}`}>
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  
+                  {/* Enhanced Overlay with Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <div className="mb-2">
+                        <span className={`inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2 ${
+                          item.category === 'keynotes' ? 'bg-blue-500/80' :
+                          item.category === 'workshops' ? 'bg-green-500/80' :
+                          item.category === 'networking' ? 'bg-purple-500/80' :
+                          item.category === 'villages' ? 'bg-orange-500/80' :
+                          'bg-pink-500/80'
+                        }`}>
+                          {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-base mb-1 line-clamp-2">{item.title}</h3>
+                      <p className="text-sm text-gray-200 mb-2 line-clamp-2 opacity-90">{item.description}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-pink-300 font-semibold">{item.year}</span>
+                        <div className="flex items-center space-x-1 text-xs text-gray-300">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                          </svg>
+                          <span>View</span>
                         </div>
                       </div>
-
-                      {/* Zoom icon */}
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                        </svg>
-                      </div>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+
+                  {/* Interactive Zoom Icon */}
+                  <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
+
+                  {/* Subtle Border Glow on Hover */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ring-2 ring-sunset-orange/50"></div>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -360,11 +388,8 @@ const NostalgiaGallery = () => {
                   : 'bg-sunset-orange text-white hover:bg-sunset-orange/80 shadow-lg hover:shadow-sunset-orange/25'
               }`}
             >
-              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              View Complete Gallery
+             
+              Explore All Memories
             </motion.a>
           </motion.div>
         </div>

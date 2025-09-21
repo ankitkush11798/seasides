@@ -21,6 +21,22 @@ const SponsorsEnhanced = () => {
           </p>
         </div>
 
+         <div className="text-center">
+          <p className="text-lg text-gray-600 mb-6">
+            Help us nurture and shape the next generation passionate about cybersecurity, so they can create a safer and more peaceful world.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/sponsors">
+              <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                View All Sponsors
+              </button>
+            </Link>
+            <button className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors">
+              Become a Sponsor
+            </button>
+          </div>
+        </div>
+
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Diamond Sponsors</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
@@ -68,21 +84,7 @@ const SponsorsEnhanced = () => {
           </div>
         </div>
 
-        <div className="text-center">
-          <p className="text-lg text-gray-600 mb-6">
-            Help us nurture and shape the next generation passionate about cybersecurity, so they can create a safer and more peaceful world.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/sponsors">
-              <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
-                View All Sponsors
-              </button>
-            </Link>
-            <button className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors">
-              Become a Sponsor
-            </button>
-          </div>
-        </div>
+       
       </div>
     </section>
   );

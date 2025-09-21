@@ -187,175 +187,302 @@ const SponsorsPage = () => {
             }}
           ></div>
           
-          <div className="container mx-auto px-6 py-16 relative z-10">
-            <div 
+          <div className="container mx-auto px-8 py-20 relative z-10">
+            {/* Hero Section */}
+            <div
               ref={el => sectionRefs.current[0] = el}
-              className={`text-center mb-16 ${
+              className={`text-center mb-24 ${
                 visibleSections.has(0) ? 'fade-in-up' : 'stagger-animation'
               }`}
             >
-              <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${
-                isDark ? 'text-white' : 'text-deep-ocean'
-              }`}>
-                Our Sponsors
-              </h1>
-              <div className="w-32 h-1 bg-sunset-orange mx-auto mb-8 rounded-full"></div>
-              <p className={`text-lg max-w-3xl mx-auto leading-relaxed ${
-                isDark ? 'text-gray-300' : 'text-gray-700'
-              }`}>
-                We are grateful to our amazing sponsors who make this free conference possible and support the cybersecurity community&apos;s growth.
-              </p>
+              <div className="relative">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-sunset-orange/10 to-deep-ocean/10 rounded-full blur-3xl"></div>
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-deep-ocean to-sunset-orange rounded-full shadow-2xl mb-8">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+
+                  <h1 className={`text-6xl md:text-7xl font-black mb-8 leading-tight ${
+                    isDark ? 'text-white' : 'text-deep-ocean'
+                  }`}>
+                    <span className="text-sunset-orange">Our Amazing</span>
+                    <br />
+                    Sponsors
+                  </h1>
+
+                  <div className="w-48 h-2 bg-gradient-to-r from-sunset-orange to-deep-ocean mx-auto mb-10 rounded-full shadow-lg"></div>
+
+                  <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
+                    isDark ? 'text-gray-200' : 'text-gray-800'
+                  }`}>
+                    We are incredibly grateful to our <span className="text-sunset-orange font-bold">valued sponsors</span> who make this
+                    <span className={`font-bold ${isDark ? 'text-blue-400' : 'text-deep-ocean'}`}> free conference possible</span> and support the
+                    <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}> cybersecurity community's growth</span>.
+                  </p>
+                </div>
+              </div>
             </div>
 
+            {/* Stats Section */}
+            <div className={`mb-24 ${visibleSections.has(0) ? 'fade-in-up' : 'stagger-animation'}`}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                {[
+                  { number: "2,500+", label: "Attendees", color: "text-deep-ocean", bgColor: "bg-deep-ocean/10" },
+                  { number: "30+", label: "Countries", color: "text-sunset-orange", bgColor: "bg-sunset-orange/10" },
+                  { number: "15+", label: "Sponsors", color: "text-purple-600", bgColor: "bg-purple-600/10" },
+                  { number: "100%", label: "Free Event", color: "text-green-600", bgColor: "bg-green-600/10" }
+                ].map((stat, index) => (
+                  <div key={index} className={`relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl group ${
+                    isDark
+                      ? 'bg-gray-900/80 shadow-lg'
+                      : `${stat.bgColor} shadow-lg`
+                  }`}>
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className={`text-5xl font-black mb-4 ${isDark ? 'text-white' : stat.color} relative z-10`}>{stat.number}</div>
+                    <div className={`text-sm font-bold uppercase tracking-wider ${
+                      isDark ? 'text-gray-200' : 'text-gray-800'
+                    } relative z-10`}>{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Become a Sponsor CTA */}
+            <div
+              className={`relative rounded-3xl p-12 mb-24 text-center transition-all duration-500 overflow-hidden shadow-2xl ${
+                isDark
+                  ? 'bg-gradient-to-br from-gray-900/95 to-gray-800/95'
+                  : 'bg-gradient-to-br from-white/95 to-gray-50/95'
+              } ${visibleSections.has(0) ? 'scale-in' : 'stagger-animation'} group`}
+            >
+              {/* Background decoration */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-sunset-orange/15 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-deep-ocean/15 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+              <div className="relative z-10">
+                <div className="flex items-center justify-center mb-8">
+                  <div className={`p-4 rounded-full ${isDark ? 'bg-gradient-to-r from-sunset-orange to-deep-ocean' : 'bg-gradient-to-r from-deep-ocean to-sunset-orange'} shadow-xl`}>
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                    </svg>
+                  </div>
+                </div>
+
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+                  isDark ? 'text-sunset-orange' : 'text-deep-ocean'
+                }`}>
+                  Become a Sponsor
+                </h2>
+
+                <p className={`mb-10 max-w-4xl mx-auto text-xl leading-relaxed font-medium ${
+                  isDark ? 'text-gray-200' : 'text-gray-800'
+                }`}>
+                  Join us in making cybersecurity education accessible to all. Partner with Seasides and be part of something meaningful that impacts thousands of professionals globally.
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-6 mb-8">
+                  <button
+                    onClick={() => window.open('mailto:support@seasidestech.com?subject=Sponsorship Inquiry - Seasides 2026', '_blank')}
+                    className="group relative px-10 py-4 bg-deep-ocean hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                    <div className="relative flex items-center gap-3">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Contact Sponsorship Team
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => window.open('/sponsors/sponsorship-info.pdf', '_blank')}
+                    className="group relative px-10 py-4 bg-sunset-orange hover:bg-orange-600 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                    <div className="relative flex items-center gap-3">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Download Sponsorship Deck
+                    </div>
+                  </button>
+                </div>
+
+                <div className={`mt-8 p-6 rounded-xl ${
+                  isDark ? 'bg-gray-800/50' : 'bg-deep-ocean/5'
+                }`}>
+                  <p className={`text-base font-medium ${
+                    isDark ? 'text-gray-300' : 'text-deep-ocean'
+                  }`}>
+                    Looking for custom sponsorship packages? Let's discuss how we can create the perfect partnership for your brand.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          {/* Sponsor Tiers */}
           {sponsorTiers.map((tier, tierIndex) => (
-            <div 
-              key={tierIndex} 
+            <div
+              key={tierIndex}
               ref={el => sectionRefs.current[tierIndex + 1] = el}
-              className={`mb-16 ${
-                visibleSections.has(tierIndex + 1) 
+              className={`mb-32 ${
+                visibleSections.has(tierIndex + 1)
                   ? (tierIndex % 2 === 0 ? 'slide-in-left' : 'slide-in-right')
                   : 'stagger-animation'
               }`}
             >
-              <div className="text-center mb-8">
-                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                  isDark ? 'text-sunset-orange' : 'text-deep-ocean'
+              {/* Tier Header */}
+              <div className="text-center mb-16 relative">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-3 bg-gradient-to-r from-transparent via-sunset-orange/20 to-transparent blur-sm"></div>
+
+                <div className={`inline-block px-8 py-4 rounded-full mb-6 shadow-xl backdrop-blur-sm ${
+                  tierIndex === 0 ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20' :
+                  tierIndex === 1 ? 'bg-gradient-to-r from-gray-400/20 to-gray-600/20' :
+                  tierIndex === 2 ? 'bg-gradient-to-r from-purple-500/20 to-indigo-500/20' :
+                  'bg-gradient-to-r from-yellow-500/20 to-orange-500/20'
                 }`}>
-                  {tier.title}
+                  <span className={`font-bold text-base uppercase tracking-wider ${
+                    isDark ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {tier.title}
+                  </span>
+                </div>
+
+                <h2 className={`text-5xl md:text-6xl font-black mb-6 leading-tight ${
+                  isDark ? 'text-white' : 'text-gray-900'
+                }`}>
+                  <span className={`bg-gradient-to-r ${tier.gradient} bg-clip-text text-transparent`}>
+                    {tier.title}
+                  </span>
                 </h2>
-                <p className={`text-lg ${
-                  isDark ? 'text-gray-300' : 'text-gray-600'
+
+                <p className={`text-xl font-medium max-w-2xl mx-auto ${
+                  isDark ? 'text-gray-200' : 'text-gray-700'
                 }`}>{tier.description}</p>
               </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+              {/* Sponsors Grid */}
+              <div className={`grid gap-10 ${
+                tier.sponsors.length === 1 ? 'grid-cols-1 max-w-md mx-auto' :
+                tier.sponsors.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' :
+                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+              }`}>
                 {tier.sponsors.map((sponsor, index) => (
                   <div
                     key={index}
-                    className={`sponsor-card backdrop-blur-sm border-2 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 group hover:scale-105 ${
+                    className={`sponsor-card group relative rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover:scale-105 transform-gpu ${
                       isDark
-                        ? 'bg-gray-900/80 border-cyan-400/50 hover:shadow-cyan-400/30 hover:border-sunset-orange'
-                        : 'bg-white/80 border-deep-ocean/30 hover:shadow-deep-ocean/30 hover:border-sunset-orange'
+                        ? 'bg-gradient-to-br from-gray-900/90 to-gray-800/90 hover:shadow-sunset-orange/20'
+                        : 'bg-gradient-to-br from-white/95 to-gray-50/95 hover:shadow-sunset-orange/20'
                     } ${
                       visibleSections.has(tierIndex + 1) ? 'scale-in' : 'stagger-animation'
                     }`}
-                    style={{ 
-                      animationDelay: `${index * 0.1}s`,
+                    style={{
+                      animationDelay: `${index * 0.15}s`,
                       transform: visibleSections.has(tierIndex + 1) ? 'none' : 'scale(0.8)'
                     }}
                   >
-                    <div className="relative h-24 mb-4 flex items-center justify-center bg-white rounded-lg overflow-hidden group-hover:bg-gray-50 transition-colors duration-300">
+                    {/* Background decorations */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-sunset-orange/15 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-deep-ocean/15 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                    {/* Logo container */}
+                    <div className="relative h-32 mb-8 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <Image
                         src={sponsor.logo}
                         alt={sponsor.name}
                         fill
-                        className="object-contain p-2 group-hover:scale-110 transition-transform duration-500"
+                        className="object-contain p-4 group-hover:scale-110 transition-transform duration-500 filter group-hover:brightness-110"
                       />
+
+                      {/* Tier badge */}
+                      <div className={`absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-bold shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                        tierIndex === 0 ? 'bg-cyan-500 text-white' :
+                        tierIndex === 1 ? 'bg-gray-500 text-white' :
+                        tierIndex === 2 ? 'bg-purple-500 text-white' :
+                        'bg-yellow-500 text-white'
+                      }`}>
+                        {sponsor.tier.charAt(0).toUpperCase() + sponsor.tier.slice(1)}
+                      </div>
                     </div>
-                    <h3 className={`text-lg font-semibold text-center transition-colors duration-300 ${
+
+                    {/* Sponsor name */}
+                    <h3 className={`text-xl font-bold text-center mb-6 transition-colors duration-300 ${
                       isDark
-                        ? 'text-gray-300 group-hover:text-sunset-orange'
-                        : 'text-gray-700 group-hover:text-deep-ocean'
+                        ? 'text-gray-200 group-hover:text-white'
+                        : 'text-gray-800 group-hover:text-deep-ocean'
                     }`}>
                       {sponsor.name}
                     </h3>
-                    
-                    {/* Hover glow effect */}
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/0 via-cyan-400/5 to-purple-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Interaction hint */}
+                    <div className={`text-center text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 px-4 py-2 rounded-lg ${
+                      isDark ? 'text-sunset-orange bg-sunset-orange/10' : 'text-deep-ocean bg-deep-ocean/10'
+                    }`}>
+                      Thank you for supporting Seasides
+                    </div>
+
+                    {/* Subtle glow effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                      <div className={`absolute inset-0 rounded-2xl shadow-lg ${
+                        tierIndex === 0 ? 'shadow-cyan-400/20' :
+                        tierIndex === 1 ? 'shadow-gray-400/20' :
+                        tierIndex === 2 ? 'shadow-purple-400/20' :
+                        'shadow-yellow-400/20'
+                      }`}></div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           ))}
 
-          <div 
+          {/* Why Sponsor Seasides */}
+          <div
             ref={el => sectionRefs.current[sponsorTiers.length + 1] = el}
-            className={`backdrop-blur-sm border-2 rounded-xl p-8 text-center transition-all duration-500 hover:shadow-lg ${
+            className={`rounded-3xl p-12 text-center transition-all duration-500 hover:shadow-2xl shadow-lg mb-20 ${
               isDark
-                ? 'bg-gray-900/80 border-green-400/50 hover:border-green-400 hover:shadow-green-400/20'
-                : 'bg-white/80 border-deep-ocean/30 hover:border-sunset-orange hover:shadow-sunset-orange/20'
+                ? 'bg-gray-900/95 hover:shadow-sunset-orange/20'
+                : 'bg-white/95 hover:shadow-sunset-orange/20'
             } ${
               visibleSections.has(sponsorTiers.length + 1) ? 'fade-in-up' : 'stagger-animation'
             }`}
           >
-            <h2 className={`text-2xl md:text-3xl font-semibold mb-6 ${
+            <h2 className={`text-4xl md:text-5xl font-bold mb-12 ${
               isDark ? 'text-sunset-orange' : 'text-deep-ocean'
             }`}>
               Why Sponsor Seasides?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: "🎯", text: "Reach 2,500+ cybersecurity professionals and enthusiasts", color: "text-cyan-400" },
-                { icon: "🌍", text: "Global audience with participants from 30+ countries", color: "text-green-400" },
-                { icon: "💡", text: "Associate your brand with cutting-edge security innovation", color: "text-purple-400" },
-                { icon: "🤝", text: "Support the cybersecurity community's education and growth", color: "text-red-400" },
-                { icon: "📈", text: "Generate leads and build meaningful business relationships", color: "text-yellow-400" },
-                { icon: "🎉", text: "Be part of India's most loved cybersecurity conference", color: "text-pink-400" }
+                { text: "Reach 2,500+ cybersecurity professionals and enthusiasts", bgColor: "bg-deep-ocean/10" },
+                { text: "Global audience with participants from 30+ countries", bgColor: "bg-sunset-orange/10" },
+                { text: "Associate your brand with cutting-edge security innovation", bgColor: "bg-purple-600/10" },
+                { text: "Support the cybersecurity community's education and growth", bgColor: "bg-green-600/10" },
+                { text: "Generate leads and build meaningful business relationships", bgColor: "bg-blue-600/10" },
+                { text: "Be part of India's most loved cybersecurity conference", bgColor: "bg-pink-600/10" }
               ].map((item, index) => (
-                <div 
+                <div
                   key={index}
-                  className={`flex items-start space-x-3 p-4 rounded-lg transition-all duration-300 hover:scale-105 ${
-                    isDark
-                      ? 'bg-gray-800/50 hover:bg-gray-800/80'
-                      : 'bg-gray-100/50 hover:bg-gray-100/80'
-                  } ${
+                  className={`relative p-8 rounded-xl ${item.bgColor} transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md group ${
                     visibleSections.has(sponsorTiers.length + 1) ? 'slide-in-left' : 'stagger-animation'
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <span className="text-xl animate-bounce" style={{ animationDelay: `${index * 0.2}s` }}>
-                    {item.icon}
-                  </span>
-                  <span className={`transition-colors duration-300 ${
+                  <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-white/20 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className={`text-lg font-semibold leading-relaxed relative z-10 ${
                     isDark
-                      ? 'text-gray-300 hover:text-white'
-                      : 'text-gray-700 hover:text-gray-900'
+                      ? 'text-white'
+                      : 'text-black'
                   }`}>
                     {item.text}
                   </span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div 
-            ref={el => sectionRefs.current[sponsorTiers.length + 2] = el}
-            className={`backdrop-blur-sm border-2 rounded-xl p-8 mt-12 text-center transition-all duration-500 hover:shadow-lg ${
-              isDark
-                ? 'bg-gray-900/80 border-purple-400/50 hover:border-purple-400 hover:shadow-purple-400/20'
-                : 'bg-white/80 border-deep-ocean/30 hover:border-sunset-orange hover:shadow-sunset-orange/20'
-            } ${
-              visibleSections.has(sponsorTiers.length + 2) ? 'scale-in' : 'stagger-animation'
-            }`}
-          >
-            <h2 className={`text-2xl md:text-3xl font-semibold mb-6 ${
-              isDark ? 'text-sunset-orange' : 'text-deep-ocean'
-            }`}>
-              Become a Sponsor
-            </h2>
-            <p className={`mb-8 max-w-3xl mx-auto leading-relaxed ${
-              isDark ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-              Join us in making cybersecurity education accessible to all. Partner with Seasides and be part of something meaningful.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-6">
-              <button
-                onClick={() => window.open('mailto:sponsors@seasides.in?subject=Sponsorship Inquiry - Seasides 2026', '_blank')}
-                className="px-8 py-3 bg-deep-ocean hover:bg-deep-ocean/80 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-deep-ocean/30"
-              >
-                Contact Sponsorship Team
-              </button>
-              <button
-                onClick={() => window.open('/sponsors/sponsorship-info.pdf', '_blank')}
-                className="px-8 py-3 bg-sunset-orange hover:bg-sunset-orange/80 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-sunset-orange/30"
-              >
-                Download Sponsorship Info
-              </button>
-            </div>
-            <div className={`mt-6 text-sm ${
-              isDark ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              <p>For custom sponsorship packages, please reach out to our team.</p>
             </div>
           </div>
           </div>
