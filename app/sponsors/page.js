@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { colors, gradients, shadows } from '@/lib/colors';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from 'next/image';
@@ -196,30 +197,36 @@ const SponsorsPage = () => {
               }`}
             >
               <div className="relative">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-sunset-orange/10 to-deep-ocean/10 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl" style={{
+                  background: `radial-gradient(circle, ${colors.sunsetOrange}10, ${colors.deepOceanBlue}10)`
+                }}></div>
 
                 <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-deep-ocean to-sunset-orange rounded-full shadow-2xl mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full shadow-2xl mb-8" style={{
+                    background: gradients.deepOceanDepth
+                  }}>
                     <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
 
-                  <h1 className={`text-6xl md:text-7xl font-black mb-8 leading-tight ${
-                    isDark ? 'text-white' : 'text-deep-ocean'
-                  }`}>
-                    <span className="text-sunset-orange">Our Amazing</span>
+                  <h1 className={`text-6xl md:text-7xl font-black mb-8 leading-tight`} style={{
+                    color: isDark ? colors.white : colors.deepOceanBlue
+                  }}>
+                    <span style={{ color: colors.sunsetOrange }}>Our Amazing</span>
                     <br />
                     Sponsors
                   </h1>
 
-                  <div className="w-48 h-2 bg-gradient-to-r from-sunset-orange to-deep-ocean mx-auto mb-10 rounded-full shadow-lg"></div>
+                  <div className="w-48 h-2 mx-auto mb-10 rounded-full shadow-lg" style={{
+                    background: gradients.warmSunset
+                  }}></div>
 
                   <p className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
                     isDark ? 'text-gray-200' : 'text-gray-800'
                   }`}>
-                    We are incredibly grateful to our <span className="text-sunset-orange font-bold">valued sponsors</span> who make this
-                    <span className={`font-bold ${isDark ? 'text-blue-400' : 'text-deep-ocean'}`}> free conference possible</span> and support the
+                    We are incredibly grateful to our <span className="font-bold" style={{ color: colors.sunsetOrange }}>valued sponsors</span> who make this
+                    <span className={`font-bold`} style={{ color: isDark ? '#60a5fa' : colors.deepOceanBlue }}> free conference possible</span> and support the
                     <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}> cybersecurity community&apos;s growth</span>.
                   </p>
                 </div>
@@ -230,8 +237,8 @@ const SponsorsPage = () => {
             <div className={`mb-24 ${visibleSections.has(0) ? 'fade-in-up' : 'stagger-animation'}`}>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 {[
-                  { number: "2,500+", label: "Attendees", color: "text-deep-ocean", bgColor: "bg-deep-ocean/10" },
-                  { number: "30+", label: "Countries", color: "text-sunset-orange", bgColor: "bg-sunset-orange/10" },
+                  { number: "2,500+", label: "Attendees", color: colors.deepOceanBlue, bgColor: "bg-blue-900/10" },
+                  { number: "30+", label: "Countries", color: colors.sunsetOrange, bgColor: "bg-orange-900/10" },
                   { number: "15+", label: "Sponsors", color: "text-purple-600", bgColor: "bg-purple-600/10" },
                   { number: "100%", label: "Free Event", color: "text-green-600", bgColor: "bg-green-600/10" }
                 ].map((stat, index) => (
@@ -241,7 +248,9 @@ const SponsorsPage = () => {
                       : `${stat.bgColor} shadow-lg`
                   }`}>
                     <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className={`text-5xl font-black mb-4 ${isDark ? 'text-white' : stat.color} relative z-10`}>{stat.number}</div>
+                    <div className={`text-5xl font-black mb-4 relative z-10`} style={{
+                      color: isDark ? colors.white : stat.color
+                    }}>{stat.number}</div>
                     <div className={`text-sm font-bold uppercase tracking-wider ${
                       isDark ? 'text-gray-200' : 'text-gray-800'
                     } relative z-10`}>{stat.label}</div>
@@ -264,16 +273,18 @@ const SponsorsPage = () => {
 
               <div className="relative z-10">
                 <div className="flex items-center justify-center mb-8">
-                  <div className={`p-4 rounded-full ${isDark ? 'bg-gradient-to-r from-sunset-orange to-deep-ocean' : 'bg-gradient-to-r from-deep-ocean to-sunset-orange'} shadow-xl`}>
+                  <div className={`p-4 rounded-full shadow-xl`} style={{
+                    background: isDark ? gradients.warmSunset : gradients.deepOceanDepth
+                  }}>
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                     </svg>
                   </div>
                 </div>
 
-                <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
-                  isDark ? 'text-sunset-orange' : 'text-deep-ocean'
-                }`}>
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6`} style={{
+                  color: isDark ? colors.sunsetOrange : colors.deepOceanBlue
+                }}>
                   Become a Sponsor
                 </h2>
 
@@ -286,7 +297,11 @@ const SponsorsPage = () => {
                 <div className="flex flex-wrap justify-center gap-6 mb-8">
                   <button
                     onClick={() => window.open('mailto:support@seasidestech.com?subject=Sponsorship Inquiry - Seasides 2026', '_blank')}
-                    className="group relative px-10 py-4 bg-deep-ocean hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                    className="group relative px-10 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                    style={{
+                      backgroundColor: colors.deepOceanBlue,
+                      boxShadow: shadows.buttonShadow
+                    }}
                   >
                     <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                     <div className="relative flex items-center gap-3">
@@ -299,7 +314,11 @@ const SponsorsPage = () => {
 
                   <button
                     onClick={() => window.open('https://village.scagoat.dev/static/media/pdf/SeasidesSponsorship_2025.pdf', '_blank')}
-                    className="group relative px-10 py-4 bg-sunset-orange hover:bg-orange-600 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                    className="group relative px-10 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                    style={{
+                      backgroundColor: colors.sunsetOrange,
+                      boxShadow: shadows.buttonShadow
+                    }}
                   >
                     <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                     <div className="relative flex items-center gap-3">
@@ -312,11 +331,13 @@ const SponsorsPage = () => {
                 </div>
 
                 <div className={`mt-8 p-6 rounded-xl ${
-                  isDark ? 'bg-gray-800/50' : 'bg-deep-ocean/5'
-                }`}>
-                  <p className={`text-base font-medium ${
-                    isDark ? 'text-gray-300' : 'text-deep-ocean'
-                  }`}>
+                  isDark ? 'bg-gray-800/50' : ''
+                }`} style={{
+                  backgroundColor: isDark ? undefined : `${colors.deepOceanBlue}0D`
+                }}>
+                  <p className={`text-base font-medium`} style={{
+                    color: isDark ? '#d1d5db' : colors.deepOceanBlue
+                  }}>
                     Looking for custom sponsorship packages? Let&apos;s discuss how we can create the perfect partnership for your brand.
                   </p>
                 </div>
@@ -336,7 +357,9 @@ const SponsorsPage = () => {
             >
               {/* Tier Header */}
               <div className="text-center mb-16 relative">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-3 bg-gradient-to-r from-transparent via-sunset-orange/20 to-transparent blur-sm"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-3 blur-sm" style={{
+                  background: `linear-gradient(to right, transparent, ${colors.sunsetOrange}33, transparent)`
+                }}></div>
 
                 <div className={`inline-block px-8 py-4 rounded-full mb-6 shadow-xl backdrop-blur-sm ${
                   tierIndex === 0 ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20' :
@@ -351,9 +374,9 @@ const SponsorsPage = () => {
                   </span>
                 </div>
 
-                <h2 className={`text-5xl md:text-6xl font-black mb-6 leading-tight ${
-                  isDark ? 'text-white' : 'text-gray-900'
-                }`}>
+                <h2 className={`text-5xl md:text-6xl font-black mb-6 leading-tight`} style={{
+                  color: isDark ? colors.white : colors.charcoalGray
+                }}>
                   <span className={`bg-gradient-to-r ${tier.gradient} bg-clip-text text-transparent`}>
                     {tier.title}
                   </span>
@@ -411,18 +434,17 @@ const SponsorsPage = () => {
                     </div>
 
                     {/* Sponsor name */}
-                    <h3 className={`text-xl font-bold text-center mb-6 transition-colors duration-300 ${
-                      isDark
-                        ? 'text-gray-200 group-hover:text-white'
-                        : 'text-gray-800 group-hover:text-deep-ocean'
-                    }`}>
+                    <h3 className={`text-xl font-bold text-center mb-6 transition-colors duration-300`} style={{
+                      color: isDark ? '#e5e7eb' : colors.charcoalGray
+                    }}>
                       {sponsor.name}
                     </h3>
 
                     {/* Interaction hint */}
-                    <div className={`text-center text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 px-4 py-2 rounded-lg ${
-                      isDark ? 'text-sunset-orange bg-sunset-orange/10' : 'text-deep-ocean bg-deep-ocean/10'
-                    }`}>
+                    <div className={`text-center text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 px-4 py-2 rounded-lg`} style={{
+                      color: isDark ? colors.sunsetOrange : colors.deepOceanBlue,
+                      backgroundColor: isDark ? `${colors.sunsetOrange}1A` : `${colors.deepOceanBlue}1A`
+                    }}>
                       Thank you for supporting Seasides
                     </div>
 
@@ -452,33 +474,34 @@ const SponsorsPage = () => {
               visibleSections.has(sponsorTiers.length + 1) ? 'fade-in-up' : 'stagger-animation'
             }`}
           >
-            <h2 className={`text-4xl md:text-5xl font-bold mb-12 ${
-              isDark ? 'text-sunset-orange' : 'text-deep-ocean'
-            }`}>
+            <h2 className={`text-4xl md:text-5xl font-bold mb-12`} style={{
+              color: isDark ? colors.sunsetOrange : colors.deepOceanBlue
+            }}>
               Why Sponsor Seasides?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { text: "Reach 2,500+ cybersecurity professionals and enthusiasts", bgColor: "bg-deep-ocean/10" },
-                { text: "Global audience with participants from 30+ countries", bgColor: "bg-sunset-orange/10" },
-                { text: "Associate your brand with cutting-edge security innovation", bgColor: "bg-purple-600/10" },
-                { text: "Support the cybersecurity community's education and growth", bgColor: "bg-green-600/10" },
-                { text: "Generate leads and build meaningful business relationships", bgColor: "bg-blue-600/10" },
-                { text: "Be part of India's most loved cybersecurity conference", bgColor: "bg-pink-600/10" }
+                { text: "Reach 2,500+ cybersecurity professionals and enthusiasts", bgColor: `${colors.deepOceanBlue}1A` },
+                { text: "Global audience with participants from 30+ countries", bgColor: `${colors.sunsetOrange}1A` },
+                { text: "Associate your brand with cutting-edge security innovation", bgColor: "rgba(147, 51, 234, 0.1)" },
+                { text: "Support the cybersecurity community's education and growth", bgColor: "rgba(34, 197, 94, 0.1)" },
+                { text: "Generate leads and build meaningful business relationships", bgColor: "rgba(37, 99, 235, 0.1)" },
+                { text: "Be part of India's most loved cybersecurity conference", bgColor: "rgba(236, 72, 153, 0.1)" }
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`relative p-8 rounded-xl ${item.bgColor} transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md group ${
+                  className={`relative p-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md group ${
                     visibleSections.has(sponsorTiers.length + 1) ? 'slide-in-left' : 'stagger-animation'
                   }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    backgroundColor: item.bgColor
+                  }}
                 >
                   <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-white/20 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className={`text-lg font-semibold leading-relaxed relative z-10 ${
-                    isDark
-                      ? 'text-white'
-                      : 'text-black'
-                  }`}>
+                  <span className={`text-lg font-semibold leading-relaxed relative z-10`} style={{
+                    color: isDark ? colors.white : colors.charcoalGray
+                  }}>
                     {item.text}
                   </span>
                 </div>
