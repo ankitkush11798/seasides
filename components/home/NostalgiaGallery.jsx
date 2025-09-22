@@ -158,30 +158,36 @@ const NostalgiaGallery = () => {
     { id: 'venue', label: 'Venue' }
   ];
 
-  const filteredItems = selectedFilter === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedFilter);
+  const filteredItems =
+    selectedFilter === 'all' ? galleryItems : galleryItems.filter(item => item.category === selectedFilter);
 
-  const openLightbox = useCallback((item) => {
-    setSelectedImage(item);
-    setLightboxIndex(filteredItems.findIndex(i => i.id === item.id));
-  }, [filteredItems]);
+  const openLightbox = useCallback(
+    item => {
+      setSelectedImage(item);
+      setLightboxIndex(filteredItems.findIndex(i => i.id === item.id));
+    },
+    [filteredItems]
+  );
 
   const closeLightbox = useCallback(() => {
     setSelectedImage(null);
   }, []);
 
-  const navigateLightbox = useCallback((direction) => {
-    const newIndex = direction === 'next' 
-      ? (lightboxIndex + 1) % filteredItems.length
-      : (lightboxIndex - 1 + filteredItems.length) % filteredItems.length;
-    
-    setLightboxIndex(newIndex);
-    setSelectedImage(filteredItems[newIndex]);
-  }, [lightboxIndex, filteredItems]);
+  const navigateLightbox = useCallback(
+    direction => {
+      const newIndex =
+        direction === 'next'
+          ? (lightboxIndex + 1) % filteredItems.length
+          : (lightboxIndex - 1 + filteredItems.length) % filteredItems.length;
+
+      setLightboxIndex(newIndex);
+      setSelectedImage(filteredItems[newIndex]);
+    },
+    [lightboxIndex, filteredItems]
+  );
 
   // Enhanced masonry layout helper with varied sizes
-  const createMasonryLayout = (items) => {
+  const createMasonryLayout = items => {
     // Define size patterns for better visual variety
     const sizePatterns = [
       { span: 'col-span-1', height: 'aspect-[4/3]', size: 'regular' },
@@ -204,14 +210,13 @@ const NostalgiaGallery = () => {
   const masonryItems = createMasonryLayout(filteredItems);
 
   return (
-    <section id="nostalgia" className={`relative py-20 scroll-mt-24 overflow-hidden ${
-      isDark ? 'bg-charcoal-gray' : 'bg-light-gray'
-    }`}>
+    <section
+      id="nostalgia"
+      className={`relative py-20 scroll-mt-24 overflow-hidden ${isDark ? 'bg-charcoal-gray' : 'bg-light-gray'}`}
+    >
       {/* Animated background */}
       <div className="absolute inset-0">
-        <div className={`absolute inset-0 bg-sunset-orange/10 aurora-x ${
-          isDark ? 'opacity-50' : 'opacity-30'
-        }`}></div>
+        <div className={`absolute inset-0 bg-sunset-orange/10 aurora-x ${isDark ? 'opacity-50' : 'opacity-30'}`} />
       </div>
 
       <div className="relative container mx-auto px-6">
@@ -231,28 +236,28 @@ const NostalgiaGallery = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="inline-block mb-6"
             >
-              <span className={`text-sm font-bold tracking-wider uppercase px-4 py-2 rounded-full border ${
-                isDark 
-                  ? 'text-pink-400 border-pink-400/30 bg-pink-400/10' 
-                  : 'text-pink-600 border-pink-600/30 bg-pink-600/10'
-              }`}>
+              <span
+                className={`text-sm font-bold tracking-wider uppercase px-4 py-2 rounded-full border ${
+                  isDark
+                    ? 'text-pink-400 border-pink-400/30 bg-pink-400/10'
+                    : 'text-pink-600 border-pink-600/30 bg-pink-600/10'
+                }`}
+              >
                 MEMORIES
               </span>
             </motion.div>
 
-            <h2 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 ${
-              isDark ? 'text-white soft-glow' : 'text-gray-900'
-            }`}>
-              Relive the{' '}
-              <span className="text-sunset-orange">
-                Magic
-              </span>
+            <h2
+              className={`text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6 ${
+                isDark ? 'text-white soft-glow' : 'text-gray-900'
+              }`}
+            >
+              Relive the <span className="text-sunset-orange">Magic</span>
             </h2>
 
-            <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${
-              isDark ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              Journey through moments that defined our community. Each image tells a story of learning, connection, and growth.
+            <p className={`text-xl leading-relaxed max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+              Journey through moments that defined our community. Each image tells a story of learning, connection, and
+              growth.
             </p>
           </motion.div>
 
@@ -264,7 +269,7 @@ const NostalgiaGallery = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
-            {filters.map((filter) => (
+            {filters.map(filter => (
               <motion.button
                 key={filter.id}
                 whileHover={{ scale: 1.05 }}
@@ -294,7 +299,7 @@ const NostalgiaGallery = () => {
             className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
             style={{ columnFill: 'balance' }}
           >
-            {masonryItems.map((item) => (
+            {masonryItems.map(item => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, y: 50 }}
@@ -304,13 +309,13 @@ const NostalgiaGallery = () => {
                 whileHover={{ scale: 1.02, y: -8 }}
                 onClick={() => openLightbox(item)}
                 className={`group relative overflow-hidden rounded-2xl cursor-pointer backdrop-blur-sm mb-6 break-inside-avoid ${
-                  isDark 
-                    ? 'bg-white/5 border border-white/10 hover:bg-white/10' 
+                  isDark
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10'
                     : 'bg-white border border-gray-200 shadow-lg hover:shadow-2xl'
                 } transition-all duration-300`}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => {
+                onKeyDown={e => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     openLightbox(item);
                   }
@@ -327,18 +332,24 @@ const NostalgiaGallery = () => {
                     className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     loading="lazy"
                   />
-                  
+
                   {/* Enhanced Overlay with Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <div className="mb-2">
-                        <span className={`inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2 ${
-                          item.category === 'keynotes' ? 'bg-blue-500/80' :
-                          item.category === 'workshops' ? 'bg-green-500/80' :
-                          item.category === 'networking' ? 'bg-purple-500/80' :
-                          item.category === 'villages' ? 'bg-orange-500/80' :
-                          'bg-pink-500/80'
-                        }`}>
+                        <span
+                          className={`inline-block px-2 py-1 rounded-full text-xs font-semibold mb-2 ${
+                            item.category === 'keynotes'
+                              ? 'bg-blue-500/80'
+                              : item.category === 'workshops'
+                                ? 'bg-green-500/80'
+                                : item.category === 'networking'
+                                  ? 'bg-purple-500/80'
+                                  : item.category === 'villages'
+                                    ? 'bg-orange-500/80'
+                                    : 'bg-pink-500/80'
+                          }`}
+                        >
                           {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
                         </span>
                       </div>
@@ -348,7 +359,11 @@ const NostalgiaGallery = () => {
                         <span className="text-xs text-pink-300 font-semibold">{item.year}</span>
                         <div className="flex items-center space-x-1 text-xs text-gray-300">
                           <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                            <path
+                              fillRule="evenodd"
+                              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                              clipRule="evenodd"
+                            />
                           </svg>
                           <span>View</span>
                         </div>
@@ -359,12 +374,17 @@ const NostalgiaGallery = () => {
                   {/* Interactive Zoom Icon */}
                   <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                      />
                     </svg>
                   </div>
 
                   {/* Subtle Border Glow on Hover */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ring-2 ring-sunset-orange/50"></div>
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ring-2 ring-sunset-orange/50" />
                 </div>
               </motion.div>
             ))}
@@ -388,7 +408,6 @@ const NostalgiaGallery = () => {
                   : 'bg-sunset-orange text-white hover:bg-sunset-orange/80 shadow-lg hover:shadow-sunset-orange/25'
               }`}
             >
-             
               Explore All Memories
             </motion.a>
           </motion.div>
@@ -412,7 +431,7 @@ const NostalgiaGallery = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="relative max-w-4xl max-h-[90vh] w-full"
-              onClick={(e) => e.stopPropagation()}
+              onClick={e => e.stopPropagation()}
             >
               {/* Close Button */}
               <button

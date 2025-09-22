@@ -1,24 +1,24 @@
 const SpeakersPage = () => {
   const speakerCategories = [
     {
-      title: "Keynote Speakers",
-      description: "Industry leaders sharing their vision for the future of cybersecurity",
-      count: "5+ Speakers"
+      title: 'Keynote Speakers',
+      description: 'Industry leaders sharing their vision for the future of cybersecurity',
+      count: '5+ Speakers'
     },
     {
-      title: "Technical Experts", 
-      description: "Deep technical presentations on cutting-edge security research",
-      count: "20+ Speakers"
+      title: 'Technical Experts',
+      description: 'Deep technical presentations on cutting-edge security research',
+      count: '20+ Speakers'
     },
     {
-      title: "Industry Veterans",
-      description: "Experienced professionals sharing real-world insights",
-      count: "15+ Speakers"
+      title: 'Industry Veterans',
+      description: 'Experienced professionals sharing real-world insights',
+      count: '15+ Speakers'
     },
     {
-      title: "Rising Stars",
-      description: "Emerging talent presenting innovative security solutions",
-      count: "10+ Speakers"
+      title: 'Rising Stars',
+      description: 'Emerging talent presenting innovative security solutions',
+      count: '10+ Speakers'
     }
   ];
 
@@ -27,7 +27,7 @@ const SpeakersPage = () => {
       <div className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-800 mb-6">Our Visionary Speakers</h1>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8" />
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Meet the industry experts, researchers, and thought leaders who will be sharing their knowledge at Seasides.
           </p>
@@ -79,7 +79,8 @@ const SpeakersPage = () => {
         <div className="text-center bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">Call for Speakers</h2>
           <p className="text-gray-600 mb-6">
-            Are you a cybersecurity expert with insights to share? We&apos;re still accepting speaker proposals for Seasides.
+            Are you a cybersecurity expert with insights to share? We&apos;re still accepting speaker proposals for
+            Seasides.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">

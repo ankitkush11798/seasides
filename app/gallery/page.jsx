@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
 
 const Gallery = () => {
@@ -15,12 +15,28 @@ const Gallery = () => {
     const images = [];
     const categories = ['conference', 'workshops', 'presentations', 'networking', 'activities'];
     const titles = [
-      'Opening Ceremony', 'Workshop Session', 'Expert Keynote', 'Community Networking', 'Team Building',
-      'Technical Demo', 'Panel Discussion', 'Award Ceremony', 'Security Training', 'Hands-on Labs',
-      'Industry Insights', 'Professional Networking', 'Innovation Showcase', 'Collaboration Hub', 'Knowledge Sharing',
-      'Technology Exhibition', 'Expert Roundtable', 'Community Engagement', 'Future of Security', 'Best Practices'
+      'Opening Ceremony',
+      'Workshop Session',
+      'Expert Keynote',
+      'Community Networking',
+      'Team Building',
+      'Technical Demo',
+      'Panel Discussion',
+      'Award Ceremony',
+      'Security Training',
+      'Hands-on Labs',
+      'Industry Insights',
+      'Professional Networking',
+      'Innovation Showcase',
+      'Collaboration Hub',
+      'Knowledge Sharing',
+      'Technology Exhibition',
+      'Expert Roundtable',
+      'Community Engagement',
+      'Future of Security',
+      'Best Practices'
     ];
-    
+
     // Start from gallery-2.jpeg since gallery-1.png appears to be a logo
     for (let i = 2; i <= 153; i++) {
       images.push({
@@ -41,16 +57,19 @@ const Gallery = () => {
     { id: 'all', name: 'All Photos', count: galleryImages.length },
     { id: 'conference', name: 'Conference', count: galleryImages.filter(img => img.category === 'conference').length },
     { id: 'workshops', name: 'Workshops', count: galleryImages.filter(img => img.category === 'workshops').length },
-    { id: 'presentations', name: 'Presentations', count: galleryImages.filter(img => img.category === 'presentations').length },
+    {
+      id: 'presentations',
+      name: 'Presentations',
+      count: galleryImages.filter(img => img.category === 'presentations').length
+    },
     { id: 'networking', name: 'Networking', count: galleryImages.filter(img => img.category === 'networking').length },
     { id: 'activities', name: 'Activities', count: galleryImages.filter(img => img.category === 'activities').length }
   ];
 
-  const filteredImages = activeCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+  const filteredImages =
+    activeCategory === 'all' ? galleryImages : galleryImages.filter(img => img.category === activeCategory);
 
-  const openModal = (image) => {
+  const openModal = image => {
     setSelectedImage(image);
   };
 
@@ -73,48 +92,53 @@ const Gallery = () => {
   return (
     <main className="relative">
       <Navbar />
-      <section className={`py-20 min-h-screen transition-colors duration-300 ${
-        isDark 
-          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900' 
-          : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50'
-      }`}>
+      <section
+        className={`py-20 min-h-screen transition-colors duration-300 ${
+          isDark
+            ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900'
+            : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50'
+        }`}
+      >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}
+          />
         </div>
 
         <div className="container mx-auto px-6 relative">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <span className={`font-medium text-lg ${
-                isDark 
-                  ? 'text-cyan-400' 
-                  : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'
-              }`}>
+              <span
+                className={`font-medium text-lg ${
+                  isDark
+                    ? 'text-cyan-400'
+                    : 'bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'
+                }`}
+              >
                 Seasides Gallery
               </span>
             </div>
-            <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${
-              isDark 
-                ? 'text-white' 
-                : 'bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent'
-            }`}>
+            <h1
+              className={`text-5xl md:text-6xl font-bold mb-6 ${
+                isDark ? 'text-white' : 'bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent'
+              }`}
+            >
               Conference Memories
             </h1>
-            <p className={`text-xl max-w-2xl mx-auto mb-8 ${
-              isDark ? 'text-slate-300' : 'text-slate-600'
-            }`}>
+            <p className={`text-xl max-w-2xl mx-auto mb-8 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
               Explore highlights from our cybersecurity conferences, workshops, and community events
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto rounded-full" />
           </div>
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
+            {categories.map(category => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
@@ -129,11 +153,17 @@ const Gallery = () => {
                 }`}
               >
                 {category.name}
-                <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                  activeCategory === category.id
-                    ? isDark ? 'bg-black/20' : 'bg-white/20'
-                    : isDark ? 'bg-slate-700' : 'bg-slate-200'
-                }`}>
+                <span
+                  className={`ml-2 px-2 py-1 rounded-full text-xs ${
+                    activeCategory === category.id
+                      ? isDark
+                        ? 'bg-black/20'
+                        : 'bg-white/20'
+                      : isDark
+                        ? 'bg-slate-700'
+                        : 'bg-slate-200'
+                  }`}
+                >
                   {category.count}
                 </span>
               </button>
@@ -143,12 +173,10 @@ const Gallery = () => {
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {filteredImages.map((image, index) => (
-              <div 
+              <div
                 key={image.id}
                 className={`group cursor-pointer transform hover:scale-105 transition-all duration-300 ${
-                  isDark 
-                    ? 'hover:shadow-2xl hover:shadow-cyan-500/10' 
-                    : 'hover:shadow-2xl hover:shadow-blue-500/10'
+                  isDark ? 'hover:shadow-2xl hover:shadow-cyan-500/10' : 'hover:shadow-2xl hover:shadow-blue-500/10'
                 }`}
                 onClick={() => openModal(image)}
                 style={{
@@ -156,11 +184,11 @@ const Gallery = () => {
                   animation: 'fadeInUp 0.8s ease-out forwards'
                 }}
               >
-                <div className={`overflow-hidden rounded-2xl ${
-                  isDark 
-                    ? 'bg-slate-800/80 border border-slate-700/50' 
-                    : 'bg-white/80 border border-white/20'
-                } backdrop-blur-sm`}>
+                <div
+                  className={`overflow-hidden rounded-2xl ${
+                    isDark ? 'bg-slate-800/80 border border-slate-700/50' : 'bg-white/80 border border-white/20'
+                  } backdrop-blur-sm`}
+                >
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src={image.src}
@@ -168,7 +196,7 @@ const Gallery = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      onError={(e) => {
+                      onError={e => {
                         console.log(`Failed to load image: ${image.src}`);
                         e.target.style.display = 'none';
                       }}
@@ -199,15 +227,9 @@ const Gallery = () => {
           <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div className="relative max-w-5xl w-full max-h-[90vh] bg-black/50 rounded-2xl overflow-hidden">
               <div className="relative h-[70vh]">
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
-                />
+                <Image src={selectedImage.src} alt={selectedImage.alt} fill className="object-contain" sizes="100vw" />
               </div>
-              
+
               {/* Modal Controls */}
               <div className="absolute top-4 right-4 flex gap-2">
                 <button
