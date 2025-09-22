@@ -48,7 +48,7 @@ const SponsorsPage = () => {
         { name: 'HackerOne', logo: '/sponsors/hackerone.png', tier: 'diamond' },
         { name: 'Bugcrowd', logo: '/sponsors/bugcrowd.png', tier: 'diamond' }
       ],
-      gradient: 'from-cyan-300 to-blue-200',
+      gradient: 'from-cyan-600 to-blue-700',
       glow: 'shadow-cyan-400/40'
     },
     {
@@ -61,14 +61,14 @@ const SponsorsPage = () => {
         { name: 'XBiz Ventures', logo: '/sponsors/xbiz.png', tier: 'platinum' },
         { name: 'CloudSek', logo: '/sponsors/cloudsek.png', tier: 'platinum' }
       ],
-      gradient: 'from-gray-300 to-gray-100',
+      gradient: 'from-gray-600 to-gray-800',
       glow: 'shadow-gray-400/30'
     },
     {
       title: 'Goodie Bag Sponsor',
       description: 'Making the conference memorable',
       sponsors: [{ name: 'RiskProfiler', logo: '/sponsors/riskprofiler.png', tier: 'goodie' }],
-      gradient: 'from-purple-300 to-indigo-200',
+      gradient: 'from-purple-600 to-indigo-800',
       glow: 'shadow-purple-400/30'
     },
     {
@@ -83,7 +83,7 @@ const SponsorsPage = () => {
         { name: 'HighRadius', logo: '/sponsors/highradius.png', tier: 'gold' },
         { name: 'Cobalt', logo: '/sponsors/cobalt.png', tier: 'gold' }
       ],
-      gradient: 'from-yellow-300 to-amber-200',
+      gradient: 'from-yellow-600 to-amber-700',
       glow: 'shadow-yellow-400/30'
     }
   ];
