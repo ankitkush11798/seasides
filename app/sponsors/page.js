@@ -306,42 +306,6 @@ const SponsorsPage = () => {
               </div>
             </div>
 
-            {/* Stats Section */}
-            <div className={`mb-24 ${visibleSections.has(0) ? 'fade-in-up' : 'stagger-animation'}`}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                {[
-                  { number: '2,500+', label: 'Attendees', color: colors.deepOceanBlue, bgColor: 'bg-blue-900/10' },
-                  { number: '30+', label: 'Countries', color: colors.sunsetOrange, bgColor: 'bg-orange-900/10' },
-                  { number: '15+', label: 'Sponsors', color: 'text-purple-600', bgColor: 'bg-purple-600/10' },
-                  { number: '100%', label: 'Free Event', color: 'text-green-600', bgColor: 'bg-green-600/10' }
-                ].map((stat, index) => (
-                  <div
-                    key={index}
-                    className={`relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl group ${
-                      isDark ? 'bg-gray-900/80 shadow-lg' : `${stat.bgColor} shadow-lg`
-                    }`}
-                  >
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/10 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div
-                      className={`text-5xl font-black mb-4 relative z-10`}
-                      style={{
-                        color: isDark ? colors.white : stat.color
-                      }}
-                    >
-                      {stat.number}
-                    </div>
-                    <div
-                      className={`text-sm font-bold uppercase tracking-wider ${
-                        isDark ? 'text-gray-200' : 'text-gray-800'
-                      } relative z-10`}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Become a Sponsor CTA */}
             <div
               className={`relative rounded-3xl p-12 mb-24 text-center transition-all duration-500 overflow-hidden shadow-2xl ${

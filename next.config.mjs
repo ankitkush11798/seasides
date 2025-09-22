@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ['seasides.net'],
 		remotePatterns: [
 			{
 				protocol: 'https',

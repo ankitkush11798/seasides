@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -7,37 +7,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({});
-  const [isMounted, setIsMounted] = useState(false);
   const { isDark } = useTheme();
-
-  // Conference date: February 19, 2026
-  const conferenceDate = useMemo(() => new Date('2026-02-19T00:00:00Z'), []);
-
-  useEffect(() => {
-    setIsMounted(true);
-    const timer = setInterval(() => {
-      const now = new Date();
-      const difference = conferenceDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      } else {
-        setTimeLeft({});
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [conferenceDate]);
-
-  if (!isMounted) {
-    return null; // Prevent hydration mismatch
-  }
 
   return (
     <nav
@@ -47,8 +17,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo and Countdown */}
-          <div className="flex items-center gap-6">
+          {/* Logo */}
+          <div className="flex items-center">
             <Link href="/">
               <div className="flex items-center gap-3 cursor-pointer group">
                 <Image
@@ -69,36 +39,6 @@ const Navbar = () => {
                 />
               </div>
             </Link>
-
-            {/* Countdown Timer */}
-            {Object.keys(timeLeft).length > 0 && (
-              <div
-                className={`hidden md:flex items-center gap-3 px-4 py-2 rounded-full border backdrop-blur-sm ${
-                  isDark
-                    ? 'bg-black/20 border-white/30 text-white'
-                    : 'bg-deep-ocean-blue/10 border-deep-ocean-blue/30 text-deep-ocean'
-                }`}
-              >
-                <div className="flex items-center gap-1">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span className="text-xs font-medium">Conference in:</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm font-bold">
-                  <span>{timeLeft.days}d</span>
-                  <span className="opacity-50">:</span>
-                  <span>{timeLeft.hours.toString().padStart(2, '0')}h</span>
-                  <span className="opacity-50">:</span>
-                  <span>{timeLeft.minutes.toString().padStart(2, '0')}m</span>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Desktop Navigation */}
@@ -188,36 +128,6 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div className={`${isOpen ? 'block' : 'hidden'} md:hidden mt-4 pb-4`}>
-          {/* Mobile Countdown */}
-          {Object.keys(timeLeft).length > 0 && (
-            <div
-              className={`mb-4 p-3 rounded-lg border backdrop-blur-sm ${
-                isDark
-                  ? 'bg-black/20 border-white/30 text-white'
-                  : 'bg-deep-ocean-blue/10 border-deep-ocean-blue/30 text-deep-ocean'
-              }`}
-            >
-              <div className="flex items-center justify-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <span className="text-xs font-medium">Conference in:</span>
-                <div className="flex items-center gap-1 text-sm font-bold">
-                  <span>{timeLeft.days}d</span>
-                  <span className="opacity-50">:</span>
-                  <span>{timeLeft.hours.toString().padStart(2, '0')}h</span>
-                  <span className="opacity-50">:</span>
-                  <span>{timeLeft.minutes.toString().padStart(2, '0')}m</span>
-                </div>
-              </div>
-            </div>
-          )}
-
           <div className="flex flex-col space-y-3">
             <Link href="/">
               <span
