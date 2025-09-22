@@ -38,7 +38,7 @@ const Gallery = () => {
     ];
 
     // Start from gallery-2.jpeg since gallery-1.png appears to be a logo
-    for (let i = 2; i <= 153; i++) {
+    for (let i = 2; i <= 152; i++) {
       images.push({
         id: i - 1, // Adjust ID to start from 1
         src: `/gallery/gallery-${i}.jpeg`,
