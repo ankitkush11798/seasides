@@ -20,13 +20,13 @@ This directory contains all the official content for the Seasides website, sourc
 ### 1. Our Story - "How are we?"
 > Seasides Information Security Conference is a leading conference dedicated to empowering students and professionals in the field of information security and ethical hacking.
 
-### 2. Our Mission - "Democratizing Cybersecurity"  
+### 2. Our Mission - "Democratizing Cybersecurity"
 > Our mission is to democratize access to top-tier cybersecurity education by offering free workshops and training sessions led by industry experts along with fun and parties.
 
 ### 3. What We Achieved - "Empowering the Future"
 Key achievements include:
 - Record-breaking Attendance
-- Cutting-edge Workshops and Training  
+- Cutting-edge Workshops and Training
 - Advancing Cybersecurity Education
 - Scholarships and Awards
 - Community Building and Networking
@@ -42,7 +42,7 @@ Target audience:
 
 ### Co-Founder Spotlight: Prashant KV
 **Nickname:** "Sardaar Khan"  
-**Quote:** *"Guilty as charged—we throw epic parties! 😉"*  
+**Quote:** *"Guilty as charged—we throw epic parties! 😉"*
 **Experience:** 20+ years in security domain  
 **Known for:** Passion for helping others and amazing parties
 
