@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSponsorsDropdownOpen, setIsSponsorsDropdownOpen] = useState(false);
   const { isDark } = useTheme();
 
   return (
@@ -58,13 +59,88 @@ const Navbar = () => {
               </span>
             </Link>
 
-            <Link href="/sponsors">
+            <Link href="/cfp">
               <span
                 className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
                   isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
                 }`}
               >
-                Sponsorship
+                CFP
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
+                  }`}
+                />
+              </span>
+            </Link>
+
+            {/* Sponsors Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsSponsorsDropdownOpen(true)}
+              onMouseLeave={() => setIsSponsorsDropdownOpen(false)}
+            >
+              <span
+                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group flex items-center gap-1 ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Sponsors
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${isSponsorsDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
+                  }`}
+                />
+              </span>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute top-full left-0 mt-2 w-56 rounded-lg shadow-lg border transition-all duration-200 ${
+                  isSponsorsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                } ${isDark ? 'bg-charcoal-gray border-gray-600' : 'bg-white border-gray-200'}`}
+              >
+                <div className="py-2">
+                  <Link href="/sponsors">
+                    <span
+                      className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                        isDark
+                          ? 'text-gray-300 hover:bg-deep-ocean/20 hover:text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      Our Sponsors
+                    </span>
+                  </Link>
+                  <Link href="/call-for-sponsors">
+                    <span
+                      className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                        isDark
+                          ? 'text-gray-300 hover:bg-deep-ocean/20 hover:text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      Call for Sponsors
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <Link href="/scholarship">
+              <span
+                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Scholarship
                 <span
                   className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
                     isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
@@ -138,13 +214,40 @@ const Navbar = () => {
                 Home
               </span>
             </Link>
+            <Link href="/cfp">
+              <span
+                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                CFP
+              </span>
+            </Link>
             <Link href="/sponsors">
               <span
                 className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
                   isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
                 }`}
               >
-                Sponsorship
+                Our Sponsors
+              </span>
+            </Link>
+            <Link href="/call-for-sponsors">
+              <span
+                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Call for Sponsors
+              </span>
+            </Link>
+            <Link href="/scholarship">
+              <span
+                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Scholarship
               </span>
             </Link>
             <Link href="/about">
