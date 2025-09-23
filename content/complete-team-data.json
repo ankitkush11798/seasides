@@ -149,7 +149,14 @@
       "fullDescription": "Kartheek Lade is a passionate security researcher with a strong focus on enhancing the security landscape of the Internet of Vehicles (IoV). He actively contributes to the Seasides community and serves as a technical committee member of the ASRG Vulnerability Management team, focusing on fortifying vehicle and embedded security. Kartheek is also a regular speaker and trainer at renowned international security conferences, including Seasides, DEFCON Car Hacking Village, BlackHat Arsenal, Secure Our Streets (SOS), C0c0n, and NullCon. Whether it's breaking down security barriers or sparking insightful discussions, he's always up for the challenge. 😉",
       "expertise": ["Internet of Vehicles (IoV)", "Vehicle Security", "Embedded Security", "Vulnerability Management"],
       "roles": ["ASRG Technical Committee Member"],
-      "conferences": ["Seasides", "DEFCON Car Hacking Village", "BlackHat Arsenal", "Secure Our Streets (SOS)", "C0c0n", "NullCon"],
+      "conferences": [
+        "Seasides",
+        "DEFCON Car Hacking Village",
+        "BlackHat Arsenal",
+        "Secure Our Streets (SOS)",
+        "C0c0n",
+        "NullCon"
+      ],
       "socialMedia": {
         "twitter": "https://twitter.com/0xh3nry",
         "linkedin": "https://www.linkedin.com/in/kartheeklade/"
@@ -192,11 +199,7 @@
         "twitter": "https://twitter.com/mishr_a_nurag",
         "linkedin": "https://www.linkedin.com/in/anuragmishra06/"
       },
-      "keyTraits": [
-        "Loves to pwn apps and infrastructure",
-        "Breaks Internet with memes",
-        "Chief Meme Officer"
-      ]
+      "keyTraits": ["Loves to pwn apps and infrastructure", "Breaks Internet with memes", "Chief Meme Officer"]
     },
     {
       "name": "Shivam Goyal",
@@ -214,7 +217,14 @@
       "role": "Core Team Member",
       "fullDescription": "He is an accomplished cybersecurity professional, holding certifications like OSCP, CREST CSPA, CREST CRT, and eWPTXv2. He excels in Vulnerability Assessments and Penetration Testing across diverse environments, including web applications, networks, mobile, and cloud, with extensive experience in industries such as fintech, healthcare, manufacturing, retail, and government. Outside his professional life. Pulkit is passionate about fitness, regularly hitting the gym and participating in marathons. A fun fact about him: he has 13 tattoos!",
       "certifications": ["OSCP", "CREST CSPA", "CREST CRT", "eWPTXv2"],
-      "expertise": ["Vulnerability Assessments", "Penetration Testing", "Web Applications", "Networks", "Mobile Security", "Cloud Security"],
+      "expertise": [
+        "Vulnerability Assessments",
+        "Penetration Testing",
+        "Web Applications",
+        "Networks",
+        "Mobile Security",
+        "Cloud Security"
+      ],
       "industries": ["Fintech", "Healthcare", "Manufacturing", "Retail", "Government"],
       "hobbies": ["Fitness", "Gym", "Marathons"],
       "funFact": "Has 13 tattoos!",
@@ -229,7 +239,16 @@
       "role": "Core Team Member",
       "fullDescription": "As a Product Security Engineer, his passion for cybersecurity drives me to excel in various areas. He specialize in conducting penetration testing, actively participate in security Capture The Flag (CTF) competitions, and perform code reviews to ensure secure code development. His expertise extends to leveraging Static Application Security Testing (SAST) techniques in languages like Java, Python, JavaScript, JSP, among others.",
       "position": "Product Security Engineer",
-      "expertise": ["Penetration Testing", "CTF Competitions", "Code Reviews", "SAST", "Java", "Python", "JavaScript", "JSP"],
+      "expertise": [
+        "Penetration Testing",
+        "CTF Competitions",
+        "Code Reviews",
+        "SAST",
+        "Java",
+        "Python",
+        "JavaScript",
+        "JSP"
+      ],
       "socialMedia": {
         "twitter": "https://twitter.com/harekrishna_rai",
         "linkedin": "https://linkedin.com/in/harekrishnarai"

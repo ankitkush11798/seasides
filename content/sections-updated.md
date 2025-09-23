@@ -25,6 +25,7 @@ Since our inception, Seasides's commitment to providing free, high-quality educa
 Here's a look at the key achievements from past conferences:
 
 ### Key Achievements:
+
 - **Record-breaking Attendance** - Drawing unprecedented crowds to cybersecurity education
 - **Cutting-edge Workshops and Training** - Delivering the latest in hands-on security education
 - **Advancing Cybersecurity Education** - Pushing the boundaries of accessible learning
@@ -38,8 +39,9 @@ We take pride in fostering a supportive environment where talent can flourish an
 ## Join the Cyber Revolution - Who's In and What's On
 
 ### Who Should Attend?
+
 - **IT & Cybersecurity Professionals**
-- **Government officials & policy makers**  
+- **Government officials & policy makers**
 - **Business leaders & entrepreneurs**
 - **Students & researchers interested in cybersecurity**
 
@@ -61,6 +63,7 @@ Whether you're a professional or just starting your journey in cybersecurity, th
 ## Featured Team Member
 
 ### Prashant KV - Co-Founder Seasides
-*"Guilty as charged—we throw epic parties! 😉"*
+
+_"Guilty as charged—we throw epic parties! 😉"_
 
 He is the Co-Founder of the Seasides Community, known for his passion for helping others and, guilty as charged, for throwing amazing parties. With over 20 years of experience in the security domain, he has mentored countless cybersecurity enthusiasts and is like family to many. The team lovingly calls him the **'Sardaar Khan.'**

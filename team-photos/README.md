@@ -20,10 +20,12 @@ Source: https://seasides.net/about-us/
 13. **Devendra Kumar Sinha** - `Devendra_Kumar_Sinha.jpeg` (Original: WhatsApp-Image-2024-09-12-at-16.59.51.jpeg) - 150KB
 
 ## Notes:
+
 - All images are in their original resolution and quality as hosted on seasides.net
 - Some images have "-scaled" suffix indicating they may be WordPress auto-scaled versions
 - File formats include both JPEG and WebP
 - Total size: ~2.5MB for all photos
 
 ## Original URLs:
+
 All photos were downloaded from https://seasides.net/wp-content/uploads/2024/09/ with their respective filenames.

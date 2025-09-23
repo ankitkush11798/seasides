@@ -4,7 +4,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  
+
   // Image optimization - mobile-first approach
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -18,25 +18,25 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'seasides.net',
         port: '',
-        pathname: '/wp-content/uploads/**',
-      },
+        pathname: '/wp-content/uploads/**'
+      }
     ],
     loader: 'default',
-    unoptimized: false,
+    unoptimized: false
   },
-  
+
   // Experimental features for better performance
   experimental: {
     optimizeServerReact: true,
     webVitalsAttribution: ['CLS', 'LCP'],
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons']
   },
-  
+
   // Compiler optimizations
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production'
   },
-  
+
   // Headers for caching and security
   async headers() {
     return [
@@ -45,55 +45,55 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            value: 'nosniff'
           },
           {
             key: 'X-Frame-Options',
-            value: 'DENY',
+            value: 'DENY'
           },
           {
             key: 'X-XSS-Protection',
-            value: '1; mode=block',
+            value: '1; mode=block'
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            value: 'origin-when-cross-origin'
           }
-        ],
+        ]
       },
       {
         source: '/public/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400',
-          },
-        ],
+            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400'
+          }
+        ]
       },
       {
         source: '/_next/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      }
     ];
   },
-  
+
   // Bundle analyzer in production
   ...(process.env.ANALYZE === 'true' && {
     webpack: (config, { isServer }) => {
       if (!isServer) {
         config.resolve.fallback = {
           ...config.resolve.fallback,
-          fs: false,
+          fs: false
         };
       }
       return config;
-    },
-  }),
+    }
+  })
 };
 
 module.exports = nextConfig;
