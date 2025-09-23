@@ -1,8 +1,7 @@
 # Seasides Content Sections
 
 ## What's our Story?
-
-_Note: No specific content was provided for this section on the website. This could be expanded with the origin story of Seasides._
+*Note: No specific content was provided for this section on the website. This could be expanded with the origin story of Seasides.*
 
 ---
 
@@ -17,7 +16,6 @@ Our mission is to democratize access to top-tier cybersecurity education by offe
 Since our inception, Seasides's commitment to providing free, high-quality education has made a significant impact on the cybersecurity community, particularly among students.
 
 ### Key Achievements:
-
 1. **Record-breaking Attendance** - Drawing large crowds to cybersecurity education
 2. **Cutting-edge Workshops and Training** - Providing the latest in security education
 3. **Advancing Cybersecurity Education** - Pushing the boundaries of learning
@@ -29,14 +27,12 @@ Since our inception, Seasides's commitment to providing free, high-quality educa
 ## Who should Attend?
 
 ### Target Audience:
-
 - **IT & Cybersecurity Professionals** - Enhance your skills and stay current with trends
 - **Government officials & policy makers** - Understand cybersecurity implications for policy
 - **Business leaders & entrepreneurs** - Learn how to protect your organization
 - **Students & researchers** - Get hands-on experience and build your foundation
 
 ### Event/Conference Highlights:
-
 - **Free Workshops** - No cost education from industry experts
 - **Networking** - Connect with professionals across the industry
 - **Career Growth** - Opportunities for advancement and skill building

@@ -7,25 +7,21 @@ This directory contains the **complete official content** for Seasides, includin
 ## 📁 Latest Files (Use These) ⭐
 
 ### Primary Content Files
-
 - **`complete-team-data.json`** - Complete team data with social media links
 - **`extended-team-profiles.md`** - Detailed team profiles with descriptions
 - **`seasides-content-updated.json`** - All official section content
 - **`sections-updated.md`** - Human-readable section content
 
 ### Legacy Files (Reference Only)
-
 - `seasides-content.json`, `sections.md`, `team-profiles.md` - Earlier versions
 
 ## 👥 Complete Team Roster (22 Members)
 
 ### 🌟 Co-Founders
-
 1. **Prashant KV** ("Sardaar Khan") - 20+ years experience, party legend
 2. **Parveen Yadav** ("Munna Bhaiya") - Bug hunter, mentor, empathetic leader
 
 ### 🎯 Core Team with Photos (11 Members)
-
 3. **Abhinav Khanna** - BlackHat speaker, 6+ years experience
 4. **Seedon Adlin D'souza** - Sony hardware security expert, 7+ years
 5. **Kartheek Lade** - IoV security researcher, DEFCON speaker
@@ -39,7 +35,6 @@ This directory contains the **complete official content** for Seasides, includin
 13. **Devendra Kumar Sinha** - Security architecture
 
 ### 🚀 Extended Core Team (9 Members)
-
 14. **Rahul Kumar** - Core team member
 15. **Anurag Mishra** - Poshmark Security Engineer II, "Chief Meme Officer"
 16. **Shivam Goyal** - Core team member
@@ -53,15 +48,13 @@ This directory contains the **complete official content** for Seasides, includin
 ## 🎨 Content Highlights
 
 ### Official Sections
-
 - **Our Story**: Leading conference empowering students & professionals
 - **Our Mission**: Democratizing cybersecurity education with free workshops
 - **What We Achieved**: 5 key achievements including record attendance
 - **Who Should Attend**: IT professionals, government, business leaders, students
 
 ### Team Personalities
-
-- **"Sardaar Khan"** (Prashant) - _"Guilty as charged—we throw epic parties! 😉"_
+- **"Sardaar Khan"** (Prashant) - *"Guilty as charged—we throw epic parties! 😉"*
 - **"Munna Bhaiya"** (Parveen) - Empathetic leader, bug hunting expert
 - **"Chief Meme Officer"** (Anurag) - Breaks Internet with memes
 - **Hardware Expert** (Seedon) - Sony engineer, badge designer
@@ -70,7 +63,6 @@ This directory contains the **complete official content** for Seasides, includin
 ## 🔗 Social Media Coverage
 
 Complete social media profiles for all team members:
-
 - **Twitter/X accounts**: 18 members
 - **LinkedIn profiles**: 17 members
 - **Conference speakers**: BlackHat Asia/MEA, DEFCON, BSides, NullCon
@@ -107,7 +99,6 @@ Complete social media profiles for all team members:
 ## 🚀 Implementation Ready
 
 All content is structured and ready for:
-
 - React/Next.js components
 - Team member modals/popups
 - Social media integration
