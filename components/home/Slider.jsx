@@ -1,8 +1,40 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const targetDate = new Date('2026-02-19T00:00:00+05:30'); // IST offset +5:30
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      setCountdown({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -21,14 +53,14 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      <motion.p
+      <motion.div
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="z-10 mt-2 text-lg md:text-xl text-gray-800 font-medium"
+        className="z-10 mt-4 text-lg md:text-xl text-gray-800 font-medium"
       >
         February 19–21, 2026 • International Centre Goa
-      </motion.p>
+      </motion.div>
 
       <motion.p
         initial={{ y: 10, opacity: 0 }}
@@ -39,10 +71,27 @@ export default function Hero() {
         Join the event for free talks and training sessions
       </motion.p>
 
+      {/* Countdown Timer */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8 }}
+        className="z-10 mt-6 flex gap-4 text-center justify-center"
+      >
+        {['days', 'hours', 'minutes', 'seconds'].map(unit => (
+          <div key={unit} className="flex flex-col items-center">
+            <span className="text-3xl md:text-4xl font-bold text-orange-600">
+              {countdown[unit].toString().padStart(2, '0')}
+            </span>
+            <span className="text-sm md:text-base text-gray-700">{unit}</span>
+          </div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
         className="z-10 mt-8 flex gap-4 flex-col sm:flex-row"
       >
         <a
@@ -59,6 +108,7 @@ export default function Hero() {
         </a>
       </motion.div>
 
+      {/* Wave SVG */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
         <div className="relative w-[150%] h-[120px] animate-waveBounce">
           <svg
@@ -78,34 +128,18 @@ export default function Hero() {
 
       <style>{`
         @keyframes gradientMove {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
-        .animate-[gradientMove_15s_ease-in-out_infinite] {
-          background-size: 200% 200%;
-        }
+        .animate-[gradientMove_15s_ease-in-out_infinite] { background-size: 200% 200%; }
 
         @keyframes waveBounce {
-          0% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(-5%);
-          }
-          100% {
-            transform: translateX(0);
-          }
+          0% { transform: translateX(0); }
+          50% { transform: translateX(-5%); }
+          100% { transform: translateX(0); }
         }
-        .animate-waveBounce {
-          animation: waveBounce 12s ease-in-out infinite;
-        }
+        .animate-waveBounce { animation: waveBounce 12s ease-in-out infinite; }
       `}</style>
     </section>
   );
