@@ -3,7 +3,23 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTheme } from '@/contexts/ThemeContext';
-import ThemeToggle from './ThemeToggle';
+import { Sun, Moon } from 'lucide-react';
+
+const ThemeToggle = () => {
+  const { isDark, toggleTheme } = useTheme();
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className={`p-2 rounded-full transition-colors duration-300 ${
+        isDark ? 'bg-gray-700 text-yellow-400' : 'bg-gray-200 text-gray-800'
+      }`}
+      aria-label="Toggle Theme"
+    >
+      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+    </button>
+  );
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,12 +47,7 @@ const Navbar = () => {
                   sizes="80px"
                   quality={60}
                   className="w-20 h-10 group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    width: '80px',
-                    height: '40px',
-                    maxWidth: '100%',
-                    height: 'auto'
-                  }}
+                  style={{ width: '80px', height: '40px', maxWidth: '100%', height: 'auto' }}
                 />
               </div>
             </Link>
@@ -44,35 +55,8 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/">
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Home
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
-              </span>
-            </Link>
-
-            <Link href="/cfp">
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                CFP
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
-              </span>
-            </Link>
+            <Link href="/">Home</Link>
+            <Link href="/cfp">CFP</Link>
 
             {/* Sponsors Dropdown */}
             <div
@@ -80,11 +64,7 @@ const Navbar = () => {
               onMouseEnter={() => setIsSponsorsDropdownOpen(true)}
               onMouseLeave={() => setIsSponsorsDropdownOpen(false)}
             >
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group flex items-center gap-1 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
+              <span className="cursor-pointer flex items-center gap-1">
                 Sponsors
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${isSponsorsDropdownOpen ? 'rotate-180' : ''}`}
@@ -94,11 +74,6 @@ const Navbar = () => {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
               </span>
 
               {/* Dropdown Menu */}
@@ -108,76 +83,15 @@ const Navbar = () => {
                 } ${isDark ? 'bg-charcoal-gray border-gray-600' : 'bg-white border-gray-200'}`}
               >
                 <div className="py-2">
-                  <Link href="/sponsors">
-                    <span
-                      className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                        isDark
-                          ? 'text-gray-300 hover:bg-deep-ocean/20 hover:text-white'
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      Our Sponsors
-                    </span>
-                  </Link>
-                  <Link href="/call-for-sponsors">
-                    <span
-                      className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                        isDark
-                          ? 'text-gray-300 hover:bg-deep-ocean/20 hover:text-white'
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      Call for Sponsors
-                    </span>
-                  </Link>
+                  <Link href="/sponsors">Our Sponsors</Link>
+                  <Link href="/call-for-sponsors">Call for Sponsors</Link>
                 </div>
               </div>
             </div>
 
-            <Link href="/scholarship">
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Scholarship
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
-              </span>
-            </Link>
-
-            <Link href="/about">
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                About
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
-              </span>
-            </Link>
-
-            <Link href="/gallery">
-              <span
-                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Gallery
-                <span
-                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
-                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
-                  }`}
-                />
-              </span>
-            </Link>
+            <Link href="/scholarship">Scholarship</Link>
+            <Link href="/about">About</Link>
+            <Link href="/gallery">Gallery</Link>
 
             {/* Theme Toggle */}
             <ThemeToggle />
@@ -195,7 +109,7 @@ const Navbar = () => {
               <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
                 <path
                   fillRule="evenodd"
-                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                 />
               </svg>
             </button>
@@ -203,87 +117,22 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`${isOpen ? 'block' : 'hidden'} md:hidden mt-4 pb-4`}>
-          <div className="flex flex-col space-y-3">
-            <Link href="/">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Home
-              </span>
-            </Link>
-            <Link href="/cfp">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                CFP
-              </span>
-            </Link>
-            <Link href="/sponsors">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Our Sponsors
-              </span>
-            </Link>
-            <Link href="/call-for-sponsors">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Call for Sponsors
-              </span>
-            </Link>
-            <Link href="/scholarship">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Scholarship
-              </span>
-            </Link>
-            <Link href="/about">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                About
-              </span>
-            </Link>
-            <Link href="/gallery">
-              <span
-                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
-                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
-                }`}
-              >
-                Gallery
-              </span>
-            </Link>
-            <Link href="/#reach-us">
-              <span
-                className={`
-                block font-medium cursor-pointer transition-colors duration-300 py-2
-                ${isDark ? 'text-slate-300 hover:text-sunny-yellow' : 'text-gray-700 hover:text-sunset-orange'}
-              `}
-                onClick={() => setIsOpen(false)}
-              >
-                Venue
-              </span>
-            </Link>
+        {isOpen && (
+          <div className="md:hidden mt-4 pb-4 flex flex-col space-y-3">
+            <Link href="/">Home</Link>
+            <Link href="/cfp">CFP</Link>
+            <Link href="/sponsors">Our Sponsors</Link>
+            <Link href="/call-for-sponsors">Call for Sponsors</Link>
+            <Link href="/scholarship">Scholarship</Link>
+            <Link href="/about">About</Link>
+            <Link href="/gallery">Gallery</Link>
+
+            {/* Theme Toggle */}
             <div className="pt-2">
               <ThemeToggle />
             </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
