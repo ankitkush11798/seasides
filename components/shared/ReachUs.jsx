@@ -136,7 +136,7 @@ const ReachUs = () => {
               <h4
                 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
               >
-                📍 Address
+                Address
               </h4>
               <div
                 className={`p-3 sm:p-4 rounded-lg sm:rounded-xl ${
@@ -161,7 +161,7 @@ const ReachUs = () => {
               <h4
                 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
               >
-                🕘 Conference Hours
+                Conference Hours
               </h4>
               <div
                 className={`p-3 sm:p-4 rounded-lg sm:rounded-xl ${
@@ -178,7 +178,7 @@ const ReachUs = () => {
               <h4
                 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
               >
-                🚗 Key Distances
+                Key Distances
               </h4>
               <div className="grid grid-cols-1 gap-2 sm:gap-3">
                 {VENUE.distances.slice(0, 6).map((distance, index) => (
