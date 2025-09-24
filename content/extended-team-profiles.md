@@ -5,14 +5,14 @@
 ### Prashant KV - "Sardaar Khan"
 **Role:** Co-Founder Seasides  
 **Experience:** 20+ years in security  
-**Quote:** *"Guilty as charged—we throw epic parties! 😉"*  
+**Quote:** *"Guilty as charged—we throw epic parties! 😉"*
 **Social:** [Twitter](https://twitter.com/goodbestguy) | [LinkedIn](https://www.linkedin.com/in/prashant-venkatesh-99018999)
 
 He is the Co-Founder of the Seasides Community, known for his passion for helping others and, guilty as charged, for throwing amazing parties. With over 20 years of experience in the security domain, he has mentored countless cybersecurity enthusiasts and is like family to many. The team lovingly calls him the **'Sardaar Khan.'**
 
 **Key Traits:**
 - Passionate about helping others
-- Amazing party organizer  
+- Amazing party organizer
 - Mentor to countless cybersecurity enthusiasts
 - Like family to many in the community
 
@@ -22,7 +22,7 @@ He is the Co-Founder of the Seasides Community, known for his passion for helpin
 **Role:** Co-Founder Seasides  
 **Social:** [Twitter](https://twitter.com/parveen1015)
 
-As the Co-Founder of Seasides, he embodies the essence of leadership through his genuine care for the team, fostering an environment where every member feels valued and supported—like family. His leadership style is characterized by empathy and accessibility, making him approachable for team members seeking guidance or mentorship. 
+As the Co-Founder of Seasides, he embodies the essence of leadership through his genuine care for the team, fostering an environment where every member feels valued and supported—like family. His leadership style is characterized by empathy and accessibility, making him approachable for team members seeking guidance or mentorship.
 
 With extensive expertise in cybersecurity, he not only stays at the forefront of industry trends but also actively engages in the community through bug hunting on major platforms like **Hackerone & Bugcrowd**. This hands-on involvement not only keeps his skills sharp but also serves as an inspiring example for the team, demonstrating the importance of continuous learning and innovation.
 
@@ -45,19 +45,19 @@ Affectionately referred to as **"Munna Bhaiya,"** he has created an undeniable p
 **Experience:** 6+ years  
 **Social:** [LinkedIn](https://www.linkedin.com/in/abhinav-khanna-a2633b114/)
 
-Abhinav Khanna is an Information Security Professional with 6+ years of experience. His areas of expertise include **web apps, mobile apps, APIs and cloud**. He has spoken at conferences like **BlackHat Asia, BlackHat MEA, BSides Vancouver** etc. 
+Abhinav Khanna is an Information Security Professional with 6+ years of experience. His areas of expertise include **web apps, mobile apps, APIs and cloud**. He has spoken at conferences like **BlackHat Asia, BlackHat MEA, BSides Vancouver** etc.
 
 He is always eager to help and guide others in the field, sharing his knowledge and experience to support the growth of fellow security enthusiasts. His dedication to both advancing security practices and nurturing the next generation of professionals is widely recognized within the community.
 
 **Specializations:**
 - Web Applications Security
-- Mobile Applications Security  
+- Mobile Applications Security
 - API Security
 - Cloud Security
 
 **Conference Speaking:**
 - BlackHat Asia
-- BlackHat MEA  
+- BlackHat MEA
 - BSides Vancouver
 
 ---
@@ -68,13 +68,13 @@ He is always eager to help and guide others in the field, sharing his knowledge 
 **Company:** Sony  
 **Social:** [Twitter](https://x.com/SeedonD) | [LinkedIn](https://www.linkedin.com/in/seedon/)
 
-He is a distinguished hardware security expert with over seven years of experience in the field of information security. Since 2019, he has been a prominent speaker at various conferences, where he shares his expertise in **drone security, RF hacking and hardware exploitation**. 
+He is a distinguished hardware security expert with over seven years of experience in the field of information security. Since 2019, he has been a prominent speaker at various conferences, where he shares his expertise in **drone security, RF hacking and hardware exploitation**.
 
 Currently employed at **Sony**, Seedon is recognised for his collaborative spirit, having contributed to the design of conference badges and the village at Seasides. His dedication to advancing the cybersecurity community is evident in his continuous effort to share knowledge and foster innovation.
 
 **Technical Expertise:**
 - Hardware Security Analysis
-- Drone Security Research  
+- Drone Security Research
 - RF Hacking Techniques
 - Hardware Exploitation
 
@@ -89,9 +89,9 @@ Currently employed at **Sony**, Seedon is recognised for his collaborative spiri
 **Role:** Security Researcher & IoV Expert  
 **Social:** [Twitter](https://twitter.com/0xh3nry) | [LinkedIn](https://www.linkedin.com/in/kartheeklade/)
 
-Kartheek Lade is a passionate security researcher with a strong focus on enhancing the security landscape of the **Internet of Vehicles (IoV)**. He actively contributes to the Seasides community and serves as a **technical committee member of the ASRG Vulnerability Management** team, focusing on fortifying vehicle and embedded security. 
+Kartheek Lade is a passionate security researcher with a strong focus on enhancing the security landscape of the **Internet of Vehicles (IoV)**. He actively contributes to the Seasides community and serves as a **technical committee member of the ASRG Vulnerability Management** team, focusing on fortifying vehicle and embedded security.
 
-Kartheek is also a regular speaker and trainer at renowned international security conferences, including **Seasides, DEFCON Car Hacking Village, BlackHat Arsenal, Secure Our Streets (SOS), C0c0n, and NullCon**. 
+Kartheek is also a regular speaker and trainer at renowned international security conferences, including **Seasides, DEFCON Car Hacking Village, BlackHat Arsenal, Secure Our Streets (SOS), C0c0n, and NullCon**.
 
 Whether it's breaking down security barriers or sparking insightful discussions, he's always up for the challenge. 😉
 
@@ -103,7 +103,7 @@ Whether it's breaking down security barriers or sparking insightful discussions,
 **Conference Circuit:**
 - Seasides
 - DEFCON Car Hacking Village
-- BlackHat Arsenal  
+- BlackHat Arsenal
 - Secure Our Streets (SOS)
 - C0c0n
 - NullCon
@@ -130,13 +130,13 @@ He works in **Poshmark as Security Engineer II**. He Love to pwn apps and infras
 
 He is an accomplished cybersecurity professional, holding certifications like **OSCP, CREST CSPA, CREST CRT, and eWPTXv2**. He excels in Vulnerability Assessments and Penetration Testing across diverse environments, including web applications, networks, mobile, and cloud, with extensive experience in industries such as **fintech, healthcare, manufacturing, retail, and government**.
 
-Outside his professional life, Pulkit is passionate about fitness, regularly hitting the gym and participating in marathons. 
+Outside his professional life, Pulkit is passionate about fitness, regularly hitting the gym and participating in marathons.
 
 **Fun fact about him: he has 13 tattoos!** 🎨
 
 **Certifications:**
 - OSCP
-- CREST CSPA  
+- CREST CSPA
 - CREST CRT
 - eWPTXv2
 
@@ -146,7 +146,7 @@ Outside his professional life, Pulkit is passionate about fitness, regularly hit
 **Personal Interests:**
 - Fitness & Gym
 - Marathon Running
-- 13 Tattoos! 
+- 13 Tattoos!
 
 ---
 
@@ -159,7 +159,7 @@ As a Product Security Engineer, his passion for cybersecurity drives him to exce
 **Technical Skills:**
 - Penetration Testing
 - CTF Competitions
-- Code Reviews  
+- Code Reviews
 - SAST (Java, Python, JavaScript, JSP)
 
 ---
@@ -173,7 +173,7 @@ Vedant Jain is a skilled cybersecurity professional with expertise in **threat m
 **Cloud Specialization:**
 - AWS Security
 - Threat Modeling
-- Vulnerability Management  
+- Vulnerability Management
 - Penetration Testing
 
 **Certifications:**

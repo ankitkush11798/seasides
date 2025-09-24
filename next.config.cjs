@@ -4,7 +4,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  
+
   // Image optimization - mobile-first approach
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -24,19 +24,19 @@ const nextConfig = {
     loader: 'default',
     unoptimized: false,
   },
-  
+
   // Experimental features for better performance
   experimental: {
     optimizeServerReact: true,
     webVitalsAttribution: ['CLS', 'LCP'],
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  
+
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  
+
   // Headers for caching and security
   async headers() {
     return [
@@ -81,7 +81,7 @@ const nextConfig = {
       },
     ];
   },
-  
+
   // Bundle analyzer in production
   ...(process.env.ANALYZE === 'true' && {
     webpack: (config, { isServer }) => {

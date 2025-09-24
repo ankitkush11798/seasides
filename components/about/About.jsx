@@ -267,8 +267,8 @@ const About = () => {
       image: 'Rahul_Kumar.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/aarnav_rahul',
+        linkedin: 'https://www.linkedin.com/in/rahul-kumar-/'
       }
     },
     {
@@ -276,8 +276,8 @@ const About = () => {
       image: 'Anurag_Mishra.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/mishr_a_nurag',
+        linkedin: 'https://www.linkedin.com/in/anuragmishra06/'
       }
     },
     {
@@ -285,8 +285,8 @@ const About = () => {
       image: 'Shivam_Goyal.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/g33kyshivam',
+        linkedin: 'https://www.linkedin.com/in/g33kyshivam/'
       }
     },
     {
@@ -294,8 +294,8 @@ const About = () => {
       image: 'Pulkit_Talwar.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://x.com/PulkitTalwar26',
+        linkedin: 'https://www.linkedin.com/in/pulkit-talwar-397636120/'
       }
     },
     {
@@ -303,8 +303,8 @@ const About = () => {
       image: 'Hare_Krishna_Rai.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/harekrishna_rai',
+        linkedin: 'https://linkedin.com/in/harekrishnarai'
       }
     },
     {
@@ -312,8 +312,8 @@ const About = () => {
       image: 'Vedant_Jain.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://x.com/Vedant__Jain',
+        linkedin: 'https://www.linkedin.com/in/ved-ant-jain'
       }
     },
     {
@@ -321,8 +321,7 @@ const About = () => {
       image: 'Gaurav_Joshi.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/gaurav_joshi38'
       }
     },
     {
@@ -330,8 +329,8 @@ const About = () => {
       image: 'Fazalu_Rahman.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/f4z41u?s=20',
+        linkedin: 'https://www.linkedin.com/in/fazalu-rahman/'
       }
     },
     {
@@ -339,8 +338,8 @@ const About = () => {
       image: 'Arif.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: '',
-        linkedin: ''
+        twitter: 'https://twitter.com/Zero0x00',
+        linkedin: 'https://www.linkedin.com/in/mohd--arif/'
       }
     }
   ];

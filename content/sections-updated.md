@@ -39,7 +39,7 @@ We take pride in fostering a supportive environment where talent can flourish an
 
 ### Who Should Attend?
 - **IT & Cybersecurity Professionals**
-- **Government officials & policy makers**  
+- **Government officials & policy makers**
 - **Business leaders & entrepreneurs**
 - **Students & researchers interested in cybersecurity**
 

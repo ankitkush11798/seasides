@@ -8,7 +8,7 @@ This directory contains the **complete official content** for Seasides, includin
 
 ### Primary Content Files
 - **`complete-team-data.json`** - Complete team data with social media links
-- **`extended-team-profiles.md`** - Detailed team profiles with descriptions  
+- **`extended-team-profiles.md`** - Detailed team profiles with descriptions
 - **`seasides-content-updated.json`** - All official section content
 - **`sections-updated.md`** - Human-readable section content
 
@@ -64,14 +64,14 @@ This directory contains the **complete official content** for Seasides, includin
 
 Complete social media profiles for all team members:
 - **Twitter/X accounts**: 18 members
-- **LinkedIn profiles**: 17 members  
+- **LinkedIn profiles**: 17 members
 - **Conference speakers**: BlackHat Asia/MEA, DEFCON, BSides, NullCon
 - **Industry presence**: Sony, Poshmark, various security companies
 
 ## 📊 Technical Expertise Covered
 
 - **Bug Hunting & Research**: Hackerone, Bugcrowd platforms
-- **Hardware Security**: Drone security, RF hacking, hardware exploitation  
+- **Hardware Security**: Drone security, RF hacking, hardware exploitation
 - **Cloud Security**: AWS, threat modeling, penetration testing
 - **Application Security**: Web apps, mobile apps, APIs
 - **Vehicle Security**: Internet of Vehicles (IoV), automotive cybersecurity
@@ -101,7 +101,7 @@ Complete social media profiles for all team members:
 All content is structured and ready for:
 - React/Next.js components
 - Team member modals/popups
-- Social media integration  
+- Social media integration
 - Interactive team profiles
 - Dynamic content loading
 
