@@ -12,7 +12,7 @@ export default function Hero() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2026-02-19T00:00:00+05:30'); // IST offset +5:30
+    const targetDate = new Date('2026-02-19T00:00:00+05:30');
 
     const interval = setInterval(() => {
       const now = new Date();
@@ -42,70 +42,55 @@ export default function Hero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-orange-200 via-orange-300 to-orange-400 animate-[gradientMove_15s_ease-in-out_infinite]" />
 
+      {/* Grouped Hero Content */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1 }}
-        className="z-10 -mb-8"
+        className="z-10 flex flex-col items-center -translate-y-16 space-y-4"
       >
-        <div className="w-80 h-80 relative mx-auto">
+        {/* Logo */}
+        <div className="w-72 h-72 relative mx-auto">
           <img src="/dark-logo.png" alt="Seasides Logo" className="object-contain w-full h-full" />
         </div>
-      </motion.div>
 
-      <motion.div
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.4 }}
-        className="z-10 mt-4 text-lg md:text-xl text-gray-800 font-medium"
-      >
-        February 19–21, 2026 • International Centre Goa
-      </motion.div>
+        {/* Date / Location */}
+        <div className="text-lg md:text-xl text-gray-800 font-medium">
+          February 19–21, 2026 • International Centre Goa
+        </div>
 
-      <motion.p
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.6 }}
-        className="z-10 mt-2 text-md md:text-lg italic text-gray-700 max-w-2xl"
-      >
-        Join the event for free talks and training sessions
-      </motion.p>
+        {/* Tagline */}
+        <p className="text-md md:text-lg italic text-gray-700 max-w-2xl">
+          Join the event for free talks and training sessions
+        </p>
 
-      {/* Countdown Timer */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.8 }}
-        className="z-10 mt-6 flex gap-4 text-center justify-center"
-      >
-        {['days', 'hours', 'minutes', 'seconds'].map(unit => (
-          <div key={unit} className="flex flex-col items-center">
-            <span className="text-3xl md:text-4xl font-bold text-orange-600">
-              {countdown[unit].toString().padStart(2, '0')}
-            </span>
-            <span className="text-sm md:text-base text-gray-700">{unit}</span>
-          </div>
-        ))}
-      </motion.div>
+        {/* Countdown Timer */}
+        <div className="flex gap-4 text-center justify-center">
+          {['days', 'hours', 'minutes', 'seconds'].map(unit => (
+            <div key={unit} className="flex flex-col items-center">
+              <span className="text-3xl md:text-4xl font-bold text-orange-600">
+                {countdown[unit].toString().padStart(2, '0')}
+              </span>
+              <span className="text-sm md:text-base text-gray-700">{unit}</span>
+            </div>
+          ))}
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="z-10 mt-8 flex gap-4 flex-col sm:flex-row"
-      >
-        <a
-          href="#register"
-          className="px-6 py-3 bg-orange-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-orange-700 transition"
-        >
-          Register Now
-        </a>
-        <a
-          href="#about"
-          className="px-6 py-3 bg-white text-orange-600 border border-orange-400 text-lg font-semibold rounded-xl shadow-md hover:bg-orange-100 transition"
-        >
-          Learn More
-        </a>
+        {/* Buttons */}
+        <div className="flex gap-4 flex-col sm:flex-row">
+          <a
+            href="#register"
+            className="px-6 py-3 bg-orange-600 text-white text-lg font-semibold rounded-xl shadow-md hover:bg-orange-700 transition"
+          >
+            Register Now
+          </a>
+          <a
+            href="#about"
+            className="px-6 py-3 bg-white text-orange-600 border border-orange-400 text-lg font-semibold rounded-xl shadow-md hover:bg-orange-100 transition"
+          >
+            Learn More
+          </a>
+        </div>
       </motion.div>
 
       {/* Wave SVG */}
