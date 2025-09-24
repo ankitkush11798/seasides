@@ -2,6 +2,8 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
+import Image from 'next/image';
+import Countdown from '@/components/shared/Countdown';
 
 const RevolutionHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -1254,13 +1256,22 @@ const RevolutionHero = () => {
               {/* Main slide (dates, countdown, venue) */}
               {currentSlideData.type === 'main' && (
                 <>
-                  {/* Enhanced Title with Sunset-Ocean Theme */}
-                  <div className="relative">
-                    <h1 className="playfair-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-tight text-white text-seasides-shadow relative z-10">
-                      <span className="wave-gradient font-bold" style={{ animation: 'zoomIn 1.2s ease-out 0.8s both' }}>
-                        Seasides
-                      </span>
-                    </h1>
+                  {/* Enhanced Title with Seasides Logo */}
+                  <div className="relative mb-8">
+                    <div className="relative inline-block" style={{ animation: 'zoomIn 1.2s ease-out 0.8s both' }}>
+                      <Image
+                        src={isDark ? '/light-logo.png' : '/dark-logo.png'}
+                        alt="Seasides"
+                        width={600}
+                        height={240}
+                        priority
+                        className="object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.3)] max-w-full h-auto"
+                        style={{
+                          maxWidth: '90vw',
+                          height: 'auto'
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* Enhanced Subtitle with Curved Underline */}
@@ -1296,6 +1307,9 @@ const RevolutionHero = () => {
                       &rdquo;
                     </div>
                   </div>
+
+                  {/* Countdown Timer */}
+                  <Countdown />
                 </>
               )}
 

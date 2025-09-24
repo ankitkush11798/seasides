@@ -116,7 +116,7 @@ const CfpPage = () => {
     },
     {
       title: 'Free Conference',
-      description: 'Seasides 2025 is completely free for all attendees',
+      description: 'Seasides 2026 is completely free for all attendees',
       icon: '🎉',
       type: 'success'
     }
@@ -137,7 +137,7 @@ const CfpPage = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">Call for Papers</h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-              Share your expertise with India's cybersecurity community at Seasides 2025
+              Share your expertise with India's cybersecurity community at Seasides 2026
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -168,10 +168,10 @@ const CfpPage = () => {
           >
             <div className="text-center mb-8">
               <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-charcoal-gray'}`}>
-                About Seasides 2025
+                About Seasides
               </h2>
               <p className={`max-w-4xl mx-auto text-lg leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                Seasides 2025 is India's premier{' '}
+                Seasides 2026 is India's premier{' '}
                 <span className="font-semibold text-sunset-orange">FREE cybersecurity conference</span> bringing
                 together security professionals, researchers, students, and enthusiasts for an intensive learning
                 experience. We're looking for passionate speakers who want to share their knowledge through hands-on

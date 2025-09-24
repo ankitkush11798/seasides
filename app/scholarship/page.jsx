@@ -32,7 +32,7 @@ const ScholarshipPage = () => {
   ];
 
   const requirements = [
-    'Must attend the conference for 2 full days',
+    'Must attend the conference for 3 full days',
     'Submit a detailed explanation of why you deserve the scholarship',
     'Demonstrate genuine interest in cybersecurity',
     'Show commitment to learning and professional growth',
@@ -53,7 +53,7 @@ const ScholarshipPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-              Seasides Scholarship 2025
+              Seasides Scholarship 2026
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
               Take that next big step towards your dreams with our scholarship program
@@ -63,7 +63,7 @@ const ScholarshipPage = () => {
                 isDark ? 'bg-sunny-yellow text-charcoal-gray' : 'bg-white text-deep-ocean'
               }`}
             >
-              💼 Scholarship Form Currently Closed
+              💼 Scholarship Form Coming Soon
             </div>
           </div>
         </div>

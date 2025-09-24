@@ -5,6 +5,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 const Stats = () => {
   const [animatedValues, setAnimatedValues] = useState([0, 0, 0, 0]);
   const [isVisible, setIsVisible] = useState(false);
+  const [animationTrigger, setAnimationTrigger] = useState(0);
   const { isDark } = useTheme();
 
   // Add custom CSS animations
@@ -21,8 +22,8 @@ const Stats = () => {
     }
   `;
 
-  const finalStats = useMemo(() => [15, 100, 3, 1000], []);
-  const labels = ['Villages', '% FREE Conference', 'Days of Learning', 'Expected Attendees'];
+  const finalStats = useMemo(() => [15, 30, 20, 1000], []);
+  const labels = ['Villages', 'Speaker 30+', 'workshops 20+', 'Expected Attendees'];
   const icons = [
     <svg key="villages" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
@@ -32,20 +33,20 @@ const Stats = () => {
         d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
       />
     </svg>,
-    <svg key="security" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="speakers" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
       />
     </svg>,
-    <svg key="days" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg key="workshops" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
       />
     </svg>,
     <svg key="attendees" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,9 +64,14 @@ const Stats = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Reset animation values and trigger new animation
+          setAnimatedValues([0, 0, 0, 0]);
+          setAnimationTrigger(prev => prev + 1);
+        } else {
+          setIsVisible(false);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 } // Higher threshold for more precise triggering
     );
 
     const element = document.getElementById('stats-section');
@@ -77,7 +83,7 @@ const Stats = () => {
   }, []);
 
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && animationTrigger > 0) {
       finalStats.forEach((finalValue, index) => {
         const startValue = 0;
         const duration = 2000;
@@ -104,7 +110,7 @@ const Stats = () => {
         setTimeout(() => animate(), index * 200);
       });
     }
-  }, [isVisible, finalStats]);
+  }, [animationTrigger, finalStats]);
 
   return (
     <>
@@ -175,8 +181,7 @@ const Stats = () => {
                         className={`text-6xl md:text-7xl font-black font-mono bg-gradient-to-r ${cardColors[index]} bg-clip-text text-transparent`}
                       >
                         {animatedValues[index]}
-                        {index === 1 && '%'}
-                        {index === 3 && '+'}
+                        {(index === 1 || index === 2 || index === 3) && '+'}
                       </div>
                     </div>
 

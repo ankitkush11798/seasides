@@ -13,8 +13,8 @@ const LoadingScreen = () => {
     (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
   useEffect(() => {
-    // Shorter loading time on mobile to reduce impact
-    const timeout = isMobile ? 2000 : 4000;
+    // Reduced loading time for better performance
+    const timeout = isMobile ? 1000 : 1500;
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, timeout);
