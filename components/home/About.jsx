@@ -1,28 +1,11 @@
 import React from 'react';
-import { BookOpen, Users, Laptop, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function AboutTheConference() {
-  const highlights = [
-    {
-      icon: BookOpen,
-      title: 'Free Training',
-      desc: 'Access high-quality training sessions without any cost—empowering equal opportunities for all.'
-    },
-    {
-      icon: Users,
-      title: 'Community-driven',
-      desc: 'A grassroots initiative shaped by and for the InfoSec community.'
-    },
-    {
-      icon: Laptop,
-      title: 'Hands-on Learning',
-      desc: 'Workshops and labs designed to sharpen practical cybersecurity skills.'
-    }
-  ];
-
   return (
     <section className="relative py-24 text-gray-800" style={{ backgroundColor: '#ffd9b3' }}>
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        {/* Left Content */}
         <div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">About The Conference</h2>
           <p className="text-lg text-gray-700 mb-4">
@@ -43,17 +26,12 @@ export default function AboutTheConference() {
           </a>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          {highlights.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div key={i} className="p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all flex flex-col">
-                <Icon className="w-10 h-10 text-orange-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            );
-          })}
+        {/* Right Section - Video Placeholder */}
+        <div className="flex flex-col items-center">
+          <h3 className="text-2xl font-bold mb-4 text-gray-800">HIGHLIGHTS 2025</h3>
+          <div className="w-full aspect-video bg-gray-300 rounded-2xl shadow-md flex items-center justify-center text-gray-600 text-lg font-medium">
+            Video Placeholder
+          </div>
         </div>
       </div>
     </section>

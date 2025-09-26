@@ -16,7 +16,7 @@ export default function ConferenceGlance() {
   const headingText = 'Conference at a Glance';
 
   const stats = [
-    { icon: Map, label: 'Villages', value: '15' },
+    { icon: Map, label: 'Workshops', value: '8+' },
     { icon: Globe, label: 'FREE Conference', value: '100%' },
     { icon: CalendarDays, label: 'Days of Learning', value: '3' },
     { icon: Users, label: 'Expected Attendees', value: '1000+' }
