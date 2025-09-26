@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className={`w-full py-12 ${isDark ? 'bg-deep-ocean-depth text-white' : 'bg-white text-gray-900'}`}>
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Top Row: Logo + Description | Event Details */}
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
@@ -38,8 +38,8 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Right Column: Left-aligned text but right side */}
-          <div className="flex flex-col gap-2 ml-auto text-left">
+          {/* Right Column */}
+          <div className="flex flex-col gap-2 text-left lg:ml-auto">
             <h4 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Event Details</h4>
             <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{EVENT_DATE_LONG}</p>
             <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>International Centre Goa</p>
