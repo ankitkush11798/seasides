@@ -76,7 +76,7 @@ export default function ConferenceGlance() {
       tl.to(
         section,
         {
-          backgroundColor: '#ffd9b3',
+          backgroundColor: '#fafafa',
           ease: 'power2.inOut',
           duration: 0.8,
           force3D: true

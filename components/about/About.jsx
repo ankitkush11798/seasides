@@ -354,37 +354,17 @@ const About = () => {
 
   return (
     <section className={`${isDark ? 'bg-slate-900 text-white' : 'bg-white text-gray-900'}`}>
-      {/* Hero Section - Half Page */}
-      <section className="relative flex flex-col justify-center items-center text-center h-[50vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-200 via-orange-300 to-orange-400 animate-[gradientMove_15s_ease-in-out_infinite]" />
+      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-black/20" />
 
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="z-10 flex flex-col items-center -translate-y-8 space-y-4"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">About Seasides</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+        <div className="relative z-10 max-w-4xl px-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl shadow-black/50">
+            About Seasides
+          </h1>
+          <p className="text-lg md:text-xl text-white font-medium drop-shadow-lg shadow-black/50 backdrop-blur-sm bg-white/10 rounded-lg p-4">
             Empowering students and professionals in the field of information security and ethical hacking.
           </p>
-        </motion.div>
-
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
-          <div className="relative w-[150%] h-[80px] animate-waveBounce">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1440 320"
-              preserveAspectRatio="none"
-              className="w-full h-full"
-            >
-              <path
-                fill="#ffffff"
-                fillOpacity="1"
-                d="M0,32L80,26.7C160,21,320,11,480,21.3C640,32,800,64,960,80C1120,96,1280,96,1360,96L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-              />
-            </svg>
-          </div>
         </div>
       </section>
 
@@ -395,12 +375,12 @@ const About = () => {
             <button
               key={key}
               onClick={() => setActiveSection(key)}
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 border-2 ${
                 activeSection === key
-                  ? 'bg-orange-500 text-white'
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-blue-600 shadow-lg transform scale-105'
                   : isDark
-                    ? 'bg-slate-700 text-gray-300 hover:bg-slate-600'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                    ? 'bg-slate-800 text-gray-200 border-slate-600 hover:bg-slate-700 hover:border-blue-500 hover:text-blue-300'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 shadow-sm'
               }`}
             >
               {title}
@@ -412,51 +392,65 @@ const About = () => {
 
         {/* Quick Links Section */}
         <div className="mb-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Quick Links</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Quick Links
+          </h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/faq"
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105 ${
+              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 border-2 shadow-lg ${
                 isDark
-                  ? 'bg-slate-700 text-white hover:bg-slate-600'
-                  : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
+                  ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white border-slate-600 hover:from-blue-700 hover:to-purple-700 hover:border-blue-500'
+                  : 'bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-400'
               }`}
             >
-              <HelpCircle size={20} />
+              <HelpCircle size={22} />
               Frequently Asked Questions
             </Link>
           </div>
         </div>
 
         {/* Team Section */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Meet the Team</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
+          Meet the Team
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, idx) => (
             <div
               key={idx}
               onClick={() => setSelectedMember(member)}
-              className={`p-4 rounded-2xl shadow-lg flex flex-col items-center text-center cursor-pointer transition-transform hover:scale-105 ${
-                isDark ? 'bg-slate-700/80' : 'bg-white/90'
+              className={`p-6 rounded-2xl shadow-xl flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 ${
+                isDark
+                  ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-600 hover:border-blue-500 hover:from-slate-700 hover:to-slate-800'
+                  : 'bg-gradient-to-br from-white to-gray-50 border-gray-200 hover:border-blue-300 hover:from-blue-50 hover:to-purple-50'
               }`}
-              style={{ minHeight: '300px' }}
+              style={{ minHeight: '320px' }}
             >
               <div className="w-32 h-32 relative mb-4">
                 <Image src={`/${member.image}`} alt={member.name} fill className="rounded-full object-cover" />
               </div>
-              <h3 className="text-lg font-bold">{member.name}</h3>
-              <p className="text-sm text-gray-400">{member.role}</p>
-              {member.quote && <p className="mt-2 text-sm italic">{member.quote}</p>}
-              <div className="flex gap-4 mt-3">
+              <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                {member.name}
+              </h3>
+              <p className={`text-sm font-medium mt-1 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{member.role}</p>
+              {member.quote && (
+                <p className={`mt-3 text-sm italic font-medium ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>
+                  {member.quote}
+                </p>
+              )}
+              <div className="flex gap-4 mt-4">
                 {member.socialMedia?.twitter && (
                   <a
                     href={member.socialMedia.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`transition-transform duration-300 hover:scale-110 ${
-                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    className={`p-2 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                      isDark
+                        ? 'text-gray-300 hover:text-blue-400 hover:bg-blue-900/30'
+                        : 'text-gray-600 hover:text-blue-500 hover:bg-blue-100'
                     }`}
                   >
-                    <Twitter size={20} />
+                    <Twitter size={22} />
                   </a>
                 )}
                 {member.socialMedia?.linkedin && (
@@ -464,11 +458,13 @@ const About = () => {
                     href={member.socialMedia.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`transition-transform duration-300 hover:scale-110 ${
-                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    className={`p-2 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                      isDark
+                        ? 'text-gray-300 hover:text-blue-400 hover:bg-blue-900/30'
+                        : 'text-gray-600 hover:text-blue-600 hover:bg-blue-100'
                     }`}
                   >
-                    <Linkedin size={20} />
+                    <Linkedin size={22} />
                   </a>
                 )}
               </div>
@@ -480,33 +476,49 @@ const About = () => {
       {/* Team Modal */}
       {selectedMember && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedMember(null)}
         >
           <div
-            className={`bg-white dark:bg-slate-800 rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] p-6 overflow-y-auto relative`}
+            className={`rounded-2xl shadow-2xl max-w-3xl w-full max-h-[85vh] p-8 overflow-y-auto relative border-2 ${
+              isDark
+                ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-600'
+                : 'bg-gradient-to-br from-white to-gray-50 border-gray-200'
+            }`}
             onClick={e => e.stopPropagation()}
           >
             <button
-              className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 font-bold text-xl"
+              className={`absolute top-6 right-6 p-2 rounded-full font-bold text-xl transition-all duration-200 hover:scale-110 ${
+                isDark
+                  ? 'text-gray-300 hover:text-white hover:bg-red-600/20'
+                  : 'text-gray-600 hover:text-red-600 hover:bg-red-100'
+              }`}
               onClick={() => setSelectedMember(null)}
             >
               &times;
             </button>
 
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="w-32 h-32 relative flex-shrink-0">
+            <div className="flex flex-col md:flex-row gap-8">
+              <div className="w-40 h-40 relative flex-shrink-0 mx-auto md:mx-0">
                 <Image
                   src={`/${selectedMember.image}`}
                   alt={selectedMember.name}
                   fill
-                  className="rounded-full object-cover"
+                  className="rounded-full object-cover border-4 border-gradient-to-r from-blue-500 to-purple-500"
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold">{selectedMember.name}</h3>
-                {selectedMember.nickname && <p className="text-sm text-gray-500 italic">"{selectedMember.nickname}"</p>}
-                <p className="text-sm text-gray-400">{selectedMember.role}</p>
+                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  {selectedMember.name}
+                </h3>
+                {selectedMember.nickname && (
+                  <p className={`text-base mt-1 italic font-medium ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>
+                    "{selectedMember.nickname}"
+                  </p>
+                )}
+                <p className={`text-base font-semibold mt-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                  {selectedMember.role}
+                </p>
                 {selectedMember.experience && (
                   <p className="mt-1 text-sm font-semibold">Experience: {selectedMember.experience}</p>
                 )}
@@ -558,6 +570,26 @@ const About = () => {
         }
         .animate-waveBounce {
           animation: waveBounce 12s ease-in-out infinite;
+        }
+      `}</style>
+
+      <style jsx>{`
+        @keyframes gradientMove {
+          0% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
+            background-position: 0% 50%;
+          }
+          50% {
+            background: linear-gradient(45deg, #06b6d4, #0891b2, #f97316, #fb923c);
+            background-position: 100% 50%;
+          }
+          100% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
+            background-position: 0% 50%;
+          }
+        }
+        .animate-[gradientMove_15s_ease-in-out_infinite] {
+          background-size: 300% 300%;
         }
       `}</style>
     </section>

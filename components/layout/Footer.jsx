@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaYoutube, FaSquareXTwitter } from 'react-icons/fa';
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
 

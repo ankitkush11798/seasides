@@ -84,15 +84,18 @@ const Sponsors = () => {
   return (
     <>
       <Navbar />
-
       <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-400 via-orange-300 to-orange-200 animate-[gradientMove_15s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-black/20" />
+
         <div className="relative z-10 max-w-4xl px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Call For Sponsors - Join Our Hands</h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl shadow-black/50">
+            Call For Sponsors - Join Our Hands
+          </h1>
+          <p className="text-lg md:text-xl text-white font-medium drop-shadow-lg shadow-black/50 backdrop-blur-sm bg-white/10 rounded-lg p-4">
             Be a part of something bigger! You’ll play a key role in shaping the future of our community.
           </p>
-          <p className="mt-4 text-white/80 text-lg md:text-xl">
+          <p className="text-lg md:text-xl text-white font-medium drop-shadow-lg shadow-black/50 backdrop-blur-sm bg-white/10 rounded-lg p-4">
             Together, we can inspire, educate, and empower the next generation of leaders. Join hands with us to make a
             lasting impact!
           </p>
@@ -162,17 +165,20 @@ const Sponsors = () => {
       <style jsx>{`
         @keyframes gradientMove {
           0% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
             background-position: 0% 50%;
           }
           50% {
+            background: linear-gradient(45deg, #06b6d4, #0891b2, #f97316, #fb923c);
             background-position: 100% 50%;
           }
           100% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
             background-position: 0% 50%;
           }
         }
         .animate-[gradientMove_15s_ease-in-out_infinite] {
-          background-size: 200% 200%;
+          background-size: 300% 300%;
         }
       `}</style>
     </>
