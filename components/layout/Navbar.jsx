@@ -179,6 +179,21 @@ const Navbar = () => {
               </span>
             </Link>
 
+            <Link href="/memes">
+              <span
+                className={`font-medium cursor-pointer transition-all duration-300 hover:scale-105 relative group ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Memes
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300 ${
+                    isDark ? 'bg-sunny-yellow' : 'bg-sunset-orange'
+                  }`}
+                />
+              </span>
+            </Link>
+
             {/* Theme Toggle */}
             <ThemeToggle />
           </div>
@@ -266,6 +281,15 @@ const Navbar = () => {
                 }`}
               >
                 Gallery
+              </span>
+            </Link>
+            <Link href="/memes">
+              <span
+                className={`block font-medium cursor-pointer transition-colors duration-300 py-2 ${
+                  isDark ? 'text-white hover:text-sunny-yellow' : 'text-gray-800 hover:text-sunset-orange'
+                }`}
+              >
+                Memes
               </span>
             </Link>
             <Link href="/#reach-us">
