@@ -98,29 +98,39 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className={`md:hidden px-6 pb-4 flex flex-col space-y-2 font-medium ${isDark ? 'bg-modern-sleek' : 'bg-white/95'}`}
+          className={`md:hidden px-6 pb-4 flex flex-col space-y-2 font-medium ${
+            isDark ? 'bg-modern-sleek' : 'bg-white/95'
+          }`}
         >
           <Link
             href="/"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'}`}
+            className={`px-2 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
           >
             Home
           </Link>
           <Link
             href="/cfp"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'}`}
+            className={`px-2 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
           >
             CFP
           </Link>
           <Link
             href="/call-for-sponsors"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'}`}
+            className={`px-2 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
           >
             Call for Sponsors
           </Link>
           <Link
             href="/about"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'}`}
+            className={`px-2 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
           >
             About
           </Link>
