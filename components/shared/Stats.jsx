@@ -1,200 +1,137 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
 
-const Stats = () => {
-  const [animatedValues, setAnimatedValues] = useState([0, 0, 0, 0]);
-  const [isVisible, setIsVisible] = useState(false);
-  const [animationTrigger, setAnimationTrigger] = useState(0);
-  const { isDark } = useTheme();
+import { Map, Users, CalendarDays, Globe } from 'lucide-react';
+import React, { useRef, useLayoutEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-  // Add custom CSS animations
-  const floatAnimation = `
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(1deg); }
-      50% { transform: translateY(-5px) rotate(-1deg); }
-      75% { transform: translateY(-15px) rotate(0.5deg); }
-    }
-    @keyframes scaleX {
-      0%, 100% { transform: scaleX(0); }
-      50% { transform: scaleX(1); }
-    }
-  `;
+gsap.registerPlugin(ScrollTrigger);
 
-  const finalStats = useMemo(() => [15, 30, 20, 1000], []);
-  const labels = ['Villages', 'Speaker 30+', 'workshops 20+', 'Expected Attendees'];
-  const icons = [
-    <svg key="villages" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-      />
-    </svg>,
-    <svg key="speakers" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-      />
-    </svg>,
-    <svg key="workshops" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-      />
-    </svg>,
-    <svg key="attendees" className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-      />
-    </svg>
+export default function ConferenceGlance() {
+  const sectionRef = useRef(null);
+  const lettersRef = useRef([]);
+  const subheadingRef = useRef(null);
+  const statsRef = useRef(null);
+
+  const headingText = 'Conference at a Glance';
+
+  const stats = [
+    { icon: Map, label: 'Workshops', value: '8+' },
+    { icon: Globe, label: 'FREE Conference', value: '100%' },
+    { icon: CalendarDays, label: 'Days of Learning', value: '3' },
+    { icon: Users, label: 'Expected Attendees', value: '1000+' }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Reset animation values and trigger new animation
-          setAnimatedValues([0, 0, 0, 0]);
-          setAnimationTrigger(prev => prev + 1);
-        } else {
-          setIsVisible(false);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const subheading = subheadingRef.current;
+      const statsGrid = statsRef.current;
+      const letters = lettersRef.current.filter(Boolean);
+
+      if (!section || !subheading || !statsGrid || letters.length === 0) return;
+
+      gsap.set(letters, { opacity: 0, y: 40 });
+      gsap.set(subheading, {
+        opacity: 1,
+        backgroundImage: 'linear-gradient(90deg, transparent 0%, transparent 50%, transparent 100%)',
+        backgroundSize: '200% 100%',
+        backgroundPosition: '100% 0',
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent'
+      });
+      gsap.set(statsGrid, { opacity: 0, y: 80 });
+      gsap.set(section, { backgroundColor: '#ffffff' });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=300%',
+          scrub: true,
+          pin: true,
+          pinSpacing: true
         }
-      },
-      { threshold: 0.3 } // Higher threshold for more precise triggering
-    );
+      });
 
-    const element = document.getElementById('stats-section');
-    if (element) {
-      observer.observe(element);
-    }
+      letters.forEach((letter, i) => {
+        tl.to(letter, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }, i * 0.1);
+      });
 
-    return () => observer.disconnect();
+      tl.to(
+        subheading,
+        {
+          backgroundImage: 'linear-gradient(90deg, black 0%, orange 50%, black 100%)',
+          backgroundPosition: '0% 0',
+          duration: 1.5,
+          ease: 'power2.inOut'
+        },
+        '+=0.4'
+      );
+
+      tl.to(statsGrid, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '+=0.6');
+
+      tl.to(
+        section,
+        {
+          backgroundColor: '#ffd9b3',
+          ease: 'none',
+          duration: 1
+        },
+        '+=0.5'
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    if (isVisible && animationTrigger > 0) {
-      finalStats.forEach((finalValue, index) => {
-        const startValue = 0;
-        const duration = 2000;
-        const startTime = Date.now();
-
-        const animate = () => {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-
-          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-          const currentValue = Math.floor(startValue + (finalValue - startValue) * easeOutQuart);
-
-          setAnimatedValues(prev => {
-            const newValues = [...prev];
-            newValues[index] = currentValue;
-            return newValues;
-          });
-
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          }
-        };
-
-        setTimeout(() => animate(), index * 200);
-      });
-    }
-  }, [animationTrigger, finalStats]);
-
   return (
-    <>
-      <style jsx>{floatAnimation}</style>
-      <section
-        id="stats-section"
-        className={`py-20 relative overflow-hidden ${
-          isDark
-            ? 'bg-gradient-to-br from-gray-900 via-blue-900/20 to-cyan-900/20'
-            : 'bg-gradient-to-br from-blue-50 via-white to-cyan-50'
-        }`}
+    <section
+      ref={sectionRef}
+      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden"
+    >
+      <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-6">
+        {headingText.split('').map((letter, index) => (
+          <span
+            key={index}
+            ref={el => {
+              lettersRef.current[index] = el;
+            }}
+            className="inline-block"
+          >
+            {letter === ' ' ? '\u00A0' : letter}
+          </span>
+        ))}
+      </div>
+
+      <div
+        ref={subheadingRef}
+        className="text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium"
+        style={{
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent'
+        }}
       >
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-          <div
-            className="absolute top-40 right-20 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"
-            style={{ animationDelay: '1s' }}
-          />
-          <div
-            className="absolute bottom-20 left-1/4 w-20 h-20 bg-purple-500/10 rounded-full blur-xl animate-pulse"
-            style={{ animationDelay: '2s' }}
-          />
-          <div
-            className="absolute top-1/3 right-1/3 w-16 h-16 bg-pink-500/10 rounded-full blur-xl animate-bounce"
-            style={{ animationDelay: '0.5s' }}
-          />
+        Join us for an unprecedented gathering of minds across coastal communities
+      </div>
 
-          {/* Floating Icons */}
-          <div className="absolute top-32 right-10 text-sunset-orange/20 animate-float">
-            <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z" />
-            </svg>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2
-              className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+      <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        {stats.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <div
+              key={i}
+              className="p-6 rounded-2xl shadow-lg bg-white flex flex-col items-center hover:scale-105 transition-transform"
             >
-              Conference at a{' '}
-              <span className="relative inline-block">
-                <span className="text-sunset-orange animate-pulse">Glance</span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full transform scale-x-0 animate-[scaleX_2s_ease-in-out_infinite]" />
-              </span>
-            </h2>
-            <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-              Join us for an unprecedented gathering of minds across coastal communities
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-            {finalStats.map((stat, index) => {
-              const cardColors = ['bg-deep-ocean', 'bg-sunset-orange', 'bg-sunny-yellow', 'bg-deep-ocean'];
-
-              return (
-                <div key={index} className="group text-center">
-                  <div className="flex flex-col items-center space-y-6">
-                    <div
-                      className={`p-4 bg-gradient-to-br ${cardColors[index]} rounded-2xl text-white transform group-hover:scale-110 transition-all duration-500`}
-                    >
-                      {icons[index]}
-                    </div>
-
-                    <div className="relative inline-block">
-                      <div
-                        className={`text-6xl md:text-7xl font-black font-mono bg-gradient-to-r ${cardColors[index]} bg-clip-text text-transparent`}
-                      >
-                        {animatedValues[index]}
-                        {(index === 1 || index === 2 || index === 3) && '+'}
-                      </div>
-                    </div>
-
-                    <p className={`text-lg font-bold ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{labels[index]}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-    </>
+              <Icon className="w-12 h-12 text-orange-600 mb-3" />
+              <p className="text-3xl font-bold text-gray-900">{s.value}</p>
+              <p className="text-sm text-gray-700 mt-1">{s.label}</p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
-};
-
-export default Stats;
+}

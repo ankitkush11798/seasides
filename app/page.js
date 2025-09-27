@@ -15,9 +15,9 @@ const About = dynamic(() => import('@/components/home/About'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
-const NostalgiaGallery = dynamic(() => import('@/components/home/NostalgiaGallery'), {
-  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
-});
+// const NostalgiaGallery = dynamic(() => import('@/components/home/NostalgiaGallery'), {
+//   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+// });
 
 const ReachUs = dynamic(() => import('@/components/shared/ReachUs'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
@@ -42,9 +42,9 @@ export default function Home() {
       <div id="about" className="scroll-mt-24">
         <About />
       </div>
-      <div id="nostalgia" className="scroll-mt-24">
+      {/* <div id="nostalgia" className="scroll-mt-24">
         <NostalgiaGallery />
-      </div>
+      </div> */}
 
       {/* Existing sections */}
       <div id="reach-us" className="scroll-mt-24">
