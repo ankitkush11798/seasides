@@ -3,7 +3,10 @@ import { ArrowRight } from 'lucide-react';
 
 export default function AboutTheConference() {
   return (
-    <section className="relative py-24 text-gray-800" style={{ backgroundColor: '#ffd9b3' }}>
+    <section
+      className="relative py-24 text-gray-800 min-h-screen flex items-center"
+      style={{ backgroundColor: '#ffd9b3' }}
+    >
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <div>

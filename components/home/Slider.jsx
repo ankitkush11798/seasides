@@ -154,10 +154,13 @@ const RevolutionHero = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 1440 320"
                   preserveAspectRatio="none"
+                  style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '100%' }}
                 >
                   <path
                     className="wave-path"
                     d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,138.7C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                    fill={isDark ? '#1e40af' : '#3b82f6'}
+                    opacity="0.8"
                   ></path>
                 </svg>
                 {!reducedMotion && (
@@ -167,10 +170,13 @@ const RevolutionHero = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 1440 320"
                       preserveAspectRatio="none"
+                      style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '100%' }}
                     >
                       <path
                         className="wave-path"
                         d="M0,128L48,122.7C96,117,192,107,288,101.3C384,96,480,96,576,112C672,128,768,160,864,160C960,160,1056,128,1152,117.3C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                        fill={isDark ? '#2563eb' : '#60a5fa'}
+                        opacity="0.6"
                       ></path>
                     </svg>
                     <svg
@@ -178,10 +184,13 @@ const RevolutionHero = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 1440 320"
                       preserveAspectRatio="none"
+                      style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '100%' }}
                     >
                       <path
                         className="wave-path"
                         d="M0,160L48,165.3C96,171,192,181,288,165.3C384,149,480,107,576,90.7C672,75,768,85,864,96C960,107,1056,117,1152,122.7C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                        fill={isDark ? '#3b82f6' : '#93c5fd'}
+                        opacity="0.4"
                       ></path>
                     </svg>
                   </>
@@ -192,8 +201,16 @@ const RevolutionHero = () => {
             {/* Sand Layer with SVG Curves */}
             <div className="absolute bottom-0 left-0 right-0 h-1/3">
               {/* Palm Trees */}
-              <div className="absolute bottom-17 right-0 z-10">
-                <Image src="/palm-trees.png" alt="Palm Trees" width={400} height={800} className="object-contain" />
+              <div className="absolute bottom-16 right-0 z-10">
+                <Image
+                  src="/palm-trees.png"
+                  alt="Palm Trees"
+                  width={400}
+                  height={800}
+                  className="object-contain"
+                  priority={false}
+                  quality={85}
+                />
               </div>
               <svg className="absolute bottom-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 320">
                 {/* Sand Dunes Background */}

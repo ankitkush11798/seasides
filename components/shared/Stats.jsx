@@ -49,12 +49,10 @@ export default function ConferenceGlance() {
         scrollTrigger: {
           trigger: section,
           start: 'top center',
-          end: '+=150%',
+          end: 'bottom center',
           scrub: 0.5,
-          pin: true,
-          pinSpacing: true,
+          pin: false,
           invalidateOnRefresh: true,
-          anticipatePin: 1,
           refreshPriority: -1
         }
       });
@@ -93,7 +91,7 @@ export default function ConferenceGlance() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden z-30"
+      className="relative min-h-screen py-24 flex flex-col justify-center items-center text-center overflow-hidden z-30"
       style={{ willChange: 'background-color, transform' }}
     >
       <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-6">
