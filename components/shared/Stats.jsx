@@ -31,7 +31,7 @@ export default function ConferenceGlance() {
 
       if (!section || !subheading || !statsGrid || letters.length === 0) return;
 
-      gsap.set(letters, { opacity: 0, y: 40 });
+      gsap.set(letters, { opacity: 0, y: 40, force3D: true });
       gsap.set(subheading, {
         opacity: 1,
         backgroundImage: 'linear-gradient(90deg, transparent 0%, transparent 50%, transparent 100%)',
@@ -39,47 +39,51 @@ export default function ConferenceGlance() {
         backgroundPosition: '100% 0',
         backgroundClip: 'text',
         WebkitBackgroundClip: 'text',
-        color: 'transparent'
+        color: 'transparent',
+        force3D: true
       });
-      gsap.set(statsGrid, { opacity: 0, y: 80 });
-      gsap.set(section, { backgroundColor: '#ffffff' });
+      gsap.set(statsGrid, { opacity: 0, y: 80, force3D: true });
+      gsap.set(section, { backgroundColor: '#ffffff', force3D: true });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: '+=300%',
-          scrub: true,
+          start: 'top center',
+          end: '+=150%',
+          scrub: 0.5,
           pin: true,
-          pinSpacing: true
+          pinSpacing: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          refreshPriority: -1
         }
       });
 
-      letters.forEach((letter, i) => {
-        tl.to(letter, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }, i * 0.1);
-      });
+      tl.to(letters, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.02, force3D: true });
 
       tl.to(
         subheading,
         {
           backgroundImage: 'linear-gradient(90deg, black 0%, orange 50%, black 100%)',
           backgroundPosition: '0% 0',
-          duration: 1.5,
-          ease: 'power2.inOut'
+          duration: 1,
+          ease: 'power2.inOut',
+          force3D: true
         },
-        '+=0.4'
+        '+=0.2'
       );
 
-      tl.to(statsGrid, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '+=0.6');
+      tl.to(statsGrid, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', force3D: true }, '+=0.3');
 
       tl.to(
         section,
         {
           backgroundColor: '#ffd9b3',
-          ease: 'none',
-          duration: 1
+          ease: 'power2.inOut',
+          duration: 0.8,
+          force3D: true
         },
-        '+=0.5'
+        '+=0.2'
       );
     }, sectionRef);
 
@@ -89,7 +93,8 @@ export default function ConferenceGlance() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden"
+      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden z-30"
+      style={{ willChange: 'background-color, transform' }}
     >
       <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-6">
         {headingText.split('').map((letter, index) => (
@@ -117,7 +122,7 @@ export default function ConferenceGlance() {
         Join us for an unprecedented gathering of minds across coastal communities
       </div>
 
-      <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto will-change-transform">
         {stats.map((s, i) => {
           const Icon = s.icon;
           return (

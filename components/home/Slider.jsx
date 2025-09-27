@@ -12,6 +12,7 @@ const RevolutionHero = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isLogoLoaded, setIsLogoLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const heroRef = useRef(null);
   const { isDark } = useTheme();
 
@@ -37,11 +38,52 @@ const RevolutionHero = () => {
   }, [isAutoPlay, isHovered, slides.length]);
 
   useEffect(() => {
+    setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
+    }, 1500);
+
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        if (rect.bottom < 0) {
+          setIsAutoPlay(false);
+        } else {
+          setIsAutoPlay(true);
+        }
+      }
+    };
+
+    const throttledScroll = throttle(handleScroll, 100);
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', throttledScroll);
+    };
   }, []);
+
+  const throttle = (func, delay) => {
+    let timeoutId;
+    let lastExecTime = 0;
+    return function (...args) {
+      const currentTime = Date.now();
+      if (currentTime - lastExecTime > delay) {
+        func.apply(this, args);
+        lastExecTime = currentTime;
+      } else {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(
+          () => {
+            func.apply(this, args);
+            lastExecTime = Date.now();
+          },
+          delay - (currentTime - lastExecTime)
+        );
+      }
+    };
+  };
 
   const handleLogoLoad = () => {
     setIsLogoLoaded(true);
@@ -54,12 +96,13 @@ const RevolutionHero = () => {
       ) : (
         <section
           ref={heroRef}
-          className="relative min-h-screen w-full overflow-hidden"
+          className="relative min-h-screen w-full overflow-hidden z-10"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          style={{ willChange: 'transform' }}
         >
           {/* Dynamic Beach Background */}
-          <div className="absolute inset-0 transition-all duration-1000">
+          <div className="absolute inset-0 transition-all duration-700 transform-gpu">
             {/* Sky Layer with Stars */}
             <div
               className={`absolute inset-0 transition-colors duration-700 ${
@@ -68,8 +111,8 @@ const RevolutionHero = () => {
                   : 'bg-gradient-to-b from-[#87CEEB] via-[#ADD8E6] to-[#4682B4]'
               }`}
             >
-              {/* Stars - Only visible in dark mode */}
-              {isDark && (
+              {/* Stars - Only visible in dark mode and if motion is enabled */}
+              {isDark && !reducedMotion && (
                 <>
                   <div className="stars-small"></div>
                   <div className="stars-medium"></div>
@@ -88,8 +131,8 @@ const RevolutionHero = () => {
           } rounded-full blur-sm`}
             />
 
-            {/* Birds - Only visible in light mode */}
-            {!isDark && (
+            {/* Birds - Only visible in light mode and if motion is enabled */}
+            {!isDark && !reducedMotion && (
               <div className="absolute top-1/4 left-0 right-0">
                 <div className="bird-container bird-1">
                   <div className="bird"></div>
@@ -105,9 +148,9 @@ const RevolutionHero = () => {
 
             {/* Ocean Waves */}
             <div className="ocean absolute bottom-[33%] left-0 right-0 h-1/3 overflow-hidden">
-              <div className={`water ${isDark ? 'water-dark' : 'water-light'}`}>
+              <div className={`water ${isDark ? 'water-dark' : 'water-light'} ${reducedMotion ? 'no-animation' : ''}`}>
                 <svg
-                  className="water-wave wave1"
+                  className={`water-wave wave1 ${reducedMotion ? 'opacity-50' : ''}`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 1440 320"
                   preserveAspectRatio="none"
@@ -117,28 +160,32 @@ const RevolutionHero = () => {
                     d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,138.7C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
                   ></path>
                 </svg>
-                <svg
-                  className="water-wave wave2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1440 320"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    className="wave-path"
-                    d="M0,128L48,122.7C96,117,192,107,288,101.3C384,96,480,96,576,112C672,128,768,160,864,160C960,160,1056,128,1152,117.3C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-                  ></path>
-                </svg>
-                <svg
-                  className="water-wave wave3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1440 320"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    className="wave-path"
-                    d="M0,160L48,165.3C96,171,192,181,288,165.3C384,149,480,107,576,90.7C672,75,768,85,864,96C960,107,1056,117,1152,122.7C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-                  ></path>
-                </svg>
+                {!reducedMotion && (
+                  <>
+                    <svg
+                      className="water-wave wave2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        className="wave-path"
+                        d="M0,128L48,122.7C96,117,192,107,288,101.3C384,96,480,96,576,112C672,128,768,160,864,160C960,160,1056,128,1152,117.3C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                      ></path>
+                    </svg>
+                    <svg
+                      className="water-wave wave3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        className="wave-path"
+                        d="M0,160L48,165.3C96,171,192,181,288,165.3C384,149,480,107,576,90.7C672,75,768,85,864,96C960,107,1056,117,1152,122.7C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+                      ></path>
+                    </svg>
+                  </>
+                )}
               </div>
             </div>
 
@@ -169,7 +216,7 @@ const RevolutionHero = () => {
           </div>
 
           {/* Main content */}
-          <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
+          <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
             {/* Logo */}
             <div className="w-full max-w-4xl mx-auto mb-8">
               <div className="relative w-full flex justify-center items-center">
@@ -179,9 +226,10 @@ const RevolutionHero = () => {
                   width={600}
                   height={240}
                   priority={true}
-                  quality={100}
+                  quality={90}
                   onLoad={handleLogoLoad}
                   className="object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 600px"
                 />
               </div>
             </div>
@@ -190,7 +238,7 @@ const RevolutionHero = () => {
             <div
               className={`transform transition-all duration-700 ${
                 isLogoLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              } text-center space-y-6 max-w-4xl mx-auto`}
+              } text-center space-y-6 max-w-4xl mx-auto will-change-transform`}
             >
               <h2 className="text-xl md:text-2xl font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 {slides[currentSlide].subtitle}

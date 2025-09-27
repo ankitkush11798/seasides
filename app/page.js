@@ -29,17 +29,17 @@ const Faq = dynamic(() => import('@/components/shared/Faq'), {
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative overflow-x-hidden">
       <Navbar />
-      <div id="overview" className="scroll-mt-24">
+      <div id="overview" className="scroll-mt-24 relative z-10">
         <RevolutionHero />
       </div>
-      <div id="stats" className="scroll-mt-24">
+      <div id="stats" className="scroll-mt-24 relative z-30">
         <Stats />
       </div>
 
       {/* New enhanced homepage sections */}
-      <div id="about" className="scroll-mt-24">
+      <div id="about" className="scroll-mt-24 relative z-20">
         <About />
       </div>
       {/* <div id="nostalgia" className="scroll-mt-24">
@@ -47,10 +47,10 @@ export default function Home() {
       </div> */}
 
       {/* Existing sections */}
-      <div id="reach-us" className="scroll-mt-24">
+      <div id="reach-us" className="scroll-mt-24 relative z-20">
         <ReachUs />
       </div>
-      <div id="faq" className="scroll-mt-24">
+      <div id="faq" className="scroll-mt-24 relative z-20">
         <Faq />
       </div>
       <Footer />

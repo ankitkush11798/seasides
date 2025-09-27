@@ -41,7 +41,7 @@ const Countdown = () => {
 
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isClient]);
