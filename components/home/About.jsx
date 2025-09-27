@@ -11,17 +11,19 @@ export default function AboutTheConference() {
         {/* Left Content */}
         <div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6">About The Conference</h2>
-          <p className="text-lg text-gray-700 mb-4">
-            To stay ahead in the ever-evolving security landscape, continuous learning and networking are essential. As
-            attacks grow more complex, sharpening our skills is crucial. Cybersecurity conferences are a powerful way to
-            keep up with this fast-changing domain.
+          <p class="text-lg text-gray-700 mb-4">
+            To stay ahead in the rapidly changing world of security, continuous learning and meaningful connections are
+            key. As cyber threats grow in complexity, sharpening our expertise becomes essential. Conferences like
+            <span class="font-semibold"> Seasides Conference</span> provide the perfect platform to keep pace with this
+            evolution.
           </p>
-          <p className="text-lg text-gray-700 mb-8">
-            Join us from <span className="font-semibold text-orange-600">February 19-21, 2026</span> for the Seasides
-            InfoSec Conference 2026, where you'll gain valuable insights into cybersecurity. We're proud to offer
-            top-notch training sessions for free, bringing a community-driven experience that mirrors major global
-            events like <span className="font-semibold">Blackhat</span> and{' '}
-            <span className="font-semibold">Defcon</span>—ensuring equal learning opportunities for all.
+
+          <p class="text-lg text-gray-700 mb-8">
+            Join us on <span class="font-semibold text-orange-600">February 19–21, 2026</span> at the
+            <span class="font-semibold"> Seasides Conference </span> where you’ll gain valuable knowledge from industry
+            leaders. With free, high-quality training sessions, we’re building a community-driven experience that
+            reflects the spirit of global events such as <span class="font-semibold"> Blackhat</span> and
+            <span class="font-semibold"> Defcon</span>—ensuring equal learning opportunities for all.
           </p>
 
           <a href="about" className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:underline">

@@ -25,7 +25,7 @@ const LoadingScreen = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 overflow-hidden transition-all duration-1000 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-all duration-1000 ${
         isDark
           ? 'bg-gradient-to-b from-[#0d1b2a] via-[#1b263b] to-[#415a77]'
           : 'bg-gradient-to-b from-[#87ceeb] via-[#b0e0e6] to-[#f0f8ff]'
@@ -100,7 +100,7 @@ const LoadingScreen = () => {
       )}
 
       {/* Center logo */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div className="flex items-center justify-center pointer-events-none z-10">
         <div className="relative">
           <Image
             src={isDark ? '/light-logo.png' : '/dark-logo.png'}
@@ -118,27 +118,19 @@ const LoadingScreen = () => {
             }}
           />
 
-          {/* Logo reflection in water - desktop only */}
-          {!isMobile && (
-            <div className="absolute top-full left-0 w-full h-full opacity-20 overflow-hidden">
-              <Image
-                src={isDark ? '/light-logo.png' : '/dark-logo.png'}
-                alt=""
-                width={400}
-                height={160}
-                className="object-contain scale-y-[-1] blur-sm"
-                style={{
-                  animation: 'waveDistort 3s ease-in-out infinite',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 80%)'
-                }}
-              />
-            </div>
-          )}
+          {/* Loading spinner */}
+          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+            <div
+              className={`w-8 h-8 border-2 border-t-transparent rounded-full animate-spin ${
+                isDark ? 'border-white' : 'border-gray-800'
+              }`}
+            ></div>
+          </div>
         </div>
       </div>
 
-      {/* Waves container - simplified on mobile */}
-      <div className="absolute bottom-0 left-0 w-full h-2/5">
+      {/* Waves container - background only */}
+      <div className="absolute bottom-0 left-0 w-full h-2/5 -z-10">
         {isMobile ? (
           <>
             {/* Mobile: Only 2 simple waves for performance */}

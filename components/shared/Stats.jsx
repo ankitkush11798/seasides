@@ -16,8 +16,8 @@ export default function ConferenceGlance() {
   const headingText = 'Conference at a Glance';
 
   const stats = [
-    { icon: Map, label: 'Workshops', value: '8+' },
-    { icon: Globe, label: 'FREE Conference', value: '100%' },
+    { icon: Map, label: 'Villages', value: '8+' },
+    { icon: Globe, label: 'Trainings', value: '10+' },
     { icon: CalendarDays, label: 'Days of Learning', value: '3' },
     { icon: Users, label: 'Expected Attendees', value: '1000+' }
   ];
@@ -117,7 +117,7 @@ export default function ConferenceGlance() {
           color: 'transparent'
         }}
       >
-        Join us for an unprecedented gathering of minds across coastal communities
+        Where brilliant minds come together to shape the future of cybersecurity
       </div>
 
       <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto will-change-transform">

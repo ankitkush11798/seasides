@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Linkedin, Twitter } from 'lucide-react';
+import Link from 'next/link';
+import { Linkedin, Twitter, HelpCircle } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
@@ -408,6 +409,24 @@ const About = () => {
         </div>
 
         <div className="mb-12">{renderContent()}</div>
+
+        {/* Quick Links Section */}
+        <div className="mb-16 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Quick Links</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/faq"
+              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105 ${
+                isDark
+                  ? 'bg-slate-700 text-white hover:bg-slate-600'
+                  : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
+              }`}
+            >
+              <HelpCircle size={20} />
+              Frequently Asked Questions
+            </Link>
+          </div>
+        </div>
 
         {/* Team Section */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Meet the Team</h2>

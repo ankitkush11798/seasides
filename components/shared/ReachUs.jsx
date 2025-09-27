@@ -71,35 +71,9 @@ const ReachUs = () => {
             viewport={{ once: true }}
             className={`backdrop-blur-xl rounded-2xl md:rounded-3xl p-4 sm:p-5 ${
               isDark ? 'bg-black/20 border border-white/10' : 'bg-white/30 border border-blue-200/50'
-            } shadow-xl h-[350px] sm:h-[400px]`} // same height as map
+            } shadow-xl h-[550px] sm:h-[600px]`} // increased from 450px/500px to 550px/600px
           >
             {/* Tabs */}
-            <div className="flex gap-2 mb-4">
-              <button
-                onClick={() => setActiveTab('venue')}
-                className={`flex-1 py-2 rounded-lg font-semibold text-sm sm:text-base transition ${
-                  activeTab === 'venue'
-                    ? 'bg-sunset-orange text-white'
-                    : isDark
-                      ? 'bg-black/10 text-white'
-                      : 'bg-white/50 text-gray-700'
-                }`}
-              >
-                Venue
-              </button>
-              <button
-                onClick={() => setActiveTab('distances')}
-                className={`flex-1 py-2 rounded-lg font-semibold text-sm sm:text-base transition ${
-                  activeTab === 'distances'
-                    ? 'bg-sunset-orange text-white'
-                    : isDark
-                      ? 'bg-black/10 text-white'
-                      : 'bg-white/50 text-gray-700'
-                }`}
-              >
-                Distances
-              </button>
-            </div>
 
             {/* Content */}
             {activeTab === 'venue' ? (
@@ -114,9 +88,7 @@ const ReachUs = () => {
                 >
                   {VENUE.addressEN}
                 </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-2 mt-2 h-full overflow-y-auto">
+                <br />
                 {[leftDistances, rightDistances].map((col, colIdx) => (
                   <ul key={colIdx} className="space-y-2">
                     {col.map((d, idx) => (
@@ -133,6 +105,8 @@ const ReachUs = () => {
                   </ul>
                 ))}
               </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-2 mt-2 h-full overflow-y-auto"></div>
             )}
           </motion.div>
 
@@ -147,7 +121,7 @@ const ReachUs = () => {
             <div
               className={`rounded-2xl overflow-hidden ${
                 isDark ? 'bg-black/20 border border-white/10' : 'bg-white/30 border border-blue-200/50'
-              } shadow-xl h-[350px] sm:h-[400px]`}
+              } shadow-xl h-[550px] sm:h-[600px]`} // increased from 450px/500px to 550px/600px
             >
               <div className="relative h-full">
                 {!mapLoaded && (

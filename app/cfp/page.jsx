@@ -8,20 +8,21 @@ const CFP = () => {
 
   const topics = [
     'Cloud Security',
-    'Network and Router Hacking',
+    'Network Security',
     'WLAN and Bluetooth Security',
     'Lockpicking & Physical Security',
     'IoT Security',
-    'Web Application Security & Hacking',
+    'Web Application Security',
     'Malware Analysis & Reverse Engineering',
     'Bug Bounty Hunting',
-    'Web Penetration Testing Techniques',
-    'Mobile Application Security - Threats and Exploits',
+    'Mobile Application Security',
     'Threat Hunting & Threat Intelligence',
     'DevSecOps',
     'Blockchain & Smart Contract Security',
-    'Open-Source Security and Hacking Tools',
-    'New Vulnerabilities and Exploits/0-days'
+    'LLM & AI Security',
+    'Automotive Security',
+    'Social Engineering',
+    'Red, Blue & Purple Teaming'
   ];
 
   return (
@@ -30,13 +31,17 @@ const CFP = () => {
 
       {/* Hero / Title Section */}
       <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-400 via-orange-300 to-orange-200 animate-[gradientMove_15s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite]" />
+        <div className="absolute inset-0 bg-black/20" />
 
         <div className="relative z-10 max-w-4xl px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Call for Papers - Seasides 2026</h1>
-          <p className="text-lg md:text-xl text-white/90">
-            We’re excited to announce the Call for Papers (CFP) for Seasides 2025! Submit your 1-2 day training sessions
-            proposal and inspire others. Seasides is completely free for all attendees.
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl shadow-black/50">
+            Call for Papers - Seasides 2026
+          </h1>
+          <p className="text-lg md:text-xl text-white font-medium drop-shadow-lg shadow-black/50 backdrop-blur-sm bg-white/10 rounded-lg p-4">
+            We're excited to announce the Call for Papers (CFP) for Seasides 2026! <br />
+            Every effort will be made to offer remuneration to the trainers. As the conference is supported by
+            sponsorships, the amount available will be determined by the sponsorship contributions we secure.
           </p>
         </div>
       </section>
@@ -72,17 +77,15 @@ const CFP = () => {
         >
           <h2 className="text-3xl font-bold mb-6 text-center text-cyan-400">Submission Guidelines</h2>
           <div className="space-y-4 text-center text-base md:text-lg">
-            <p>Attendees will not be provided with the internet. They’ll be utilizing their very own hotspots.</p>
             <p>
-              Still not sure or have more questions? You can reach us at{' '}
-              <a href="mailto:ADMIN@SEASIDES.NET" className="text-orange-500 underline">
-                ADMIN@SEASIDES.NET
-              </a>
+              Please note that internet access will be limited to trainers only. Attendees are expected to use their
+              personal mobile hotspots for any internet connectivity needs during the conference.
             </p>
             <p>
-              <strong>Note:</strong> We will make every effort to offer remuneration. However, as the conference is
-              funded through sponsorships, the amount will be determined based on the support we receive from our
-              sponsors.
+              Still not sure or have more questions? You can reach us at{' '}
+              <a href="mailto:admin@seasides.net" className="text-orange-500 underline">
+                admin@seasides.net
+              </a>
             </p>
           </div>
         </div>
@@ -93,17 +96,20 @@ const CFP = () => {
       <style jsx>{`
         @keyframes gradientMove {
           0% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
             background-position: 0% 50%;
           }
           50% {
+            background: linear-gradient(45deg, #06b6d4, #0891b2, #f97316, #fb923c);
             background-position: 100% 50%;
           }
           100% {
+            background: linear-gradient(45deg, #f97316, #fb923c, #06b6d4, #0891b2);
             background-position: 0% 50%;
           }
         }
         .animate-[gradientMove_15s_ease-in-out_infinite] {
-          background-size: 200% 200%;
+          background-size: 300% 300%;
         }
       `}</style>
     </>

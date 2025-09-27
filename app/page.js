@@ -23,10 +23,6 @@ const ReachUs = dynamic(() => import('@/components/shared/ReachUs'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
-const Faq = dynamic(() => import('@/components/shared/Faq'), {
-  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
-});
-
 export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
@@ -49,9 +45,6 @@ export default function Home() {
       {/* Existing sections */}
       <div id="reach-us" className="scroll-mt-24 relative z-20">
         <ReachUs />
-      </div>
-      <div id="faq" className="scroll-mt-24 relative z-20">
-        <Faq />
       </div>
       <Footer />
     </main>

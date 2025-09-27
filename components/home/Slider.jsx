@@ -21,8 +21,9 @@ const RevolutionHero = () => {
       id: 1,
       type: 'main',
       title: 'Seasides',
-      subtitle: `${EVENT_DATE_LONG} • International Centre Goa`,
-      description: 'Join the event for free talks and training sessions',
+      subtitle: EVENT_DATE_LONG,
+      location: 'International Centre Goa',
+      description: 'Join us for insightful talks and hands-on training — completely free.',
       animation: 'fadeInUp',
       particles: true,
       showCountdown: true
@@ -260,6 +261,9 @@ const RevolutionHero = () => {
               <h2 className="text-xl md:text-2xl font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 {slides[currentSlide].subtitle}
               </h2>
+              <h3 className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 mt-2">
+                {slides[currentSlide].location}
+              </h3>
 
               <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 transition-colors duration-300">
                 {slides[currentSlide].description}
