@@ -17,7 +17,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className={`w-full py-12 ${isDark ? 'bg-deep-ocean-depth text-white' : 'bg-white text-gray-900'}`}>
+    <footer
+      className={`w-full py-12 border-t-2 ${
+        isDark ? 'bg-deep-ocean-depth text-white border-gray-700' : 'bg-white text-gray-900 border-gray-200'
+      }`}
+    >
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Top Row: Logo + Description | Event Details */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -48,7 +52,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
+        {/* Divider inside footer */}
         <div className={`my-8 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`} />
 
         {/* Bottom Row: Copyright + Social */}

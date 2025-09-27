@@ -33,7 +33,7 @@ const CFP = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-orange-400 via-orange-300 to-orange-200 animate-[gradientMove_15s_ease-in-out_infinite]" />
 
         <div className="relative z-10 max-w-4xl px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Call for Papers - Seasides 2025</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Call for Papers - Seasides 2026</h1>
           <p className="text-lg md:text-xl text-white/90">
             We’re excited to announce the Call for Papers (CFP) for Seasides 2025! Submit your 1-2 day training sessions
             proposal and inspire others. Seasides is completely free for all attendees.
