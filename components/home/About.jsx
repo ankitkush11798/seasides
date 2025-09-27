@@ -23,7 +23,7 @@ export default function AboutTheConference() {
             <span class="font-semibold"> Seasides Conference </span> where you’ll gain valuable knowledge from industry
             leaders. With free, high-quality training sessions, we’re building a community-driven experience that
             reflects the spirit of global events such as <span class="font-semibold"> Blackhat</span> and
-            <span class="font-semibold"> Defcon</span>—ensuring equal learning opportunities for all.
+            <span class="font-semibold"> Defcon</span> ensuring equal learning opportunities for all.
           </p>
 
           <a href="about" className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:underline">
