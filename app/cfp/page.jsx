@@ -61,9 +61,13 @@ const CFP = () => {
 
           {/* Decoy CTA */}
           <div className="mt-10 flex justify-center">
-            <button className="px-8 py-4 text-lg font-semibold rounded-xl bg-gradient-to-r from-orange-400 via-orange-500 to-cyan-400 text-white shadow-lg hover:scale-105 transition-transform">
+            <a
+              href="https://docs.google.com/forms/d/1F8oFjJLsCpXaadDNMf6xita22k_w-X8FDRIc5MYLC5k/"
+              target="_blank"
+              className="px-8 py-4 text-lg font-semibold rounded-xl bg-gradient-to-r from-orange-400 via-orange-500 to-cyan-400 text-white shadow-lg hover:scale-105 transition-transform"
+            >
               Submit Your Proposal
-            </button>
+            </a>
           </div>
         </div>
       </section>
