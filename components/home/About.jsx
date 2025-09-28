@@ -229,7 +229,7 @@ export default function AboutTheConference() {
           <h3 className="text-2xl font-bold mb-4 text-gray-800">HIGHLIGHTS</h3>
           <div className="w-full aspect-video rounded-2xl shadow-lg overflow-hidden bg-black">
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/shorts/wmB01yWTaFk"
               title="Seasides Conference Highlights"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
