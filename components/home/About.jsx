@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Users, Calendar, Award, Globe, Shield, Zap } from 'lucide-react';
+import { ArrowRight, Terminal, Server, Lock, Network, Code, Database } from 'lucide-react';
 
 function InteractiveHighlights() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -9,58 +9,58 @@ function InteractiveHighlights() {
   const highlights = [
     {
       id: 1,
-      icon: Users,
-      title: '500+ Attendees',
-      description: 'Join cybersecurity professionals from around the world',
-      color: 'bg-blue-500',
-      hoverColor: 'hover:bg-blue-600'
+      icon: Terminal,
+      title: 'sudo attendees++',
+      description: '500+ security professionals',
+      code: '$ whoami\nroot@seasides2026:~#'
     },
     {
       id: 2,
-      icon: Calendar,
-      title: '3 Days Event',
-      description: 'Feb 19-21, 2026 packed with learning and networking',
-      color: 'bg-green-500',
-      hoverColor: 'hover:bg-green-600'
+      icon: Server,
+      title: 'uptime: 72h',
+      description: 'Feb 19-21, 2026 continuous learning',
+      code: '$ uptime\n72:00:00 up 3 days'
     },
     {
       id: 3,
-      icon: Award,
-      title: 'Industry Leaders',
-      description: 'Learn from the best minds in cybersecurity',
-      color: 'bg-purple-500',
-      hoverColor: 'hover:bg-purple-600'
+      icon: Lock,
+      title: '/etc/experts',
+      description: 'Industry-leading speakers',
+      code: '$ ls -la /speakers\ndrwxr-xr-x experts'
     },
     {
       id: 4,
-      icon: Globe,
-      title: 'Global Network',
-      description: 'Connect with professionals worldwide',
-      color: 'bg-orange-500',
-      hoverColor: 'hover:bg-orange-600'
+      icon: Network,
+      title: 'netstat -global',
+      description: 'Worldwide security network',
+      code: '$ ping global.network\n64 bytes from world'
     },
     {
       id: 5,
-      icon: Shield,
-      title: 'Cutting-edge Topics',
-      description: 'Latest trends in cybersecurity and defense',
-      color: 'bg-red-500',
-      hoverColor: 'hover:bg-red-600'
+      icon: Code,
+      title: 'git commit -m "skills"',
+      description: 'Cutting-edge security techniques',
+      code: '$ git log --oneline\nabc123f Add new exploits'
     },
     {
       id: 6,
-      icon: Zap,
-      title: 'Hands-on Labs',
-      description: 'Interactive workshops and practical training',
-      color: 'bg-yellow-500',
-      hoverColor: 'hover:bg-yellow-600'
+      icon: Database,
+      title: 'SELECT * FROM labs',
+      description: 'Hands-on practical workshops',
+      code: '$ mysql> SHOW TABLES\n+labs+workshops+'
     }
   ];
 
   return (
     <div className="flex flex-col items-center">
-      <h3 className="text-2xl font-bold mb-8 text-gray-800">CONFERENCE HIGHLIGHTS</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-lg">
+      <div className="mb-8 text-center">
+        <div className="font-mono text-lg text-gray-800 bg-gray-100 px-4 py-2 rounded border-l-4 border-gray-600">
+          <span className="text-green-600">root@seasides:</span>
+          <span className="text-blue-600">~#</span> ./conference_highlights.sh
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl">
         {highlights.map(highlight => {
           const IconComponent = highlight.icon;
           const isHovered = hoveredCard === highlight.id;
@@ -69,81 +69,124 @@ function InteractiveHighlights() {
             <div
               key={highlight.id}
               className={`
-                relative p-6 rounded-xl shadow-lg cursor-pointer
-                transform transition-all duration-300 ease-in-out
-                ${isHovered ? 'scale-110 -translate-y-2 z-10' : 'scale-100'}
-                ${highlight.color} text-white
-                ${highlight.hoverColor}
-                hover:shadow-2xl
+                relative bg-gray-900 border border-gray-700 rounded-lg overflow-hidden
+                cursor-pointer transition-all duration-300 ease-out
+                ${isHovered ? 'transform scale-105 border-green-400 shadow-2xl shadow-green-400/20' : 'shadow-lg'}
+                hover:border-green-400
               `}
               onMouseEnter={() => setHoveredCard(highlight.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="flex flex-col items-center text-center">
-                <div
-                  className={`
-                  p-3 rounded-full bg-white bg-opacity-20 mb-3
-                  transform transition-transform duration-300
-                  ${isHovered ? 'rotate-12 scale-110' : 'rotate-0 scale-100'}
-                `}
-                >
-                  <IconComponent
-                    className={`
-                      w-6 h-6 transition-all duration-300
-                      ${isHovered ? 'text-white drop-shadow-lg' : 'text-white'}
-                    `}
-                  />
+              {/* Terminal Header */}
+              <div className="bg-gray-800 px-3 py-2 border-b border-gray-700 flex items-center gap-2">
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <h4
-                  className={`
-                  text-sm font-bold mb-2 transition-all duration-300
-                  ${isHovered ? 'text-lg' : 'text-sm'}
-                `}
-                >
-                  {highlight.title}
-                </h4>
-                <p
-                  className={`
-                  text-xs opacity-90 transition-all duration-300 overflow-hidden
-                  ${isHovered ? 'opacity-100 max-h-20' : 'max-h-0 opacity-0'}
-                `}
-                >
-                  {highlight.description}
-                </p>
+                <div className="text-gray-400 text-xs font-mono ml-2">terminal</div>
               </div>
 
-              <div
-                className={`
-                absolute inset-0 rounded-xl bg-gradient-to-br from-white to-transparent opacity-0
-                transition-opacity duration-300
-                ${isHovered ? 'opacity-10' : 'opacity-0'}
-              `}
-              />
+              {/* Content */}
+              <div className="p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className={`
+                    p-2 rounded border border-gray-600 bg-gray-800
+                    transition-all duration-300
+                    ${isHovered ? 'border-green-400 bg-gray-700' : ''}
+                  `}
+                  >
+                    <IconComponent
+                      className={`
+                      w-5 h-5 transition-colors duration-300
+                      ${isHovered ? 'text-green-400' : 'text-gray-400'}
+                    `}
+                    />
+                  </div>
+                  <h4
+                    className={`
+                    font-mono text-sm font-bold transition-colors duration-300
+                    ${isHovered ? 'text-green-400' : 'text-gray-300'}
+                  `}
+                  >
+                    {highlight.title}
+                  </h4>
+                </div>
 
+                <p className="text-gray-400 text-xs mb-3 leading-relaxed">{highlight.description}</p>
+
+                {/* Terminal Code Block */}
+                <div
+                  className={`
+                  bg-black rounded border border-gray-700 p-3 font-mono text-xs
+                  transition-all duration-300 overflow-hidden
+                  ${isHovered ? 'border-green-400 max-h-20' : 'max-h-8'}
+                `}
+                >
+                  <div
+                    className={`
+                    text-green-400 transition-all duration-300
+                    ${isHovered ? 'opacity-100' : 'opacity-60'}
+                  `}
+                  >
+                    {highlight.code.split('\n').map((line, idx) => (
+                      <div key={idx} className="leading-4">
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Matrix-like effect overlay */}
               <div
                 className={`
-                absolute -inset-1 rounded-xl bg-gradient-to-r from-pink-400 to-yellow-400 opacity-0
-                transition-opacity duration-300 -z-10 blur
-                ${isHovered ? 'opacity-30' : 'opacity-0'}
+                absolute inset-0 bg-gradient-to-r from-transparent via-green-400/5 to-transparent
+                transition-opacity duration-300 pointer-events-none
+                ${isHovered ? 'opacity-100' : 'opacity-0'}
               `}
-              />
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-400/10 to-transparent"></div>
+              </div>
+
+              {/* Scanning line effect */}
+              <div
+                className={`
+                absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent
+                transition-all duration-1000 ease-out
+                ${isHovered ? 'translate-y-full opacity-100' : 'translate-y-0 opacity-0'}
+              `}
+              ></div>
             </div>
           );
         })}
       </div>
 
-      <div className="mt-8 text-center">
-        <div
-          className={`
-          inline-flex items-center gap-2 px-6 py-3 rounded-full
-          bg-white bg-opacity-20 backdrop-blur-sm border border-white border-opacity-30
-          transform transition-all duration-300 cursor-pointer
-          hover:bg-opacity-30 hover:scale-105 hover:shadow-lg
-          text-gray-800 font-semibold
-        `}
-        >
-          <Globe className="w-5 h-5 animate-pulse" />
-          Experience the Future of Cybersecurity
+      {/* Bottom Terminal */}
+      <div className="mt-8 w-full max-w-2xl">
+        <div className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
+          <div className="bg-gray-800 px-4 py-2 border-b border-gray-700 flex items-center gap-2">
+            <div className="flex gap-1">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="text-gray-400 text-sm font-mono ml-2">seasides@conference</div>
+          </div>
+          <div className="p-4 font-mono">
+            <div className="text-green-400 text-sm">
+              <span className="text-blue-400">seasides@2026:</span>
+              <span className="text-yellow-400">~$</span>
+              <span className="ml-2">echo "Welcome to the future of cybersecurity"</span>
+            </div>
+            <div className="text-gray-300 text-sm mt-1">Welcome to the future of cybersecurity</div>
+            <div className="text-green-400 text-sm mt-2 animate-pulse">
+              <span className="text-blue-400">seasides@2026:</span>
+              <span className="text-yellow-400">~$</span>
+              <span className="ml-2">_</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
