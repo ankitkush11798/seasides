@@ -224,15 +224,23 @@ export default function AboutTheConference() {
         </div>
 
         {/* Right Section - Interactive Highlights */}
-        {/*
+
         <div className="flex flex-col items-center">
           <h3 className="text-2xl font-bold mb-4 text-gray-800">HIGHLIGHTS</h3>
-          <div className="w-full aspect-video bg-gray-300 rounded-2xl shadow-md flex items-center justify-center text-gray-600 text-lg font-medium">
-            Video Placeholder
+          <div className="w-full aspect-video rounded-2xl shadow-lg overflow-hidden bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Seasides Conference Highlights"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full"
+              loading="lazy"
+            />
           </div>
         </div>
-        */}
-        <InteractiveHighlights />
+
+        {/* <InteractiveHighlights /> */}
       </div>
     </section>
   );
