@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 const LoadingScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [progress, setProgress] = useState(0);
   const { isDark } = useTheme();
 
   // Check if device is mobile/low-power
@@ -13,33 +15,111 @@ const LoadingScreen = () => {
     (window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
   useEffect(() => {
-    // Shorter loading time on mobile to reduce impact
-    const timeout = isMobile ? 2000 : 4000;
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, timeout);
-    return () => clearTimeout(timer);
+    // Prevent scrolling when loader is visible
+    if (isVisible) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.documentElement.style.overflow = '';
+    }
+
+    // Progress animation
+    const progressInterval = setInterval(
+      () => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            return 100;
+          }
+          return prev + 1;
+        });
+      },
+      isMobile ? 20 : 35
+    );
+
+    // Start exit animation before hiding
+    const exitTimeout = setTimeout(
+      () => {
+        setIsAnimatingOut(true);
+      },
+      isMobile ? 1800 : 3500
+    );
+
+    // Hide loader after exit animation
+    const hideTimeout = setTimeout(
+      () => {
+        setIsVisible(false);
+      },
+      isMobile ? 2200 : 4000
+    );
+
+    return () => {
+      clearTimeout(exitTimeout);
+      clearTimeout(hideTimeout);
+      clearInterval(progressInterval);
+      // Clean up styles when component unmounts
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.documentElement.style.overflow = '';
+    };
   }, [isMobile]);
 
   if (!isVisible) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden transition-all duration-1000 ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center transition-all duration-1000 ${
+        isAnimatingOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+      } ${
         isDark
-          ? 'bg-gradient-to-b from-[#0d1b2a] via-[#1b263b] to-[#415a77]'
-          : 'bg-gradient-to-b from-[#87ceeb] via-[#b0e0e6] to-[#f0f8ff]'
+          ? 'bg-gradient-to-br from-[#0d1b2a] via-[#1b263b] to-[#415a77]'
+          : 'bg-gradient-to-br from-[#87ceeb] via-[#b0e0e6] to-[#f0f8ff]'
       }`}
+      style={{
+        overflow: 'hidden',
+        overscrollBehavior: 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100vh',
+        backdropFilter: 'blur(0px)',
+        WebkitBackdropFilter: 'blur(0px)'
+      }}
     >
-      {/* Sun/Moon */}
-      <div
-        className={`absolute w-32 h-32 rounded-full blur-sm transition-all duration-1000 ${
-          isDark
-            ? 'top-20 right-20 bg-gradient-to-br from-yellow-200 to-orange-300 shadow-[0_0_100px_rgba(255,215,0,0.6)]'
-            : 'top-16 right-16 bg-gradient-to-br from-yellow-300 to-orange-400 shadow-[0_0_120px_rgba(255,165,0,0.8)]'
-        }`}
-        style={{ animation: 'sunPulse 4s ease-in-out infinite' }}
-      />
+      {/* Enhanced Sun/Moon with rays */}
+      <div className="absolute top-16 right-16 md:top-20 md:right-20">
+        <div
+          className={`w-32 h-32 rounded-full blur-sm transition-all duration-1000 ${
+            isDark
+              ? 'bg-gradient-to-br from-yellow-200 to-orange-300 shadow-[0_0_100px_rgba(255,215,0,0.6)]'
+              : 'bg-gradient-to-br from-yellow-300 to-orange-400 shadow-[0_0_120px_rgba(255,165,0,0.8)]'
+          }`}
+          style={{ animation: 'sunPulse 4s ease-in-out infinite' }}
+        />
+        {/* Sun rays */}
+        {!isMobile && (
+          <div className="absolute inset-0 animate-spin" style={{ animation: 'sunRotate 20s linear infinite' }}>
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className={`absolute w-1 h-8 ${isDark ? 'bg-yellow-200' : 'bg-yellow-300'} opacity-40 rounded-full`}
+                style={{
+                  top: '-20px',
+                  left: '50%',
+                  transformOrigin: '50% 84px',
+                  transform: `translateX(-50%) rotate(${i * 45}deg)`
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Floating clouds - simplified on mobile */}
       {!isMobile && (
@@ -99,9 +179,9 @@ const LoadingScreen = () => {
         </div>
       )}
 
-      {/* Center logo */}
-      <div className="flex items-center justify-center pointer-events-none z-10">
-        <div className="relative">
+      {/* Center logo with enhanced animations */}
+      <div className="flex flex-col items-center justify-center pointer-events-none z-10">
+        <div className="relative mb-8">
           <Image
             src={isDark ? '/light-logo.png' : '/dark-logo.png'}
             alt="Seasides"
@@ -110,22 +190,54 @@ const LoadingScreen = () => {
             priority
             sizes={isMobile ? '280px' : '400px'}
             quality={isMobile ? 60 : 75}
-            className="object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+            className="object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500"
             style={{
-              animation: isMobile ? 'none' : 'gentleBob 4s ease-in-out infinite',
+              animation: isMobile ? 'logoFadeIn 1s ease-out' : 'gentleBob 4s ease-in-out infinite',
               maxWidth: '90vw',
-              height: 'auto'
+              height: 'auto',
+              filter: isAnimatingOut ? 'blur(4px)' : 'blur(0px)'
             }}
           />
 
-          {/* Loading spinner */}
-          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+          {/* Glow effect behind logo */}
+          <div
+            className={`absolute inset-0 rounded-lg blur-xl opacity-30 ${isDark ? 'bg-blue-400' : 'bg-orange-400'}`}
+            style={{ animation: 'logoGlow 3s ease-in-out infinite alternate' }}
+          />
+        </div>
+
+        {/* Enhanced loading section */}
+        <div className="flex flex-col items-center space-y-4">
+          {/* Progress bar */}
+          <div className="w-64 h-1.5 bg-gray-300/30 rounded-full overflow-hidden backdrop-blur-sm">
             <div
-              className={`w-8 h-8 border-2 border-t-transparent rounded-full animate-spin ${
-                isDark ? 'border-white' : 'border-gray-800'
+              className={`h-full bg-gradient-to-r transition-all duration-300 ${
+                isDark ? 'from-blue-400 via-cyan-400 to-blue-500' : 'from-orange-400 via-yellow-400 to-orange-500'
               }`}
-            ></div>
+              style={{
+                width: `${progress}%`,
+                boxShadow: isDark ? '0 0 10px rgba(59, 130, 246, 0.5)' : '0 0 10px rgba(251, 146, 60, 0.5)'
+              }}
+            />
           </div>
+
+          {/* Loading text with typewriter effect */}
+          <div className="flex items-center space-x-3">
+            <div
+              className={`w-6 h-6 border-2 border-t-transparent rounded-full animate-spin ${
+                isDark ? 'border-blue-400' : 'border-orange-500'
+              }`}
+            />
+            <span
+              className={`text-lg font-medium tracking-wide ${isDark ? 'text-gray-200' : 'text-gray-700'}`}
+              style={{ animation: 'textPulse 2s ease-in-out infinite' }}
+            >
+              Loading Seasides...
+            </span>
+          </div>
+
+          {/* Progress percentage */}
+          <div className={`text-sm font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{progress}%</div>
         </div>
       </div>
 
@@ -339,20 +451,20 @@ const LoadingScreen = () => {
           }
         }
 
-        /* Original animations */
+        /* Enhanced animations */
         @keyframes gentleBob {
           0%,
           100% {
-            transform: translateY(0) rotate(0deg);
+            transform: translateY(0) rotate(0deg) scale(1);
           }
           25% {
-            transform: translateY(-8px) rotate(1deg);
+            transform: translateY(-8px) rotate(1deg) scale(1.02);
           }
           50% {
-            transform: translateY(-4px) rotate(0deg);
+            transform: translateY(-4px) rotate(0deg) scale(1.01);
           }
           75% {
-            transform: translateY(-8px) rotate(-1deg);
+            transform: translateY(-8px) rotate(-1deg) scale(1.02);
           }
         }
         @keyframes sunPulse {
@@ -362,8 +474,45 @@ const LoadingScreen = () => {
             opacity: 0.8;
           }
           50% {
-            transform: scale(1.1);
+            transform: scale(1.15);
             opacity: 1;
+          }
+        }
+        @keyframes sunRotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes logoGlow {
+          0% {
+            opacity: 0.2;
+            transform: scale(0.95);
+          }
+          100% {
+            opacity: 0.4;
+            transform: scale(1.05);
+          }
+        }
+        @keyframes logoFadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+        @keyframes textPulse {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.7;
           }
         }
         @keyframes floatSlow {
