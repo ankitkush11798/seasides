@@ -392,9 +392,7 @@ const About = () => {
 
         {/* Quick Links Section */}
         <div className="mb-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-            Quick Links
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gradient-fallback">Quick Links</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/faq"
@@ -411,9 +409,7 @@ const About = () => {
         </div>
 
         {/* Team Section */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600">
-          Meet the Team
-        </h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient-fallback">Meet the Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, idx) => (
             <div
@@ -429,9 +425,7 @@ const About = () => {
               <div className="w-32 h-32 relative mb-4">
                 <Image src={`/${member.image}`} alt={member.name} fill className="rounded-full object-cover" />
               </div>
-              <h3 className="text-xl font-bold text-gradient bg-gradient-to-r from-blue-600 to-purple-600">
-                {member.name}
-              </h3>
+              <h3 className="text-xl font-bold text-gradient-fallback">{member.name}</h3>
               <p className={`text-sm font-medium mt-1 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{member.role}</p>
               {member.quote && (
                 <p className={`mt-3 text-sm italic font-medium ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>
@@ -508,9 +502,7 @@ const About = () => {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-3xl font-bold text-gradient bg-gradient-to-r from-blue-600 to-purple-600">
-                  {selectedMember.name}
-                </h3>
+                <h3 className="text-3xl font-bold text-gradient-fallback">{selectedMember.name}</h3>
                 {selectedMember.nickname && (
                   <p className={`text-base mt-1 italic font-medium ${isDark ? 'text-blue-300' : 'text-blue-600'}`}>
                     "{selectedMember.nickname}"
