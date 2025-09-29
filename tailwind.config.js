@@ -21,7 +21,18 @@ const config = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-gradient': {
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent'
+        }
+      };
+      addUtilities(newUtilities);
+    }
+  ]
 };
 
 export default config;
