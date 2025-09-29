@@ -21,6 +21,7 @@ const LoadingScreen = () => {
       document.body.style.height = '100vh';
       document.documentElement.style.overflow = 'hidden';
     } else {
+      // Clear styles immediately when not visible
       document.body.style.overflow = '';
       document.body.style.height = '';
       document.documentElement.style.overflow = '';
@@ -52,6 +53,10 @@ const LoadingScreen = () => {
     const hideTimeout = setTimeout(
       () => {
         setIsVisible(false);
+        // Force clear styles when hiding
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        document.documentElement.style.overflow = '';
       },
       isMobile ? 2200 : 4000
     );
@@ -60,12 +65,36 @@ const LoadingScreen = () => {
       clearTimeout(exitTimeout);
       clearTimeout(hideTimeout);
       clearInterval(progressInterval);
-      // Clean up styles when component unmounts
+      // Clean up styles when component unmounts - force clear
       document.body.style.overflow = '';
       document.body.style.height = '';
       document.documentElement.style.overflow = '';
     };
-  }, [isMobile]);
+  }, [isMobile, isVisible]);
+
+  // Additional cleanup effect that runs when component unmounts
+  useEffect(() => {
+    return () => {
+      // Final cleanup - ensure scrolling is always restored
+      document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.position = '';
+    };
+  }, []);
+
+  // Additional effect to force cleanup when isVisible becomes false
+  useEffect(() => {
+    if (!isVisible) {
+      // Force restore scrolling immediately
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.position = '';
+      }, 100);
+    }
+  }, [isVisible]);
 
   if (!isVisible) return null;
 

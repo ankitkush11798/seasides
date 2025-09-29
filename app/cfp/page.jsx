@@ -26,13 +26,13 @@ const CFP = () => {
   ];
 
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <Navbar />
 
       {/* Hero / Title Section */}
-      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite]" />
-        <div className="absolute inset-0 bg-black/20" />
+      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden min-h-screen w-full">
+        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite] w-full" />
+        <div className="absolute inset-0 bg-black/20 w-full" />
 
         <div className="relative z-10 max-w-4xl px-6">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl shadow-black/50">
@@ -47,8 +47,10 @@ const CFP = () => {
       </section>
 
       {/* Topics Section */}
-      <section className={`${isDark ? 'bg-slate-900 text-white' : 'bg-white text-charcoal-gray'} py-16`}>
-        <div className="max-w-5xl mx-auto px-6">
+      <section
+        className={`${isDark ? 'bg-slate-900 text-white' : 'bg-white text-charcoal-gray'} py-16 w-full overflow-x-hidden`}
+      >
+        <div className="max-w-5xl mx-auto px-6 w-full">
           <h2 className="text-3xl font-bold text-center text-orange-500 mb-6">Expected Topics</h2>
           <p className="text-center mb-8 text-lg md:text-xl">
             We are expecting conference and workshop submissions on the following topics, but not limited to:
@@ -73,7 +75,7 @@ const CFP = () => {
       </section>
 
       {/* Submission Guidelines Section */}
-      <section className="py-16 px-6 max-w-5xl mx-auto">
+      <section className="py-16 px-6 max-w-5xl mx-auto w-full overflow-x-hidden">
         <div
           className={`p-8 rounded-3xl shadow-lg ${
             isDark ? 'bg-slate-700/80 border border-slate-600' : 'bg-white/90 border border-white/30'
@@ -113,10 +115,13 @@ const CFP = () => {
           }
         }
         .animate-[gradientMove_15s_ease-in-out_infinite] {
-          background-size: 300% 300%;
+          background-size: 200% 200%;
+          width: 100%;
+          max-width: 100vw;
+          overflow: hidden;
         }
       `}</style>
-    </>
+    </div>
   );
 };
 
