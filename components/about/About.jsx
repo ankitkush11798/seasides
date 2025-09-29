@@ -221,6 +221,15 @@ const About = () => {
       }
     },
     {
+      name: 'Vedant Jain',
+      image: 'team-photos/Vedant_Jain.jpeg',
+      role: 'Core Team Member',
+      socialMedia: {
+        twitter: 'https://x.com/Vedant__Jain',
+        linkedin: 'https://www.linkedin.com/in/ved-ant-jain'
+      }
+    },
+    {
       name: 'Shivam Goyal',
       image: 'team-photos/Shivam_Goyal.jpeg',
       role: 'Core Team Member',
@@ -245,15 +254,6 @@ const About = () => {
       socialMedia: {
         twitter: 'https://twitter.com/harekrishna_rai',
         linkedin: 'https://linkedin.com/in/harekrishnarai'
-      }
-    },
-    {
-      name: 'Vedant Jain',
-      image: 'team-photos/Vedant_Jain.jpeg',
-      role: 'Core Team Member',
-      socialMedia: {
-        twitter: 'https://x.com/Vedant__Jain',
-        linkedin: 'https://www.linkedin.com/in/ved-ant-jain'
       }
     },
     {
