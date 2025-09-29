@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://seasides2026.com'),
+  metadataBase: new URL('https://www.seasides.net'),
   title: {
     default: "Seasides - India's Most Loved FREE Cybersecurity Conference",
     template: '%s | Seasides'
@@ -46,7 +46,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://seasides2026.com',
+    url: 'https://www.seasides.net',
     title: "Seasides - India's Most Loved FREE Cybersecurity Conference",
     description:
       "Join India's premier FREE cybersecurity conference. 3 days of learning, workshops, networking & community at International Centre Goa. Feb 19-21, 2026.",
@@ -92,7 +92,7 @@ export const metadata = {
 
   // Additional metadata
   alternates: {
-    canonical: 'https://seasides2026.com'
+    canonical: 'https://www.seasides.net'
   },
 
   robots: {

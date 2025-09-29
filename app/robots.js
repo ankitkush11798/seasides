@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/private/', '/admin/', '/_next/']
     },
-    sitemap: 'https://seasides2026.com/sitemap.xml'
+    sitemap: 'https://www.seasides.net/sitemap.xml'
   };
 }

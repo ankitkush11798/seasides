@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://seasides2026.com';
+  const baseUrl = 'https://www.seasides.net';
   const currentDate = new Date().toISOString();
 
   return [
