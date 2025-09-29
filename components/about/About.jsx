@@ -429,7 +429,7 @@ const About = () => {
               <div className="w-32 h-32 relative mb-4">
                 <Image src={`/${member.image}`} alt={member.name} fill className="rounded-full object-cover" />
               </div>
-              <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <h3 className="text-xl font-bold text-gradient bg-gradient-to-r from-blue-600 to-purple-600">
                 {member.name}
               </h3>
               <p className={`text-sm font-medium mt-1 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{member.role}</p>
@@ -508,7 +508,7 @@ const About = () => {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <h3 className="text-3xl font-bold text-gradient bg-gradient-to-r from-blue-600 to-purple-600">
                   {selectedMember.name}
                 </h3>
                 {selectedMember.nickname && (
