@@ -25,9 +25,25 @@ const config = {
     function ({ addUtilities }) {
       const newUtilities = {
         '.text-gradient': {
+          background: 'linear-gradient(to right, #2563eb, #9333ea)',
           'background-clip': 'text',
           '-webkit-background-clip': 'text',
-          'color': 'transparent'
+          '-webkit-text-fill-color': 'transparent',
+          color: 'transparent'
+        },
+        '.text-gradient-fallback': {
+          background: 'linear-gradient(to right, #2563eb, #9333ea)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          color: 'transparent'
+        },
+        '@supports not (background-clip: text)': {
+          '.text-gradient-fallback': {
+            background: 'none !important',
+            color: '#2563eb !important',
+            '-webkit-text-fill-color': 'unset !important'
+          }
         }
       };
       addUtilities(newUtilities);
