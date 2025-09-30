@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook, FaYoutube, FaSquareXTwitter } from 'react-icons/fa';
+import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react';
+import { SiX } from 'react-icons/si'; // New X logo
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
 
@@ -9,11 +10,11 @@ const Footer = () => {
   const { isDark } = useTheme();
 
   const socialIcons = [
-    { Icon: FaLinkedin, href: 'https://www.linkedin.com/company/seasides/' },
-    { Icon: FaSquareXTwitter, href: 'https://x.com/seasides_conf/' },
-    { Icon: FaInstagram, href: 'https://www.instagram.com/seasides_conf/' },
-    { Icon: FaFacebook, href: 'https://www.facebook.com/seasidesconference' },
-    { Icon: FaYoutube, href: 'https://www.youtube.com/@seasidesgoa' }
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/seasides/' },
+    { Icon: SiX, href: 'https://x.com/seasides_conf/' }, // X logo
+    { Icon: Instagram, href: 'https://www.instagram.com/seasides_conf/' },
+    { Icon: Facebook, href: 'https://www.facebook.com/seasidesconference' },
+    { Icon: Youtube, href: 'https://www.youtube.com/@seasidesgoa' }
   ];
 
   return (

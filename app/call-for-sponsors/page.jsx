@@ -2,7 +2,8 @@
 import { useTheme } from '@/contexts/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { Linkedin, X, Instagram, Facebook } from 'lucide-react';
+import { Linkedin, Instagram, Facebook } from 'lucide-react';
+import { SiX } from 'react-icons/si'; // New X logo
 
 const Sponsors = () => {
   const { isDark } = useTheme();
@@ -108,7 +109,7 @@ const Sponsors = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: <Linkedin className="w-8 h-8 text-blue-600" />, label: '12K+' },
-              { icon: <X className="w-8 h-8 text-gray-800" />, label: '4.8K+' },
+              { icon: <SiX className="w-8 h-8 text-gray-800" />, label: '4.8K+' }, // Updated X logo
               { icon: <Instagram className="w-8 h-8 text-pink-500" />, label: '2.8K+' },
               { icon: <Facebook className="w-8 h-8 text-blue-800" />, label: '1200+' }
             ].map((item, idx) => (

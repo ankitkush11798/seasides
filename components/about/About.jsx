@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, X, HelpCircle } from 'lucide-react';
+import { Linkedin, HelpCircle } from 'lucide-react';
+import { SiX } from 'react-icons/si';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
@@ -445,7 +446,7 @@ const About = () => {
                         : 'text-gray-600 hover:text-blue-500 hover:bg-blue-100'
                     }`}
                   >
-                    <X size={22} />
+                    <SiX size={22} />
                   </a>
                 )}
                 {member.socialMedia?.linkedin && (
