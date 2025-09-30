@@ -10,7 +10,7 @@ const Footer = () => {
 
   const socialIcons = [
     { Icon: FaLinkedin, href: 'https://www.linkedin.com/company/seasides/' },
-    { Icon: FaTwitter, href: 'https://x.com/seasides_conf/' },
+    { Icon: FaSquareXTwitter, href: 'https://x.com/seasides_conf/' },
     { Icon: FaInstagram, href: 'https://www.instagram.com/seasides_conf/' },
     { Icon: FaFacebook, href: 'https://www.facebook.com/seasidesconference' },
     { Icon: FaYoutube, href: 'https://www.youtube.com/@seasidesgoa' }
