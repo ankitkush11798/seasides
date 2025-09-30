@@ -17,7 +17,7 @@ const SocialIntegration = () => {
       url: 'https://www.linkedin.com/company/seasides/',
       icon: 'linkedin',
       color: 'from-blue-600 to-blue-700',
-      followers: '5.2K',
+      followers: '12K+',
       action: 'Follow us for updates'
     },
     {
@@ -25,7 +25,7 @@ const SocialIntegration = () => {
       url: 'https://x.com/seasides_conf/',
       icon: 'twitter',
       color: 'from-gray-800 to-black',
-      followers: '3.8K',
+      followers: '4.8K+',
       action: 'Latest conference news'
     },
     {
@@ -33,7 +33,7 @@ const SocialIntegration = () => {
       url: 'https://www.instagram.com/seasides_conf/',
       icon: 'instagram',
       color: 'from-pink-500 to-purple-600',
-      followers: '2.1K',
+      followers: '2.8K+',
       action: 'Behind the scenes'
     },
     {

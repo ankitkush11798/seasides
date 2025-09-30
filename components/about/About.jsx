@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, Twitter, HelpCircle } from 'lucide-react';
+import { Linkedin, X, HelpCircle } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
@@ -30,7 +30,7 @@ const About = () => {
         "He is the Co-Founder of the Seasides Community, known for his passion for helping others and, guilty as charged, for throwing amazing parties. With over 20 years of experience in the security domain, he has mentored countless cybersecurity enthusiasts and is like family to many. The team lovingly calls him the 'Sardaar Khan.'",
       experience: '20+ years',
       socialMedia: {
-        twitter: 'https://twitter.com/goodbestguy',
+        twitter: 'https://x.com/goodbestguy',
         linkedin: 'https://www.linkedin.com/in/prashant-venkatesh-99018999'
       },
       keyTraits: [
@@ -50,7 +50,8 @@ const About = () => {
       expertise: ['Bug Hunting', 'Vulnerability Research', 'Team Leadership', 'Mentorship'],
       platforms: ['Hackerone', 'Bugcrowd'],
       socialMedia: {
-        twitter: 'https://twitter.com/parveen1015'
+        twitter: 'https://x.com/parveen1015',
+        linkedin: 'https://www.linkedin.com/in/parveen1015/'
       },
       keyTraits: [
         'Leadership through genuine care',
@@ -119,7 +120,7 @@ const About = () => {
         'NullCon'
       ],
       socialMedia: {
-        twitter: 'https://twitter.com/0xh3nry',
+        twitter: 'https://x.com/0xh3nry',
         linkedin: 'https://www.linkedin.com/in/kartheeklade/'
       },
       keyTraits: [
@@ -135,7 +136,7 @@ const About = () => {
       image: 'team-photos/Pankaj_Upadhyay.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/lazyhack3r',
+        twitter: 'https://x.com/lazyhack3r',
         linkedin: 'https://www.linkedin.com/in/p4nk4j/'
       }
     },
@@ -144,7 +145,7 @@ const About = () => {
       image: 'team-photos/Arun_Mishra.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/arun_2512',
+        twitter: 'https://x.com/arun_2512',
         linkedin: 'https://www.linkedin.com/in/arun-k-mishra-049836163/'
       }
     },
@@ -153,7 +154,7 @@ const About = () => {
       image: 'team-photos/Honey_Merrin_Sam.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/missaug27',
+        twitter: 'https://x.com/missaug27',
         linkedin: 'https://www.linkedin.com/in/honey-merrin-sam/'
       }
     },
@@ -162,7 +163,7 @@ const About = () => {
       image: 'team-photos/Narendra_Team.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/0ddhawk',
+        twitter: 'https://x.com/0ddhawk',
         linkedin: 'https://www.linkedin.com/in/narendra-k-0981b7104/'
       }
     },
@@ -171,7 +172,7 @@ const About = () => {
       image: 'team-photos/Parag_Dave.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/parag_dave',
+        twitter: 'https://x.com/parag_dave',
         linkedin: 'https://www.linkedin.com/in/daveparag/'
       }
     },
@@ -180,7 +181,7 @@ const About = () => {
       image: 'team-photos/sunita.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/0ddblade',
+        twitter: 'https://x.com/0ddblade',
         linkedin: 'https://www.linkedin.com/in/sunita-sharma-681bbba2/'
       }
     },
@@ -189,7 +190,7 @@ const About = () => {
       image: 'team-photos/ashish.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/AshishHuria',
+        twitter: 'https://x.com/AshishHuria',
         linkedin: 'https://www.linkedin.com/in/ashish-huria-219b49111/'
       }
     },
@@ -198,7 +199,7 @@ const About = () => {
       image: 'team-photos/Devendra_Kumar_Sinha.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/Debuhkzr',
+        twitter: 'https://x.com/Debuhkzr',
         linkedin: 'https://www.linkedin.com/in/devendrakumarsinha/'
       }
     },
@@ -207,7 +208,7 @@ const About = () => {
       image: 'team-photos/Rahul_Kumar.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/aarnav_rahul',
+        twitter: 'https://x.com/aarnav_rahul',
         linkedin: 'https://www.linkedin.com/in/rahul-kumar-/'
       }
     },
@@ -216,7 +217,7 @@ const About = () => {
       image: 'team-photos/Anurag_Mishra.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/mishr_a_nurag',
+        twitter: 'https://x.com/mishr_a_nurag',
         linkedin: 'https://www.linkedin.com/in/anuragmishra06/'
       }
     },
@@ -234,7 +235,7 @@ const About = () => {
       image: 'team-photos/Shivam_Goyal.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/g33kyshivam',
+        twitter: 'https://x.com/g33kyshivam',
         linkedin: 'https://www.linkedin.com/in/g33kyshivam/'
       }
     },
@@ -252,7 +253,7 @@ const About = () => {
       image: 'team-photos/Hare_Krishna_Rai.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/harekrishna_rai',
+        twitter: 'https://x.com/harekrishna_rai',
         linkedin: 'https://linkedin.com/in/harekrishnarai'
       }
     },
@@ -261,7 +262,7 @@ const About = () => {
       image: 'team-photos/Gaurav_Joshi.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/gaurav_joshi38'
+        twitter: 'https://x.com/gaurav_joshi38'
       }
     },
     {
@@ -269,7 +270,7 @@ const About = () => {
       image: 'team-photos/Fazalu_Rahman.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/f4z41u?s=20',
+        twitter: 'https://x.com/f4z41u?s=20',
         linkedin: 'https://www.linkedin.com/in/fazalu-rahman/'
       }
     },
@@ -278,7 +279,7 @@ const About = () => {
       image: 'team-photos/Arif.jpeg',
       role: 'Core Team Member',
       socialMedia: {
-        twitter: 'https://twitter.com/Zero0x00',
+        twitter: 'https://x.com/Zero0x00',
         linkedin: 'https://www.linkedin.com/in/mohd--arif/'
       }
     }
@@ -444,7 +445,7 @@ const About = () => {
                         : 'text-gray-600 hover:text-blue-500 hover:bg-blue-100'
                     }`}
                   >
-                    <Twitter size={22} />
+                    <X size={22} />
                   </a>
                 )}
                 {member.socialMedia?.linkedin && (
