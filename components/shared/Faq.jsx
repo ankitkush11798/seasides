@@ -22,7 +22,7 @@ const Faq = () => {
     {
       question: 'Do I need to register in advance?',
       answer:
-        "Yes, registration is required and will open soon. Follow our social media channels for updates on when registration opens. Spots are limited, so we recommend registering early once it's available."
+        'Although the conference is free and open to everyone, we’ll use this registration form to estimate interest in each session. Please note that seats for specific trainings will be allocated on a first-come, first-served basis.'
     },
     {
       question: 'Who can attend Seasides?',
