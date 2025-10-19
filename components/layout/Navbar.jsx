@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSponsorsOpen, setIsSponsorsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isVillagesOpen, setIsVillagesOpen] = useState(false);
   const { isDark } = useTheme();
 
   return (
@@ -37,7 +38,6 @@ const Navbar = () => {
           <Link href="/cfp" className="hover:text-orange-500 transition-colors">
             CFP
           </Link>
-
           {/* Sponsors Dropdown */}
           <div
             className="relative"
@@ -71,6 +71,54 @@ const Navbar = () => {
               >
                 Call for Sponsors
               </Link>
+            </div>
+          </div>
+
+          {/* Villages Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsVillagesOpen(true)}
+            onMouseLeave={() => setIsVillagesOpen(false)}
+          >
+            <button className="flex items-center gap-1 cursor-pointer focus:outline-none hover:text-orange-500 transition-colors">
+              Villages
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${isVillagesOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {/* Dropdown */}
+            <div
+              className={`absolute top-full left-0 mt-2 w-56 border rounded-lg shadow-lg overflow-hidden transition-all duration-200
+                ${isVillagesOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'}
+                ${isDark ? 'bg-charcoal-gray border-gray-600' : 'bg-white border-gray-200'}
+              `}
+            >
+              <a
+                href="https://hw101.me"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block px-4 py-2 transition-colors ${
+                  isDark ? 'text-gray-200 hover:bg-gray-700' : 'text-gray-800 hover:bg-orange-50'
+                }`}
+              >
+                Hardware Village
+              </a>
+              <a
+                href="https://village.scagoat.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block px-4 py-2 transition-colors ${
+                  isDark ? 'text-gray-200 hover:bg-gray-700' : 'text-gray-800 hover:bg-orange-50'
+                }`}
+              >
+                SAST SCA Village
+              </a>
             </div>
           </div>
 
@@ -159,6 +207,28 @@ const Navbar = () => {
           >
             CFP
           </Link>
+          <div className={`pt-2 text-sm tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Villages</div>
+          {/* Villages - external links */}
+          <a
+            href="https://hw101.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`px-4 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
+          >
+            Hardware Village
+          </a>
+          <a
+            href="https://village.scagoat.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`px-4 py-1 rounded hover:bg-orange-50 ${
+              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
+            }`}
+          >
+            SAST SCA Village
+          </a>
           <Link
             href="/call-for-sponsors"
             className={`px-2 py-1 rounded hover:bg-orange-50 ${
