@@ -63,7 +63,7 @@ The project is ready for Vercel deployment with:
 - Automated formatting and linting
 - Pre-commit hooks for quality assurance
 
-## Component Organization
+## Component Organization 
 
 - `components/layout/` - Layout components (navbar, footer, etc.)
 - `components/home/` - Home page specific components
