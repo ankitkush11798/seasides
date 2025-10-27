@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { Wrench, Search, Package } from 'lucide-react';
+import { Wrench, Search, Package, Shield } from 'lucide-react';
 
 const Villages = () => {
   const [hoveredVillage, setHoveredVillage] = useState(null);
@@ -43,6 +43,24 @@ const Villages = () => {
       color: 'from-indigo-500 to-purple-600',
       accentColor: 'purple',
       url: 'https://containersecurityvillage.kubernetesvillage.com'
+    },
+    {
+      id: 4,
+      name: 'INFRASEC Village',
+      icon: Shield,
+      emoji: '🛡️',
+      description:
+        'Secure your infrastructure from the ground up. Learn about network security, cloud security, and infrastructure hardening techniques.',
+      topics: [
+        'Network Security',
+        'Cloud Security',
+        'Infrastructure Hardening',
+        'Security Architecture',
+        'Defense in Depth'
+      ],
+      color: 'from-red-500 to-pink-600',
+      accentColor: 'red',
+      url: 'https://infrasec-village.seasides.net/'
     }
   ];
 
