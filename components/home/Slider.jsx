@@ -258,14 +258,23 @@ const RevolutionHero = () => {
                 isLogoLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               } text-center space-y-6 max-w-4xl mx-auto will-change-transform`}
             >
-              <h2 className="text-xl md:text-2xl font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
+              <h2
+                className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+              >
                 {slides[currentSlide].subtitle}
               </h2>
-              <h3 className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 mt-2">
+              <h3
+                className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-200 transition-colors duration-300 mt-2"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+              >
                 {slides[currentSlide].location}
               </h3>
 
-              <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 transition-colors duration-300">
+              <p
+                className="text-lg md:text-xl font-medium text-gray-900 dark:text-gray-200 transition-colors duration-300"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+              >
                 {slides[currentSlide].description}
               </p>
 

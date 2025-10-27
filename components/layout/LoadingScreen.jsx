@@ -227,12 +227,6 @@ const LoadingScreen = () => {
               filter: isAnimatingOut ? 'blur(4px)' : 'blur(0px)'
             }}
           />
-
-          {/* Glow effect behind logo */}
-          <div
-            className={`absolute inset-0 rounded-lg blur-xl opacity-30 ${isDark ? 'bg-blue-400' : 'bg-orange-400'}`}
-            style={{ animation: 'logoGlow 3s ease-in-out infinite alternate' }}
-          />
         </div>
 
         {/* Enhanced loading section */}
@@ -249,24 +243,6 @@ const LoadingScreen = () => {
               }}
             />
           </div>
-
-          {/* Loading text with typewriter effect */}
-          <div className="flex items-center space-x-3">
-            <div
-              className={`w-6 h-6 border-2 border-t-transparent rounded-full animate-spin ${
-                isDark ? 'border-blue-400' : 'border-orange-500'
-              }`}
-            />
-            <span
-              className={`text-lg font-medium tracking-wide ${isDark ? 'text-gray-200' : 'text-gray-700'}`}
-              style={{ animation: 'textPulse 2s ease-in-out infinite' }}
-            >
-              Loading Seasides...
-            </span>
-          </div>
-
-          {/* Progress percentage */}
-          <div className={`text-sm font-mono ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{progress}%</div>
         </div>
       </div>
 

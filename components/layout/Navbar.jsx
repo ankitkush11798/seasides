@@ -58,55 +58,60 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full left-0 mt-3 w-64 rounded-xl shadow-2xl overflow-hidden transition-all duration-300 z-50 backdrop-blur-sm
+              className={`absolute top-full left-0 pt-3 w-64 transition-all duration-300 z-50
                 ${isSponsorsOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible pointer-events-none'}
-                ${isDark ? 'bg-slate-800/95 border-2 border-slate-600/50' : 'bg-white/95 border-2 border-orange-100'}
               `}
             >
               <div
-                className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider ${
-                  isDark ? 'text-gray-400 bg-slate-900/50' : 'text-gray-500 bg-orange-50/50'
-                }`}
-              >
-                Sponsorship
-              </div>
-              <Link
-                href="/call-for-sponsors"
-                className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-orange-500'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 border-transparent hover:border-orange-500'
-                }`}
+                className={`rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm ${isDark ? 'bg-slate-800/95 border-2 border-slate-600/50' : 'bg-white/95 border-2 border-orange-100'}`}
               >
                 <div
-                  className={`p-2 rounded-lg transition-all duration-200 ${
-                    isDark ? 'bg-slate-700 group-hover:bg-orange-500/20' : 'bg-orange-100 group-hover:bg-orange-200'
+                  className={`px-3 py-2 text-xs font-semibold uppercase tracking-wider ${
+                    isDark ? 'text-gray-400 bg-slate-900/50' : 'text-gray-500 bg-orange-50/50'
                   }`}
                 >
-                  <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
+                  Sponsorship
+                </div>
+                <Link
+                  href="/call-for-sponsors"
+                  className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-orange-500'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-orange-50 hover:to-orange-100 border-transparent hover:border-orange-500'
+                  }`}
+                >
+                  <div
+                    className={`p-2 rounded-lg transition-all duration-200 ${
+                      isDark ? 'bg-slate-700 group-hover:bg-orange-500/20' : 'bg-orange-100 group-hover:bg-orange-200'
+                    }`}
+                  >
+                    <svg className="w-4 h-4 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-sm">Call for Sponsors</div>
+                    <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Partner with us
+                    </div>
+                  </div>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 ${
+                      isDark ? 'text-gray-400' : 'text-gray-400'
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </div>
-                <div className="flex-1">
-                  <div className="font-semibold text-sm">Call for Sponsors</div>
-                  <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Partner with us</div>
-                </div>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 ${
-                    isDark ? 'text-gray-400' : 'text-gray-400'
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -130,144 +135,147 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full right-0 mt-2 w-72 rounded-xl shadow-2xl overflow-hidden transition-all duration-200 pointer-events-auto
-                ${isVillagesOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
-                ${isDark ? 'bg-charcoal-gray/95 backdrop-blur-sm border border-gray-700' : 'bg-white/95 backdrop-blur-sm border border-gray-200'}
+              className={`absolute top-full right-0 pt-2 w-72 transition-all duration-200
+                ${isVillagesOpen ? 'opacity-100 translate-y-0 visible pointer-events-auto' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
               `}
             >
-              <div className={`px-4 py-2 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-                <p
-                  className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+              <div
+                className={`rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm ${isDark ? 'bg-charcoal-gray/95 border border-gray-700' : 'bg-white/95 border border-gray-200'}`}
+              >
+                <div className={`px-4 py-2 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+                  >
+                    Security Villages
+                  </p>
+                </div>
+                <a
+                  href="https://hw101.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-green-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50'
+                  }`}
                 >
-                  Security Villages
-                </p>
+                  <div className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">Hardware Village</p>
+                      <svg
+                        className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Hands-on hardware hacking
+                    </p>
+                  </div>
+                </a>
+                <a
+                  href="https://village.scagoat.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-50'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">SAST SCA Village</p>
+                      <svg
+                        className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Static code analysis & SCA
+                    </p>
+                  </div>
+                </a>
+                <a
+                  href="https://containersecurityvillage.kubernetesvillage.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-indigo-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-violet-50'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">Container Security</p>
+                      <svg
+                        className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Kubernetes & container security
+                    </p>
+                  </div>
+                </a>
               </div>
-              <a
-                href="https://hw101.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-green-500 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50'
-                }`}
-              >
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium">Hardware Village</p>
-                    <svg
-                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </div>
-                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Hands-on hardware hacking
-                  </p>
-                </div>
-              </a>
-              <a
-                href="https://village.scagoat.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-50'
-                }`}
-              >
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium">SAST SCA Village</p>
-                    <svg
-                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </div>
-                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Static code analysis & SCA
-                  </p>
-                </div>
-              </a>
-              <a
-                href="https://containersecurityvillage.kubernetesvillage.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-indigo-500 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-violet-50'
-                }`}
-              >
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium">Container Security</p>
-                    <svg
-                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </div>
-                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Kubernetes & container security
-                  </p>
-                </div>
-              </a>
             </div>
           </div>
 
@@ -291,86 +299,89 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full right-0 mt-2 w-64 rounded-xl shadow-2xl overflow-hidden transition-all duration-200 pointer-events-auto
-                ${isAboutOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
-                ${isDark ? 'bg-charcoal-gray/95 backdrop-blur-sm border border-gray-700' : 'bg-white/95 backdrop-blur-sm border border-gray-200'}
+              className={`absolute top-full right-0 pt-2 w-64 transition-all duration-200
+                ${isAboutOpen ? 'opacity-100 translate-y-0 visible pointer-events-auto' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
               `}
             >
-              <div className={`px-4 py-2 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-                <p
-                  className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
-                >
-                  Information
-                </p>
-              </div>
-              <Link
-                href="/about"
-                className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-blue-500 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50'
-                }`}
+              <div
+                className={`rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm ${isDark ? 'bg-charcoal-gray/95 border border-gray-700' : 'bg-white/95 border border-gray-200'}`}
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium">About Us</p>
-                    <svg
-                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    Learn about the event
+                <div className={`px-4 py-2 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}
+                  >
+                    Information
                   </p>
                 </div>
-              </Link>
-              <Link
-                href="/faq"
-                className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-purple-500 ${
-                  isDark
-                    ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
-                    : 'text-gray-800 hover:bg-gradient-to-r hover:from-purple-50 hover:to-violet-50'
-                }`}
-              >
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between">
-                    <p className="font-medium">FAQ</p>
-                    <svg
-                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <Link
+                  href="/about"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-blue-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
-                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Common questions</p>
-                </div>
-              </Link>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">About Us</p>
+                      <svg
+                        className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Learn about the event
+                    </p>
+                  </div>
+                </Link>
+                <Link
+                  href="/faq"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-purple-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-purple-50 hover:to-violet-50'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">FAQ</p>
+                      <svg
+                        className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Common questions</p>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -395,72 +406,226 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className={`md:hidden px-6 pb-4 flex flex-col space-y-2 font-medium ${
-            isDark ? 'bg-modern-sleek' : 'bg-white/95'
+          className={`md:hidden px-4 pb-6 pt-4 border-t transition-all duration-300 ${
+            isDark ? 'bg-modern-sleek border-gray-700' : 'bg-white/95 border-gray-200'
           }`}
         >
-          <Link
-            href="/"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            href="/cfp"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            CFP
-          </Link>
-          <div className={`pt-2 text-sm tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Villages</div>
-          {/* Villages - external links */}
-          <a
-            href="https://hw101.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`px-4 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            Hardware Village
-          </a>
-          <a
-            href="https://village.scagoat.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`px-4 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            SAST SCA Village
-          </a>
-          <Link
-            href="/call-for-sponsors"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            Call for Sponsors
-          </Link>
-          <Link
-            href="/about"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            About Us
-          </Link>
-          <Link
-            href="/faq"
-            className={`px-2 py-1 rounded hover:bg-orange-50 ${
-              isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800'
-            }`}
-          >
-            FAQ
-          </Link>
+          <div className="space-y-1">
+            {/* Main Links */}
+            <Link
+              href="/"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              <span className="font-medium">Home</span>
+            </Link>
+
+            <Link
+              href="/cfp"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              <span className="font-medium">Call for Papers</span>
+            </Link>
+
+            {/* Villages Section */}
+            <div className={`pt-4 pb-2 px-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <div className="flex items-center text-xs font-semibold uppercase tracking-wider">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+                Security Villages
+              </div>
+            </div>
+
+            <a
+              href="https://hw101.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-green-50'
+              }`}
+            >
+              <div className="flex items-center">
+                <div
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
+                    isDark ? 'bg-gray-700 group-hover:bg-green-500/20' : 'bg-green-100 group-hover:bg-green-200'
+                  }`}
+                >
+                  <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                    />
+                  </svg>
+                </div>
+                <span className="font-medium text-sm">Hardware Village</span>
+              </div>
+              <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://village.scagoat.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-cyan-50'
+              }`}
+            >
+              <div className="flex items-center">
+                <div
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
+                    isDark ? 'bg-gray-700 group-hover:bg-cyan-500/20' : 'bg-cyan-100 group-hover:bg-cyan-200'
+                  }`}
+                >
+                  <svg className="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    />
+                  </svg>
+                </div>
+                <span className="font-medium text-sm">SAST SCA Village</span>
+              </div>
+              <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://containersecurityvillage.kubernetesvillage.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-indigo-50'
+              }`}
+            >
+              <div className="flex items-center">
+                <div
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${
+                    isDark ? 'bg-gray-700 group-hover:bg-indigo-500/20' : 'bg-indigo-100 group-hover:bg-indigo-200'
+                  }`}
+                >
+                  <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                    />
+                  </svg>
+                </div>
+                <span className="font-medium text-sm">Container Security</span>
+              </div>
+              <svg className="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+
+            {/* Divider */}
+            <div className={`my-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`} />
+
+            {/* Other Links */}
+            <Link
+              href="/call-for-sponsors"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="font-medium">Call for Sponsors</span>
+            </Link>
+
+            <Link
+              href="/about"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="font-medium">About Us</span>
+            </Link>
+
+            <Link
+              href="/faq"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <svg className="w-5 h-5 mr-3 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="font-medium">FAQ</span>
+            </Link>
+          </div>
         </div>
       )}
     </nav>

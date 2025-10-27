@@ -1,7 +1,7 @@
 'use client';
 
 import { Map, Users, CalendarDays, Globe } from 'lucide-react';
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef, useLayoutEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,14 +12,43 @@ export default function ConferenceGlance() {
   const lettersRef = useRef([]);
   const subheadingRef = useRef(null);
   const statsRef = useRef(null);
+  const [hoveredStat, setHoveredStat] = useState(null);
 
   const headingText = 'Conference at a Glance';
 
   const stats = [
-    { icon: Map, label: 'Villages', value: '8+' },
-    { icon: Globe, label: 'Trainings', value: '10+' },
-    { icon: CalendarDays, label: 'Days of Learning', value: '3' },
-    { icon: Users, label: 'Expected Attendees', value: '1000+' }
+    {
+      icon: Map,
+      label: 'Villages',
+      value: '8+',
+      color: 'from-green-500 to-emerald-600',
+      bgColor: 'bg-green-50',
+      iconColor: 'text-green-600'
+    },
+    {
+      icon: Globe,
+      label: 'Trainings',
+      value: '10+',
+      color: 'from-blue-500 to-cyan-600',
+      bgColor: 'bg-blue-50',
+      iconColor: 'text-blue-600'
+    },
+    {
+      icon: CalendarDays,
+      label: 'Days of Learning',
+      value: '3',
+      color: 'from-purple-500 to-indigo-600',
+      bgColor: 'bg-purple-50',
+      iconColor: 'text-purple-600'
+    },
+    {
+      icon: Users,
+      label: 'Expected Attendees',
+      value: '1000+',
+      color: 'from-orange-500 to-red-600',
+      bgColor: 'bg-orange-50',
+      iconColor: 'text-orange-600'
+    }
   ];
 
   useLayoutEffect(() => {
@@ -91,49 +120,124 @@ export default function ConferenceGlance() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen py-24 flex flex-col justify-center items-center text-center overflow-hidden z-30"
-      style={{ willChange: 'background-color, transform' }}
+      className="relative min-h-screen py-24 flex flex-col justify-center items-center text-center overflow-hidden z-30 bg-gradient-to-br from-white via-orange-50 to-white"
+      style={{ willChange: 'transform' }}
     >
-      <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-6">
-        {headingText.split('').map((letter, index) => (
-          <span
-            key={index}
-            ref={el => {
-              lettersRef.current[index] = el;
-            }}
-            className="inline-block"
-          >
-            {letter === ' ' ? '\u00A0' : letter}
-          </span>
-        ))}
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-200 rounded-full opacity-20 blur-3xl animate-pulse" />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200 rounded-full opacity-20 blur-3xl animate-pulse"
+          style={{ animationDelay: '1s' }}
+        />
+        <div
+          className="absolute top-1/2 right-1/3 w-64 h-64 bg-blue-200 rounded-full opacity-15 blur-3xl animate-pulse"
+          style={{ animationDelay: '2s' }}
+        />
       </div>
 
-      <div
-        ref={subheadingRef}
-        className="text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium"
-        style={{
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          color: 'transparent'
-        }}
-      >
-        Where brilliant minds come together to shape the future of cybersecurity
-      </div>
-
-      <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto will-change-transform">
-        {stats.map((s, i) => {
-          const Icon = s.icon;
-          return (
-            <div
-              key={i}
-              className="p-6 rounded-2xl shadow-lg bg-white flex flex-col items-center hover:scale-105 transition-transform"
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-6">
+          {headingText.split('').map((letter, index) => (
+            <span
+              key={index}
+              ref={el => {
+                lettersRef.current[index] = el;
+              }}
+              className="inline-block"
             >
-              <Icon className="w-12 h-12 text-orange-600 mb-3" />
-              <p className="text-3xl font-bold text-gray-900">{s.value}</p>
-              <p className="text-sm text-gray-700 mt-1">{s.label}</p>
-            </div>
-          );
-        })}
+              {letter === ' ' ? '\u00A0' : letter}
+            </span>
+          ))}
+        </div>
+
+        <div
+          ref={subheadingRef}
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-16 font-medium"
+          style={{
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent'
+          }}
+        >
+          Where brilliant minds come together to shape the future of cybersecurity
+        </div>
+
+        <div
+          ref={statsRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto will-change-transform px-4"
+        >
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            const isHovered = hoveredStat === i;
+            return (
+              <div
+                key={i}
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                onMouseEnter={() => setHoveredStat(i)}
+                onMouseLeave={() => setHoveredStat(null)}
+              >
+                {/* Gradient background on hover */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${s.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                />
+
+                {/* Animated border */}
+                <div
+                  className={`absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                  style={{
+                    borderImage: `linear-gradient(135deg, ${s.color.replace('from-', '').replace('to-', ',')}) 1`
+                  }}
+                />
+
+                <div className="relative z-10 flex flex-col items-center">
+                  {/* Icon with background */}
+                  <div
+                    className={`p-4 rounded-2xl mb-4 transition-all duration-300 ${
+                      isHovered ? s.bgColor : 'bg-gray-50'
+                    } group-hover:scale-110 group-hover:rotate-6`}
+                  >
+                    <Icon
+                      className={`w-10 h-10 transition-colors duration-300 ${
+                        isHovered ? s.iconColor : 'text-gray-600'
+                      }`}
+                    />
+                  </div>
+
+                  {/* Value with animation */}
+                  <p
+                    className={`text-4xl md:text-5xl font-bold mb-2 transition-all duration-300 ${
+                      isHovered ? 'text-gray-900 scale-110' : 'text-gray-800'
+                    }`}
+                  >
+                    {s.value}
+                  </p>
+
+                  {/* Label */}
+                  <p
+                    className={`text-sm font-medium transition-colors duration-300 ${
+                      isHovered ? 'text-gray-700' : 'text-gray-600'
+                    }`}
+                  >
+                    {s.label}
+                  </p>
+                </div>
+
+                {/* Decorative corner element */}
+                <div className="absolute top-0 right-0 w-20 h-20 transform translate-x-10 -translate-y-10 opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+                  <div className={`w-full h-full rounded-full bg-gradient-to-br ${s.color} blur-xl`} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA or Info */}
+        <div className="mt-16 text-center">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Join us for an unforgettable experience filled with learning, networking, and innovation
+          </p>
+        </div>
       </div>
     </section>
   );
