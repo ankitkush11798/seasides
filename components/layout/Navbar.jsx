@@ -297,7 +297,7 @@ const Navbar = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <p className="font-medium">INFRASEC Village</p>
+                      <p className="font-medium">Infrasec Village</p>
                       <svg
                         className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
                         fill="none"
@@ -313,7 +313,7 @@ const Navbar = () => {
                       </svg>
                     </div>
                     <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Infrastructure & network security
+                      Infrastructure Security
                     </p>
                   </div>
                 </a>

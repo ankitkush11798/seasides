@@ -46,17 +46,18 @@ const Villages = () => {
     },
     {
       id: 4,
-      name: 'INFRASEC Village',
+      name: 'Infrasec Village',
       icon: Shield,
       emoji: '🛡️',
       description:
-        'Secure your infrastructure from the ground up. Learn about network security, cloud security, and infrastructure hardening techniques.',
+        'A focused village on infrastructure attack and defense. A day of hands-on labs, live demos, and deep dives covering the entire stack—from network and cloud to containers and IaC. We show the real-world exploit, then teach the actionable fix—mastering the evidence-driven practices that build and secure resilient systems.',
       topics: [
-        'Network Security',
-        'Cloud Security',
-        'Infrastructure Hardening',
-        'Security Architecture',
-        'Defense in Depth'
+        'Cloud Attack & Defense',
+        'Hardened Kubernetes',
+        'Zero Trust Networking',
+        'Secure Infrastructure as Code',
+        'Cloud Incident Response',
+        'Resilient CI/CD Pipelines'
       ],
       color: 'from-red-500 to-pink-600',
       accentColor: 'red',
