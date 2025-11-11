@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react';
-import { SiX } from 'react-icons/si'; // New X logo
+import { SiX, SiWhatsapp } from 'react-icons/si'; // X and WhatsApp logos
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
 
@@ -14,7 +14,8 @@ const Footer = () => {
     { Icon: SiX, href: 'https://x.com/seasides_conf/' }, // X logo
     { Icon: Instagram, href: 'https://www.instagram.com/seasides_conf/' },
     { Icon: Facebook, href: 'https://www.facebook.com/seasidesconference' },
-    { Icon: Youtube, href: 'https://www.youtube.com/@seasidesgoa' }
+    { Icon: Youtube, href: 'https://www.youtube.com/@seasidesgoa' },
+    { Icon: SiWhatsapp, href: 'https://whatsapp.com/channel/0029VbBUZWIBqbrHWfSlqz3I' }
   ];
 
   return (

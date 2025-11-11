@@ -97,10 +97,10 @@ const RevolutionHero = () => {
       ) : (
         <section
           ref={heroRef}
-          className="relative min-h-screen w-full overflow-hidden z-10"
+          className="relative w-full overflow-hidden z-10 py-24"
+          style={{ height: '600px' }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          style={{ willChange: 'transform' }}
         >
           {/* Dynamic Beach Background */}
           <div className="absolute inset-0 transition-all duration-700 transform-gpu">
@@ -234,20 +234,20 @@ const RevolutionHero = () => {
           </div>
 
           {/* Main content */}
-          <div className="relative z-20 min-h-screen flex flex-col items-center justify-center px-4">
+          <div className="relative z-20 h-full flex flex-col items-center justify-center px-4">
             {/* Logo */}
-            <div className="w-full max-w-4xl mx-auto mb-8">
+            <div className="w-full max-w-3xl mx-auto mb-6">
               <div className="relative w-full flex justify-center items-center">
                 <Image
                   src="/dark-logo.png"
                   alt="Seasides"
-                  width={600}
-                  height={240}
+                  width={500}
+                  height={200}
                   priority={true}
                   quality={90}
                   onLoad={handleLogoLoad}
                   className="object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 600px"
+                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 500px"
                 />
               </div>
             </div>
@@ -256,30 +256,30 @@ const RevolutionHero = () => {
             <div
               className={`transform transition-all duration-700 ${
                 isLogoLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              } text-center space-y-6 max-w-4xl mx-auto will-change-transform`}
+              } text-center space-y-4 max-w-4xl mx-auto will-change-transform`}
             >
               <h2
-                className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300"
+                className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300"
                 style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
               >
                 {slides[currentSlide].subtitle}
               </h2>
               <h3
-                className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-200 transition-colors duration-300 mt-2"
+                className="text-base md:text-lg font-semibold text-gray-900 dark:text-gray-200 transition-colors duration-300"
                 style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
               >
                 {slides[currentSlide].location}
               </h3>
 
               <p
-                className="text-lg md:text-xl font-medium text-gray-900 dark:text-gray-200 transition-colors duration-300"
+                className="text-base md:text-lg font-medium text-gray-900 dark:text-gray-200 transition-colors duration-300"
                 style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
               >
                 {slides[currentSlide].description}
               </p>
 
               {slides[currentSlide].showCountdown && (
-                <div className="mt-8">
+                <div className="mt-6">
                   <Countdown />
                 </div>
               )}

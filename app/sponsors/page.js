@@ -1,23 +1,34 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { colors, gradients, shadows } from '@/lib/colors';
+import { colors, gradients } from '@/lib/colors';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SponsorsPage = () => {
   const { isDark } = useTheme();
-  const [visibleSections, setVisibleSections] = useState(new Set());
+  const [, setVisibleSections] = useState(new Set());
+  const [selectedTier, setSelectedTier] = useState(null);
+  const [hoveredSponsor, setHoveredSponsor] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRefs = useRef([]);
 
-  // Force body background color
   useEffect(() => {
     document.body.style.backgroundColor = isDark ? '#111827' : '#ffffff';
     return () => {
       document.body.style.backgroundColor = '';
     };
   }, [isDark]);
+
+  useEffect(() => {
+    const handleMouseMove = e => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,338 +51,788 @@ const SponsorsPage = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const getTierIcon = tierName => {
+    const icons = {
+      Diamond: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          />
+        </svg>
+      ),
+      Platinum: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          />
+        </svg>
+      ),
+      Gold: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+          />
+        </svg>
+      ),
+      Silver: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+      Bronze: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+          />
+        </svg>
+      ),
+      'Special Supporter': (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          />
+        </svg>
+      ),
+      'Community Partner': (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+      )
+    };
+    return icons[tierName] || icons.Gold;
+  };
+
   const sponsorTiers = [
     {
-      title: 'Diamond Partners',
-      description: 'Leading the cybersecurity revolution',
-      sponsors: [
-        { name: 'HackerOne', logo: '/sponsors/hackerone.png', tier: 'diamond' },
-        { name: 'Bugcrowd', logo: '/sponsors/bugcrowd.png', tier: 'diamond' }
-      ],
-      gradient: 'from-cyan-600 to-blue-700',
-      glow: 'shadow-cyan-400/40'
+      tier: 'Diamond',
+      color: 'from-cyan-400 to-blue-400',
+      bgColor: isDark ? 'bg-gradient-to-r from-cyan-900/30 to-blue-900/30' : 'bg-gradient-to-r from-cyan-50 to-blue-50',
+      borderColor: 'border-cyan-400',
+      glowColor: 'rgba(34, 211, 238, 0.5)',
+      accentColor: '#22d3ee',
+      description: 'Premier partnership tier for industry leaders',
+      sponsors: []
     },
     {
-      title: 'Platinum Partners',
-      description: 'Pioneering cybersecurity excellence',
-      sponsors: [
-        { name: 'Checkmarx', logo: '/sponsors/checkmarx.png', tier: 'platinum' },
-        { name: 'DNIF', logo: '/sponsors/dnif.png', tier: 'platinum' },
-        { name: 'ArmorCode', logo: '/sponsors/armorcode.png', tier: 'platinum' },
-        { name: 'XBiz Ventures', logo: '/sponsors/xbiz.png', tier: 'platinum' },
-        { name: 'CloudSek', logo: '/sponsors/cloudsek.png', tier: 'platinum' }
-      ],
-      gradient: 'from-gray-600 to-gray-800',
-      glow: 'shadow-gray-400/30'
+      tier: 'Platinum',
+      color: 'from-gray-300 to-gray-400',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-gray-800/30 to-gray-700/30'
+        : 'bg-gradient-to-r from-gray-100 to-gray-200',
+      borderColor: 'border-gray-400',
+      glowColor: 'rgba(156, 163, 175, 0.5)',
+      accentColor: '#9ca3af',
+      description: 'Elite partners driving cybersecurity innovation',
+      sponsors: []
     },
     {
-      title: 'Goodie Bag Sponsor',
-      description: 'Making the conference memorable',
-      sponsors: [{ name: 'RiskProfiler', logo: '/sponsors/riskprofiler.png', tier: 'goodie' }],
-      gradient: 'from-purple-600 to-indigo-800',
-      glow: 'shadow-purple-400/30'
+      tier: 'Gold',
+      color: 'from-yellow-400 to-yellow-600',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-yellow-900/30 to-yellow-800/30'
+        : 'bg-gradient-to-r from-yellow-50 to-yellow-100',
+      borderColor: 'border-yellow-500',
+      glowColor: 'rgba(234, 179, 8, 0.5)',
+      accentColor: '#eab308',
+      description: 'Key contributors advancing security excellence',
+      sponsors: [
+        {
+          name: 'Levo.ai',
+          logo: '/sponsors-2025/levo.jpg',
+          website: 'https://levo.ai',
+          tagline: 'Enterprise API Security Platform'
+        }
+      ]
     },
     {
-      title: 'Gold Supporters',
-      description: 'Powering innovation in security',
+      tier: 'Silver',
+      color: 'from-gray-400 to-gray-500',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-gray-700/30 to-gray-600/30'
+        : 'bg-gradient-to-r from-gray-50 to-gray-100',
+      borderColor: 'border-gray-500',
+      glowColor: 'rgba(107, 114, 128, 0.5)',
+      accentColor: '#6b7280',
+      description: 'Valued partners strengthening our community',
       sponsors: [
-        { name: 'SecureLayer7', logo: '/sponsors/securelayer7.png', tier: 'gold' },
-        { name: 'Enciphers', logo: '/sponsors/enciphers.png', tier: 'gold' },
-        { name: 'ComplianceCow', logo: '/sponsors/compliancecow.png', tier: 'gold' },
-        { name: 'Network Intelligence', logo: '/sponsors/networkintel.png', tier: 'gold' },
-        { name: 'Altered Security', logo: '/sponsors/altered.png', tier: 'gold' },
-        { name: 'HighRadius', logo: '/sponsors/highradius.png', tier: 'gold' },
-        { name: 'Cobalt', logo: '/sponsors/cobalt.png', tier: 'gold' }
-      ],
-      gradient: 'from-yellow-600 to-amber-700',
-      glow: 'shadow-yellow-400/30'
+        {
+          name: 'SquareX',
+          logo: '/sponsors-2025/squarex.jpg',
+          website: 'https://sqrx.com',
+          tagline: 'Advanced Browser Security Solutions'
+        }
+      ]
+    },
+    {
+      tier: 'Bronze',
+      color: 'from-orange-600 to-amber-700',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-orange-900/30 to-amber-900/30'
+        : 'bg-gradient-to-r from-orange-50 to-amber-50',
+      borderColor: 'border-orange-600',
+      glowColor: 'rgba(234, 88, 12, 0.5)',
+      accentColor: '#ea580c',
+      description: 'Supporting partners fostering security education',
+      sponsors: []
+    },
+    {
+      tier: 'Special Supporter',
+      color: 'from-purple-400 to-pink-400',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30'
+        : 'bg-gradient-to-r from-purple-50 to-pink-50',
+      borderColor: 'border-purple-400',
+      glowColor: 'rgba(192, 132, 252, 0.5)',
+      accentColor: '#c084fc',
+      description: 'Strategic collaborators in cybersecurity advancement',
+      sponsors: []
+    },
+    {
+      tier: 'Community Partner',
+      color: 'from-green-400 to-emerald-500',
+      bgColor: isDark
+        ? 'bg-gradient-to-r from-green-900/30 to-emerald-900/30'
+        : 'bg-gradient-to-r from-green-50 to-emerald-50',
+      borderColor: 'border-green-500',
+      glowColor: 'rgba(52, 211, 153, 0.5)',
+      accentColor: '#34d399',
+      description: 'Ecosystem partners building the future together',
+      sponsors: []
     }
   ];
+
+  const tiersWithSponsors = sponsorTiers.filter(tier => tier.sponsors.length > 0);
 
   return (
     <>
       <style jsx>{`
-        @keyframes fadeInUp {
-          0% {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes sponsorFloat {
+        @keyframes float {
           0%,
           100% {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-10px);
+            transform: translateY(-25px);
           }
         }
 
-        @keyframes pulseGlow {
+        @keyframes glow {
           0%,
           100% {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            filter: drop-shadow(0 0 15px currentColor);
           }
           50% {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            filter: drop-shadow(0 0 30px currentColor);
           }
         }
 
-        @keyframes slideInLeft {
+        @keyframes shimmer {
           0% {
-            opacity: 0;
-            transform: translateX(-50px);
+            background-position: -1000px 0;
           }
           100% {
-            opacity: 1;
-            transform: translateX(0);
+            background-position: 1000px 0;
           }
         }
 
-        @keyframes slideInRight {
+        @keyframes rotate {
           0% {
-            opacity: 0;
-            transform: translateX(50px);
+            transform: rotate(0deg);
           }
           100% {
-            opacity: 1;
-            transform: translateX(0);
+            transform: rotate(360deg);
           }
         }
 
-        @keyframes scaleIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.8);
-          }
+        @keyframes scaleUp {
+          0%,
           100% {
-            opacity: 1;
             transform: scale(1);
           }
+          50% {
+            transform: scale(1.1);
+          }
         }
 
-        .fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
+        @keyframes slideInFromLeft {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
 
-        .slide-in-left {
-          animation: slideInLeft 0.8s ease-out forwards;
+        @keyframes slideInFromRight {
+          0% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
 
-        .slide-in-right {
-          animation: slideInRight 0.8s ease-out forwards;
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
 
-        .scale-in {
-          animation: scaleIn 0.6s ease-out forwards;
+        .float-animation {
+          animation: float 6s ease-in-out infinite;
         }
 
-        .sponsor-card {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .glow-animation {
+          animation: glow 3s ease-in-out infinite;
         }
 
-        .sponsor-card:hover {
-          animation: sponsorFloat 2s ease-in-out infinite;
+        .shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite;
         }
 
-        .pulse-glow {
-          animation: pulseGlow 2s ease-in-out infinite;
+        .rotate-animation {
+          animation: rotate 20s linear infinite;
         }
 
-        .stagger-animation {
-          opacity: 0;
+        .scale-up-animation {
+          animation: scaleUp 4s ease-in-out infinite;
         }
 
-        .stagger-animation.visible {
-          opacity: 1;
+        .gradient-shift {
+          background-size: 200% 200%;
+          animation: gradientShift 8s ease infinite;
+        }
+
+        .sponsor-card-hover {
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sponsor-card-hover:hover {
+          transform: translateY(-15px) scale(1.08);
+        }
+
+        .glass-effect {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-border {
+          border-width: 2px;
+          border-style: solid;
+          border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          border-image-slice: 1;
         }
       `}</style>
 
       <main
         className={`relative min-h-screen ${isDark ? 'bg-gray-900' : 'bg-white'}`}
         style={{
-          backgroundColor: isDark ? '#111827' : '#ffffff'
+          backgroundColor: isDark ? '#0f172a' : '#ffffff'
         }}
       >
         <Navbar />
         <div
-          className={`min-h-screen relative overflow-hidden transition-colors duration-300 ${
-            isDark ? 'bg-gray-900' : 'bg-white'
-          }`}
+          className={`relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-white'}`}
           style={{
-            backgroundColor: isDark ? '#111827' : '#ffffff'
+            backgroundColor: isDark ? '#0f172a' : '#ffffff'
           }}
         >
-          {/* Animated Background Effects */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl animate-pulse" />
+          {/* Enhanced Animated Background Effects */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Gradient Orbs */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full opacity-20 blur-3xl animate-pulse" />
             <div
-              className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500 rounded-full opacity-10 blur-3xl animate-pulse"
+              className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 blur-3xl animate-pulse"
               style={{ animationDelay: '1s' }}
             />
             <div
-              className="absolute top-3/4 left-1/2 w-48 h-48 bg-cyan-500 rounded-full opacity-10 blur-3xl animate-pulse"
+              className="absolute top-3/4 left-1/2 w-80 h-80 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full opacity-15 blur-3xl animate-pulse"
               style={{ animationDelay: '2s' }}
             />
+            <div
+              className="absolute top-1/2 right-1/3 w-96 h-96 bg-gradient-to-r from-orange-500 to-red-500 rounded-full opacity-15 blur-3xl animate-pulse scale-up-animation"
+              style={{ animationDelay: '3s' }}
+            />
+
+            {/* Floating Particles */}
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-30"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  x: [0, Math.random() * 20 - 10, 0],
+                  opacity: [0.3, 0.8, 0.3]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2
+                }}
+              />
+            ))}
           </div>
 
-          {/* Cyber Grid Background */}
+          {/* Animated Grid Background */}
           <div
-            className="absolute inset-0 opacity-5"
+            className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage: `
-                linear-gradient(rgba(0,255,255,0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,255,255,0.3) 1px, transparent 1px)
+                linear-gradient(${isDark ? 'rgba(34, 211, 238, 0.5)' : 'rgba(59, 130, 246, 0.5)'} 1px, transparent 1px),
+                linear-gradient(90deg, ${isDark ? 'rgba(34, 211, 238, 0.5)' : 'rgba(59, 130, 246, 0.5)'} 1px, transparent 1px)
               `,
-              backgroundSize: '40px 40px'
+              backgroundSize: '50px 50px',
+              transform: `translate(${mousePosition.x / 50}px, ${mousePosition.y / 50}px)`
             }}
           />
 
-          <div className="container mx-auto px-8 py-20 relative z-10">
-            {/* Hero Section */}
-            <div
-              ref={el => (sectionRefs.current[0] = el)}
-              className={`text-center mb-24 ${visibleSections.has(0) ? 'fade-in-up' : 'stagger-animation'}`}
+          <div className="container mx-auto px-6 md:px-8 py-12 relative z-10">
+            {/* Hero Section with Enhanced Animations */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+              className="text-center mb-16"
             >
               <div className="relative">
-                <div
-                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl"
-                  style={{
-                    background: `radial-gradient(circle, ${colors.sunsetOrange}10, ${colors.deepOceanBlue}10)`
-                  }}
-                />
-
                 <div className="relative z-10">
-                  <div
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full shadow-2xl mb-8"
-                    style={{
-                      background: gradients.deepOceanDepth
-                    }}
+                  {/* Animated Divider */}
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.7, duration: 1 }}
+                    className="relative w-60 h-1.5 mx-auto mb-8"
                   >
-                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </div>
+                    <div
+                      className="absolute inset-0 rounded-full gradient-shift"
+                      style={{
+                        background: `linear-gradient(90deg, ${colors.sunsetOrange}, ${colors.deepOceanBlue}, ${colors.sunsetOrange})`
+                      }}
+                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400 to-blue-500 blur-md opacity-60" />
+                  </motion.div>
 
-                  <h1
-                    className={`text-6xl md:text-7xl font-black mb-8 leading-tight`}
-                    style={{
-                      color: isDark ? colors.white : colors.deepOceanBlue
-                    }}
-                  >
-                    <span style={{ color: colors.sunsetOrange }}>Our Amazing</span>
-                    <br />
-                    Sponsors
-                  </h1>
-
-                  <div
-                    className="w-48 h-2 mx-auto mb-10 rounded-full shadow-lg"
-                    style={{
-                      background: gradients.warmSunset
-                    }}
-                  />
-
-                  <p
-                    className={`text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed font-medium ${
+                  {/* Description */}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.9, duration: 0.8 }}
+                    className={`text-lg md:text-xl max-w-4xl mx-auto leading-relaxed font-medium ${
                       isDark ? 'text-gray-200' : 'text-gray-800'
                     }`}
                   >
-                    We are incredibly grateful to our{' '}
-                    <span className="font-bold" style={{ color: colors.sunsetOrange }}>
-                      valued sponsors
+                    Seasides 2026 is made possible through the generous support of our sponsors who share our commitment
+                    to{' '}
+                    <span className="font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                      advancing cybersecurity knowledge
                     </span>{' '}
-                    who make this
-                    <span className={`font-bold`} style={{ color: isDark ? '#60a5fa' : colors.deepOceanBlue }}>
+                    and
+                    <span
+                      className={`font-bold bg-gradient-to-r ${isDark ? 'from-cyan-400 to-blue-500' : 'from-blue-600 to-cyan-600'} bg-clip-text text-transparent`}
+                    >
                       {' '}
-                      free conference possible
+                      fostering professional development
                     </span>{' '}
-                    and support the
-                    <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}>
-                      {' '}
-                      cybersecurity community&apos;s growth
-                    </span>
-                    .
-                  </p>
+                    within the security community.
+                  </motion.p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Become a Sponsor CTA */}
-            <div
-              className={`relative rounded-3xl p-12 mb-24 text-center transition-all duration-500 overflow-hidden shadow-2xl ${
-                isDark
-                  ? 'bg-gradient-to-br from-gray-900/95 to-gray-800/95'
-                  : 'bg-gradient-to-br from-white/95 to-gray-50/95'
-              } ${visibleSections.has(0) ? 'scale-in' : 'stagger-animation'} group`}
+            {/* Enhanced Tier Filter with 3D Effect */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              className="flex flex-wrap justify-center gap-6 mb-24"
             >
-              {/* Background decoration */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-sunset-orange/15 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-deep-ocean/15 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <motion.button
+                onClick={() => setSelectedTier(null)}
+                whileHover={{ scale: 1.1, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 overflow-hidden ${
+                  selectedTier === null
+                    ? 'text-white shadow-2xl'
+                    : isDark
+                      ? 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 backdrop-blur-sm'
+                      : 'bg-gray-100/50 text-gray-700 hover:bg-gray-200/50 backdrop-blur-sm'
+                }`}
+                style={
+                  selectedTier === null
+                    ? {
+                        background: `linear-gradient(135deg, ${colors.sunsetOrange}, ${colors.deepOceanBlue})`
+                      }
+                    : {}
+                }
+              >
+                {selectedTier === null && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: ['-200%', '200%'] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+                  />
+                )}
+                <span className="relative z-10">All Sponsors</span>
+              </motion.button>
+
+              {tiersWithSponsors.map((tier, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setSelectedTier(tier.tier)}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1 + index * 0.1, duration: 0.5 }}
+                  className={`relative px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3 overflow-hidden ${
+                    selectedTier === tier.tier
+                      ? 'text-white shadow-2xl'
+                      : isDark
+                        ? 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 backdrop-blur-sm'
+                        : 'bg-gray-100/50 text-gray-700 hover:bg-gray-200/50 backdrop-blur-sm'
+                  }`}
+                  style={
+                    selectedTier === tier.tier
+                      ? {
+                          background: `linear-gradient(135deg, ${tier.accentColor}, ${tier.accentColor}dd)`
+                        }
+                      : {}
+                  }
+                >
+                  {selectedTier === tier.tier && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      animate={{ x: ['-200%', '200%'] }}
+                      transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+                    />
+                  )}
+                  <span className={`relative z-10 ${selectedTier === tier.tier ? 'text-white' : ''}`}>
+                    {getTierIcon(tier.tier)}
+                  </span>
+                  <span className="relative z-10">{tier.tier}</span>
+                </motion.button>
+              ))}
+            </motion.div>
+
+            {/* Sponsor Tiers with Enhanced Cards */}
+            <AnimatePresence mode="wait">
+              {tiersWithSponsors
+                .filter(tier => selectedTier === null || tier.tier === selectedTier)
+                .map((tier, tierIndex) => (
+                  <motion.div
+                    key={tier.tier}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -50 }}
+                    transition={{ duration: 0.6, delay: tierIndex * 0.1 }}
+                    className="mb-40"
+                  >
+                    {/* Enhanced Tier Header */}
+                    <div className="text-center mb-20 relative">
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                        className={`inline-block px-10 py-5 rounded-3xl mb-8 shadow-2xl backdrop-blur-md relative overflow-hidden ${tier.bgColor} border-4 ${tier.borderColor}`}
+                      >
+                        <div
+                          className="absolute inset-0 opacity-30"
+                          style={{
+                            background: `radial-gradient(circle at 50% 50%, ${tier.accentColor}40, transparent)`
+                          }}
+                        />
+                        <div className="flex items-center gap-4 relative z-10">
+                          <span className="text-3xl" style={{ color: tier.accentColor }}>
+                            {getTierIcon(tier.tier)}
+                          </span>
+                          <span
+                            className={`font-black text-2xl uppercase tracking-wider ${
+                              isDark ? 'text-white' : 'text-gray-900'
+                            }`}
+                          >
+                            {tier.tier}
+                          </span>
+                        </div>
+                      </motion.div>
+
+                      <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className={`text-5xl md:text-7xl font-black mb-6 leading-tight`}
+                      >
+                        <span
+                          className="bg-gradient-to-r bg-clip-text text-transparent gradient-shift"
+                          style={{
+                            backgroundImage: `linear-gradient(135deg, ${tier.accentColor}, ${tier.accentColor}dd, ${tier.accentColor})`
+                          }}
+                        >
+                          {tier.tier} Tier
+                        </span>
+                      </motion.h2>
+
+                      <p
+                        className={`text-2xl font-medium max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+                      >
+                        {tier.description}
+                      </p>
+                    </div>
+
+                    {/* Enhanced Sponsors Grid */}
+                    <div
+                      className={`grid gap-10 ${
+                        tier.sponsors.length === 1
+                          ? 'grid-cols-1 max-w-2xl mx-auto'
+                          : tier.sponsors.length === 2
+                            ? 'grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto'
+                            : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                      }`}
+                    >
+                      {tier.sponsors.map((sponsor, index) => (
+                        <motion.a
+                          key={index}
+                          href={sponsor.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                          transition={{ delay: index * 0.2, type: 'spring', stiffness: 100 }}
+                          onMouseEnter={() => setHoveredSponsor(`${tier.tier}-${index}`)}
+                          onMouseLeave={() => setHoveredSponsor(null)}
+                          className={`sponsor-card-hover group relative rounded-3xl p-10 overflow-hidden ${
+                            isDark
+                              ? 'bg-gradient-to-br from-gray-800 to-gray-900'
+                              : 'bg-gradient-to-br from-white to-gray-50'
+                          }`}
+                          style={{
+                            boxShadow:
+                              hoveredSponsor === `${tier.tier}-${index}`
+                                ? `0 30px 60px -15px ${tier.glowColor}, 0 0 0 3px ${tier.accentColor}33`
+                                : `0 10px 30px -10px ${isDark ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.1)'}`
+                          }}
+                        >
+                          {/* Animated Shimmer Effect */}
+                          {hoveredSponsor === `${tier.tier}-${index}` && (
+                            <div className="absolute inset-0 shimmer pointer-events-none" />
+                          )}
+
+                          {/* Corner Decorations */}
+                          <div
+                            className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                            style={{
+                              background: `radial-gradient(circle, ${tier.glowColor}, transparent)`
+                            }}
+                          />
+                          <div
+                            className="absolute bottom-0 left-0 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                            style={{
+                              background: `radial-gradient(circle, ${tier.glowColor}, transparent)`
+                            }}
+                          />
+
+                          {/* Animated Border */}
+                          <div
+                            className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                            style={{
+                              background: `linear-gradient(135deg, ${tier.accentColor}33, transparent, ${tier.accentColor}33)`,
+                              border: `3px solid ${tier.accentColor}`,
+                              animation:
+                                hoveredSponsor === `${tier.tier}-${index}` ? 'rotate 8s linear infinite' : 'none'
+                            }}
+                          />
+
+                          {/* Enhanced Logo Container */}
+                          <div className="relative h-56 mb-8 flex items-center justify-center bg-white rounded-3xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 p-8">
+                            <div
+                              className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                              style={{
+                                background: `radial-gradient(circle at center, ${tier.accentColor}10, white)`
+                              }}
+                            />
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={sponsor.logo}
+                                alt={sponsor.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-contain group-hover:scale-125 transition-transform duration-700"
+                                priority
+                              />
+                            </div>
+                          </div>
+
+                          {/* Sponsor Details */}
+                          <div className="relative z-10 text-center">
+                            <h3
+                              className={`text-3xl font-black mb-3 transition-colors duration-300 ${
+                                isDark ? 'text-white' : 'text-gray-900'
+                              }`}
+                            >
+                              {sponsor.name}
+                            </h3>
+
+                            {sponsor.tagline && (
+                              <p className={`text-base mb-6 font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                {sponsor.tagline}
+                              </p>
+                            )}
+
+                            {/* Enhanced Visit Website Button */}
+                            <motion.div
+                              className={`mt-8 px-8 py-4 rounded-2xl font-bold text-base opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 inline-flex items-center gap-3 shadow-lg`}
+                              style={{
+                                background: `linear-gradient(135deg, ${tier.accentColor}, ${tier.accentColor}dd)`,
+                                color: 'white'
+                              }}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <span>Visit Website</span>
+                              <motion.svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                animate={{ x: [0, 5, 0] }}
+                                transition={{ repeat: Infinity, duration: 1.5 }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                              </motion.svg>
+                            </motion.div>
+                          </div>
+                        </motion.a>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+            </AnimatePresence>
+
+            {/* Enhanced Become a Sponsor CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className={`relative rounded-3xl p-20 text-center transition-all duration-500 overflow-hidden shadow-2xl mb-24 group ${
+                isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-br from-white to-gray-50'
+              }`}
+            >
+              {/* Animated Background Decorations */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-500/30 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/30 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               <div className="relative z-10">
-                <div className="flex items-center justify-center mb-8">
+                <motion.div
+                  whileHover={{ scale: 1.15, rotate: 360 }}
+                  transition={{ duration: 0.8 }}
+                  className="flex items-center justify-center mb-10"
+                >
                   <div
-                    className={`p-4 rounded-full shadow-xl`}
+                    className={`p-8 rounded-full shadow-2xl relative`}
                     style={{
                       background: isDark ? gradients.warmSunset : gradients.deepOceanDepth
                     }}
                   >
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400 to-blue-500 opacity-50 blur-xl animate-pulse" />
+                    <svg
+                      className="w-16 h-16 text-white relative z-10"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                       />
                     </svg>
                   </div>
-                </div>
+                </motion.div>
 
                 <h2
-                  className={`text-4xl md:text-5xl font-bold mb-6`}
-                  style={{
-                    color: isDark ? colors.sunsetOrange : colors.deepOceanBlue
-                  }}
+                  className={`text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r ${
+                    isDark ? 'from-orange-400 to-pink-500' : 'from-blue-600 to-cyan-500'
+                  } bg-clip-text text-transparent`}
                 >
-                  Become a Sponsor
+                  Partner With Seasides
                 </h2>
 
                 <p
-                  className={`mb-10 max-w-4xl mx-auto text-xl leading-relaxed font-medium ${
+                  className={`mb-14 max-w-5xl mx-auto text-2xl md:text-3xl leading-relaxed font-medium ${
                     isDark ? 'text-gray-200' : 'text-gray-800'
                   }`}
                 >
-                  Join us in making cybersecurity education accessible to all. Partner with Seasides and be part of
-                  something meaningful that impacts thousands of professionals globally.
+                  Join leading organizations in supporting Asia&apos;s premier cybersecurity conference. Elevate your
+                  brand visibility, connect with top security professionals, and contribute to the advancement of the
+                  global security community.
                 </p>
 
-                <div className="flex flex-wrap justify-center gap-6 mb-8">
-                  <button
-                    onClick={() =>
-                      window.open(
-                        'mailto:support@seasidestech.com?subject=Sponsorship Inquiry - Seasides 2026',
-                        '_blank'
-                      )
-                    }
-                    className="group relative px-10 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
+                <div className="flex flex-wrap justify-center gap-8">
+                  <motion.a
+                    href="mailto:contact@seasides.net"
+                    whileHover={{ scale: 1.08, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative px-12 py-6 text-white font-bold text-xl rounded-2xl transition-all duration-300 shadow-2xl overflow-hidden"
                     style={{
-                      backgroundColor: colors.deepOceanBlue,
-                      boxShadow: shadows.buttonShadow
+                      background: `linear-gradient(135deg, ${colors.sunsetOrange}, ${colors.deepOceanBlue})`
                     }}
                   >
-                    <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                    <div className="relative flex items-center gap-3">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      animate={{ x: ['-200%', '200%'] }}
+                      transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+                    />
+                    <div className="relative flex items-center gap-4">
+                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -381,263 +842,23 @@ const SponsorsPage = () => {
                       </svg>
                       Contact Sponsorship Team
                     </div>
-                  </button>
+                  </motion.a>
 
-                  <button
-                    onClick={() =>
-                      window.open('https://village.scagoat.dev/static/media/pdf/SeasidesSponsorship_2025.pdf', '_blank')
-                    }
-                    className="group relative px-10 py-4 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden"
-                    style={{
-                      backgroundColor: colors.sunsetOrange,
-                      boxShadow: shadows.buttonShadow
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-white/10 transform translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-                    <div className="relative flex items-center gap-3">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      Download Sponsorship Deck
-                    </div>
-                  </button>
-                </div>
-
-                <div
-                  className={`mt-8 p-6 rounded-xl ${isDark ? 'bg-gray-800/50' : ''}`}
-                  style={{
-                    backgroundColor: isDark ? undefined : `${colors.deepOceanBlue}0D`
-                  }}
-                >
-                  <p
-                    className={`text-base font-medium`}
-                    style={{
-                      color: isDark ? '#d1d5db' : colors.deepOceanBlue
-                    }}
-                  >
-                    Looking for custom sponsorship packages? Let&apos;s discuss how we can create the perfect
-                    partnership for your brand.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sponsor Tiers */}
-            {sponsorTiers.map((tier, tierIndex) => (
-              <div
-                key={tierIndex}
-                ref={el => (sectionRefs.current[tierIndex + 1] = el)}
-                className={`mb-32 ${
-                  visibleSections.has(tierIndex + 1)
-                    ? tierIndex % 2 === 0
-                      ? 'slide-in-left'
-                      : 'slide-in-right'
-                    : 'stagger-animation'
-                }`}
-              >
-                {/* Tier Header */}
-                <div className="text-center mb-16 relative">
-                  <div
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-3 blur-sm"
-                    style={{
-                      background: `linear-gradient(to right, transparent, ${colors.sunsetOrange}33, transparent)`
-                    }}
-                  />
-
-                  <div
-                    className={`inline-block px-8 py-4 rounded-full mb-6 shadow-xl backdrop-blur-sm ${
-                      tierIndex === 0
-                        ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20'
-                        : tierIndex === 1
-                          ? 'bg-gradient-to-r from-gray-400/20 to-gray-600/20'
-                          : tierIndex === 2
-                            ? 'bg-gradient-to-r from-purple-500/20 to-indigo-500/20'
-                            : 'bg-gradient-to-r from-yellow-500/20 to-orange-500/20'
+                  <motion.a
+                    href="/call-for-sponsors"
+                    whileHover={{ scale: 1.08, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`px-12 py-6 font-bold text-xl rounded-2xl transition-all duration-300 shadow-2xl border-4 ${
+                      isDark
+                        ? 'border-orange-500 text-orange-400 hover:bg-orange-500/20'
+                        : 'border-blue-600 text-blue-600 hover:bg-blue-600/20'
                     }`}
                   >
-                    <span
-                      className={`font-bold text-base uppercase tracking-wider ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      {tier.title}
-                    </span>
-                  </div>
-
-                  <h2
-                    className={`text-5xl md:text-6xl font-black mb-6 leading-tight`}
-                    style={{
-                      color: isDark ? colors.white : colors.charcoalGray
-                    }}
-                  >
-                    <span className={`bg-gradient-to-r ${tier.gradient} bg-clip-text text-transparent`}>
-                      {tier.title}
-                    </span>
-                  </h2>
-
-                  <p className={`text-xl font-medium max-w-2xl mx-auto ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
-                    {tier.description}
-                  </p>
-                </div>
-
-                {/* Sponsors Grid */}
-                <div
-                  className={`grid gap-10 ${
-                    tier.sponsors.length === 1
-                      ? 'grid-cols-1 max-w-md mx-auto'
-                      : tier.sponsors.length === 2
-                        ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto'
-                        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-                  }`}
-                >
-                  {tier.sponsors.map((sponsor, index) => (
-                    <div
-                      key={index}
-                      className={`sponsor-card group relative rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover:scale-105 transform-gpu ${
-                        isDark
-                          ? 'bg-gradient-to-br from-gray-900/90 to-gray-800/90 hover:shadow-sunset-orange/20'
-                          : 'bg-gradient-to-br from-white/95 to-gray-50/95 hover:shadow-sunset-orange/20'
-                      } ${visibleSections.has(tierIndex + 1) ? 'scale-in' : 'stagger-animation'}`}
-                      style={{
-                        animationDelay: `${index * 0.15}s`,
-                        transform: visibleSections.has(tierIndex + 1) ? 'none' : 'scale(0.8)'
-                      }}
-                    >
-                      {/* Background decorations */}
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-sunset-orange/15 to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-deep-ocean/15 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                      {/* Logo container */}
-                      <div className="relative h-32 mb-8 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300">
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <Image
-                          src={sponsor.logo}
-                          alt={sponsor.name}
-                          fill
-                          className="object-contain p-4 group-hover:scale-110 transition-transform duration-500 filter group-hover:brightness-110"
-                        />
-
-                        {/* Tier badge */}
-                        <div
-                          className={`absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-bold shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                            tierIndex === 0
-                              ? 'bg-cyan-500 text-white'
-                              : tierIndex === 1
-                                ? 'bg-gray-500 text-white'
-                                : tierIndex === 2
-                                  ? 'bg-purple-500 text-white'
-                                  : 'bg-yellow-500 text-white'
-                          }`}
-                        >
-                          {sponsor.tier.charAt(0).toUpperCase() + sponsor.tier.slice(1)}
-                        </div>
-                      </div>
-
-                      {/* Sponsor name */}
-                      <h3
-                        className={`text-xl font-bold text-center mb-6 transition-colors duration-300`}
-                        style={{
-                          color: isDark ? '#e5e7eb' : colors.charcoalGray
-                        }}
-                      >
-                        {sponsor.name}
-                      </h3>
-
-                      {/* Interaction hint */}
-                      <div
-                        className={`text-center text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 px-4 py-2 rounded-lg`}
-                        style={{
-                          color: isDark ? colors.sunsetOrange : colors.deepOceanBlue,
-                          backgroundColor: isDark ? `${colors.sunsetOrange}1A` : `${colors.deepOceanBlue}1A`
-                        }}
-                      >
-                        Thank you for supporting Seasides
-                      </div>
-
-                      {/* Subtle glow effect */}
-                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                        <div
-                          className={`absolute inset-0 rounded-2xl shadow-lg ${
-                            tierIndex === 0
-                              ? 'shadow-cyan-400/20'
-                              : tierIndex === 1
-                                ? 'shadow-gray-400/20'
-                                : tierIndex === 2
-                                  ? 'shadow-purple-400/20'
-                                  : 'shadow-yellow-400/20'
-                          }`}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    Explore Partnership Opportunities
+                  </motion.a>
                 </div>
               </div>
-            ))}
-
-            {/* Why Sponsor Seasides */}
-            <div
-              ref={el => (sectionRefs.current[sponsorTiers.length + 1] = el)}
-              className={`rounded-3xl p-12 text-center transition-all duration-500 hover:shadow-2xl shadow-lg mb-20 ${
-                isDark ? 'bg-gray-900/95 hover:shadow-sunset-orange/20' : 'bg-white/95 hover:shadow-sunset-orange/20'
-              } ${visibleSections.has(sponsorTiers.length + 1) ? 'fade-in-up' : 'stagger-animation'}`}
-            >
-              <h2
-                className={`text-4xl md:text-5xl font-bold mb-12`}
-                style={{
-                  color: isDark ? colors.sunsetOrange : colors.deepOceanBlue
-                }}
-              >
-                Why Sponsor Seasides?
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    text: 'Reach 2,500+ cybersecurity professionals and enthusiasts',
-                    bgColor: `${colors.deepOceanBlue}1A`
-                  },
-                  { text: 'Global audience with participants from 30+ countries', bgColor: `${colors.sunsetOrange}1A` },
-                  {
-                    text: 'Associate your brand with cutting-edge security innovation',
-                    bgColor: 'rgba(147, 51, 234, 0.1)'
-                  },
-                  {
-                    text: "Support the cybersecurity community's education and growth",
-                    bgColor: 'rgba(34, 197, 94, 0.1)'
-                  },
-                  {
-                    text: 'Generate leads and build meaningful business relationships',
-                    bgColor: 'rgba(37, 99, 235, 0.1)'
-                  },
-                  { text: "Be part of India's most loved cybersecurity conference", bgColor: 'rgba(236, 72, 153, 0.1)' }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className={`relative p-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md group ${
-                      visibleSections.has(sponsorTiers.length + 1) ? 'slide-in-left' : 'stagger-animation'
-                    }`}
-                    style={{
-                      animationDelay: `${index * 0.1}s`,
-                      backgroundColor: item.bgColor
-                    }}
-                  >
-                    <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-white/20 to-transparent rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span
-                      className={`text-lg font-semibold leading-relaxed relative z-10`}
-                      style={{
-                        color: isDark ? colors.white : colors.charcoalGray
-                      }}
-                    >
-                      {item.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>

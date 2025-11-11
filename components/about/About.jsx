@@ -379,10 +379,10 @@ const About = () => {
               onClick={() => setActiveSection(key)}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 border-2 ${
                 activeSection === key
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-blue-600 shadow-lg transform scale-105'
+                  ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white border-orange-500 shadow-lg transform scale-105'
                   : isDark
-                    ? 'bg-slate-800 text-gray-200 border-slate-600 hover:bg-slate-700 hover:border-blue-500 hover:text-blue-300'
-                    : 'bg-white text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 shadow-sm'
+                    ? 'bg-slate-800 text-gray-200 border-slate-600 hover:bg-slate-700 hover:border-orange-500 hover:text-orange-300'
+                    : 'bg-white text-gray-700 border-gray-300 hover:bg-orange-50 hover:border-orange-400 hover:text-orange-600 shadow-sm'
               }`}
             >
               {title}
@@ -400,8 +400,8 @@ const About = () => {
               href="/faq"
               className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 border-2 shadow-lg ${
                 isDark
-                  ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white border-slate-600 hover:from-blue-700 hover:to-purple-700 hover:border-blue-500'
-                  : 'bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-400'
+                  ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white border-slate-600 hover:from-orange-600 hover:to-orange-700 hover:border-orange-500'
+                  : 'bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border-orange-200 hover:from-orange-100 hover:to-orange-200 hover:border-orange-400'
               }`}
             >
               <HelpCircle size={22} />

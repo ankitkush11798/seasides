@@ -4,12 +4,12 @@
 
 ```bash
 # Development
-npm run dev
+npm run dev 
 
 # Building 
 npm run build
-
-# Linting & Formatting 
+ 
+# Linting & Formatting
 npm run lint          # Check for linting errors
 npm run lint:fix      # Auto-fix linting errors 
 npm run format        # Format code with Prettier

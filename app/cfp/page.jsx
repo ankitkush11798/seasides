@@ -30,7 +30,7 @@ const CFP = () => {
       <Navbar />
 
       {/* Hero / Title Section */}
-      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden min-h-screen w-full">
+      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden w-full">
         <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-900 animate-[gradientMove_15s_ease-in-out_infinite] w-full" />
         <div className="absolute inset-0 bg-black/20 w-full" />
 
