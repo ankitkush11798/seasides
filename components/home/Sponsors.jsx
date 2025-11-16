@@ -13,7 +13,13 @@ const Sponsors = () => {
       color: 'from-cyan-400 to-blue-400',
       bgColor: isDark ? 'bg-gradient-to-r from-cyan-900/30 to-blue-900/30' : 'bg-gradient-to-r from-cyan-50 to-blue-50',
       borderColor: 'border-cyan-400',
-      sponsors: []
+      sponsors: [
+        {
+          name: 'SecureLayer7',
+          logo: '/sponsors-2025/securelayer7.jpg',
+          website: 'https://securelayer7.net'
+        }
+      ]
     },
     {
       tier: 'Platinum',
@@ -36,6 +42,21 @@ const Sponsors = () => {
           name: 'Levo.ai',
           logo: '/sponsors-2025/levo.jpg',
           website: 'https://levo.ai'
+        },
+        {
+          name: 'Encipher',
+          logo: '/sponsors-2025/encipher.jpg',
+          website: 'https://encipher.co'
+        },
+        {
+          name: 'NII',
+          logo: '/sponsors-2025/nii.jpg',
+          website: 'https://nii.ac.in'
+        },
+        {
+          name: 'Altered Security',
+          logo: '/sponsors-2025/alteredsecurity.jpg',
+          website: 'https://alteredsecurity.com'
         }
       ]
     },
@@ -51,6 +72,21 @@ const Sponsors = () => {
           name: 'SquareX',
           logo: '/sponsors-2025/squarex.jpg',
           website: 'https://sqrx.com'
+        },
+        {
+          name: 'DomDog',
+          logo: '/sponsors-2025/domdog.jpg',
+          website: 'https://domdog.io'
+        },
+        {
+          name: 'SqrX',
+          logo: '/sponsors-2025/squrx.jpg',
+          website: 'https://sqrx.com'
+        },
+        {
+          name: 'PureID',
+          logo: '/sponsors-2025/pureid.jpg',
+          website: 'https://pureid.io'
         }
       ]
     },
@@ -61,7 +97,18 @@ const Sponsors = () => {
         ? 'bg-gradient-to-r from-orange-900/30 to-amber-900/30'
         : 'bg-gradient-to-r from-orange-50 to-amber-50',
       borderColor: 'border-orange-600',
-      sponsors: []
+      sponsors: [
+        {
+          name: 'Appknox',
+          logo: '/sponsors-2025/appknox.jpg',
+          website: 'https://appknox.com'
+        },
+        {
+          name: 'Corgea',
+          logo: '/sponsors-2025/corgea.jpg',
+          website: 'https://corgea.com'
+        }
+      ]
     },
     {
       tier: 'Special Supporter',
