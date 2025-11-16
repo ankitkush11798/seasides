@@ -1,13 +1,12 @@
 'use client';
 
-import { Map, Users, CalendarDays, Globe, Sparkles, TrendingUp } from 'lucide-react';
-import React, { useState } from 'react';
+import { Map, Users, CalendarDays, Globe, Sparkles } from 'lucide-react';
+import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
 export default function ConferenceGlance() {
   const { isDark } = useTheme();
-  const [hoveredStat, setHoveredStat] = useState(null);
 
   const stats = [
     {
@@ -124,7 +123,6 @@ export default function ConferenceGlance() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
-            const isHovered = hoveredStat === index;
 
             return (
               <motion.div
@@ -133,88 +131,24 @@ export default function ConferenceGlance() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                onMouseEnter={() => setHoveredStat(index)}
-                onMouseLeave={() => setHoveredStat(null)}
-                className={`relative group ${
+                className={`relative ${
                   isDark ? 'bg-slate-800/50 backdrop-blur-sm' : 'bg-white'
-                } rounded-2xl p-6 border-2 transition-all duration-300 overflow-hidden ${
-                  isHovered
-                    ? `${stat.borderColor} ${stat.shadowColor} shadow-2xl`
-                    : isDark
-                      ? 'border-slate-700 shadow-lg'
-                      : 'border-gray-200 shadow-md'
-                }`}
+                } rounded-2xl p-6 border-2 ${
+                  isDark ? 'border-slate-700 shadow-lg' : 'border-gray-200 shadow-md'
+                } overflow-hidden`}
               >
-                {/* Animated gradient background */}
-                <motion.div
-                  animate={{
-                    opacity: isHovered ? 0.15 : 0,
-                    scale: isHovered ? 1 : 0.8
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className={`absolute inset-0 bg-gradient-to-br ${stat.color}`}
-                />
-
-                {/* Floating particles effect */}
-                {isHovered && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 pointer-events-none"
-                  >
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{
-                          y: [0, -100],
-                          opacity: [0, 1, 0],
-                          scale: [0, 1, 0]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: i * 0.2
-                        }}
-                        className={`absolute bottom-0 left-1/2 w-2 h-2 rounded-full bg-gradient-to-r ${stat.color}`}
-                        style={{ left: `${20 + i * 15}%` }}
-                      />
-                    ))}
-                  </motion.div>
-                )}
-
                 <div className="relative z-10 flex flex-col items-center text-center">
                   {/* Icon Container */}
-                  <motion.div
-                    animate={{
-                      rotate: isHovered ? 360 : 0,
-                      scale: isHovered ? 1.1 : 1
-                    }}
-                    transition={{ duration: 0.5 }}
-                    className={`p-4 rounded-2xl mb-4 bg-gradient-to-br ${stat.color} shadow-lg`}
-                  >
+                  <div className={`p-4 rounded-2xl mb-4 bg-gradient-to-br ${stat.color} shadow-lg`}>
                     <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
+                  </div>
 
                   {/* Value */}
-                  <motion.div
-                    animate={{ scale: isHovered ? 1.1 : 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-center gap-2 mb-2"
-                  >
+                  <div className="flex items-center gap-2 mb-2">
                     <span className={`text-4xl md:text-5xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       {stat.value}
                     </span>
-                    {isHovered && (
-                      <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <TrendingUp className={`w-6 h-6 ${isDark ? 'text-orange-400' : 'text-orange-600'}`} />
-                      </motion.div>
-                    )}
-                  </motion.div>
+                  </div>
 
                   {/* Label */}
                   <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
@@ -224,11 +158,6 @@ export default function ConferenceGlance() {
                   {/* Description */}
                   <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{stat.description}</p>
                 </div>
-
-                {/* Decorative corner gradient */}
-                <div
-                  className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500 transform translate-x-8 -translate-y-8`}
-                />
               </motion.div>
             );
           })}

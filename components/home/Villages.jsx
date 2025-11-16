@@ -216,7 +216,7 @@ const Villages = () => {
                       <IconComponent className="w-10 h-10 text-white" />
                     </motion.div>
 
-                    <motion.span
+                    {/* <motion.span
                       animate={{
                         scale: isHovered ? [1, 1.2, 1] : 1
                       }}
@@ -224,7 +224,7 @@ const Villages = () => {
                       className="text-5xl"
                     >
                       {village.emoji}
-                    </motion.span>
+                    </motion.span> */}
                   </div>
 
                   {/* Village Name */}
