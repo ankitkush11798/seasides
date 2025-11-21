@@ -1,78 +1,97 @@
 'use client';
-import { useState } from 'react';
-import { Wrench, Search, Package, Shield, ExternalLink, Sparkles, ArrowRight } from 'lucide-react';
+import { useState, useRef } from 'react';
+import {
+  Wrench,
+  Search,
+  Package,
+  Shield,
+  ExternalLink,
+  Sparkles,
+  ArrowRight,
+  Link as LinkIcon,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
 const Villages = () => {
   const { isDark } = useTheme();
   const [hoveredVillage, setHoveredVillage] = useState(null);
+  const sliderRef = useRef(null);
 
   const villages = [
     {
       id: 1,
       name: 'Hardware Village',
       icon: Wrench,
-      emoji: '🔧',
       description:
         'Dive into the physical world of hardware security. Learn hardware hacking, reverse engineering, and hands-on exploitation of embedded systems.',
-      topics: ['IoT Security', 'Firmware Analysis', 'Circuit Analysis', 'Side-Channel Attacks', 'Hardware Pentesting'],
+      topics: ['IoT Security', 'Firmware Analysis', 'Circuit Analysis', 'Side-Channel Attacks'],
       color: 'from-emerald-500 to-teal-600',
       shadowColor: 'shadow-emerald-500/30',
       borderColor: 'border-emerald-500',
-      bgGradient: 'from-emerald-500/10 to-teal-500/10',
       url: 'https://hw101.me'
     },
     {
       id: 2,
       name: 'SAST SCA Village',
       icon: Search,
-      emoji: '🔍',
       description:
         'Master static code analysis and software composition analysis. Discover vulnerabilities in source code and open-source dependencies.',
-      topics: ['Code Review', 'Vulnerability Scanning', 'Dependency Analysis', 'SAST Tools', 'Security Testing'],
+      topics: ['Code Review', 'Vulnerability Scanning', 'Dependency Analysis', 'SAST Tools'],
       color: 'from-cyan-500 to-blue-600',
       shadowColor: 'shadow-cyan-500/30',
       borderColor: 'border-cyan-500',
-      bgGradient: 'from-cyan-500/10 to-blue-500/10',
       url: 'https://village.scagoat.dev'
     },
     {
       id: 3,
       name: 'Container Security Village',
       icon: Package,
-      emoji: '📦',
       description:
         'Explore the world of container and Kubernetes security. Learn about securing containerized applications and orchestration platforms.',
-      topics: ['Kubernetes Security', 'Docker Security', 'Container Runtime', 'Pod Security', 'Network Policies'],
+      topics: ['Kubernetes Security', 'Docker Security', 'Container Runtime', 'Pod Security'],
       color: 'from-purple-500 to-indigo-600',
       shadowColor: 'shadow-purple-500/30',
       borderColor: 'border-purple-500',
-      bgGradient: 'from-purple-500/10 to-indigo-500/10',
       url: 'https://containersecurityvillage.kubernetesvillage.com'
     },
     {
       id: 4,
       name: 'Infrasec Village',
       icon: Shield,
-      emoji: '🛡️',
       description:
-        'A focused village on infrastructure attack and defense. A day of hands-on labs, live demos, and deep dives covering the entire stack—from network and cloud to containers and IaC. We show the real-world exploit, then teach the actionable fix—mastering the evidence-driven practices that build and secure resilient systems.',
-      topics: [
-        'Cloud Attack & Defense',
-        'Hardened Kubernetes',
-        'Zero Trust Networking',
-        'Secure Infrastructure as Code',
-        'Cloud Incident Response',
-        'Resilient CI/CD Pipelines'
-      ],
+        'A focused village on infrastructure attack and defense. Hands-on labs, live demos, and deep dives covering the entire stack.',
+      topics: ['Cloud Attack & Defense', 'Zero Trust Networking', 'Secure IaC', 'Cloud IR'],
       color: 'from-rose-500 to-pink-600',
       shadowColor: 'shadow-rose-500/30',
       borderColor: 'border-rose-500',
-      bgGradient: 'from-rose-500/10 to-pink-500/10',
       url: 'https://infrasec-village.seasides.net/'
+    },
+    {
+      id: 5,
+      name: 'Blockchain Security Village',
+      icon: LinkIcon,
+      description:
+        'Explore the security landscape of decentralized systems. From smart contract vulnerabilities to DeFi exploits.',
+      topics: ['Smart Contract Security', 'DeFi & NFT Attacks', 'Wallet Forensics', 'Cross-chain Exploits'],
+      color: 'from-violet-500 to-purple-600',
+      shadowColor: 'shadow-violet-500/30',
+      borderColor: 'border-violet-500',
+      url: '/cfp-blockchain-village'
     }
   ];
+
+  const scroll = direction => {
+    if (sliderRef.current) {
+      const scrollAmount = 400;
+      sliderRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <section
@@ -111,14 +130,14 @@ const Villages = () => {
         />
       </div>
 
-      <div className="relative container mx-auto px-6 z-10 max-w-7xl">
+      <div className="relative z-10">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 px-6"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -150,14 +169,41 @@ const Villages = () => {
               isDark ? 'text-gray-300' : 'text-gray-700'
             }`}
           >
-            Dive deep into specialized cybersecurity domains with our expert-led villages. Each village offers hands-on
-            learning, practical challenges, and real-world scenarios.
+            Dive deep into specialized cybersecurity domains with our expert-led villages.
           </p>
         </motion.div>
 
-        {/* Villages Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {villages.map((village, index) => {
+        {/* Navigation Buttons */}
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            onClick={() => scroll('left')}
+            className={`p-3 rounded-full transition-all duration-300 ${
+              isDark
+                ? 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-600'
+                : 'bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 shadow-lg'
+            }`}
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className={`p-3 rounded-full transition-all duration-300 ${
+              isDark
+                ? 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-600'
+                : 'bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 shadow-lg'
+            }`}
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Villages Slider */}
+        <div
+          ref={sliderRef}
+          className="flex gap-6 overflow-x-auto pb-8 px-6 snap-x snap-mandatory scrollbar-hide"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {villages.map(village => {
             const IconComponent = village.icon;
             const isHovered = hoveredVillage === village.id;
 
@@ -165,16 +211,16 @@ const Villages = () => {
               <motion.a
                 key={village.id}
                 href={village.url}
-                target="_blank"
+                target={village.url.startsWith('/') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -8, scale: 1.02 }}
                 onMouseEnter={() => setHoveredVillage(village.id)}
                 onMouseLeave={() => setHoveredVillage(null)}
-                className={`relative group cursor-pointer block overflow-hidden rounded-3xl border-2 transition-all duration-500 ${
+                className={`relative flex-shrink-0 w-[350px] snap-center cursor-pointer block overflow-hidden rounded-3xl border-2 transition-all duration-500 ${
                   isHovered
                     ? `${village.borderColor} ${village.shadowColor} shadow-2xl`
                     : isDark
@@ -191,80 +237,52 @@ const Villages = () => {
                   className={`absolute inset-0 bg-gradient-to-br ${village.color}`}
                 />
 
-                {/* Background Pattern */}
-                <div className={`absolute inset-0 opacity-5 ${isDark ? 'opacity-10' : ''}`}>
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-                      backgroundSize: '32px 32px'
-                    }}
-                  />
-                </div>
-
-                <div className="relative p-8">
-                  {/* Icon and Emoji Header */}
-                  <div className="flex items-center justify-between mb-6">
+                <div className="relative p-6">
+                  {/* Icon Header */}
+                  <div className="flex items-center justify-between mb-4">
                     <motion.div
                       animate={{
                         rotate: isHovered ? [0, -10, 10, -10, 0] : 0,
                         scale: isHovered ? 1.1 : 1
                       }}
                       transition={{ duration: 0.5 }}
-                      className={`p-4 rounded-2xl bg-gradient-to-br ${village.color} shadow-lg`}
+                      className={`p-3 rounded-xl bg-gradient-to-br ${village.color} shadow-lg`}
                     >
-                      <IconComponent className="w-10 h-10 text-white" />
+                      <IconComponent className="w-8 h-8 text-white" />
                     </motion.div>
-
-                    {/* <motion.span
-                      animate={{
-                        scale: isHovered ? [1, 1.2, 1] : 1
-                      }}
-                      transition={{ duration: 0.5 }}
-                      className="text-5xl"
-                    >
-                      {village.emoji}
-                    </motion.span> */}
                   </div>
 
                   {/* Village Name */}
-                  <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {village.name}
                   </h3>
 
                   {/* Description */}
-                  <p className={`leading-relaxed mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                  <p
+                    className={`text-sm leading-relaxed mb-4 line-clamp-3 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+                  >
                     {village.description}
                   </p>
 
                   {/* Topics Pills */}
-                  <div className="mb-6">
-                    <h4
-                      className={`text-xs font-bold mb-3 uppercase tracking-wider flex items-center gap-2 ${
-                        isDark ? 'text-gray-400' : 'text-gray-500'
-                      }`}
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                      Key Topics
-                    </h4>
+                  <div className="mb-4">
                     <div className="flex flex-wrap gap-2">
-                      {village.topics.map((topic, topicIndex) => (
-                        <motion.span
+                      {village.topics.slice(0, 3).map((topic, topicIndex) => (
+                        <span
                           key={topicIndex}
-                          whileHover={{ scale: 1.05 }}
-                          className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
+                          className={`px-2 py-1 text-xs font-medium rounded-full ${
                             isDark
-                              ? 'bg-slate-700 text-gray-300 border border-slate-600 hover:border-slate-500'
-                              : 'bg-gray-100 text-gray-700 border border-gray-200 hover:bg-gradient-to-r hover:from-orange-100 hover:to-pink-100 hover:border-orange-300'
+                              ? 'bg-slate-700 text-gray-300 border border-slate-600'
+                              : 'bg-gray-100 text-gray-700 border border-gray-200'
                           }`}
                         >
                           {topic}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Visit Link with Arrow */}
+                  {/* Visit Link */}
                   <motion.div
                     animate={{
                       x: isHovered ? 5 : 0
@@ -283,11 +301,6 @@ const Villages = () => {
                     <ExternalLink className="w-4 h-4" />
                   </motion.div>
                 </div>
-
-                {/* Decorative Corner Gradient */}
-                <div
-                  className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${village.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500 transform translate-x-16 -translate-y-16`}
-                />
               </motion.a>
             );
           })}
@@ -299,7 +312,7 @@ const Villages = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className={`mt-16 text-center p-8 rounded-2xl border-2 ${
+          className={`mt-8 mx-6 text-center p-8 rounded-2xl border-2 max-w-4xl lg:mx-auto ${
             isDark
               ? 'bg-slate-800/30 border-slate-700 backdrop-blur-sm'
               : 'bg-gradient-to-r from-orange-50 to-pink-50 border-orange-200'
@@ -315,6 +328,12 @@ const Villages = () => {
           </p>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

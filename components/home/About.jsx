@@ -132,26 +132,33 @@ export default function AboutTheConference() {
             className="space-y-8"
           >
             {/* Video Highlight */}
-            <div
-              className={`rounded-2xl overflow-hidden shadow-2xl border-2 ${
-                isDark ? 'border-orange-500/30' : 'border-orange-200'
-              }`}
-            >
-              <div className={`px-4 py-3 ${isDark ? 'bg-slate-800' : 'bg-orange-100'}`}>
-                <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  Conference Highlights
-                </h3>
-              </div>
-              <div className="w-full aspect-video bg-black">
-                <iframe
-                  src="https://www.youtube.com/embed/wmB01yWTaFk?autoplay=1&mute=1"
-                  title="Seasides Conference Highlights"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                  loading="lazy"
-                />
+            <div className={`relative rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-slate-800' : 'bg-white'}`}>
+              {/* Decorative gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-600 rounded-3xl" />
+              <div className={`absolute inset-[3px] rounded-3xl ${isDark ? 'bg-slate-900' : 'bg-white'}`} />
+
+              <div className="relative p-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-red-500" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <span className="w-3 h-3 rounded-full bg-green-500" />
+                  </div>
+                  <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    Conference Highlights
+                  </h3>
+                </div>
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
+                  <iframe
+                    src="https://www.youtube.com/embed/wmB01yWTaFk?autoplay=1&mute=1"
+                    title="Seasides Conference Highlights"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>
