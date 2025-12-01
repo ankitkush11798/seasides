@@ -184,6 +184,92 @@ const ScholarshipPage = () => {
               </div>
             </div>
 
+            {/* Timeline Section */}
+            <div
+              className={`rounded-3xl p-10 mb-20 ${
+                isDark ? 'bg-slate-800 border border-slate-700' : 'bg-gray-50 border border-gray-200'
+              }`}
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-orange-500/20' : 'bg-orange-100'}`}
+                >
+                  <svg
+                    className={`w-7 h-7 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h2 className={`text-3xl font-black ${isDark ? 'text-white' : 'text-gray-900'}`}>Important Timeline</h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 ${isDark ? 'bg-orange-400' : 'bg-orange-500'}`}
+                  />
+                  <div>
+                    <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      Application Deadline: 7th December
+                    </p>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      Application form open until 7th December
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 ${isDark ? 'bg-orange-400' : 'bg-orange-500'}`}
+                  />
+                  <div>
+                    <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      First Round Notifications: 15th December
+                    </p>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      Scholarship award notifications by 15th December (Respond to mail and accept the scholarship)
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 ${isDark ? 'bg-orange-400' : 'bg-orange-500'}`}
+                  />
+                  <div>
+                    <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      Second Round Notifications: 30th December
+                    </p>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      Second round of notifications by 30th December
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`w-3 h-3 rounded-full mt-2 flex-shrink-0 ${isDark ? 'bg-orange-400' : 'bg-orange-500'}`}
+                  />
+                  <div>
+                    <p className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      Scholarship Disbursement: 20th February
+                    </p>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      Scholarship to be disbursed on 20th February
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* CTA */}
             <div className="rounded-3xl p-14 text-center relative overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 shadow-2xl">
               <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
