@@ -106,34 +106,6 @@ const ScholarshipPage = () => {
               </p>
             </div>
 
-            {/* Stats/Benefits */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-              {benefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className={`relative group p-8 rounded-3xl text-center transition-all duration-500 hover:-translate-y-2 ${
-                    isDark
-                      ? 'bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10'
-                      : 'bg-white border-2 border-gray-100 hover:border-orange-300 hover:shadow-2xl hover:shadow-orange-500/20'
-                  }`}
-                >
-                  <div
-                    className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl flex items-center justify-center ${
-                      isDark ? 'bg-orange-500' : 'bg-orange-500'
-                    } shadow-lg`}
-                  >
-                    <span className="text-white font-bold text-lg">{index + 1}</span>
-                  </div>
-                  <h3
-                    className={`text-2xl md:text-3xl font-black mt-4 mb-3 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
-                  >
-                    {benefit.title}
-                  </h3>
-                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-
             {/* Main Content Grid */}
             <div className="grid lg:grid-cols-5 gap-8 mb-20">
               {/* Scholarship Details - Wider */}
@@ -212,55 +184,6 @@ const ScholarshipPage = () => {
               </div>
             </div>
 
-            {/* How to Apply */}
-            <div
-              className={`rounded-3xl p-10 md:p-14 mb-20 relative overflow-hidden ${
-                isDark
-                  ? 'bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700'
-                  : 'bg-gradient-to-br from-gray-50 to-white border border-gray-200'
-              }`}
-            >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
-
-              <h2
-                className={`text-4xl font-black mb-12 text-center relative z-10 ${isDark ? 'text-white' : 'text-gray-900'}`}
-              >
-                How to Apply
-              </h2>
-              <div className="grid md:grid-cols-3 gap-8 relative z-10">
-                {[
-                  {
-                    step: '01',
-                    title: 'Fill the Form',
-                    desc: 'Complete the scholarship application form with your details'
-                  },
-                  {
-                    step: '02',
-                    title: 'Share Your Story',
-                    desc: 'Tell us why you deserve the scholarship and your passion for security'
-                  },
-                  { step: '03', title: 'Get Selected', desc: 'Selected candidates will be notified via email' }
-                ].map((item, index) => (
-                  <div key={index} className="text-center">
-                    <div
-                      className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
-                        isDark
-                          ? 'bg-gradient-to-br from-orange-500 to-orange-600'
-                          : 'bg-gradient-to-br from-orange-500 to-orange-600'
-                      } shadow-xl`}
-                    >
-                      <span className="text-2xl font-black text-white">{item.step}</span>
-                    </div>
-                    <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      {item.title}
-                    </h3>
-                    <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* CTA */}
             <div className="rounded-3xl p-14 text-center relative overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 shadow-2xl">
               <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -281,12 +204,22 @@ const ScholarshipPage = () => {
                 <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
                   Do not miss this opportunity to attend Seasides 2026 with financial support.
                 </p>
-                <button
-                  disabled
-                  className="inline-flex items-center justify-center px-12 py-6 rounded-2xl font-bold text-lg bg-white/20 text-white cursor-not-allowed backdrop-blur-sm border-2 border-white/30 hover:bg-white/30 transition-all"
+                <a
+                  href="https://docs.google.com/forms/d/1xaThGInO9qck66D_egSJB2SOLyGADN0XwBvsC0e--x4/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-12 py-6 rounded-2xl font-bold text-lg bg-white text-orange-600 hover:bg-white/90 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-300"
                 >
-                  Applications Opening Soon
-                </button>
+                  Apply Now
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
