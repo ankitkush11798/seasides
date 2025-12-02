@@ -78,10 +78,10 @@ const SponsorsPage = () => {
           }
         }
         .slider-left {
-          animation: scroll-left 25s linear infinite;
+          animation: scroll-left 75s linear infinite;
         }
         .slider-right {
-          animation: scroll-right 25s linear infinite;
+          animation: scroll-right 75s linear infinite;
         }
         .slider-left:hover,
         .slider-right:hover {
@@ -213,7 +213,8 @@ const SponsorsPage = () => {
                 <p
                   className={`text-lg md:text-xl mb-10 max-w-2xl mx-auto ${isDark ? 'text-gray-300' : 'text-white/90'}`}
                 >
-                  Join our community of sponsors and connect with cybersecurity professionals from around the world
+                  Support us and give a helping hand to make cybersecurity learning free for everyone. Together,
+                  let&#39;s create the next generation of security warriors and build a safer digital future.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

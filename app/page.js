@@ -19,9 +19,9 @@ const Villages = dynamic(() => import('@/components/home/Villages'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
-// const Sponsors = dynamic(() => import('@/components/home/Sponsors'), {
-//   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
-// });
+const Sponsors = dynamic(() => import('@/components/home/Sponsors'), {
+  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+});
 
 // const NostalgiaGallery = dynamic(() => import('@/components/home/NostalgiaGallery'), {
 //   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
@@ -51,9 +51,9 @@ export default function Home() {
         <Villages />
       </div>
 
-      {/* <div id="sponsors" className="scroll-mt-24 relative z-20">
+      <div id="sponsors" className="scroll-mt-24 relative z-20">
         <Sponsors />
-      </div> */}
+      </div>
 
       {/* <div id="nostalgia" className="scroll-mt-24">
         <NostalgiaGallery />

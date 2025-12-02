@@ -61,7 +61,7 @@ const ReachUs = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">How to Reach Us</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Directions to Venue</h2>
           <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full mb-6" />
           <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
             Find your way to International Centre Goa for Seasides 2026

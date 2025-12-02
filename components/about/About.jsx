@@ -321,8 +321,9 @@ const About = () => {
           <div className="space-y-4 text-base md:text-lg">
             <p>
               Since our inception, Seasides's commitment to providing free, high-quality education has made a
-              significant impact on the cybersecurity community, particularly among students. Key achievements:
+              significant impact on the cybersecurity community, particularly among students.
             </p>
+            <p className="font-semibold">Key Achievements:</p>
             <ul className="list-disc list-inside space-y-1">
               <li>Record-breaking Attendance</li>
               <li>Cutting-edge Workshops and Training</li>
@@ -392,24 +393,6 @@ const About = () => {
 
         <div className="mb-12">{renderContent()}</div>
 
-        {/* Quick Links Section */}
-        <div className="mb-16 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gradient-fallback">Quick Links</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/faq"
-              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 border-2 shadow-lg ${
-                isDark
-                  ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white border-slate-600 hover:from-orange-600 hover:to-orange-700 hover:border-orange-500'
-                  : 'bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border-orange-200 hover:from-orange-100 hover:to-orange-200 hover:border-orange-400'
-              }`}
-            >
-              <HelpCircle size={22} />
-              Frequently Asked Questions
-            </Link>
-          </div>
-        </div>
-
         {/* Team Section */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gradient-fallback">Meet the Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -466,6 +449,24 @@ const About = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Quick Links Section */}
+        <div className="mt-16 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gradient-fallback">Quick Links</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/faq"
+              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105 border-2 shadow-lg ${
+                isDark
+                  ? 'bg-gradient-to-r from-slate-700 to-slate-800 text-white border-slate-600 hover:from-orange-600 hover:to-orange-700 hover:border-orange-500'
+                  : 'bg-gradient-to-r from-orange-50 to-orange-100 text-orange-700 border-orange-200 hover:from-orange-100 hover:to-orange-200 hover:border-orange-400'
+              }`}
+            >
+              <HelpCircle size={22} />
+              Frequently Asked Questions
+            </Link>
+          </div>
         </div>
       </div>
 

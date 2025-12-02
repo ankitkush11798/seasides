@@ -80,6 +80,18 @@ const Villages = () => {
       shadowColor: 'shadow-violet-500/30',
       borderColor: 'border-violet-500',
       url: '/cfp-blockchain-village'
+    },
+    {
+      id: 6,
+      name: 'Social Engineering Village',
+      icon: Shield,
+      description:
+        'Welcome to the intersection of psychology, technology, and security. Explore the art of human manipulation, OSINT gathering, and the cognitive biases that define the human element of cybersecurity.',
+      topics: ['OSINT Intelligence', 'HUMINT Operations', 'PSYOP Psychology', 'Human Element'],
+      color: 'from-amber-500 to-orange-600',
+      shadowColor: 'shadow-amber-500/30',
+      borderColor: 'border-amber-500',
+      url: 'https://www.sevillage.in/'
     }
   ];
 

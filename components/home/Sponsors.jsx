@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Sponsors = () => {
   const { isDark } = useTheme();
@@ -59,119 +61,115 @@ const Sponsors = () => {
           website: 'https://alteredsecurity.com'
         }
       ]
-    },
-    {
-      tier: 'Silver',
-      color: 'from-gray-400 to-gray-500',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-gray-700/30 to-gray-600/30'
-        : 'bg-gradient-to-r from-gray-50 to-gray-100',
-      borderColor: 'border-gray-500',
-      sponsors: [
-        {
-          name: 'SquareX',
-          logo: '/sponsors-2025/squarex.jpg',
-          website: 'https://sqrx.com'
-        },
-        {
-          name: 'DomDog',
-          logo: '/sponsors-2025/domdog.jpg',
-          website: 'https://domdog.io'
-        },
-        {
-          name: 'SqrX',
-          logo: '/sponsors-2025/squrx.jpg',
-          website: 'https://sqrx.com'
-        },
-        {
-          name: 'PureID',
-          logo: '/sponsors-2025/pureid.jpg',
-          website: 'https://pureid.io'
-        }
-      ]
-    },
-    {
-      tier: 'Bronze',
-      color: 'from-orange-600 to-amber-700',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-orange-900/30 to-amber-900/30'
-        : 'bg-gradient-to-r from-orange-50 to-amber-50',
-      borderColor: 'border-orange-600',
-      sponsors: [
-        {
-          name: 'Appknox',
-          logo: '/sponsors-2025/appknox.jpg',
-          website: 'https://appknox.com'
-        },
-        {
-          name: 'Corgea',
-          logo: '/sponsors-2025/corgea.jpg',
-          website: 'https://corgea.com'
-        }
-      ]
-    },
-    {
-      tier: 'Special Supporter',
-      color: 'from-purple-400 to-pink-400',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-purple-900/30 to-pink-900/30'
-        : 'bg-gradient-to-r from-purple-50 to-pink-50',
-      borderColor: 'border-purple-400',
-      sponsors: []
-    },
-    {
-      tier: 'Community Partner',
-      color: 'from-green-400 to-emerald-500',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-green-900/30 to-emerald-900/30'
-        : 'bg-gradient-to-r from-green-50 to-emerald-50',
-      borderColor: 'border-green-500',
-      sponsors: []
     }
   ];
 
-  // Filter tiers that have sponsors
-  const tiersWithSponsors = sponsorTiers.filter(tier => tier.sponsors.length > 0);
+  // Filter to show only Diamond, Platinum, and Gold tiers with sponsors
+  const topTiers = sponsorTiers.filter(tier => tier.sponsors.length > 0);
 
-  if (tiersWithSponsors.length === 0) {
+  if (topTiers.length === 0) {
     return null; // Don't render anything if there are no sponsors
   }
 
   return (
-    <section className={`py-16 ${isDark ? 'bg-slate-900' : 'bg-white'}`}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      className={`relative py-24 overflow-hidden ${
+        isDark
+          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900'
+          : 'bg-gradient-to-br from-orange-50 via-white to-orange-50'
+      }`}
+    >
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.15, 0.25, 0.15]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
+          className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.15, 0.25, 0.15]
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 3
+          }}
+          className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Our Sponsors
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 mb-4"
+          >
+            <Sparkles className={`w-6 h-6 ${isDark ? 'text-orange-400' : 'text-orange-500'}`} />
+            <span
+              className={`text-sm font-semibold uppercase tracking-wider ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
+            >
+              Powered By
+            </span>
+            <Sparkles className={`w-6 h-6 ${isDark ? 'text-orange-400' : 'text-orange-500'}`} />
+          </motion.div>
+
+          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Our{' '}
+            <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-yellow-500 bg-clip-text text-transparent">
+              Sponsors
+            </span>
           </h2>
-          <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            Thank you to our amazing sponsors who make Seasides possible
+
+          <div className="w-32 h-1 bg-gradient-to-r from-cyan-500 to-yellow-600 mx-auto rounded-full mb-6" />
+
+          <p
+            className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+          >
+            Thank you to our amazing sponsors who make Seasides possible and help keep cybersecurity education free for
+            everyone
           </p>
         </motion.div>
 
-        <div className="space-y-12">
-          {tiersWithSponsors.map((tier, tierIndex) => (
+        {/* Sponsors Showcase */}
+        <div className="space-y-16">
+          {topTiers.map((tier, tierIndex) => (
             <motion.div
               key={tier.tier}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: tierIndex * 0.1 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-8"
             >
               {/* Tier Title */}
-              <div className="text-center">
+              <div className="flex items-center justify-center gap-4">
+                <div className={`h-px flex-1 max-w-32 bg-gradient-to-r ${tier.color} opacity-50`} />
                 <h3
-                  className={`text-3xl font-bold bg-gradient-to-r ${tier.color} bg-clip-text text-transparent inline-block`}
+                  className={`text-2xl md:text-3xl font-black bg-gradient-to-r ${tier.color} bg-clip-text text-transparent uppercase tracking-wider`}
                 >
                   {tier.tier}
                 </h3>
+                <div className={`h-px flex-1 max-w-32 bg-gradient-to-l ${tier.color} opacity-50`} />
               </div>
 
               {/* Sponsors Grid */}
@@ -181,8 +179,10 @@ const Sponsors = () => {
                     ? 'grid-cols-1 place-items-center'
                     : tier.sponsors.length === 2
                       ? 'grid-cols-1 md:grid-cols-2'
-                      : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-                } gap-8`}
+                      : tier.sponsors.length === 4
+                        ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                } gap-6 lg:gap-8`}
               >
                 {tier.sponsors.map((sponsor, sponsorIndex) => (
                   <motion.a
@@ -190,32 +190,28 @@ const Sponsors = () => {
                     href={sponsor.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     className={`
-                      ${tier.bgColor}
+                      bg-white
                       ${tier.borderColor}
-                      border-2 rounded-2xl p-8
+                      border-2 rounded-2xl p-6 md:p-8
                       flex flex-col items-center justify-center gap-4
                       transition-all duration-300
                       hover:shadow-2xl
-                      ${isDark ? 'hover:bg-opacity-50' : 'hover:bg-opacity-70'}
-                      min-h-[250px]
+                      ${tier.sponsors.length === 1 ? 'min-h-[300px] max-w-md w-full' : 'min-h-[220px]'}
                     `}
                   >
                     <div className="relative w-full h-32 flex items-center justify-center">
                       <Image
                         src={sponsor.logo}
                         alt={sponsor.name}
-                        width={300}
-                        height={150}
+                        width={280}
+                        height={140}
                         className="object-contain max-w-full max-h-full"
                         unoptimized
                       />
                     </div>
-                    <h4 className={`text-xl font-bold text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      {sponsor.name}
-                    </h4>
                   </motion.a>
                 ))}
               </div>
@@ -223,7 +219,7 @@ const Sponsors = () => {
           ))}
         </div>
 
-        {/* Become a Sponsor CTA */}
+        {/* View All Sponsors CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -231,24 +227,22 @@ const Sponsors = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <p className={`text-lg mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-            Interested in sponsoring Seasides 2026?
-          </p>
-          <a
-            href="mailto:contact@seasides.net"
+          <Link
+            href="/sponsors"
             className={`
-              inline-block px-8 py-4 rounded-xl font-semibold text-lg
+              inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg
               transition-all duration-300 transform hover:scale-105
               ${
                 isDark
-                  ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700'
-                  : 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700'
+                  ? 'bg-gradient-to-r from-orange-500 to-pink-600 text-white hover:from-orange-600 hover:to-pink-700'
+                  : 'bg-gradient-to-r from-orange-500 to-pink-600 text-white hover:from-orange-600 hover:to-pink-700'
               }
               shadow-lg hover:shadow-2xl
             `}
           >
-            Become a Sponsor
-          </a>
+            View All Sponsors
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </motion.div>
       </div>
     </section>
