@@ -13,7 +13,7 @@ const CFPBlockchainVillage = () => {
     'Cryptography Misuse and Key Management',
     'Wallet Forensics',
     'Threat Modeling for Decentralized Systems',
-    'L2, Bridges, and Cross-chain Exploits',
+    'Bridges, and Cross-chain Exploits',
     'AI in Blockchain Security'
   ];
 
@@ -98,7 +98,7 @@ const CFPBlockchainVillage = () => {
           {/* CTA */}
           <div className="mt-12 flex justify-center">
             <a
-              href="https://docs.google.com/forms/d/1F8oFjJLsCpXaadDNMf6xita22k_w-X8FDRIc5MYLC5k/"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSew3EE_vuUKWnsyuPF22r35F_SAdAKxd4WgHTdNq4SR9hk0OQ/viewform?usp=dialog"
               target="_blank"
               className="px-8 py-4 text-lg font-semibold rounded-xl bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-500 text-white shadow-lg hover:scale-105 transition-transform"
             >

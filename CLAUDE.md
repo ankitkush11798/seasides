@@ -8,7 +8,6 @@ npm run dev
  
 # Building 
 npm run build
-  
 # Linting & Formatting
 npm run lint          # Check for linting errors
 npm run lint:fix      # Auto-fix linting errors 
