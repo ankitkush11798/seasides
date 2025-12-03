@@ -1,7 +1,7 @@
 # Project Setup Documentation 
 
 ## Development Commands
-
+ 
 ```bash
 # Development
 npm run dev 
