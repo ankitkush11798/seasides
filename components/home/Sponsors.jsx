@@ -47,8 +47,8 @@ const Sponsors = () => {
         },
         {
           name: 'Encipher',
-          logo: '/sponsors-2025/encipher.jpg',
-          website: 'https://encipher.co'
+          logo: '/sponsors-2025/encipher.svg',
+          website: 'https://www.enciphers.com/'
         },
         {
           name: 'NII',

@@ -29,7 +29,7 @@ const SponsorsPage = () => {
       textColor: isDark ? 'text-yellow-400' : 'text-yellow-600',
       sponsors: [
         { logo: '/sponsors-2025/levo.jpg', website: 'https://levo.ai' },
-        { logo: '/sponsors-2025/encipher.jpg', website: 'https://encipher.co' },
+        { logo: '/sponsors-2025/encipher.svg', website: 'https://www.enciphers.com/' },
         { logo: '/sponsors-2025/nii.jpg', website: 'https://nii.ac.in' },
         { logo: '/sponsors-2025/alteredsecurity.jpg', website: 'https://alteredsecurity.com' }
       ]
