@@ -18,19 +18,25 @@ const Sponsors = () => {
       sponsors: [
         {
           name: 'SecureLayer7',
-          logo: '/sponsors-2025/securelayer7.jpg',
+          logo: '/sponsors-2025/securelayer7.png',
           website: 'https://securelayer7.net'
         }
       ]
     },
     {
       tier: 'Platinum',
-      color: 'from-gray-300 to-gray-400',
+      color: 'from-slate-300 to-slate-400',
       bgColor: isDark
         ? 'bg-gradient-to-r from-gray-800/30 to-gray-700/30'
         : 'bg-gradient-to-r from-gray-100 to-gray-200',
-      borderColor: 'border-gray-400',
-      sponsors: []
+      borderColor: 'border-slate-400',
+      sponsors: [
+        {
+          name: 'DNIF',
+          logo: '/sponsors-2025/dnif.png',
+          website: 'https://dnif.it'
+        }
+      ]
     },
     {
       tier: 'Gold',
@@ -41,24 +47,34 @@ const Sponsors = () => {
       borderColor: 'border-yellow-500',
       sponsors: [
         {
-          name: 'Levo.ai',
-          logo: '/sponsors-2025/levo.jpg',
-          website: 'https://levo.ai'
-        },
-        {
-          name: 'Encipher',
-          logo: '/sponsors-2025/encipher.svg',
-          website: 'https://www.enciphers.com/'
-        },
-        {
-          name: 'NII',
-          logo: '/sponsors-2025/nii.jpg',
+          name: 'NII Consulting',
+          logo: '/sponsors-2025/nii.png',
           website: 'https://nii.ac.in'
         },
         {
           name: 'Altered Security',
-          logo: '/sponsors-2025/alteredsecurity.jpg',
+          logo: '/sponsors-2025/altered_security.png',
           website: 'https://alteredsecurity.com'
+        },
+        {
+          name: 'Levo.ai',
+          logo: '/sponsors-2025/levo.webp',
+          website: 'https://levo.ai'
+        },
+        {
+          name: 'Loginsoft',
+          logo: 'https://placehold.co/400x200?text=Loginsoft',
+          website: 'https://loginsoft.com'
+        },
+        {
+          name: 'Encipher',
+          logo: '/sponsors-2025/enciphers.webp',
+          website: 'https://enciphers.com'
+        },
+        {
+          name: 'Semgrep',
+          logo: '/sponsors-2025/semgrep-1.png',
+          website: 'https://semgrep.dev'
         }
       ]
     }

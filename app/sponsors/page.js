@@ -21,17 +21,25 @@ const SponsorsPage = () => {
       tier: 'Diamond',
       color: 'from-cyan-400 to-blue-500',
       textColor: isDark ? 'text-cyan-400' : 'text-cyan-600',
-      sponsors: [{ logo: '/sponsors-2025/securelayer7.jpg', website: 'https://securelayer7.net' }]
+      sponsors: [{ logo: '/sponsors-2025/securelayer7.png', website: 'https://securelayer7.net' }]
+    },
+    {
+      tier: 'Platinum',
+      color: 'from-slate-300 to-slate-400',
+      textColor: isDark ? 'text-slate-300' : 'text-slate-600',
+      sponsors: [{ logo: '/sponsors-2025/dnif.png', website: 'https://dnif.it' }]
     },
     {
       tier: 'Gold',
       color: 'from-yellow-400 to-amber-500',
       textColor: isDark ? 'text-yellow-400' : 'text-yellow-600',
       sponsors: [
-        { logo: '/sponsors-2025/levo.jpg', website: 'https://levo.ai' },
-        { logo: '/sponsors-2025/encipher.svg', website: 'https://www.enciphers.com/' },
-        { logo: '/sponsors-2025/nii.jpg', website: 'https://nii.ac.in' },
-        { logo: '/sponsors-2025/alteredsecurity.jpg', website: 'https://alteredsecurity.com' }
+        { logo: '/sponsors-2025/nii.png', website: 'https://nii.ac.in' },
+        { logo: '/sponsors-2025/altered_security.png', website: 'https://alteredsecurity.com' },
+        { logo: '/sponsors-2025/levo.webp', website: 'https://levo.ai' },
+        { logo: 'https://placehold.co/400x200?text=Loginsoft', website: 'https://loginsoft.com' },
+        { logo: '/sponsors-2025/enciphers.webp', website: 'https://enciphers.com' },
+        { logo: '/sponsors-2025/semgrep-1.png', website: 'https://semgrep.dev' }
       ]
     },
     {
@@ -39,10 +47,15 @@ const SponsorsPage = () => {
       color: 'from-gray-300 to-gray-400',
       textColor: isDark ? 'text-gray-300' : 'text-gray-500',
       sponsors: [
-        { logo: '/sponsors-2025/squarex.jpg', website: 'https://sqrx.com' },
-        { logo: '/sponsors-2025/domdog.jpg', website: 'https://domdog.io' },
-        { logo: '/sponsors-2025/squrx.jpg', website: 'https://sqrx.com' },
-        { logo: '/sponsors-2025/pureid.jpg', website: 'https://pureid.io' }
+        { logo: '/sponsors-2025/domdog.svg', website: 'https://domdog.io' },
+        { logo: '/sponsors-2025/sqrx-logo-white.png', website: 'https://sqrx.com' },
+        { logo: '/sponsors-2025/clouddefenseai.png', website: 'https://clouddefense.ai' },
+        { logo: '/sponsors-2025/pureid.webp', website: 'https://pureid.io' },
+        { logo: '/sponsors-2025/redhuntlabs.webp', website: 'https://redhuntlabs.com' },
+        { logo: '/sponsors-2025/appsecuresecurity.webp', website: 'https://appsecure.security' },
+        { logo: '/sponsors-2025/oligo-security.svg', website: 'https://oligo.security' },
+        { logo: '/sponsors-2025/Offenso-Logo-black-02.png', website: 'https://offensoacademy.com' },
+        { logo: 'https://placehold.co/400x200?text=Delve', website: '#' }
       ]
     },
     {
@@ -50,8 +63,11 @@ const SponsorsPage = () => {
       color: 'from-orange-400 to-orange-600',
       textColor: isDark ? 'text-orange-400' : 'text-orange-600',
       sponsors: [
-        { logo: '/sponsors-2025/appknox.jpg', website: 'https://appknox.com' },
-        { logo: '/sponsors-2025/corgea.jpg', website: 'https://corgea.com' }
+        { logo: '/sponsors-2025/datatheorem.webp', website: 'https://datatheorem.com' },
+        { logo: '/sponsors-2025/appknoxlogo.webp', website: 'https://appknox.com' },
+        { logo: '/sponsors-2025/kloudle.svg', website: 'https://kloudle.com' },
+        { logo: '/sponsors-2025/endorlabs.webp', website: 'https://endorlabs.com' },
+        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com' }
       ]
     }
   ];
@@ -167,7 +183,10 @@ const SponsorsPage = () => {
                       />
 
                       {/* Slider Track */}
-                      <div className={`flex items-center gap-10 w-max ${isEven ? 'slider-left' : 'slider-right'}`}>
+                      <div
+                        className={`flex items-center gap-10 w-max ${isEven ? 'slider-left' : 'slider-right'}`}
+                        style={{ animationDuration: `${tier.sponsors.length * 20}s` }}
+                      >
                         {duplicatedSponsors.map((sponsor, index) => (
                           <a
                             key={index}
