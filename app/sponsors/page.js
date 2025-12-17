@@ -21,7 +21,7 @@ const SponsorsPage = () => {
       tier: 'Diamond',
       color: 'from-cyan-400 to-blue-500',
       textColor: isDark ? 'text-cyan-400' : 'text-cyan-600',
-      sponsors: [{ logo: '/sponsors-2025/securelayer7.png', website: 'https://securelayer7.net' }]
+      sponsors: [{ logo: '/sponsors-2025/securelayer7.png', website: 'https://securelayer7.net', isLight: true }]
     },
     {
       tier: 'Platinum',
@@ -49,7 +49,7 @@ const SponsorsPage = () => {
       sponsors: [
         { logo: '/sponsors-2025/domdog.svg', website: 'https://domdog.io' },
         { logo: '/sponsors-2025/sqrx-logo-white.png', website: 'https://sqrx.com' },
-        { logo: '/sponsors-2025/clouddefenseai.png', website: 'https://clouddefense.ai' },
+        { logo: '/sponsors-2025/clouddefenseai.png', website: 'https://clouddefense.ai', isLight: true },
         { logo: '/sponsors-2025/pureid.webp', website: 'https://pureid.io' },
         { logo: '/sponsors-2025/redhuntlabs.webp', website: 'https://redhuntlabs.com' },
         { logo: '/sponsors-2025/appsecuresecurity.webp', website: 'https://appsecure.security' },
@@ -67,7 +67,7 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/appknoxlogo.webp', website: 'https://appknox.com' },
         { logo: '/sponsors-2025/kloudle.svg', website: 'https://kloudle.com' },
         { logo: '/sponsors-2025/endorlabs.webp', website: 'https://endorlabs.com' },
-        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com' }
+        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com', isLight: true }
       ]
     }
   ];
@@ -148,7 +148,7 @@ const SponsorsPage = () => {
                     <div className="flex justify-center px-6">
                       <a href={tier.sponsors[0].website} target="_blank" rel="noopener noreferrer" className="group">
                         <div
-                          className={`relative w-72 h-44 md:w-96 md:h-56 bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
+                          className={`relative w-72 h-44 md:w-96 md:h-56 ${tier.sponsors[0].isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
                             isDark ? 'shadow-cyan-500/10 hover:shadow-cyan-500/20' : ''
                           }`}
                         >
@@ -195,7 +195,9 @@ const SponsorsPage = () => {
                             rel="noopener noreferrer"
                             className="flex-shrink-0 transition-all duration-300 hover:scale-110"
                           >
-                            <div className="relative w-48 h-32 bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow">
+                            <div
+                              className={`relative w-48 h-32 ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-2xl shadow-md hover:shadow-xl transition-shadow`}
+                            >
                               <Image
                                 src={sponsor.logo}
                                 alt="Sponsor"

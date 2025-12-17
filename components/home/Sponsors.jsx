@@ -19,7 +19,8 @@ const Sponsors = () => {
         {
           name: 'SecureLayer7',
           logo: '/sponsors-2025/securelayer7.png',
-          website: 'https://securelayer7.net'
+          website: 'https://securelayer7.net',
+          isLight: true
         }
       ]
     },
@@ -209,7 +210,7 @@ const Sponsors = () => {
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     className={`
-                      bg-white
+                      ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'}
                       ${tier.borderColor}
                       border-2 rounded-2xl p-6 md:p-8
                       flex flex-col items-center justify-center gap-4
