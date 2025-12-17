@@ -104,7 +104,7 @@ const Villages = () => {
       color: 'from-red-500 to-rose-600',
       shadowColor: 'shadow-red-500/30',
       borderColor: 'border-red-500',
-      url: '#'
+      url: 'https://www.bugbountyvillage.com/'
     }
   ];
 

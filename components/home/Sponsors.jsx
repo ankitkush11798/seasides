@@ -63,7 +63,7 @@ const Sponsors = () => {
         },
         {
           name: 'Loginsoft',
-          logo: 'https://placehold.co/400x200?text=Loginsoft',
+          logo: '/sponsors-2025/loginsoft.svg',
           website: 'https://loginsoft.com'
         },
         {

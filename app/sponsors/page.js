@@ -37,7 +37,7 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/nii.png', website: 'https://nii.ac.in' },
         { logo: '/sponsors-2025/altered_security.png', website: 'https://alteredsecurity.com' },
         { logo: '/sponsors-2025/levo.webp', website: 'https://levo.ai' },
-        { logo: 'https://placehold.co/400x200?text=Loginsoft', website: 'https://loginsoft.com' },
+        { logo: '/sponsors-2025/loginsoft.svg', website: 'https://loginsoft.com' },
         { logo: '/sponsors-2025/enciphers.webp', website: 'https://enciphers.com' },
         { logo: '/sponsors-2025/semgrep-1.png', website: 'https://semgrep.dev' }
       ]
@@ -55,7 +55,7 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/appsecuresecurity.webp', website: 'https://appsecure.security' },
         { logo: '/sponsors-2025/oligo-security.svg', website: 'https://oligo.security' },
         { logo: '/sponsors-2025/Offenso-Logo-black-02.png', website: 'https://offensoacademy.com' },
-        { logo: 'https://placehold.co/400x200?text=Delve', website: '#' }
+        { logo: '/sponsors-2025/delve.jpg', website: '#' }
       ]
     },
     {
