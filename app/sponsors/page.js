@@ -55,7 +55,8 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/appsecuresecurity.webp', website: 'https://appsecure.security' },
         { logo: '/sponsors-2025/oligo-security.svg', website: 'https://oligo.security' },
         { logo: '/sponsors-2025/Offenso-Logo-black-02.png', website: 'https://offensoacademy.com' },
-        { logo: '/sponsors-2025/delve.jpg', website: '#' }
+        { logo: '/sponsors-2025/delve.jpg', website: 'https://delve.co' },
+        { logo: '/sponsors-2025/payatu.png', website: 'https://payatu.com' }
       ]
     },
     {
