@@ -4,512 +4,219 @@ import { useTheme } from '@/contexts/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
-import { Clock, MapPin, User } from 'lucide-react';
+import { Clock, MapPin, ChevronRight } from 'lucide-react';
+import { events } from '@/lib/data';
+import SessionDetailModal from '@/components/schedule/SessionDetailModal';
 
 const EventTimeline = () => {
   const { isDark } = useTheme();
   const [selectedDay, setSelectedDay] = useState(1);
   const [selectedTrack, setSelectedTrack] = useState('all');
-
-  const eventData = {
-    day1: [
-      {
-        time: '09:00 AM',
-        title: 'Registration & Breakfast',
-        type: 'registration',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Check-in, collect badges, and enjoy breakfast'
-      },
-      {
-        time: '10:00 AM',
-        title: 'Opening Ceremony',
-        type: 'ceremony',
-        track: 'all',
-        location: 'Main Hall',
-        description: 'Official welcome and conference kickoff',
-        speaker: 'Organizing Committee'
-      },
-      {
-        time: '10:30 AM',
-        title: 'Keynote: The Future of Cybersecurity',
-        type: 'keynote',
-        track: 'all',
-        location: 'Main Hall',
-        speaker: 'Dr. Sarah Johnson',
-        description: 'Exploring emerging trends in cybersecurity'
-      },
-      {
-        time: '11:30 AM',
-        title: 'Advanced Web Application Pentesting',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'John Smith',
-        description: 'Hands-on workshop on modern web security techniques'
-      },
-      {
-        time: '11:30 AM',
-        title: 'Building a Security Culture in Enterprise',
-        type: 'session',
-        track: 'enterprise',
-        location: 'Conference Room B',
-        speaker: 'Emily Chen',
-        description: 'Strategies for implementing security awareness'
-      },
-      {
-        time: '01:00 PM',
-        title: 'Lunch Break',
-        type: 'lunch',
-        track: 'all',
-        location: 'Dining Hall',
-        description: 'Networking lunch with attendees'
-      },
-      {
-        time: '02:00 PM',
-        title: 'Cloud Security Deep Dive',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'Michael Rodriguez',
-        description: 'Securing cloud infrastructure and services'
-      },
-      {
-        time: '02:00 PM',
-        title: 'CTF Village',
-        type: 'village',
-        track: 'village',
-        location: 'CTF Arena',
-        description: 'Capture the Flag challenges all day'
-      },
-      {
-        time: '03:30 PM',
-        title: 'Coffee Break',
-        type: 'break',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Refreshments and networking'
-      },
-      {
-        time: '04:00 PM',
-        title: 'Mobile Security Arsenal',
-        type: 'arsenal',
-        track: 'technical',
-        location: 'Demo Area',
-        speaker: 'Alex Kumar',
-        description: 'Latest mobile security tools and techniques'
-      },
-      {
-        time: '05:30 PM',
-        title: 'Day 1 Wrap-up',
-        type: 'ceremony',
-        track: 'all',
-        location: 'Main Hall',
-        description: 'Summary and announcements for Day 2'
-      }
-    ],
-    day2: [
-      {
-        time: '09:00 AM',
-        title: 'Breakfast & Networking',
-        type: 'registration',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Morning refreshments'
-      },
-      {
-        time: '10:00 AM',
-        title: 'Keynote: AI-Powered Threats',
-        type: 'keynote',
-        track: 'all',
-        location: 'Main Hall',
-        speaker: 'Prof. David Lee',
-        description: 'Understanding AI in modern cyber attacks'
-      },
-      {
-        time: '11:00 AM',
-        title: 'Malware Analysis Workshop',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'Jessica Williams',
-        description: 'Reverse engineering and malware dissection'
-      },
-      {
-        time: '11:00 AM',
-        title: 'DevSecOps Best Practices',
-        type: 'session',
-        track: 'enterprise',
-        location: 'Conference Room B',
-        speaker: 'Robert Taylor',
-        description: 'Integrating security into CI/CD pipelines'
-      },
-      {
-        time: '12:30 PM',
-        title: 'Lunch Break',
-        type: 'lunch',
-        track: 'all',
-        location: 'Dining Hall',
-        description: 'Networking lunch'
-      },
-      {
-        time: '02:00 PM',
-        title: 'IoT Security Village',
-        type: 'village',
-        track: 'village',
-        location: 'IoT Lab',
-        description: 'Hands-on IoT hacking and security'
-      },
-      {
-        time: '02:00 PM',
-        title: 'Blockchain Security Workshop',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'Priya Sharma',
-        description: 'Smart contract auditing and security'
-      },
-      {
-        time: '03:30 PM',
-        title: 'Tea Break',
-        type: 'break',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Afternoon refreshments'
-      },
-      {
-        time: '04:00 PM',
-        title: 'Red Team vs Blue Team Live Demo',
-        type: 'arsenal',
-        track: 'technical',
-        location: 'Demo Arena',
-        speaker: 'Security Team',
-        description: 'Live attack and defense demonstration'
-      },
-      {
-        time: '05:30 PM',
-        title: 'Lightning Talks',
-        type: 'session',
-        track: 'all',
-        location: 'Main Hall',
-        description: '5-minute presentations from community members'
-      },
-      {
-        time: '06:30 PM',
-        title: 'Evening Networking Party',
-        type: 'ceremony',
-        track: 'all',
-        location: 'Rooftop Terrace',
-        description: 'Social event with refreshments'
-      }
-    ],
-    day3: [
-      {
-        time: '09:00 AM',
-        title: 'Breakfast',
-        type: 'registration',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Morning refreshments'
-      },
-      {
-        time: '10:00 AM',
-        title: 'Keynote: Zero Trust Architecture',
-        type: 'keynote',
-        track: 'all',
-        location: 'Main Hall',
-        speaker: 'Amanda Foster',
-        description: 'Implementing zero trust in modern organizations'
-      },
-      {
-        time: '11:00 AM',
-        title: 'Advanced Social Engineering',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'Chris Anderson',
-        description: 'Understanding and defending against social engineering'
-      },
-      {
-        time: '11:00 AM',
-        title: 'Incident Response Strategies',
-        type: 'session',
-        track: 'enterprise',
-        location: 'Conference Room B',
-        speaker: 'Maria Garcia',
-        description: 'Building effective incident response teams'
-      },
-      {
-        time: '12:30 PM',
-        title: 'Lunch Break',
-        type: 'lunch',
-        track: 'all',
-        location: 'Dining Hall',
-        description: 'Final networking lunch'
-      },
-      {
-        time: '02:00 PM',
-        title: 'Lockpicking Village',
-        type: 'village',
-        track: 'village',
-        location: 'Physical Security Lab',
-        description: 'Learn physical security and lockpicking'
-      },
-      {
-        time: '02:00 PM',
-        title: 'Bug Bounty Hunting Masterclass',
-        type: 'workshop',
-        track: 'technical',
-        location: 'Workshop Room A',
-        speaker: 'Kevin Patel',
-        description: 'Finding and reporting vulnerabilities'
-      },
-      {
-        time: '03:30 PM',
-        title: 'Coffee Break',
-        type: 'break',
-        track: 'all',
-        location: 'Main Lobby',
-        description: 'Final networking break'
-      },
-      {
-        time: '04:00 PM',
-        title: 'CTF Awards Ceremony',
-        type: 'ceremony',
-        track: 'all',
-        location: 'Main Hall',
-        description: 'Announcing CTF winners and prizes'
-      },
-      {
-        time: '05:00 PM',
-        title: 'Closing Ceremony',
-        type: 'ceremony',
-        track: 'all',
-        location: 'Main Hall',
-        speaker: 'Organizing Committee',
-        description: 'Conference wrap-up and thank you'
-      }
-    ]
-  };
+  const [selectedSession, setSelectedSession] = useState(null);
 
   const getEventsByDay = day => {
-    return eventData[`day${day}`] || [];
+    return events[`day${day}`] || [];
   };
 
   const getFilteredEvents = () => {
-    const events = getEventsByDay(selectedDay);
-    if (selectedTrack === 'all') return events;
-    return events.filter(event => event.track === selectedTrack || event.track === 'all');
-  };
-
-  const getTrackColor = track => {
-    const colors = {
-      technical: 'from-blue-400 to-blue-600',
-      enterprise: 'from-gray-400 to-gray-600',
-      workshop: 'from-green-400 to-green-600',
-      village: 'from-cyan-400 to-cyan-600',
-      all: 'from-orange-400 to-orange-600'
-    };
-    return colors[track] || colors.all;
+    const dailyEvents = getEventsByDay(selectedDay);
+    if (selectedTrack === 'all') return dailyEvents;
+    return dailyEvents.filter(event => event.track === selectedTrack || event.track === 'all');
   };
 
   const getTypeColor = type => {
     const colors = {
-      registration: 'bg-purple-500',
-      ceremony: 'bg-orange-500',
+      registration: 'bg-indigo-500',
       keynote: 'bg-red-500',
-      session: 'bg-blue-500',
-      workshop: 'bg-green-500',
-      village: 'bg-cyan-500',
-      arsenal: 'bg-indigo-500',
+      session: 'bg-blue-600',
+      workshop: 'bg-emerald-600',
+      village: 'bg-orange-500',
+      arsenal: 'bg-purple-600',
       lunch: 'bg-amber-500',
       break: 'bg-pink-500'
     };
     return colors[type] || 'bg-gray-500';
   };
 
-  const getTypeLabel = type => {
-    return type
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
-
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-slate-950' : 'bg-gray-50'}`}>
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden w-full">
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-600 w-full" />
-        <div className="absolute inset-0 bg-black/20 w-full" />
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent opacity-50" />
 
-        <div className="relative z-10 max-w-4xl px-6">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 text-orange-500 border border-orange-500/20 mb-6 font-semibold tracking-wide uppercase text-sm"
+          >
+            <Clock className="w-4 h-4" />
+            Agenda 2026
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl"
+            transition={{ delay: 0.1 }}
+            className={`text-5xl md:text-7xl font-bold mb-6 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}
           >
-            Event Timeline
+            Conference{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">
+              Schedule
+            </span>
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-white font-medium drop-shadow-lg"
+            transition={{ delay: 0.2 }}
+            className={`text-xl max-w-2xl mx-auto ${isDark ? 'text-slate-400' : 'text-slate-600'}`}
           >
-            Seasides 2026 - Three Days of Security Excellence
+            Three days of cutting-edge security talks, hands-on workshops, and immersive villages.
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-24 h-1 bg-white mx-auto rounded-full mt-6"
-          />
         </div>
       </section>
 
-      {/* Main Content */}
-      <section
-        className={`${isDark ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-br from-orange-50 via-white to-orange-50'} py-16 w-full`}
-      >
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          {/* Day Selection */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+      {/* Controls Section */}
+      <section className="sticky top-20 z-40 bg-inherit/95 backdrop-blur-md border-y border-orange-500/10 py-4 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Days */}
+          <div className="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-xl">
             {[1, 2, 3].map(day => (
-              <motion.button
+              <button
                 key={day}
                 onClick={() => setSelectedDay(day)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-8 py-4 font-bold text-lg rounded-2xl transition-all duration-300 shadow-lg ${
+                className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${
                   selectedDay === day
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-orange-500/50'
-                    : isDark
-                      ? 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/50 backdrop-blur-sm'
-                      : 'bg-white/60 text-slate-600 hover:bg-white/80 backdrop-blur-sm'
+                    ? 'bg-white dark:bg-slate-800 shadow-sm text-orange-600 dark:text-orange-400'
+                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
                 }`}
               >
                 Day {day}
-              </motion.button>
+              </button>
             ))}
           </div>
 
-          {/* Track Filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {/* Tracks */}
+          <div className="flex overflow-x-auto w-full md:w-auto pb-2 md:pb-0 gap-2 touch-pan-x scrollbar-hide pr-4">
             {[
-              { id: 'all', label: 'All Events' },
+              { id: 'all', label: 'All Tracks' },
               { id: 'technical', label: 'Technical' },
               { id: 'enterprise', label: 'Enterprise' },
               { id: 'village', label: 'Villages' }
             ].map(track => (
-              <motion.button
+              <button
                 key={track.id}
                 onClick={() => setSelectedTrack(track.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 font-medium rounded-xl transition-all duration-300 ${
+                className={`whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
                   selectedTrack === track.id
                     ? isDark
-                      ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/25'
-                      : 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
+                      ? 'bg-orange-500/10 border-orange-500/50 text-orange-400'
+                      : 'bg-orange-50 border-orange-200 text-orange-700'
                     : isDark
-                      ? 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/50 backdrop-blur-sm'
-                      : 'bg-white/60 text-slate-600 hover:bg-white/80 backdrop-blur-sm'
+                      ? 'border-slate-800 text-slate-400 hover:border-slate-700'
+                      : 'border-slate-200 text-slate-600 hover:border-slate-300'
                 }`}
               >
                 {track.label}
-              </motion.button>
+              </button>
             ))}
-          </div>
-
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical Line */}
-            <div
-              className={`absolute left-8 md:left-12 top-0 bottom-0 w-0.5 ${isDark ? 'bg-slate-700' : 'bg-orange-200'}`}
-            />
-
-            {/* Events */}
-            <div className="space-y-6">
-              {getFilteredEvents().map((event, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  className="relative flex items-start gap-4 md:gap-8 group"
-                >
-                  {/* Time Indicator */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 md:w-20 md:h-20 rounded-full ${getTypeColor(event.type)} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Clock className="w-6 h-6 md:w-8 md:h-8 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Event Card */}
-                  <motion.div
-                    whileHover={{ scale: 1.02, y: -4 }}
-                    className={`flex-1 rounded-2xl p-6 transition-all duration-300 ${
-                      isDark
-                        ? 'bg-slate-800/80 border border-slate-700/50 hover:shadow-2xl hover:shadow-cyan-500/10'
-                        : 'bg-white/80 border border-white/20 hover:shadow-2xl hover:shadow-blue-500/10'
-                    } backdrop-blur-sm`}
-                  >
-                    <div className="space-y-3">
-                      {/* Time and Tags */}
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${getTypeColor(event.type)} text-white text-sm font-semibold`}
-                        >
-                          <Clock className="w-4 h-4" />
-                          {event.time}
-                        </span>
-                        {event.location && (
-                          <span
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${
-                              isDark ? 'bg-slate-700 text-slate-300' : 'bg-gray-100 text-gray-700'
-                            }`}
-                          >
-                            <MapPin className="w-4 h-4" />
-                            {event.location}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Title */}
-                      <h3 className={`text-xl md:text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                        {event.title}
-                      </h3>
-
-                      {/* Speaker */}
-                      {event.speaker && (
-                        <p
-                          className={`inline-flex items-center gap-2 font-semibold ${isDark ? 'text-cyan-400' : 'text-orange-600'}`}
-                        >
-                          <User className="w-4 h-4" />
-                          {event.speaker}
-                        </p>
-                      )}
-
-                      {/* Description */}
-                      <p className={`text-base leading-relaxed ${isDark ? 'text-slate-300' : 'text-gray-700'}`}>
-                        {event.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
+      {/* Timeline Content */}
+      <section className="py-12 max-w-5xl mx-auto px-4 md:px-6">
+        <div className="space-y-6">
+          {getFilteredEvents().map((event, index) => (
+            <motion.div
+              key={event.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              onClick={() => setSelectedSession(event)}
+              className={`group cursor-pointer rounded-2xl p-1 overflow-hidden transition-all duration-300 hover:scale-[1.01] ${
+                isDark
+                  ? 'hover:shadow-orange-500/10 hover:bg-slate-800/50'
+                  : 'hover:shadow-xl hover:shadow-orange-500/5'
+              }`}
+            >
+              <div
+                className={`relative flex flex-col md:flex-row gap-6 p-6 rounded-xl border transition-colors ${
+                  isDark
+                    ? 'bg-slate-900 border-slate-800 group-hover:border-slate-700'
+                    : 'bg-white border-slate-100 group-hover:border-orange-200'
+                }`}
+              >
+                {/* Time + Line */}
+                <div className="flex md:flex-col md:w-32 md:text-right shrink-0 items-center md:items-end gap-2 text-slate-500 dark:text-slate-400 font-mono">
+                  <span className="text-lg font-bold">{event.time}</span>
+                  <div className="h-px w-full bg-slate-200 dark:bg-slate-800 md:hidden" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider text-white ${getTypeColor(event.type)}`}
+                    >
+                      {event.type}
+                    </span>
+                    {event.track !== 'all' && (
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+                        {event.track}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3
+                    className={`text-xl md:text-2xl font-bold mb-2 group-hover:text-orange-500 transition-colors ${
+                      isDark ? 'text-white' : 'text-slate-900'
+                    }`}
+                  >
+                    {event.title}
+                  </h3>
+
+                  <p className={`mb-4 line-clamp-2 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    {event.description}
+                  </p>
+
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="flex items-center gap-4 text-sm font-medium text-slate-500 dark:text-slate-400">
+                      <span className="flex items-center gap-1.5">
+                        <MapPin className="w-4 h-4" />
+                        {event.location}
+                      </span>
+                    </div>
+
+                    <span className="hidden group-hover:flex items-center gap-1 text-sm font-bold text-orange-500">
+                      Details <ChevronRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {getFilteredEvents().length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-slate-500 text-lg">No events found for this filter.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
       <Footer />
+
+      {/* Modal */}
+      <SessionDetailModal
+        session={selectedSession}
+        isOpen={!!selectedSession}
+        onClose={() => setSelectedSession(null)}
+      />
     </div>
   );
 };

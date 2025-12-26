@@ -56,7 +56,9 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/oligo-security.svg', website: 'https://oligo.security' },
         { logo: '/sponsors-2025/Offenso-Logo-black-02.png', website: 'https://offensoacademy.com' },
         { logo: '/sponsors-2025/delve.jpg', website: 'https://delve.co' },
-        { logo: '/sponsors-2025/payatu.png', website: 'https://payatu.com' }
+        { logo: '/sponsors-2025/payatu.png', website: 'https://payatu.com' },
+        { logo: '/sponsors-2025/appsecco.webp', website: 'https://appsecco.com' },
+        { logo: '/sponsors-2025/cloudanix.svg', website: 'https://www.cloudanix.com' }
       ]
     },
     {
@@ -68,7 +70,9 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/appknoxlogo.webp', website: 'https://appknox.com' },
         { logo: '/sponsors-2025/kloudle.svg', website: 'https://kloudle.com' },
         { logo: '/sponsors-2025/endorlabs.webp', website: 'https://endorlabs.com' },
-        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com', isLight: true }
+        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com', isLight: true },
+        { logo: '/sponsors-2025/isecurion1.webp', website: 'https://www.isecurion.com' },
+        { logo: '/sponsors-2025/safedep.svg', website: 'https://safedep.io' }
       ]
     }
   ];

@@ -177,7 +177,7 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full left-0 pt-2 w-72 transition-all duration-200
+              className={`absolute top-full right-0 pt-2 w-72 transition-all duration-200
                 ${isVillagesOpen ? 'opacity-100 translate-y-0 visible pointer-events-auto' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
               `}
             >
@@ -458,7 +458,7 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full left-0 pt-2 w-64 transition-all duration-200
+              className={`absolute top-full right-0 pt-2 w-64 transition-all duration-200
                 ${isAboutOpen ? 'opacity-100 translate-y-0 visible pointer-events-auto' : 'opacity-0 translate-y-2 invisible pointer-events-none'}
               `}
             >

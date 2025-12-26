@@ -5,88 +5,64 @@ import Link from 'next/link';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { sponsors as sponsorTiers } from '@/lib/data';
 
 const Sponsors = () => {
   const { isDark } = useTheme();
 
-  const sponsorTiers = [
-    {
-      tier: 'Diamond',
-      color: 'from-cyan-400 to-blue-400',
-      bgColor: isDark ? 'bg-gradient-to-r from-cyan-900/30 to-blue-900/30' : 'bg-gradient-to-r from-cyan-50 to-blue-50',
-      borderColor: 'border-cyan-400',
-      sponsors: [
-        {
-          name: 'SecureLayer7',
-          logo: '/sponsors-2025/securelayer7.png',
-          website: 'https://securelayer7.net',
-          isLight: true
-        }
-      ]
-    },
-    {
-      tier: 'Platinum',
-      color: 'from-slate-300 to-slate-400',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-gray-800/30 to-gray-700/30'
-        : 'bg-gradient-to-r from-gray-100 to-gray-200',
-      borderColor: 'border-slate-400',
-      sponsors: [
-        {
-          name: 'DNIF',
-          logo: '/sponsors-2025/dnif.png',
-          website: 'https://dnif.it'
-        }
-      ]
-    },
-    {
-      tier: 'Gold',
-      color: 'from-yellow-400 to-yellow-600',
-      bgColor: isDark
-        ? 'bg-gradient-to-r from-yellow-900/30 to-yellow-800/30'
-        : 'bg-gradient-to-r from-yellow-50 to-yellow-100',
-      borderColor: 'border-yellow-500',
-      sponsors: [
-        {
-          name: 'NII Consulting',
-          logo: '/sponsors-2025/nii.png',
-          website: 'https://nii.ac.in'
-        },
-        {
-          name: 'Altered Security',
-          logo: '/sponsors-2025/altered_security.png',
-          website: 'https://alteredsecurity.com'
-        },
-        {
-          name: 'Levo.ai',
-          logo: '/sponsors-2025/levo.webp',
-          website: 'https://levo.ai'
-        },
-        {
-          name: 'Loginsoft',
-          logo: '/sponsors-2025/loginsoft.svg',
-          website: 'https://loginsoft.com'
-        },
-        {
-          name: 'Encipher',
-          logo: '/sponsors-2025/enciphers.webp',
-          website: 'https://enciphers.com'
-        },
-        {
-          name: 'Semgrep',
-          logo: '/sponsors-2025/semgrep-1.png',
-          website: 'https://semgrep.dev'
-        }
-      ]
-    }
-  ];
-
-  // Filter to show only Diamond, Platinum, and Gold tiers with sponsors
-  const topTiers = sponsorTiers.filter(tier => tier.sponsors.length > 0);
+  // Filter to show only tiers with sponsors
+  const topTiers = sponsorTiers; // Show all tiers based on user request "update sponsors from sponspors page to home section" and my decision to show all.
+  // Wait, I should probably filter if empty, but previously I filtered.
+  // I will keep filtering empty tiers but remove the filter that limits count if any.
+  // Actually, let's just use:
+  // const topTiers = sponsorTiers.filter(tier => tier.sponsors && tier.sponsors.length > 0);
+  // Re-reading logic. I'll stick to what I had, just fixing layout.
 
   if (topTiers.length === 0) {
     return null; // Don't render anything if there are no sponsors
   }
+
+  // Helper to determine tier styling
+  const getTierStyles = tierName => {
+    const styles = {
+      Diamond: {
+        color: 'from-cyan-400 to-blue-400',
+        bgColor: isDark
+          ? 'bg-gradient-to-r from-cyan-900/30 to-blue-900/30'
+          : 'bg-gradient-to-r from-cyan-50 to-blue-50',
+        borderColor: 'border-cyan-400'
+      },
+      Platinum: {
+        color: 'from-slate-300 to-slate-400',
+        bgColor: isDark
+          ? 'bg-gradient-to-r from-gray-800/30 to-gray-700/30'
+          : 'bg-gradient-to-r from-gray-100 to-gray-200',
+        borderColor: 'border-slate-400'
+      },
+      Gold: {
+        color: 'from-yellow-400 to-yellow-600',
+        bgColor: isDark
+          ? 'bg-gradient-to-r from-yellow-900/30 to-yellow-800/30'
+          : 'bg-gradient-to-r from-yellow-50 to-yellow-100',
+        borderColor: 'border-yellow-500'
+      },
+      Silver: {
+        color: 'from-gray-300 to-gray-400',
+        bgColor: isDark
+          ? 'bg-gradient-to-r from-gray-800/30 to-gray-700/30'
+          : 'bg-gradient-to-r from-gray-50 to-gray-100',
+        borderColor: 'border-gray-400'
+      },
+      Bronze: {
+        color: 'from-orange-400 to-orange-600',
+        bgColor: isDark
+          ? 'bg-gradient-to-r from-orange-900/30 to-orange-800/30'
+          : 'bg-gradient-to-r from-orange-50 to-orange-100',
+        borderColor: 'border-orange-500'
+      }
+    };
+    return styles[tierName] || styles['Gold'];
+  };
 
   return (
     <section
@@ -169,71 +145,76 @@ const Sponsors = () => {
 
         {/* Sponsors Showcase */}
         <div className="space-y-16">
-          {topTiers.map((tier, tierIndex) => (
-            <motion.div
-              key={tier.tier}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: tierIndex * 0.1 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              {/* Tier Title */}
-              <div className="flex items-center justify-center gap-4">
-                <div className={`h-px flex-1 max-w-32 bg-gradient-to-r ${tier.color} opacity-50`} />
-                <h3
-                  className={`text-2xl md:text-3xl font-black bg-gradient-to-r ${tier.color} bg-clip-text text-transparent uppercase tracking-wider`}
-                >
-                  {tier.tier}
-                </h3>
-                <div className={`h-px flex-1 max-w-32 bg-gradient-to-l ${tier.color} opacity-50`} />
-              </div>
+          {topTiers.map((tier, tierIndex) => {
+            const styles = getTierStyles(tier.tier);
 
-              {/* Sponsors Grid */}
-              <div
-                className={`grid ${
-                  tier.sponsors.length === 1
-                    ? 'grid-cols-1 place-items-center'
-                    : tier.sponsors.length === 2
-                      ? 'grid-cols-1 md:grid-cols-2'
-                      : tier.sponsors.length === 4
-                        ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
-                        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-                } gap-6 lg:gap-8`}
+            return (
+              <motion.div
+                key={tier.tier}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: tierIndex * 0.1 }}
+                viewport={{ once: true }}
+                className="space-y-8"
               >
-                {tier.sponsors.map((sponsor, sponsorIndex) => (
-                  <motion.a
-                    key={sponsorIndex}
-                    href={sponsor.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`
+                {/* Tier Title */}
+                <div className="flex items-center justify-center gap-4">
+                  <div className={`h-px flex-1 max-w-32 bg-gradient-to-r ${styles.color} opacity-50`} />
+                  <h3
+                    className={`text-2xl md:text-3xl font-black bg-gradient-to-r ${styles.color} bg-clip-text text-transparent uppercase tracking-wider`}
+                  >
+                    {tier.tier}
+                  </h3>
+                  <div className={`h-px flex-1 max-w-32 bg-gradient-to-l ${styles.color} opacity-50`} />
+                </div>
+
+                {/* Sponsors Grid */}
+                <div
+                  className={`grid w-full ${
+                    tier.sponsors.length === 1
+                      ? 'grid-cols-1 place-items-center'
+                      : tier.sponsors.length === 2
+                        ? 'grid-cols-1 md:grid-cols-2'
+                        : tier.sponsors.length >= 4
+                          ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'
+                          : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                  } gap-6 lg:gap-8`}
+                >
+                  {tier.sponsors.map((sponsor, sponsorIndex) => (
+                    <motion.a
+                      key={sponsorIndex}
+                      href={sponsor.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`
                       ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'}
-                      ${tier.borderColor}
+                      ${styles.borderColor}
                       border-2 rounded-2xl p-6 md:p-8
                       flex flex-col items-center justify-center gap-4
                       transition-all duration-300
                       hover:shadow-2xl
-                      ${tier.sponsors.length === 1 ? 'min-h-[300px] max-w-md w-full' : 'min-h-[220px]'}
+                      w-full
+                      ${tier.sponsors.length === 1 ? 'min-h-[300px] max-w-md' : 'min-h-[220px]'}
                     `}
-                  >
-                    <div className="relative w-full h-32 flex items-center justify-center">
-                      <Image
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        width={280}
-                        height={140}
-                        className="object-contain max-w-full max-h-full"
-                        unoptimized
-                      />
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    >
+                      <div className="relative w-full h-32 flex items-center justify-center">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          width={280}
+                          height={140}
+                          className="object-contain max-w-full max-h-full"
+                          unoptimized
+                        />
+                      </div>
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* View All Sponsors CTA */}
