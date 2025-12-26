@@ -3,7 +3,7 @@
 ## Development Commands
  
 ```bash  
-# Development
+# Development 
 npm run dev  
   
 # Building 
