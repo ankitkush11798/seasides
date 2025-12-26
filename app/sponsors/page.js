@@ -72,7 +72,7 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/endorlabs.webp', website: 'https://endorlabs.com' },
         { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com', isLight: true },
         { logo: '/sponsors-2025/isecurion1.webp', website: 'https://www.isecurion.com' },
-        { logo: '/sponsors-2025/safedep.svg', website: 'https://safedep.io' }
+        { logo: '/sponsors-2025/safedep.svg', website: 'https://safedep.io', isLight: true }
       ]
     }
   ];
