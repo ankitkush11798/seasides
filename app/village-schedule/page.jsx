@@ -4,7 +4,21 @@ import { useTheme } from '@/contexts/ThemeContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Users, Star, CheckCircle } from 'lucide-react';
+import {
+  Calendar,
+  MapPin,
+  Users,
+  Star,
+  CheckCircle,
+  Bot,
+  Bug,
+  Cloud,
+  Wrench,
+  Anchor,
+  BarChart3,
+  Drama,
+  Search
+} from 'lucide-react';
 
 const VillageSchedule = () => {
   const { isDark } = useTheme();
@@ -20,7 +34,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '🤖',
+      icon: Bot,
       color: 'from-purple-500 to-purple-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -37,7 +51,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: false
       },
-      icon: '🐛',
+      icon: Bug,
       color: 'from-green-500 to-green-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -54,7 +68,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '☁️',
+      icon: Cloud,
       color: 'from-blue-500 to-blue-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -71,7 +85,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '🔧',
+      icon: Wrench,
       color: 'from-red-500 to-red-600',
       schedule: {
         day1: '11:00 AM - 05:00 PM',
@@ -88,7 +102,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '⚓',
+      icon: Anchor,
       color: 'from-cyan-500 to-cyan-600',
       schedule: {
         day1: null,
@@ -105,7 +119,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: false
       },
-      icon: '📊',
+      icon: BarChart3,
       color: 'from-indigo-500 to-indigo-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -122,7 +136,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '🎭',
+      icon: Drama,
       color: 'from-pink-500 to-pink-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -139,7 +153,7 @@ const VillageSchedule = () => {
         day2: true,
         day3: true
       },
-      icon: '🔍',
+      icon: Search,
       color: 'from-orange-500 to-orange-600',
       schedule: {
         day1: '10:00 AM - 05:00 PM',
@@ -268,7 +282,9 @@ const VillageSchedule = () => {
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
-                            <span className="text-3xl">{village.icon}</span>
+                            <div className={`p-2 rounded-lg bg-gradient-to-r ${village.color}`}>
+                              <village.icon className="w-6 h-6 text-white" />
+                            </div>
                             <div>
                               <h3 className={`font-bold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
                                 {village.name}
@@ -282,8 +298,8 @@ const VillageSchedule = () => {
                         <td className="px-6 py-4 text-center">
                           {village.days.day1 ? (
                             <div className="flex flex-col items-center gap-1">
-                              <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                              <span className={`text-xs font-medium ${isDark ? 'text-slate-400' : 'text-gray-600'}`}>
+                              <CheckCircle className={`w-6 h-6 ${isDark ? 'text-green-400' : 'text-green-500'}`} />
+                              <span className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-gray-700'}`}>
                                 {village.schedule.day1}
                               </span>
                             </div>
@@ -294,8 +310,8 @@ const VillageSchedule = () => {
                         <td className="px-6 py-4 text-center">
                           {village.days.day2 ? (
                             <div className="flex flex-col items-center gap-1">
-                              <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                              <span className={`text-xs font-medium ${isDark ? 'text-slate-400' : 'text-gray-600'}`}>
+                              <CheckCircle className={`w-6 h-6 ${isDark ? 'text-green-400' : 'text-green-500'}`} />
+                              <span className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-gray-700'}`}>
                                 {village.schedule.day2}
                               </span>
                             </div>
@@ -306,8 +322,8 @@ const VillageSchedule = () => {
                         <td className="px-6 py-4 text-center">
                           {village.days.day3 ? (
                             <div className="flex flex-col items-center gap-1">
-                              <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-                              <span className={`text-xs font-medium ${isDark ? 'text-slate-400' : 'text-gray-600'}`}>
+                              <CheckCircle className={`w-6 h-6 ${isDark ? 'text-green-400' : 'text-green-500'}`} />
+                              <span className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-gray-700'}`}>
                                 {village.schedule.day3}
                               </span>
                             </div>
@@ -346,7 +362,9 @@ const VillageSchedule = () => {
                   {/* Card Header */}
                   <div className={`bg-gradient-to-r ${village.color} p-6 text-white`}>
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-4xl">{village.icon}</span>
+                      <div className="p-2 bg-white/20 rounded-lg">
+                        <village.icon className="w-8 h-8" />
+                      </div>
                       <h3 className="text-xl font-bold">{village.name}</h3>
                     </div>
                   </div>

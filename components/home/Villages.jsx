@@ -1,20 +1,20 @@
 'use client';
-import { useState, useRef } from 'react';
-import {
-  Wrench,
-  Search,
-  Package,
-  Shield,
-  ExternalLink,
-  Sparkles,
-  ArrowRight,
-  Link as LinkIcon,
-  ChevronLeft,
-  ChevronRight,
-  Bug
-} from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
+import {
+  Bug,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Link as LinkIcon,
+  Package,
+  Search,
+  Shield,
+  Sparkles,
+  Target,
+  Wrench
+} from 'lucide-react';
+import { useRef, useState } from 'react';
 
 const Villages = () => {
   const { isDark } = useTheme();
@@ -105,6 +105,18 @@ const Villages = () => {
       shadowColor: 'shadow-red-500/30',
       borderColor: 'border-red-500',
       url: 'https://www.bugbountyvillage.com/'
+    },
+    {
+      id: 8,
+      name: 'Threat Hunting Village',
+      icon: Target,
+      description:
+        'An interactive learning platform for cybersecurity enthusiasts featuring hands-on labs, real-world attack simulations, and collaborative problem-solving.',
+      topics: ['Threat Hunting', 'Digital Forensics', 'Incident Response', 'Malware Analysis'],
+      color: 'from-lime-500 to-green-600',
+      shadowColor: 'shadow-lime-500/30',
+      borderColor: 'border-lime-500',
+      url: 'https://threathuntingvillage.com/'
     }
   ];
 

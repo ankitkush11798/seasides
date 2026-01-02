@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import dynamic from 'next/dynamic';
 
 // Critical components loaded immediately for LCP
 import RevolutionHero from '@/components/home/Slider';
@@ -18,6 +18,10 @@ const About = dynamic(() => import('@/components/home/About'), {
 const Villages = dynamic(() => import('@/components/home/Villages'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
+
+// const Reviewers = dynamic(() => import('@/components/home/Reviews'), {
+//   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+// });
 
 const Sponsors = dynamic(() => import('@/components/home/Sponsors'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
@@ -50,6 +54,10 @@ export default function Home() {
       <div id="villages" className="scroll-mt-24 relative z-20">
         <Villages />
       </div>
+
+      {/* <div id="reviewers" className="scroll-mt-24 relative z-20">
+        <Reviewers />
+      </div> */}
 
       <div id="sponsors" className="scroll-mt-24 relative z-20">
         <Sponsors />

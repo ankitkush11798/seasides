@@ -67,14 +67,26 @@ const SpeakersPage = () => {
                       {/* Social Icons Overlay */}
                       <div className="absolute bottom-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                         {speaker.social?.twitter && (
-                          <span className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-blue-400 transition-colors">
+                          <a
+                            href={speaker.social.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-blue-400 transition-colors"
+                          >
                             <Twitter size={18} />
-                          </span>
+                          </a>
                         )}
                         {speaker.social?.linkedin && (
-                          <span className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-blue-700 transition-colors">
+                          <a
+                            href={speaker.social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            className="p-2 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-blue-700 transition-colors"
+                          >
                             <Linkedin size={18} />
-                          </span>
+                          </a>
                         )}
                       </div>
                     </div>
