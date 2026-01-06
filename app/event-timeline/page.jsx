@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { events } from '@/lib/data';
 import { motion } from 'framer-motion';
-import { ChevronRight, Clock, MapPin, Radio } from 'lucide-react';
+import { ChevronRight, MapPin, Radio } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -75,18 +75,44 @@ const EventTimeline = () => {
     return colors[type] || 'bg-gray-500';
   };
 
-  // Check if event is currently running (mock implementation for demo)
+  // Check if event is currently running
   const isEventRunning = event => {
-    // For demo purposes: mark events as "running" based on time string
-    // In a real app, you'd compare actual date/time
-    const hour = currentTime.getHours();
-    const eventHour = parseInt(event.time.split(':')[0]);
-    const isPM = event.time.includes('PM');
-    const adjustedEventHour = isPM && eventHour !== 12 ? eventHour + 12 : eventHour;
+    const eventDates = {
+      1: new Date('2026-02-19T00:00:00'),
+      2: new Date('2026-02-20T00:00:00'),
+      3: new Date('2026-02-21T00:00:00')
+    };
 
-    // Simple demo logic: event is "running" if current hour matches event hour
-    // You can customize this logic based on your needs
-    return hour === adjustedEventHour;
+    const eventDate = eventDates[selectedDay];
+    if (!eventDate) return false;
+
+    const now = new Date();
+    // Check if same day
+    const isSameDay =
+      now.getFullYear() === eventDate.getFullYear() &&
+      now.getMonth() === eventDate.getMonth() &&
+      now.getDate() === eventDate.getDate();
+
+    if (!isSameDay) return false;
+
+    // Check time logic (assuming 1 hour duration for simplicity if no end time)
+    // Parse event time "09:00 AM"
+    try {
+      const [timeStr, period] = event.time.split(' ');
+      let [hours, minutes] = timeStr.split(':').map(Number);
+      if (period === 'PM' && hours !== 12) hours += 12;
+      if (period === 'AM' && hours === 12) hours = 0;
+
+      const eventStart = new Date(now);
+      eventStart.setHours(hours, minutes, 0, 0);
+
+      const eventEnd = new Date(eventStart);
+      eventEnd.setHours(eventStart.getHours() + 1); // Mock 1 hour duration
+
+      return now >= eventStart && now < eventEnd;
+    } catch (e) {
+      return false;
+    }
   };
 
   return (
