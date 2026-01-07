@@ -58,7 +58,8 @@ const SponsorsPage = () => {
         { logo: '/sponsors-2025/delve.jpg', website: 'https://delve.co' },
         { logo: '/sponsors-2025/payatu.png', website: 'https://payatu.com' },
         { logo: '/sponsors-2025/appsecco.webp', website: 'https://appsecco.com' },
-        { logo: '/sponsors-2025/cloudanix.svg', website: 'https://www.cloudanix.com' }
+        { logo: '/sponsors-2025/cloudanix.svg', website: 'https://www.cloudanix.com' },
+        { name: 'Psy9 Security', logo: '/sponsors-2025/psy9-security_logo.png', website: 'https://psy9.in' }
       ]
     },
     {
