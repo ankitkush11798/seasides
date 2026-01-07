@@ -319,11 +319,6 @@ const EventTimeline = () => {
                       >
                         {event.description}
                       </p>
-
-                      <div className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-500">
-                        <MapPin className="w-4 h-4" />
-                        {event.location}
-                      </div>
                     </div>
 
                     {/* Arrow Action */}

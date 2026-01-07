@@ -1,12 +1,12 @@
 'use client';
-import { useParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 import { events, speakers } from '@/lib/data';
-import { Clock, MapPin, Calendar, User, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Calendar, Clock, MapPin } from 'lucide-react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -44,7 +44,11 @@ const EventDetailPage = () => {
     );
   }
 
-  const speaker = event.speakerId ? speakers.find(s => s.id === event.speakerId) : null;
+  const eventSpeakers = event.speakerIds
+    ? event.speakerIds.map(id => speakers.find(s => s.id === id)).filter(Boolean)
+    : event.speakerId
+      ? [speakers.find(s => s.id === event.speakerId)].filter(Boolean)
+      : [];
 
   const getTypeColor = type => {
     const colors = {
@@ -193,54 +197,74 @@ const EventDetailPage = () => {
             transition={{ delay: 0.4 }}
             className={`rounded-3xl p-8 md:p-12 mb-8 ${isDark ? 'bg-slate-900 shadow-xl' : 'bg-white shadow-lg'}`}
           >
-            <h2 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>About This Event</h2>
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
+              <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>About This Event</h2>
+              {event.registrationLink && (
+                <a
+                  href={event.registrationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transform hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Register Now
+                </a>
+              )}
+            </div>
             <p className={`text-lg leading-relaxed ${isDark ? 'text-slate-300' : 'text-gray-600'}`}>
               {event.fullDescription || event.description}
             </p>
           </motion.div>
 
           {/* Speaker Section */}
-          {speaker && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className={`rounded-3xl p-8 md:p-12 ${isDark ? 'bg-slate-900 shadow-xl' : 'bg-white shadow-lg'}`}
-            >
-              <h2 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Presented By</h2>
+          {eventSpeakers.length > 0 && (
+            <div className="space-y-6">
+              <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Presented By</h2>
+              {eventSpeakers.map((speaker, index) => (
+                <motion.div
+                  key={speaker.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  className={`rounded-3xl p-8 md:p-12 ${isDark ? 'bg-slate-900 shadow-xl' : 'bg-white shadow-lg'}`}
+                >
+                  <Link href={`/speakers/${speaker.id}`} className="group block">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                      <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-orange-500/50 group-hover:border-orange-500 transition-all duration-300 flex-shrink-0 group-hover:scale-105">
+                        <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover" />
+                      </div>
 
-              <Link href={`/speakers/${speaker.id}`} className="group block">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-4 border-orange-500/50 group-hover:border-orange-500 transition-all duration-300 flex-shrink-0 group-hover:scale-105">
-                    <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover" />
-                  </div>
+                      <div className="flex-1 text-center md:text-left">
+                        <h3
+                          className={`text-2xl md:text-3xl font-bold mb-2 group-hover:text-orange-500 transition-colors ${
+                            isDark ? 'text-white' : 'text-gray-900'
+                          }`}
+                        >
+                          {speaker.name}
+                        </h3>
+                        <p className={`text-lg font-semibold mb-4 ${isDark ? 'text-cyan-400' : 'text-orange-600'}`}>
+                          {speaker.role} @ {speaker.company}
+                        </p>
+                        <p className={`leading-relaxed ${isDark ? 'text-slate-400' : 'text-gray-600'}`}>
+                          {speaker.bio}
+                        </p>
 
-                  <div className="flex-1 text-center md:text-left">
-                    <h3
-                      className={`text-2xl md:text-3xl font-bold mb-2 group-hover:text-orange-500 transition-colors ${isDark ? 'text-white' : 'text-gray-900'}`}
-                    >
-                      {speaker.name}
-                    </h3>
-                    <p className={`text-lg font-semibold mb-4 ${isDark ? 'text-cyan-400' : 'text-orange-600'}`}>
-                      {speaker.role} @ {speaker.company}
-                    </p>
-                    <p className={`leading-relaxed ${isDark ? 'text-slate-400' : 'text-gray-600'}`}>{speaker.bio}</p>
-
-                    <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-orange-500">
-                      View Speaker Profile
-                      <svg
-                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                        <div className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-orange-500">
+                          View Speaker Profile
+                          <svg
+                            className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           )}
         </div>
       </main>
