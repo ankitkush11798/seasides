@@ -1,13 +1,13 @@
 'use client';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { motion } from 'framer-motion';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 import { speakers, trainingSessions } from '@/lib/data';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight, Linkedin, Mic2, Search, Sparkles, Twitter, Users } from 'lucide-react';
 import Image from 'next/image';
-import { Linkedin, Twitter, Users, Sparkles, ArrowRight, Mic2, Search } from 'lucide-react';
-import { useState, useMemo } from 'react';
+import Link from 'next/link';
+import { useMemo, useState } from 'react';
 
 const SpeakersPage = () => {
   const { isDark } = useTheme();
@@ -21,11 +21,16 @@ const SpeakersPage = () => {
 
   // Filter speakers based on search
   const filteredSpeakers = useMemo(() => {
+    // Filter out co-trainers and those with placeholder images
+    const activeSpeakers = speakers.filter(
+      s => !s.role?.toLowerCase().includes('co-trainer') && !s.image?.includes('placeholder')
+    );
+
     if (!searchQuery.trim()) {
-      return speakers;
+      return activeSpeakers;
     }
     const query = searchQuery.toLowerCase();
-    return speakers.filter(
+    return activeSpeakers.filter(
       speaker =>
         speaker.name.toLowerCase().includes(query) ||
         speaker.role?.toLowerCase().includes(query) ||
@@ -150,7 +155,7 @@ const SpeakersPage = () => {
                             src={speaker.image}
                             alt={speaker.name}
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                           />
                           {/* Gradient Overlay */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />

@@ -1,25 +1,25 @@
 'use client';
-import { useParams } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { speakers, trainingSessions, events } from '@/lib/data';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
+import { events, speakers, trainingSessions } from '@/lib/data';
+import { motion } from 'framer-motion';
 import {
-  Twitter,
-  Linkedin,
-  Briefcase,
   ArrowLeft,
-  Calendar,
-  Clock,
-  MapPin,
-  ExternalLink,
-  Users,
   Award,
-  ChevronRight
+  Briefcase,
+  Calendar,
+  ChevronRight,
+  Clock,
+  ExternalLink,
+  Linkedin,
+  MapPin,
+  Twitter,
+  Users
 } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const SpeakerDetailPage = () => {
   const { id } = useParams();
@@ -115,32 +115,6 @@ const SpeakerDetailPage = () => {
                 <div className="aspect-square relative">
                   <Image src={speaker.image} alt={speaker.name} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                </div>
-
-                {/* Social Links Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 flex gap-3">
-                  {speaker.social?.linkedin && (
-                    <a
-                      href={speaker.social.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-md text-white hover:bg-[#0077b5] transition-all font-semibold"
-                    >
-                      <Linkedin className="w-5 h-5" />
-                      LinkedIn
-                    </a>
-                  )}
-                  {speaker.social?.twitter && (
-                    <a
-                      href={speaker.social.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-md text-white hover:bg-[#1DA1F2] transition-all font-semibold"
-                    >
-                      <Twitter className="w-5 h-5" />
-                      Twitter
-                    </a>
-                  )}
                 </div>
               </div>
             </motion.div>
