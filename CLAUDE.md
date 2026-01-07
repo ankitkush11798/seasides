@@ -5,8 +5,7 @@
 ```bash  
 # Development  
 npm run dev   
-   
-# Building   
+    
 npm run build   
 # Linting & Formatting  
 npm run lint          # Check for linting errors 
