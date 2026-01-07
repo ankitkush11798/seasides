@@ -9,6 +9,7 @@ import {
   BookOpen,
   Calendar,
   Check,
+  ChevronDown,
   ChevronRight,
   Clock,
   ExternalLink,
@@ -100,6 +101,7 @@ const EventDetailPage = () => {
 
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  const [isFullDescOpen, setIsFullDescOpen] = useState(false);
 
   const handleShare = platform => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
@@ -360,8 +362,48 @@ const EventDetailPage = () => {
                   <p
                     className={`text-lg leading-relaxed whitespace-pre-wrap ${isDark ? 'text-slate-300' : 'text-slate-600'}`}
                   >
-                    {event.fullDescription || event.description}
+                    {event.description}
                   </p>
+                )}
+
+                {/* Collapsible Full Description */}
+                {(trainingSession?.fullDescription || event.fullDescription) && (
+                  <div className={`mt-6 pt-6 border-t ${isDark ? 'border-slate-700' : 'border-slate-200'}`}>
+                    <button
+                      onClick={() => setIsFullDescOpen(!isFullDescOpen)}
+                      className={`w-full flex items-center justify-between gap-3 py-3 px-4 rounded-xl transition-all ${
+                        isDark
+                          ? 'bg-slate-700/50 hover:bg-slate-700 text-white'
+                          : 'bg-slate-100 hover:bg-slate-200 text-slate-900'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <BookOpen className="w-5 h-5 text-orange-500" />
+                        <span className="font-semibold">Full Description</span>
+                      </div>
+                      <motion.div animate={{ rotate: isFullDescOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                        <ChevronDown className={`w-5 h-5 ${isDark ? 'text-slate-400' : 'text-slate-500'}`} />
+                      </motion.div>
+                    </button>
+
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        height: isFullDescOpen ? 'auto' : 0,
+                        opacity: isFullDescOpen ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className={`pt-4 mt-2`}>
+                        <p
+                          className={`text-base leading-relaxed whitespace-pre-wrap ${isDark ? 'text-slate-300' : 'text-slate-600'}`}
+                        >
+                          {trainingSession?.fullDescription || event.fullDescription}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </div>
                 )}
               </motion.div>
             </div>
