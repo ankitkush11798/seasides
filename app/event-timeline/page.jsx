@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { events, speakers } from '@/lib/data';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Clock, Radio, Zap } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Radio } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
@@ -139,17 +139,6 @@ const EventTimeline = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 mb-4"
-            >
-              <Zap className="w-4 h-4 text-orange-500" />
-              <span className={`text-sm font-semibold ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>
-                Full Schedule
-              </span>
-            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
