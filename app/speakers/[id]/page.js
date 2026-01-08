@@ -169,11 +169,6 @@ const SpeakerDetailPage = () => {
                   <span className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>Goa, India</span>
                 </div>
               </div>
-
-              {/* Bio Preview */}
-              <p className={`text-lg leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                {speaker.bio?.substring(0, 300)}...
-              </p>
             </motion.div>
           </div>
         </div>
