@@ -9,7 +9,6 @@ import {
   BookOpen,
   Calendar,
   ChevronDown,
-  ChevronRight,
   Clock,
   ExternalLink,
   Linkedin,
@@ -231,86 +230,6 @@ const EventDetailPage = () => {
                 </div>
               </motion.div>
             </div>
-
-            {/* Right - Speaker Preview Card */}
-            {eventSpeakers.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className={`rounded-3xl overflow-hidden ${isDark ? 'bg-slate-800/80' : 'bg-white'} backdrop-blur-sm shadow-2xl border ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
-              >
-                <div className={`h-2 bg-gradient-to-r ${getTypeGradient(event.type)}`} />
-                <div className="p-5 md:p-6">
-                  <h3
-                    className={`text-xs md:text-sm font-bold uppercase tracking-wider mb-4 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
-                  >
-                    {eventSpeakers.length === 1 ? 'Trainer' : 'Trainers'}
-                  </h3>
-                  <div className="space-y-4">
-                    {eventSpeakers.slice(0, 2).map(speaker => {
-                      const isPlaceholder = speaker.image?.includes('placeholder');
-
-                      if (isPlaceholder) {
-                        return (
-                          <div key={speaker.id} className="flex items-center gap-4">
-                            <div
-                              className={`w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center border-2 border-transparent flex-shrink-0 ${isDark ? 'bg-slate-700' : 'bg-slate-100'}`}
-                            >
-                              <User className={`w-6 h-6 ${isDark ? 'text-slate-400' : 'text-slate-500'}`} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p
-                                className={`font-bold truncate text-sm md:text-base ${isDark ? 'text-white' : 'text-slate-900'}`}
-                              >
-                                {speaker.name}
-                              </p>
-                              <p
-                                className={`text-xs md:text-sm truncate ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
-                              >
-                                {speaker.role}
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      }
-
-                      return (
-                        <Link
-                          key={speaker.id}
-                          href={`/speakers/${speaker.id}`}
-                          className="group flex items-center gap-4"
-                        >
-                          <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden border-2 border-orange-500/30 group-hover:border-orange-500 transition-colors flex-shrink-0">
-                            <Image src={speaker.image} alt={speaker.name} fill className="object-cover" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p
-                              className={`font-bold truncate text-sm md:text-base group-hover:text-orange-500 transition-colors ${isDark ? 'text-white' : 'text-slate-900'}`}
-                            >
-                              {speaker.name}
-                            </p>
-                            <p
-                              className={`text-xs md:text-sm truncate ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
-                            >
-                              {speaker.role}
-                            </p>
-                          </div>
-                          <ChevronRight
-                            className={`w-5 h-5 ${isDark ? 'text-slate-600' : 'text-slate-400'} group-hover:text-orange-500 transition-colors`}
-                          />
-                        </Link>
-                      );
-                    })}
-                    {eventSpeakers.length > 2 && (
-                      <p className={`text-sm font-medium ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>
-                        +{eventSpeakers.length - 2} more trainers
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            )}
           </div>
         </div>
       </section>
@@ -476,7 +395,7 @@ const EventDetailPage = () => {
                                 src={speaker.image}
                                 alt={speaker.name}
                                 fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                               <div className="absolute bottom-4 left-4 right-4">
@@ -562,18 +481,6 @@ const EventDetailPage = () => {
                     </div>
                   </div>
                 </div>
-
-                {event.registrationLink && (
-                  <a
-                    href={event.registrationLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold shadow-lg hover:shadow-orange-500/30 transition-all"
-                  >
-                    Register Now
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                )}
               </motion.div>
             </div>
           </div>

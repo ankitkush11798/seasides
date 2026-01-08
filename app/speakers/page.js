@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { speakers, trainingSessions } from '@/lib/data';
 import { motion } from 'framer-motion';
-import { ArrowRight, Linkedin, Mic2, Search, Sparkles, Twitter, Users } from 'lucide-react';
+import { ArrowRight, Linkedin, Mic2, Search, Twitter, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
@@ -247,53 +247,6 @@ const SpeakersPage = () => {
               })}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className={`py-20 ${isDark ? 'bg-slate-950' : 'bg-slate-50'}`}>
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className={`relative overflow-hidden rounded-3xl p-8 md:p-12 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-2xl border ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
-          >
-            {/* Background Decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-500 to-amber-500 blur-[100px] opacity-20 rounded-full translate-x-1/2 -translate-y-1/2" />
-
-            <div className="relative z-10 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 mb-6">
-                <Sparkles className="w-4 h-4 text-orange-500" />
-                <span className={`text-sm font-semibold ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>
-                  Call for Speakers
-                </span>
-              </div>
-
-              <h2 className={`text-3xl md:text-4xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                Want to Speak at Seasides?
-              </h2>
-              <p className={`text-lg mb-8 max-w-xl mx-auto ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                We are always looking for passionate security professionals to share their knowledge. Submit your
-                proposal for our next event.
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                <button className="px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transform hover:-translate-y-0.5 transition-all">
-                  Submit Proposal
-                </button>
-                <button
-                  className={`px-8 py-4 rounded-xl font-bold border transition-all ${
-                    isDark
-                      ? 'border-slate-600 text-slate-300 hover:bg-slate-700'
-                      : 'border-slate-300 text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  View Guidelines
-                </button>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 

@@ -218,7 +218,7 @@ const SpeakerDetailPage = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 + index * 0.1 }}
                         >
-                          <Link href={`/event-timeline/${session.id}`} className="group block">
+                          <Link href={`/training/${session.id}`} className="group block">
                             <div
                               className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg border ${isDark ? 'border-slate-700' : 'border-slate-200'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
                             >
@@ -273,7 +273,7 @@ const SpeakerDetailPage = () => {
                                 {/* Footer */}
                                 <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-700">
                                   <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs font-bold uppercase">
-                                    Workshop
+                                    Training
                                   </span>
                                   <div
                                     className={`flex items-center gap-1 text-sm font-semibold ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
@@ -319,78 +319,80 @@ const SpeakerDetailPage = () => {
               )}
 
               {/* Connect Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className={`rounded-2xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg border ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
-              >
-                <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>Connect</h3>
-                <div className="space-y-3">
-                  {speaker.social?.linkedin && (
-                    <a
-                      href={speaker.social.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-3 p-3 rounded-xl transition-all ${isDark ? 'bg-slate-700 hover:bg-[#0077b5]' : 'bg-slate-100 hover:bg-[#0077b5]'} hover:text-white group`}
-                    >
-                      <div
-                        className={`p-2 rounded-lg ${isDark ? 'bg-slate-600 group-hover:bg-white/20' : 'bg-white group-hover:bg-white/20'} transition-colors`}
+              {(speaker.social?.linkedin || speaker.social?.twitter) && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className={`rounded-2xl p-6 ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg border ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
+                >
+                  <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>Connect</h3>
+                  <div className="space-y-3">
+                    {speaker.social?.linkedin && (
+                      <a
+                        href={speaker.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-3 p-3 rounded-xl transition-all ${isDark ? 'bg-slate-700 hover:bg-[#0077b5]' : 'bg-slate-100 hover:bg-[#0077b5]'} hover:text-white group`}
                       >
-                        <Linkedin
-                          className={`w-5 h-5 ${isDark ? 'text-slate-300' : 'text-slate-600'} group-hover:text-white transition-colors`}
+                        <div
+                          className={`p-2 rounded-lg ${isDark ? 'bg-slate-600 group-hover:bg-white/20' : 'bg-white group-hover:bg-white/20'} transition-colors`}
+                        >
+                          <Linkedin
+                            className={`w-5 h-5 ${isDark ? 'text-slate-300' : 'text-slate-600'} group-hover:text-white transition-colors`}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <p
+                            className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'} group-hover:text-white transition-colors`}
+                          >
+                            LinkedIn
+                          </p>
+                          <p
+                            className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'} group-hover:text-white/80 transition-colors`}
+                          >
+                            Professional Network
+                          </p>
+                        </div>
+                        <ExternalLink
+                          className={`w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'} group-hover:text-white transition-colors`}
                         />
-                      </div>
-                      <div className="flex-1">
-                        <p
-                          className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'} group-hover:text-white transition-colors`}
-                        >
-                          LinkedIn
-                        </p>
-                        <p
-                          className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'} group-hover:text-white/80 transition-colors`}
-                        >
-                          Professional Network
-                        </p>
-                      </div>
-                      <ExternalLink
-                        className={`w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'} group-hover:text-white transition-colors`}
-                      />
-                    </a>
-                  )}
-                  {speaker.social?.twitter && (
-                    <a
-                      href={speaker.social.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-3 p-3 rounded-xl transition-all ${isDark ? 'bg-slate-700 hover:bg-[#1DA1F2]' : 'bg-slate-100 hover:bg-[#1DA1F2]'} hover:text-white group`}
-                    >
-                      <div
-                        className={`p-2 rounded-lg ${isDark ? 'bg-slate-600 group-hover:bg-white/20' : 'bg-white group-hover:bg-white/20'} transition-colors`}
+                      </a>
+                    )}
+                    {speaker.social?.twitter && (
+                      <a
+                        href={speaker.social.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-3 p-3 rounded-xl transition-all ${isDark ? 'bg-slate-700 hover:bg-[#1DA1F2]' : 'bg-slate-100 hover:bg-[#1DA1F2]'} hover:text-white group`}
                       >
-                        <Twitter
-                          className={`w-5 h-5 ${isDark ? 'text-slate-300' : 'text-slate-600'} group-hover:text-white transition-colors`}
+                        <div
+                          className={`p-2 rounded-lg ${isDark ? 'bg-slate-600 group-hover:bg-white/20' : 'bg-white group-hover:bg-white/20'} transition-colors`}
+                        >
+                          <Twitter
+                            className={`w-5 h-5 ${isDark ? 'text-slate-300' : 'text-slate-600'} group-hover:text-white transition-colors`}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <p
+                            className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'} group-hover:text-white transition-colors`}
+                          >
+                            Twitter / X
+                          </p>
+                          <p
+                            className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'} group-hover:text-white/80 transition-colors`}
+                          >
+                            Follow for updates
+                          </p>
+                        </div>
+                        <ExternalLink
+                          className={`w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'} group-hover:text-white transition-colors`}
                         />
-                      </div>
-                      <div className="flex-1">
-                        <p
-                          className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'} group-hover:text-white transition-colors`}
-                        >
-                          Twitter / X
-                        </p>
-                        <p
-                          className={`text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'} group-hover:text-white/80 transition-colors`}
-                        >
-                          Follow for updates
-                        </p>
-                      </div>
-                      <ExternalLink
-                        className={`w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'} group-hover:text-white transition-colors`}
-                      />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
