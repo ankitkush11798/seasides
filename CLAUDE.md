@@ -6,7 +6,7 @@
 # Development  
 npm run dev   
     
-npm run build   
+npm run build    
 # Linting & Formatting  
 npm run lint          # Check for linting errors 
 npm run lint:fix      # Auto-fix linting errors  
