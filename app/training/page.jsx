@@ -9,7 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
-const EventTimeline = () => {
+const TrainingTimeline = () => {
   const { isDark } = useTheme();
   const [selectedDay, setSelectedDay] = useState(1);
   const [heroDay, setHeroDay] = useState(1);
@@ -202,7 +202,7 @@ const EventTimeline = () => {
                   onMouseEnter={() => setHoveredEvent(event.id)}
                   onMouseLeave={() => setHoveredEvent(null)}
                 >
-                  <Link href={`/event-timeline/${event.id}`} className="group block h-full">
+                  <Link href={`/training/${event.id}`} className="group block h-full">
                     <div
                       className={`relative h-full overflow-hidden rounded-2xl md:rounded-3xl transition-all duration-500 ${
                         isDark ? 'bg-slate-800' : 'bg-white'
@@ -345,7 +345,7 @@ const EventTimeline = () => {
                 <Calendar className={`w-10 h-10 ${isDark ? 'text-slate-600' : 'text-slate-400'}`} />
               </div>
               <p className={`text-xl font-semibold ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-                No events scheduled for Day {selectedDay}
+                No training sessions scheduled for Day {selectedDay}
               </p>
             </div>
           )}
@@ -357,4 +357,4 @@ const EventTimeline = () => {
   );
 };
 
-export default EventTimeline;
+export default TrainingTimeline;
