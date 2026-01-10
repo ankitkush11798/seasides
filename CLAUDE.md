@@ -13,7 +13,7 @@ npm run lint:fix      # Auto-fix linting errors
 npm run format        # Format code with Prettier 
 npm run format:check  # Check code formatting
 
-# Auditing
+# Auditing 
 npm audit             # Check for security vulnerabilities
 npm run check-updates # Check for outdated packages
 ```
