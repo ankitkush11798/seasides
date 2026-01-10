@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Linkedin, Twitter, Mail, Award } from 'lucide-react';
+import { Award, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 
 const CFPReviewersPage = () => {
@@ -33,6 +33,42 @@ const CFPReviewersPage = () => {
       bio: 'Senior Security Engineer at YouTube specializing in AI, product, and service security through offensive operations. Former offensive security leader for Azure Data at Microsoft with 5+ years of experience in penetration testing, red teaming, and threat modeling. Creator of "medaudit," an open-source HL7 auditing tool. Presented research on side-channel attacks at Black Hat, HITB, and Nullcon. Expert in healthcare, cloud, and AI security.',
       social: {
         linkedin: 'https://www.linkedin.com/in/anirudh-duggal/',
+        twitter: '#'
+      }
+    },
+    {
+      id: 3,
+      name: 'Debrup Ghosh',
+      role: 'Review Panelist',
+      expertise: 'Application Security & Product Management',
+      image: '/review-panel/Debrup Ghosh.jpg',
+      bio: "With over 8 years of product management experience in the SaaS application security domain, I am a strategic and results-oriented product leader at Synopsys, the world's leading provider of software security solutions. I specialize in crafting cutting-edge SaaS solutions that redefine industry standards and enable security and development teams to build secure, high-quality software faster. As the Lead Product Manager on the Polaris SaaS Platform for Application Security, I spearhead end-to-end product development, leveraging user research, competitive and market analysis, and data analytics to inform decision-making.",
+      social: {
+        linkedin: 'https://www.linkedin.com/in/debrupghosh',
+        twitter: '#'
+      }
+    },
+    {
+      id: 4,
+      name: 'Nandan Gupta',
+      role: 'Review Panelist',
+      expertise: 'Information Security & Risk Assessment',
+      image: '/review-panel/nandan-gupta.jpg',
+      bio: 'Application security professional with 10 years experience in Information security, penetration testing, Static code review & software development. Currently working as a Senior Information Security Analyst and have adept skills in Penetration testing and code review. Has good knowledge of tools like IBM AppScan, HP fortify, Hp WebInspect, CheckMarx , Veracode Burp suite, NMAP & Nessus etc. Responsible for Penetration Testing, Web Application Vulnerability Assessments, and assisting developers in fixing vulnerabilities.',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/nandan-gupta-698aa11b/',
+        twitter: '#'
+      }
+    },
+    {
+      id: 5,
+      name: 'Swarup Natukula',
+      role: 'Review Panelist',
+      expertise: 'Threat Modeling & Penetration Testing',
+      image: '/review-panel/swarup-natukula.jpg',
+      bio: 'Offensive Security Certificated Professional (OSCP) and Certified Ethical Hacker (CEH) with around Twelve years of experience in Threatmodeling, Secure Code Review, Penetration Testing, security architecture review, Application Security, Mobile Security, Cloud Security and Vulnerability Management. Rich experience in integrating security with SDLC. Expertise in developing Policy Checklists for Source code review and Threatmodeling. Good knowledge on Javascript security and Magecart attacks. Red teaming experience.',
+      social: {
+        linkedin: 'https://www.linkedin.com/in/swarup-natukula-81775230/',
         twitter: '#'
       }
     }
@@ -176,28 +212,6 @@ const CFPReviewersPage = () => {
                       } hover:scale-110 hover:shadow-lg`}
                     >
                       <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={reviewer.social.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-3 rounded-xl transition-all duration-300 ${
-                        isDark
-                          ? 'bg-slate-700 hover:bg-amber-500 text-slate-300 hover:text-white'
-                          : 'bg-gradient-to-br from-amber-500 to-amber-600 text-white hover:from-amber-600 hover:to-amber-700 shadow-md'
-                      } hover:scale-110 hover:shadow-lg`}
-                    >
-                      <Twitter className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={`mailto:cfp@seasides.net`}
-                      className={`p-3 rounded-xl transition-all duration-300 ${
-                        isDark
-                          ? 'bg-slate-700 hover:bg-orange-500 text-slate-300 hover:text-white'
-                          : 'bg-gradient-to-br from-orange-500 to-amber-600 text-white hover:from-orange-600 hover:to-amber-700 shadow-md'
-                      } hover:scale-110 hover:shadow-lg`}
-                    >
-                      <Mail className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

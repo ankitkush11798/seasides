@@ -28,6 +28,36 @@ const Reviews = () => {
         "Seasides is where offensive security professionals, researchers, and innovators come together to share knowledge and push boundaries. The village format creates an immersive learning environment that you simply can't find elsewhere. From AI security to cloud infrastructure, the technical depth and community engagement are exceptional.",
       linkedin: 'https://www.linkedin.com/in/anirudh-duggal/',
       stars: 5
+    },
+    {
+      id: 3,
+      name: 'Debrup Ghosh',
+      role: 'Review Panelist',
+      image: '/review-panel/Debrup Ghosh.jpg',
+      review:
+        'Seasides continues to set the bar high for security conferences. The blend of deep technical dives and community networking creates a unique atmosphere for learning and growth.',
+      linkedin: 'https://www.linkedin.com/in/debrupghosh',
+      stars: 5
+    },
+    {
+      id: 4,
+      name: 'Nandan Gupta',
+      role: 'Review Panelist',
+      image: '/review-panel/nandan-gupta.jpg',
+      review:
+        'A fantastic platform for security professionals to connect and share insights. The quality of content and the passion of the community make Seasides a must-attend event.',
+      linkedin: 'https://www.linkedin.com/in/nandan-gupta-698aa11b/',
+      stars: 5
+    },
+    {
+      id: 5,
+      name: 'Swarup Natukula',
+      role: 'Review Panelist',
+      image: '/review-panel/swarup-natukula.jpg',
+      review:
+        "The dedication to fostering a strong security community is evident in every aspect of Seasides. From the workshops to the talks, it's an invaluable experience for anyone in the field.",
+      linkedin: 'https://www.linkedin.com/in/swarup-natukula-81775230/',
+      stars: 5
     }
   ];
 

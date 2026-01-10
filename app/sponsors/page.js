@@ -1,10 +1,12 @@
 'use client';
-import { useEffect } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+
+import { sponsors } from '@/lib/data';
 
 const SponsorsPage = () => {
   const { isDark } = useTheme();
@@ -16,67 +18,21 @@ const SponsorsPage = () => {
     };
   }, [isDark]);
 
-  const sponsorTiers = [
-    {
-      tier: 'Diamond',
-      color: 'from-cyan-400 to-blue-500',
-      textColor: isDark ? 'text-cyan-400' : 'text-cyan-600',
-      sponsors: [{ logo: '/sponsors-2025/securelayer7.png', website: 'https://securelayer7.net', isLight: true }]
-    },
-    {
-      tier: 'Platinum',
-      color: 'from-slate-300 to-slate-400',
-      textColor: isDark ? 'text-slate-300' : 'text-slate-600',
-      sponsors: [{ logo: '/sponsors-2025/dnif.png', website: 'https://dnif.it' }]
-    },
-    {
-      tier: 'Gold',
-      color: 'from-yellow-400 to-amber-500',
-      textColor: isDark ? 'text-yellow-400' : 'text-yellow-600',
-      sponsors: [
-        { logo: '/sponsors-2025/nii.png', website: 'https://nii.ac.in' },
-        { logo: '/sponsors-2025/altered_security.png', website: 'https://alteredsecurity.com' },
-        { logo: '/sponsors-2025/levo.webp', website: 'https://levo.ai' },
-        { logo: '/sponsors-2025/loginsoft.svg', website: 'https://loginsoft.com' },
-        { logo: '/sponsors-2025/enciphers.webp', website: 'https://enciphers.com' },
-        { logo: '/sponsors-2025/semgrep-1.png', website: 'https://semgrep.dev' }
-      ]
-    },
-    {
-      tier: 'Silver',
-      color: 'from-gray-300 to-gray-400',
-      textColor: isDark ? 'text-gray-300' : 'text-gray-500',
-      sponsors: [
-        { logo: '/sponsors-2025/domdog.svg', website: 'https://domdog.io' },
-        { logo: '/sponsors-2025/sqrx-logo-white.png', website: 'https://sqrx.com' },
-        { logo: '/sponsors-2025/clouddefenseai.png', website: 'https://clouddefense.ai', isLight: true },
-        { logo: '/sponsors-2025/pureid.webp', website: 'https://pureid.io' },
-        { logo: '/sponsors-2025/redhuntlabs.webp', website: 'https://redhuntlabs.com' },
-        { logo: '/sponsors-2025/appsecuresecurity.webp', website: 'https://appsecure.security' },
-        { logo: '/sponsors-2025/oligo-security.svg', website: 'https://oligo.security' },
-        { logo: '/sponsors-2025/Offenso-Logo-black-02.png', website: 'https://offensoacademy.com' },
-        { logo: '/sponsors-2025/delve.jpg', website: 'https://delve.co' },
-        { logo: '/sponsors-2025/payatu.png', website: 'https://payatu.com' },
-        { logo: '/sponsors-2025/appsecco.webp', website: 'https://appsecco.com' },
-        { logo: '/sponsors-2025/cloudanix.svg', website: 'https://www.cloudanix.com' },
-        { name: 'Psy9 Security', logo: '/sponsors-2025/psy9-security_logo.png', website: 'https://psy9.in' }
-      ]
-    },
-    {
-      tier: 'Bronze',
-      color: 'from-orange-400 to-orange-600',
-      textColor: isDark ? 'text-orange-400' : 'text-orange-600',
-      sponsors: [
-        { logo: '/sponsors-2025/datatheorem.webp', website: 'https://datatheorem.com' },
-        { logo: '/sponsors-2025/appknoxlogo.webp', website: 'https://appknox.com' },
-        { logo: '/sponsors-2025/kloudle.svg', website: 'https://kloudle.com' },
-        { logo: '/sponsors-2025/endorlabs.webp', website: 'https://endorlabs.com' },
-        { logo: '/sponsors-2025/corgea.png', website: 'https://corgea.com', isLight: true },
-        { logo: '/sponsors-2025/isecurion1.webp', website: 'https://www.isecurion.com' },
-        { logo: '/sponsors-2025/safedep.svg', website: 'https://safedep.io', isLight: true }
-      ]
-    }
-  ];
+  const getTierTextColor = tier => {
+    const colors = {
+      Diamond: isDark ? 'text-cyan-400' : 'text-cyan-600',
+      Platinum: isDark ? 'text-slate-300' : 'text-slate-600',
+      Gold: isDark ? 'text-yellow-400' : 'text-yellow-600',
+      Silver: isDark ? 'text-gray-300' : 'text-gray-500',
+      Bronze: isDark ? 'text-orange-400' : 'text-orange-600'
+    };
+    return colors[tier] || (isDark ? 'text-gray-400' : 'text-gray-600');
+  };
+
+  const sponsorTiers = sponsors.map(tier => ({
+    ...tier,
+    textColor: getTierTextColor(tier.tier)
+  }));
 
   const tiersWithSponsors = sponsorTiers.filter(tier => tier.sponsors.length > 0);
 
@@ -134,8 +90,10 @@ const SponsorsPage = () => {
           {/* Sponsor Tiers */}
           <div className="space-y-20">
             {tiersWithSponsors.map((tier, tierIndex) => {
-              const isSingleSponsor = tier.sponsors.length === 1;
-              const duplicatedSponsors = [...tier.sponsors, ...tier.sponsors, ...tier.sponsors, ...tier.sponsors];
+              const shouldSlide = tier.sponsors.length > 4;
+              const duplicatedSponsors = shouldSlide
+                ? [...tier.sponsors, ...tier.sponsors, ...tier.sponsors, ...tier.sponsors]
+                : [];
               const isEven = tierIndex % 2 === 0;
 
               return (
@@ -149,28 +107,36 @@ const SponsorsPage = () => {
                     <div className={`h-px flex-1 max-w-32 bg-gradient-to-l ${tier.color} opacity-50`} />
                   </div>
 
-                  {isSingleSponsor ? (
-                    /* Single Sponsor - Featured Display */
-                    <div className="flex justify-center px-6">
-                      <a href={tier.sponsors[0].website} target="_blank" rel="noopener noreferrer" className="group">
-                        <div
-                          className={`relative w-72 h-44 md:w-96 md:h-56 ${tier.sponsors[0].isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
-                            isDark ? 'shadow-cyan-500/10 hover:shadow-cyan-500/20' : ''
-                          }`}
+                  {!shouldSlide ? (
+                    /* Less than or equal to 4 Sponsors - Static Grid Display */
+                    <div className="flex flex-wrap justify-center gap-8 px-6">
+                      {tier.sponsors.map((sponsor, index) => (
+                        <a
+                          key={index}
+                          href={sponsor.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group"
                         >
-                          <Image
-                            src={tier.sponsors[0].logo}
-                            alt="Diamond Sponsor"
-                            fill
-                            sizes="384px"
-                            className="object-contain p-4"
-                            unoptimized
-                          />
-                        </div>
-                      </a>
+                          <div
+                            className={`relative w-72 h-44 md:w-80 md:h-48 ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
+                              isDark ? 'shadow-cyan-500/10 hover:shadow-cyan-500/20' : ''
+                            }`}
+                          >
+                            <Image
+                              src={sponsor.logo}
+                              alt={sponsor.name || 'Sponsor'}
+                              fill
+                              sizes="320px"
+                              className="object-contain p-4"
+                              unoptimized
+                            />
+                          </div>
+                        </a>
+                      ))}
                     </div>
                   ) : (
-                    /* Multiple Sponsors - Continuous Slider */
+                    /* More than 4 Sponsors - Continuous Slider */
                     <div className="relative overflow-hidden py-4">
                       {/* Gradient Overlays */}
                       <div
