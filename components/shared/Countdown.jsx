@@ -1,8 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_START_ISO } from '@/lib/eventConfig';
+import { useEffect, useState } from 'react';
 
 const Countdown = () => {
+  const { isDark } = useTheme();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -72,16 +74,28 @@ const Countdown = () => {
       {timeUnits.map((unit, index) => (
         <div
           key={unit.label}
-          className="bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-white/30 shadow-lg min-w-[80px] text-center"
+          className={`backdrop-blur-md rounded-lg p-4 border shadow-lg min-w-[80px] text-center ${
+            isDark ? 'bg-white/20 border-white/30' : 'bg-white/70 border-white/50'
+          }`}
           style={{
             animation: `fadeInUp 1.2s ease-out ${1.6 + index * 0.1}s both`,
             transition: 'all 0.3s ease-in-out'
           }}
         >
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 font-mono">
+          <div
+            className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-1 font-mono ${
+              isDark ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             {unit.value.toString().padStart(2, '0')}
           </div>
-          <div className="text-sm md:text-base text-white/80 font-medium uppercase tracking-wider">{unit.label}</div>
+          <div
+            className={`text-sm md:text-base font-medium uppercase tracking-wider ${
+              isDark ? 'text-white/80' : 'text-gray-800'
+            }`}
+          >
+            {unit.label}
+          </div>
         </div>
       ))}
     </div>

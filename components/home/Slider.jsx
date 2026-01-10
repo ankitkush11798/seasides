@@ -1,10 +1,10 @@
 'use client';
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import LoadingScreen from '@/components/layout/LoadingScreen';
+import Countdown from '@/components/shared/Countdown';
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
 import Image from 'next/image';
-import Countdown from '@/components/shared/Countdown';
-import LoadingScreen from '@/components/layout/LoadingScreen';
+import { useEffect, useRef, useState } from 'react';
 
 const RevolutionHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -124,7 +124,7 @@ const RevolutionHero = () => {
 
             {/* Sun/Moon */}
             <div
-              className={`absolute transition-all duration-1000 
+              className={`absolute transition-all duration-1000
           ${
             isDark
               ? 'top-12 right-12 w-24 h-24 bg-gray-200 opacity-90 before:content-[""] before:absolute before:top-1 before:left-1 before:w-5 before:h-5 before:rounded-full before:bg-gray-800 before:opacity-10'
@@ -256,24 +256,24 @@ const RevolutionHero = () => {
             <div
               className={`transform transition-all duration-700 ${
                 isLogoLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              } text-center space-y-4 max-w-4xl mx-auto will-change-transform`}
+              } text-center space-y-4 max-w-4xl mx-auto will-change-transform px-4 py-3 rounded-xl ${isDark ? '' : 'bg-white/40 backdrop-blur-sm'}`}
             >
               <h2
-                className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300"
-                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+                className={`text-lg md:text-xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}
+                style={{ textShadow: isDark ? '0 2px 4px rgba(0,0,0,0.5)' : '0 1px 2px rgba(255,255,255,0.8)' }}
               >
                 {slides[currentSlide].subtitle}
               </h2>
               <h3
-                className="text-base md:text-lg font-semibold text-gray-900 dark:text-gray-200 transition-colors duration-300"
-                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+                className={`text-base md:text-lg font-semibold transition-colors duration-300 ${isDark ? 'text-gray-200' : 'text-gray-900'}`}
+                style={{ textShadow: isDark ? '0 2px 4px rgba(0,0,0,0.5)' : '0 1px 2px rgba(255,255,255,0.8)' }}
               >
                 {slides[currentSlide].location}
               </h3>
 
               <p
-                className="text-base md:text-lg font-medium text-gray-900 dark:text-gray-200 transition-colors duration-300"
-                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+                className={`text-base md:text-lg font-medium transition-colors duration-300 ${isDark ? 'text-gray-200' : 'text-gray-900'}`}
+                style={{ textShadow: isDark ? '0 2px 4px rgba(0,0,0,0.5)' : '0 1px 2px rgba(255,255,255,0.8)' }}
               >
                 {slides[currentSlide].description}
               </p>

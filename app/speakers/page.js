@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { speakers, trainingSessions } from '@/lib/data';
 import { motion } from 'framer-motion';
-import { ArrowRight, Linkedin, Mic2, Search, Twitter, Users } from 'lucide-react';
+import { ArrowRight, Linkedin, Search, Twitter, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
@@ -57,20 +57,6 @@ const SpeakersPage = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-center mb-6"
-          >
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${isDark ? 'bg-slate-800/80' : 'bg-white'} backdrop-blur-sm border ${isDark ? 'border-slate-700' : 'border-slate-200'} shadow-lg`}
-            >
-              <Mic2 className="w-4 h-4 text-orange-500" />
-              <span className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
-                {speakers.length} Expert Trainers
-              </span>
-            </div>
-          </motion.div>
 
           {/* Title */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
@@ -84,7 +70,7 @@ const SpeakersPage = () => {
               </span>
             </h1>
             <p className={`text-xl max-w-2xl mx-auto ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-              Learn from industry-leading security researchers, engineers, and thought leaders at Seasides 2026.
+              Learn from industry-leading security researchers, engineers at Seasides.
             </p>
           </motion.div>
 
@@ -101,7 +87,7 @@ const SpeakersPage = () => {
               <Search className={`absolute left-4 w-5 h-5 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
               <input
                 type="text"
-                placeholder="Search speakers by name, role, or company..."
+                placeholder="Search speakers by name"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-transparent outline-none ${isDark ? 'text-white placeholder:text-slate-500' : 'text-slate-900 placeholder:text-slate-400'}`}
