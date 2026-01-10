@@ -1,24 +1,10 @@
 'use client';
-import { useState } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import {
-  Calendar,
-  MapPin,
-  Users,
-  Star,
-  CheckCircle,
-  Bot,
-  Bug,
-  Cloud,
-  Wrench,
-  Anchor,
-  BarChart3,
-  Drama,
-  Search
-} from 'lucide-react';
+import { Anchor, BarChart3, Bot, Calendar, CheckCircle, Cloud, Drama, MapPin, Search, Wrench } from 'lucide-react';
+import { useState } from 'react';
 
 const VillageSchedule = () => {
   const { isDark } = useTheme();
@@ -40,23 +26,6 @@ const VillageSchedule = () => {
         day1: '10:00 AM - 05:00 PM',
         day2: '10:00 AM - 05:00 PM',
         day3: '10:00 AM - 04:00 PM'
-      }
-    },
-    {
-      name: 'Bug Bounty Village',
-      description: 'Learn bug hunting techniques and responsible disclosure practices',
-      location: 'Tech Hub - Room B',
-      days: {
-        day1: true,
-        day2: true,
-        day3: false
-      },
-      icon: Bug,
-      color: 'from-green-500 to-green-600',
-      schedule: {
-        day1: '10:00 AM - 05:00 PM',
-        day2: '10:00 AM - 05:00 PM',
-        day3: null
       }
     },
     {
@@ -95,7 +64,7 @@ const VillageSchedule = () => {
     },
     {
       name: 'Kubernetes Security Village',
-      description: 'Container security, K8s hardening, and cloud-native security',
+      description: 'Container security, Container security hardening, and cloud-native security',
       location: 'Tech Hub - Room D',
       days: {
         day1: false,

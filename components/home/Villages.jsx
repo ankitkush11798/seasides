@@ -2,7 +2,6 @@
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import {
-  Bug,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
@@ -96,18 +95,6 @@ const Villages = () => {
     },
     {
       id: 7,
-      name: 'Bug Bounty Village',
-      icon: Bug,
-      description:
-        'Sharpen your hunting skills and learn from top unauthorized access experts. Workshops on finding, exploiting, and reporting bugs ethically.',
-      topics: ['Web Hacking', 'Responsible Disclosure', 'Reconnaissance', 'Report Writing'],
-      color: 'from-red-500 to-rose-600',
-      shadowColor: 'shadow-red-500/30',
-      borderColor: 'border-red-500',
-      url: 'https://www.bugbountyvillage.com/'
-    },
-    {
-      id: 8,
       name: 'Threat Hunting Village',
       icon: Target,
       description:
