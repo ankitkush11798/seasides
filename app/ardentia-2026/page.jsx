@@ -1,9 +1,10 @@
 'use client';
-import { useTheme } from '@/contexts/ThemeContext';
-import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Calendar, Users, BookOpen, Award, Shield, Brain, Clock, CheckCircle, Lock, MapPin, Flame } from 'lucide-react';
+import { Award, BookOpen, Brain, Calendar, CheckCircle, Clock, MapPin, Shield, Users } from 'lucide-react';
+import Image from 'next/image';
 
 // Custom SVG Components for beach graphics
 const WaveSVG = ({ className }) => (
@@ -163,39 +164,21 @@ const Ardentia2026 = () => {
             transition={{ duration: 0.8 }}
             className="flex flex-col items-center"
           >
-            {/* Logo with Shield */}
-            <div className="relative mb-6">
-              {/* Outer ring with flame effect */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-4 md:-inset-6 rounded-full border-4 border-dashed border-teal-400/30"
+            {/* Ardentia Logo */}
+            <motion.div
+              className="relative mb-8 w-48 h-48 md:w-64 md:h-64"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, type: 'spring' }}
+            >
+              <Image
+                src="/ardentia-2026/ardentia-2026-1.png"
+                alt="Ardentia 2026 Logo"
+                fill
+                className="object-contain drop-shadow-2xl"
+                priority
               />
-
-              {/* Main logo circle */}
-              <div className="relative w-32 h-32 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 border-4 border-slate-700 shadow-2xl flex items-center justify-center">
-                {/* Inner glow */}
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-teal-500/20 to-cyan-500/10" />
-
-                {/* Shield with lock */}
-                <div className="relative">
-                  {/* Flame effect behind shield */}
-                  <Flame className="absolute -top-6 left-1/2 -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 text-teal-400 opacity-80" />
-
-                  {/* Shield */}
-                  <div className="relative w-16 h-20 md:w-24 md:h-28 bg-gradient-to-b from-teal-500 via-teal-600 to-teal-700 rounded-t-lg rounded-b-[50%] flex items-center justify-center shadow-lg border-2 border-teal-400/50">
-                    {/* Circuit pattern on shield */}
-                    <div className="absolute inset-2 opacity-30">
-                      <div className="absolute top-2 left-2 w-3 h-3 border-l-2 border-t-2 border-teal-300" />
-                      <div className="absolute top-2 right-2 w-3 h-3 border-r-2 border-t-2 border-teal-300" />
-                      <div className="absolute bottom-4 left-3 w-2 h-2 rounded-full bg-teal-300" />
-                      <div className="absolute bottom-4 right-3 w-2 h-2 rounded-full bg-teal-300" />
-                    </div>
-                    <Lock className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-lg" />
-                  </div>
-                </div>
-              </div>
-            </div>
+            </motion.div>
 
             {/* Ardentia Text */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-800 mb-2 tracking-wider drop-shadow-lg">

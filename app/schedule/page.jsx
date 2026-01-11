@@ -151,7 +151,7 @@ const TrainingTimeline = () => {
               </span>
             </motion.h2>
             <p className={`text-base md:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-              {selectedDayData.fullDate} • {getFilteredEvents().length} Training Sessions
+              {selectedDayData.fullDate} • {getFilteredEvents().length} Sessions
             </p>
           </div>
 
@@ -202,7 +202,7 @@ const TrainingTimeline = () => {
                   onMouseEnter={() => setHoveredEvent(event.id)}
                   onMouseLeave={() => setHoveredEvent(null)}
                 >
-                  <Link href={`/training/${event.id}`} className="group block h-full">
+                  <Link href={`/schedule/${event.id}`} className="group block h-full">
                     <div
                       className={`relative h-full overflow-hidden rounded-2xl md:rounded-3xl transition-all duration-500 ${
                         isDark ? 'bg-slate-800' : 'bg-white'
@@ -345,7 +345,7 @@ const TrainingTimeline = () => {
                 <Calendar className={`w-10 h-10 ${isDark ? 'text-slate-600' : 'text-slate-400'}`} />
               </div>
               <p className={`text-xl font-semibold ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-                No training sessions scheduled for Day {selectedDay}
+                No sessions scheduled for Day {selectedDay}
               </p>
             </div>
           )}

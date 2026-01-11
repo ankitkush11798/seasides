@@ -55,12 +55,12 @@ const TrainingDetailPage = () => {
           >
             <Calendar className={`w-12 h-12 ${isDark ? 'text-slate-600' : 'text-slate-400'}`} />
           </div>
-          <h1 className="text-4xl font-bold mb-4">Training Not Found</h1>
+          <h1 className="text-4xl font-bold mb-4">Session Not Found</h1>
           <p className={`mb-8 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-            The training session you are looking for does not exist.
+            The session you are looking for does not exist.
           </p>
           <Link
-            href="/training"
+            href="/schedule"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -149,7 +149,7 @@ const TrainingDetailPage = () => {
           {/* Back Button */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-6 md:mb-8">
             <Link
-              href="/training"
+              href="/schedule"
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold transition-all ${
                 isDark
                   ? 'text-slate-300 hover:text-white bg-slate-800/50 hover:bg-slate-800'

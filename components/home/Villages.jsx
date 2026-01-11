@@ -1,111 +1,15 @@
 'use client';
 import { useTheme } from '@/contexts/ThemeContext';
+import { villages } from '@/lib/villageData';
+import { getGradientStyle } from '@/lib/villageUtils';
 import { motion } from 'framer-motion';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Link as LinkIcon,
-  Package,
-  Search,
-  Shield,
-  Sparkles,
-  Target,
-  Wrench
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Sparkles } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 const Villages = () => {
   const { isDark } = useTheme();
   const [hoveredVillage, setHoveredVillage] = useState(null);
   const sliderRef = useRef(null);
-
-  const villages = [
-    {
-      id: 1,
-      name: 'Hardware Village',
-      icon: Wrench,
-      description:
-        'Dive into the physical world of hardware security. Learn hardware hacking, reverse engineering, and hands-on exploitation of embedded systems.',
-      topics: ['IoT Security', 'Firmware Analysis', 'Circuit Analysis', 'Side-Channel Attacks'],
-      color: 'from-emerald-500 to-teal-600',
-      shadowColor: 'shadow-emerald-500/30',
-      borderColor: 'border-emerald-500',
-      url: 'https://hw101.me'
-    },
-    {
-      id: 2,
-      name: 'SAST SCA Village',
-      icon: Search,
-      description:
-        'Master static code analysis and software composition analysis. Discover vulnerabilities in source code and open-source dependencies.',
-      topics: ['Code Review', 'Vulnerability Scanning', 'Dependency Analysis', 'SAST Tools'],
-      color: 'from-cyan-500 to-blue-600',
-      shadowColor: 'shadow-cyan-500/30',
-      borderColor: 'border-cyan-500',
-      url: 'https://village.scagoat.dev'
-    },
-    {
-      id: 3,
-      name: 'Container Security Village',
-      icon: Package,
-      description:
-        'Explore the world of container and Kubernetes security. Learn about securing containerized applications and orchestration platforms.',
-      topics: ['Kubernetes Security', 'Docker Security', 'Container Runtime', 'Pod Security'],
-      color: 'from-purple-500 to-indigo-600',
-      shadowColor: 'shadow-purple-500/30',
-      borderColor: 'border-purple-500',
-      url: 'https://containersecurityvillage.kubernetesvillage.com'
-    },
-    {
-      id: 4,
-      name: 'Infrasec Village',
-      icon: Shield,
-      description:
-        'A focused village on infrastructure attack and defense. Hands-on labs, live demos, and deep dives covering the entire stack.',
-      topics: ['Cloud Attack & Defense', 'Zero Trust Networking', 'Secure IaC', 'Cloud IR'],
-      color: 'from-rose-500 to-pink-600',
-      shadowColor: 'shadow-rose-500/30',
-      borderColor: 'border-rose-500',
-      url: 'https://infrasec-village.seasides.net/'
-    },
-    {
-      id: 5,
-      name: 'Blockchain Security Village',
-      icon: LinkIcon,
-      description:
-        'Explore the security landscape of decentralized systems. From smart contract vulnerabilities to DeFi exploits.',
-      topics: ['Smart Contract Security', 'DeFi & NFT Attacks', 'Wallet Forensics', 'Cross-chain Exploits'],
-      color: 'from-violet-500 to-purple-600',
-      shadowColor: 'shadow-violet-500/30',
-      borderColor: 'border-violet-500',
-      url: '/cfp-blockchain-village'
-    },
-    {
-      id: 6,
-      name: 'Social Engineering Village',
-      icon: Shield,
-      description:
-        'Welcome to the intersection of psychology, technology, and security. Explore the art of human manipulation, OSINT gathering, and the cognitive biases that define the human element of cybersecurity.',
-      topics: ['OSINT Intelligence', 'HUMINT Operations', 'PSYOP Psychology', 'Human Element'],
-      color: 'from-amber-500 to-orange-600',
-      shadowColor: 'shadow-amber-500/30',
-      borderColor: 'border-amber-500',
-      url: 'https://www.sevillage.in/'
-    },
-    {
-      id: 7,
-      name: 'Threat Hunting Village',
-      icon: Target,
-      description:
-        'An interactive learning platform for cybersecurity enthusiasts featuring hands-on labs, real-world attack simulations, and collaborative problem-solving.',
-      topics: ['Threat Hunting', 'Digital Forensics', 'Incident Response', 'Malware Analysis'],
-      color: 'from-lime-500 to-green-600',
-      shadowColor: 'shadow-lime-500/30',
-      borderColor: 'border-lime-500',
-      url: 'https://threathuntingvillage.com/'
-    }
-  ];
 
   const scroll = direction => {
     if (sliderRef.current) {
@@ -235,7 +139,7 @@ const Villages = () => {
               <motion.a
                 key={village.id}
                 href={village.url}
-                target={village.url.startsWith('/') ? '_self' : '_blank'}
+                target={village.url?.startsWith('/') ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -246,7 +150,7 @@ const Villages = () => {
                 onMouseLeave={() => setHoveredVillage(null)}
                 className={`relative flex-shrink-0 w-[350px] snap-center cursor-pointer block overflow-hidden rounded-3xl border-2 transition-all duration-500 ${
                   isHovered
-                    ? `${village.borderColor} ${village.shadowColor} shadow-2xl`
+                    ? 'border-orange-400 shadow-orange-500/30 shadow-2xl'
                     : isDark
                       ? 'border-slate-700 shadow-lg bg-slate-800/50 backdrop-blur-sm'
                       : 'border-gray-200 shadow-lg bg-white'
@@ -258,11 +162,12 @@ const Villages = () => {
                     opacity: isHovered ? 0.1 : 0
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`absolute inset-0 bg-gradient-to-br ${village.color}`}
+                  className={`absolute inset-0 ${village.branding?.gradient ? '' : `bg-gradient-to-br ${village.gradient || 'from-orange-500 to-amber-500'}`}`}
+                  style={village.branding ? getGradientStyle(village.branding) : {}}
                 />
 
                 <div className="relative p-6">
-                  {/* Icon Header */}
+                  {/* Icon/Logo Header */}
                   <div className="flex items-center justify-between mb-4">
                     <motion.div
                       animate={{
@@ -270,9 +175,21 @@ const Villages = () => {
                         scale: isHovered ? 1.1 : 1
                       }}
                       transition={{ duration: 0.5 }}
-                      className={`p-3 rounded-xl bg-gradient-to-br ${village.color} shadow-lg`}
+                      className={`p-3 rounded-xl ${village.branding?.gradient ? '' : `bg-gradient-to-br ${village.gradient || 'from-orange-500 to-amber-500'}`} shadow-lg`}
+                      style={village.branding ? getGradientStyle(village.branding) : {}}
                     >
-                      <IconComponent className="w-8 h-8 text-white" />
+                      {village.branding?.logo ? (
+                        <img
+                          src={village.branding.logo}
+                          alt={`${village.name} logo`}
+                          className="w-8 h-8 object-contain"
+                          onError={e => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling?.style && (e.target.nextSibling.style.display = 'block');
+                          }}
+                        />
+                      ) : null}
+                      <IconComponent className={`w-8 h-8 text-white ${village.branding?.logo ? 'hidden' : ''}`} />
                     </motion.div>
                   </div>
 

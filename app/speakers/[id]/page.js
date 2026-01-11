@@ -213,7 +213,7 @@ const SpeakerDetailPage = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 + index * 0.1 }}
                         >
-                          <Link href={`/training/${session.id}`} className="group block">
+                          <Link href={`/schedule/${session.id}`} className="group block">
                             <div
                               className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg border ${isDark ? 'border-slate-700' : 'border-slate-200'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
                             >

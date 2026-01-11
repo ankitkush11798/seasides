@@ -104,8 +104,8 @@ const Navbar = () => {
           <Link href="/scholarship" className="hover:text-orange-500 transition-colors">
             Scholarship
           </Link>
-          <Link href="/training" className="hover:text-orange-500 transition-colors">
-            Training
+          <Link href="/schedule" className="hover:text-orange-500 transition-colors">
+            Schedule
           </Link>
           <Link href="/speakers" className="hover:text-orange-500 transition-colors">
             Speakers
@@ -489,13 +489,13 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/training"
+              href="/schedule"
               className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
                 isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span className="font-medium">Training</span>
+              <span className="font-medium">Schedule</span>
             </Link>
 
             <Link
