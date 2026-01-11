@@ -3,31 +3,9 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { villages as villagesData } from '@/lib/villageData';
-import {
-  getDayColor,
-  getDifficultyBadgeClasses,
-  getGradientStyle,
-  getSessionTypeBadgeClasses,
-  hasSessions as hasSessionsUtil
-} from '@/lib/villageUtils';
+import { getDayColor, getGradientStyle, getSessionTypeBadgeClasses } from '@/lib/villageUtils';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  Calendar,
-  ChevronDown,
-  ChevronRight,
-  Clock,
-  Filter,
-  Grid3X3,
-  List,
-  MapPin,
-  Mic,
-  Search,
-  Sparkles,
-  User,
-  Users,
-  X,
-  Zap
-} from 'lucide-react';
+import { ChevronDown, ChevronRight, Clock, MapPin, Mic, Search, Sparkles, User } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 const VillageSchedule = () => {
@@ -160,146 +138,12 @@ const VillageSchedule = () => {
               Hands-on learning experiences across {villages.length} specialized security domains
             </p>
           </motion.div>
-
-          {/* Quick Stats Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
-          >
-            {[
-              { icon: Users, label: 'Villages', value: stats.total, color: 'orange' },
-              { icon: Calendar, label: 'Feb 19', value: stats.day1, color: 'amber' },
-              { icon: Calendar, label: 'Feb 20', value: stats.day2, color: 'cyan' },
-              { icon: Calendar, label: 'Feb 21', value: stats.day3, color: 'purple' }
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className={`relative overflow-hidden rounded-2xl p-4 ${isDark ? 'bg-slate-900/80 border border-slate-800' : 'bg-white/80 border border-slate-200'} backdrop-blur-xl`}
-              >
-                <div
-                  className={`absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl opacity-20 bg-${stat.color}-500`}
-                />
-                <stat.icon className={`w-5 h-5 mb-2 text-${stat.color}-500`} />
-                <p className={`text-3xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>{stat.value}</p>
-                <p className={`text-sm ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Filter & Controls Section */}
-      <section
-        className={`sticky top-0 z-40 py-4 backdrop-blur-xl border-b ${isDark ? 'bg-slate-950/90 border-slate-800' : 'bg-white/90 border-slate-200'}`}
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-            {/* Day Selector */}
-            <div className="flex items-center gap-2">
-              {dayInfo.map(day => (
-                <motion.button
-                  key={day.id}
-                  onClick={() => setSelectedDay(day.id)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`relative px-4 py-2 rounded-xl font-bold text-sm transition-all ${
-                    selectedDay === day.id
-                      ? 'text-white'
-                      : isDark
-                        ? 'text-slate-400 hover:text-white hover:bg-slate-800'
-                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
-                >
-                  {selectedDay === day.id && (
-                    <motion.div
-                      layoutId="daySelector"
-                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10 flex flex-col items-center">
-                    <span>{day.label}</span>
-                    {day.date && <span className="text-[10px] opacity-70">{day.date}</span>}
-                  </span>
-                </motion.button>
-              ))}
-            </div>
-
-            {/* Search & View Toggle */}
-            <div className="flex items-center gap-3">
-              {/* Search */}
-              <div className={`relative flex items-center rounded-xl ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
-                <Search className={`absolute left-3 w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  className={`w-48 pl-10 pr-4 py-2.5 rounded-xl bg-transparent text-sm outline-none ${isDark ? 'text-white placeholder:text-slate-500' : 'text-slate-900 placeholder:text-slate-400'}`}
-                />
-                {searchQuery && (
-                  <button onClick={() => setSearchQuery('')} className="absolute right-3">
-                    <X className={`w-4 h-4 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
-                  </button>
-                )}
-              </div>
-
-              {/* Difficulty Filter */}
-              <div className="hidden md:flex items-center gap-1">
-                <Filter className={`w-4 h-4 mr-1 ${isDark ? 'text-slate-500' : 'text-slate-400'}`} />
-                {difficultyFilters.map(filter => (
-                  <button
-                    key={filter}
-                    onClick={() => setActiveFilter(filter === activeFilter ? null : filter)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                      activeFilter === filter
-                        ? 'bg-orange-500 text-white'
-                        : isDark
-                          ? 'text-slate-400 hover:bg-slate-800'
-                          : 'text-slate-600 hover:bg-slate-200'
-                    }`}
-                  >
-                    {filter}
-                  </button>
-                ))}
-              </div>
-
-              {/* View Toggle */}
-              <div className={`flex items-center p-1 rounded-xl ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-orange-500 text-white' : isDark ? 'text-slate-400' : 'text-slate-600'}`}
-                >
-                  <Grid3X3 className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-orange-500 text-white' : isDark ? 'text-slate-400' : 'text-slate-600'}`}
-                >
-                  <List className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Villages Content */}
       <section className={`py-12 ${isDark ? 'bg-slate-900/50' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-6">
-          {/* Results Info */}
-          <div className="flex items-center justify-between mb-8">
-            <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-              Showing{' '}
-              <span className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{filteredVillages.length}</span>{' '}
-              villages
-              {selectedDay !== 'all' && ` for ${selectedDayInfo?.fullDate || selectedDayInfo?.label}`}
-            </p>
-          </div>
-
           {/* Grid View */}
           {viewMode === 'grid' && (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -307,6 +151,8 @@ const VillageSchedule = () => {
                 {filteredVillages.map((village, index) => {
                   const isExpanded = expandedVillage === village.id;
                   const hasSessions = village.sessions && Object.keys(village.sessions).length > 0;
+                  const hasTeam = village.team && village.team.length > 0;
+                  const showDetails = hasSessions || hasTeam;
 
                   return (
                     <motion.div
@@ -355,14 +201,6 @@ const VillageSchedule = () => {
                                 className={`w-6 h-6 text-white ${village.branding?.logo ? 'hidden' : ''}`}
                               />
                             </motion.div>
-
-                            <div className="flex items-center gap-2">
-                              <span
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold ${getDifficultyBadgeClasses(village.difficulty)}`}
-                              >
-                                {village.difficulty}
-                              </span>
-                            </div>
                           </div>
 
                           {/* Title & Description */}
@@ -394,20 +232,6 @@ const VillageSchedule = () => {
                             )}
                           </div>
 
-                          {/* Location & Capacity */}
-                          <div
-                            className={`flex items-center justify-between text-sm mb-4 ${isDark ? 'text-slate-500' : 'text-slate-500'}`}
-                          >
-                            <div className="flex items-center gap-1.5">
-                              <MapPin className="w-3.5 h-3.5" />
-                              <span>{village.location}</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <Users className="w-3.5 h-3.5" />
-                              <span>{village.capacity}</span>
-                            </div>
-                          </div>
-
                           {/* Schedule */}
                           <div
                             className={`pt-4 border-t space-y-2 ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
@@ -434,8 +258,8 @@ const VillageSchedule = () => {
                             })}
                           </div>
 
-                          {/* Sessions Toggle Button */}
-                          {hasSessions && (
+                          {/* Details Toggle Button */}
+                          {showDetails && (
                             <button
                               onClick={() => setExpandedVillage(isExpanded ? null : village.id)}
                               className={`w-full mt-4 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
@@ -447,16 +271,16 @@ const VillageSchedule = () => {
                               }`}
                             >
                               <Mic className="w-4 h-4" />
-                              {isExpanded ? 'Hide Sessions' : 'View Sessions'}
+                              {isExpanded ? 'Hide Details' : 'View Details'}
                               <ChevronDown
                                 className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                               />
                             </button>
                           )}
 
-                          {/* Expanded Sessions */}
+                          {/* Expanded Details */}
                           <AnimatePresence>
-                            {isExpanded && hasSessions && (
+                            {isExpanded && showDetails && (
                               <motion.div
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
@@ -464,60 +288,93 @@ const VillageSchedule = () => {
                                 transition={{ duration: 0.3 }}
                                 className="overflow-hidden"
                               >
-                                <div
-                                  className={`mt-4 pt-4 border-t space-y-3 ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
-                                >
-                                  <h4 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                                    Session Schedule
-                                  </h4>
-                                  {Object.entries(village.sessions).map(([day, sessions]) => (
-                                    <div key={day}>
-                                      <p
-                                        className={`text-xs font-semibold mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
-                                      >
-                                        {day === 'day1' ? 'Feb 19' : day === 'day2' ? 'Feb 20' : 'Feb 21'}
-                                      </p>
-                                      <div className="space-y-2">
-                                        {sessions.map((session, sIdx) => (
-                                          <div
-                                            key={sIdx}
-                                            className={`p-3 rounded-xl ${isDark ? 'bg-slate-900/50' : 'bg-slate-50'}`}
-                                          >
-                                            <div className="flex items-start justify-between gap-2 mb-1">
-                                              <span
-                                                className={`text-[10px] font-mono font-bold ${isDark ? 'text-cyan-400' : 'text-orange-600'}`}
-                                              >
-                                                {session.time}
-                                              </span>
-                                              <span
-                                                className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${getSessionTypeBadgeClasses(session.type)}`}
-                                              >
-                                                {session.type}
-                                              </span>
-                                            </div>
-                                            <p
-                                              className={`text-xs font-semibold leading-tight mb-1 ${isDark ? 'text-white' : 'text-slate-900'}`}
-                                            >
-                                              {session.title}
-                                            </p>
+                                {/* Sessions */}
+                                {hasSessions && (
+                                  <div
+                                    className={`mt-4 pt-4 border-t space-y-3 ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
+                                  >
+                                    <h4 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                                      Session Schedule
+                                    </h4>
+                                    {Object.entries(village.sessions).map(([day, sessions]) => (
+                                      <div key={day}>
+                                        <p
+                                          className={`text-xs font-semibold mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
+                                        >
+                                          {day === 'day1' ? 'Feb 19' : day === 'day2' ? 'Feb 20' : 'Feb 21'}
+                                        </p>
+                                        <div className="space-y-2">
+                                          {sessions.map((session, sIdx) => (
                                             <div
-                                              className={`flex items-center gap-1 text-[10px] ${isDark ? 'text-slate-500' : 'text-slate-500'}`}
+                                              key={sIdx}
+                                              className={`p-3 rounded-xl ${isDark ? 'bg-slate-900/50' : 'bg-slate-50'}`}
                                             >
-                                              <User className="w-3 h-3" />
-                                              <span>{session.presenter}</span>
+                                              <div className="flex items-start justify-between gap-2 mb-1">
+                                                <span
+                                                  className={`text-[10px] font-mono font-bold ${isDark ? 'text-cyan-400' : 'text-orange-600'}`}
+                                                >
+                                                  {session.time}
+                                                </span>
+                                                <span
+                                                  className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${getSessionTypeBadgeClasses(session.type)}`}
+                                                >
+                                                  {session.type}
+                                                </span>
+                                              </div>
+                                              <p
+                                                className={`text-xs font-semibold leading-tight mb-1 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                              >
+                                                {session.title}
+                                              </p>
+                                              <div
+                                                className={`flex items-center gap-1 text-[10px] ${isDark ? 'text-slate-500' : 'text-slate-500'}`}
+                                              >
+                                                <User className="w-3 h-3" />
+                                                <span>{session.presenter}</span>
+                                              </div>
                                             </div>
-                                          </div>
-                                        ))}
+                                          ))}
+                                        </div>
                                       </div>
+                                    ))}
+                                  </div>
+                                )}
+
+                                {/* Team Section */}
+                                {hasTeam && (
+                                  <div
+                                    className={`mt-6 pt-4 border-t ${isDark ? 'border-slate-700' : 'border-slate-200'}`}
+                                  >
+                                    <h4
+                                      className={`text-sm font-bold mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                    >
+                                      Meet The Team
+                                    </h4>
+                                    <div className="grid grid-cols-2 gap-3">
+                                      {village.team.map((member, idx) => (
+                                        <div
+                                          key={idx}
+                                          className={`p-3 rounded-xl ${isDark ? 'bg-slate-900/50' : 'bg-slate-50'}`}
+                                        >
+                                          <p
+                                            className={`text-xs font-bold leading-tight mb-0.5 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                                          >
+                                            {member.name}
+                                          </p>
+                                          <p className={`text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                                            {member.role}
+                                          </p>
+                                        </div>
+                                      ))}
                                     </div>
-                                  ))}
-                                </div>
+                                  </div>
+                                )}
                               </motion.div>
                             )}
                           </AnimatePresence>
 
                           {/* Hover Arrow - only show when not expanded */}
-                          {!hasSessions && (
+                          {!showDetails && (
                             <motion.div
                               className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity"
                               initial={{ x: -10 }}
@@ -588,11 +445,6 @@ const VillageSchedule = () => {
                           >
                             {village.name}
                           </h3>
-                          <span
-                            className={`flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold ${getDifficultyBadgeClasses(village.difficulty)}`}
-                          >
-                            {village.difficulty}
-                          </span>
                         </div>
                         <p className={`text-sm truncate mb-2 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                           {village.description}
@@ -670,120 +522,6 @@ const VillageSchedule = () => {
           )}
         </div>
       </section>
-
-      {/* Quick Schedule Overview */}
-      <section className={`py-16 ${isDark ? 'bg-slate-950' : 'bg-slate-50'}`}>
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className={`text-4xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-              At a{' '}
-              <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
-                Glance
-              </span>
-            </h2>
-            <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-              Quick overview of all village schedules
-            </p>
-          </motion.div>
-
-          <div
-            className={`rounded-3xl overflow-hidden ${isDark ? 'bg-slate-900 border border-slate-800' : 'bg-white border border-slate-200'} shadow-xl`}
-          >
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gradient-to-r from-orange-500 to-amber-500">
-                    <th className="px-6 py-5 text-left font-bold text-white">Village</th>
-                    <th className="px-6 py-5 text-center font-bold text-white">
-                      <div className="flex flex-col items-center">
-                        <span>Day 1</span>
-                        <span className="text-xs font-normal opacity-80">Feb 19</span>
-                      </div>
-                    </th>
-                    <th className="px-6 py-5 text-center font-bold text-white">
-                      <div className="flex flex-col items-center">
-                        <span>Day 2</span>
-                        <span className="text-xs font-normal opacity-80">Feb 20</span>
-                      </div>
-                    </th>
-                    <th className="px-6 py-5 text-center font-bold text-white">
-                      <div className="flex flex-col items-center">
-                        <span>Day 3</span>
-                        <span className="text-xs font-normal opacity-80">Feb 21</span>
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {villages.map((village, index) => (
-                    <motion.tr
-                      key={village.id}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.03 }}
-                      className={`border-b transition-colors ${isDark ? 'border-slate-800 hover:bg-slate-800/50' : 'border-slate-100 hover:bg-slate-50'}`}
-                    >
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`p-2 rounded-xl ${village.branding?.gradient ? '' : `bg-gradient-to-br ${village.gradient || 'from-orange-500 to-amber-500'}`}`}
-                            style={village.branding ? getGradientStyle(village.branding) : {}}
-                          >
-                            {village.branding?.logo ? (
-                              <img
-                                src={village.branding.logo}
-                                alt={`${village.name} logo`}
-                                className="w-4 h-4 object-contain"
-                                onError={e => {
-                                  e.target.style.display = 'none';
-                                  e.target.nextSibling?.style && (e.target.nextSibling.style.display = 'block');
-                                }}
-                              />
-                            ) : null}
-                            <village.icon className={`w-4 h-4 text-white ${village.branding?.logo ? 'hidden' : ''}`} />
-                          </div>
-                          <div>
-                            <p className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                              {village.shortName}
-                            </p>
-                            <p className={`text-xs ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
-                              {village.location}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                      {['day1', 'day2', 'day3'].map(day => (
-                        <td key={day} className="px-6 py-4 text-center">
-                          {village.schedule[day] ? (
-                            <div className="flex flex-col items-center">
-                              <Zap className="w-4 h-4 text-green-500 mb-1" />
-                              <span className={`text-xs font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-                                {village.schedule[day].start}
-                              </span>
-                              <span className={`text-xs ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
-                                {village.schedule[day].end}
-                              </span>
-                            </div>
-                          ) : (
-                            <span className={`text-lg ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>—</span>
-                          )}
-                        </td>
-                      ))}
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   );

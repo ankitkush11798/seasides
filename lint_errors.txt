@@ -1,0 +1,11 @@
+
+> seasides-2026@0.1.0 lint
+> next lint
+
+
+ ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+
+./lib/villageUtils.js
+7:18  Error: Expected { after 'if' condition.  curly
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
