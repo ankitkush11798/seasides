@@ -119,10 +119,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link href="/cfp-reviewers" className="hover:text-orange-500 transition-colors">
-            Reviewers
-          </Link>
-
           <Link href="/schedule" className="hover:text-orange-500 transition-colors">
             Schedule
           </Link>
@@ -443,6 +439,21 @@ const Navbar = () => {
                       <p className="font-medium">Call for Papers</p>
                     </div>
                     <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Submit proposal</p>
+                  </div>
+                </Link>
+                <Link
+                  href="/cfp-reviewers"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-green-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">Reviewers</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}> Reviewers</p>
                   </div>
                 </Link>
               </div>
