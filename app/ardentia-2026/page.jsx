@@ -214,20 +214,31 @@ const Ardentia2026 = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-8"
           >
-            <a
-              href="https://www.ardentprivacy.ai/blog/ardentia-2026/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-4 text-lg md:text-xl font-bold rounded-xl bg-gradient-to-r from-orange-500 via-orange-400 to-teal-500 text-white shadow-2xl hover:scale-105 hover:shadow-orange-500/50 transition-all duration-300 border-2 border-white/30"
-            >
-              Registration
-            </a>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://www.ardentprivacy.ai/blog/ardentia-2026/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-10 py-4 text-lg md:text-xl font-bold rounded-xl bg-gradient-to-r from-orange-500 via-orange-400 to-teal-500 text-white shadow-2xl hover:scale-105 hover:shadow-orange-500/50 transition-all duration-300 border-2 border-white/30"
+              >
+                Registration
+              </a>
+              <a
+                href="https://www.ardentprivacy.ai/call-for-paper-ardentia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-10 py-4 text-lg md:text-xl font-bold rounded-xl bg-white text-orange-600 shadow-2xl hover:scale-105 hover:shadow-white/30 transition-all duration-300 border-2 border-orange-100"
+              >
+                Call for Papers (CFP)
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Call for Papers Banner */}
       <section
+        id="call-for-papers"
         className={`py-8 ${isDark ? 'bg-gradient-to-r from-orange-600 to-cyan-600' : 'bg-gradient-to-r from-orange-500 to-cyan-500'}`}
       >
         <div className="max-w-5xl mx-auto px-6 text-center">
@@ -410,7 +421,10 @@ const Ardentia2026 = () => {
       </section>
 
       {/* Program Overview */}
-      <section className={`py-16 ${isDark ? 'bg-slate-800 text-white' : 'bg-slate-100 text-charcoal-gray'}`}>
+      <section
+        id="privacy-ai-governance"
+        className={`py-16 ${isDark ? 'bg-slate-800 text-white' : 'bg-slate-100 text-charcoal-gray'}`}
+      >
         <div className="max-w-5xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center justify-center gap-3 mb-8">
@@ -525,6 +539,7 @@ const Ardentia2026 = () => {
 
       {/* ACPT Certification with CSR Impact */}
       <section
+        id="privacy-tech-certification"
         className={`py-16 ${isDark ? 'bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800' : 'bg-gradient-to-br from-orange-50 via-white to-cyan-50'}`}
       >
         <div className="max-w-5xl mx-auto px-6">

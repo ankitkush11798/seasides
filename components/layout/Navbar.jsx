@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSponsorsOpen, setIsSponsorsOpen] = useState(false);
   const [isCFPOpen, setIsCFPOpen] = useState(false);
+  const [isArdentiaOpen, setIsArdentiaOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isVillagesOpen, setIsVillagesOpen] = useState(false);
   const { isDark } = useTheme();
@@ -37,12 +38,16 @@ const Navbar = () => {
             Home
           </Link>
 
-          {/* CFP Dropdown */}
-          <div className="relative" onMouseEnter={() => setIsCFPOpen(true)} onMouseLeave={() => setIsCFPOpen(false)}>
+          {/* Ardentia Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setIsArdentiaOpen(true)}
+            onMouseLeave={() => setIsArdentiaOpen(false)}
+          >
             <button className="flex items-center gap-1 cursor-pointer focus:outline-none hover:text-orange-500 transition-colors">
-              CFP
+              Ardentia
               <svg
-                className={`w-4 h-4 transition-transform duration-200 ${isCFPOpen ? 'rotate-180' : ''}`}
+                className={`w-4 h-4 transition-transform duration-200 ${isArdentiaOpen ? 'rotate-180' : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -53,8 +58,8 @@ const Navbar = () => {
 
             {/* Dropdown */}
             <div
-              className={`absolute top-full left-0 pt-3 w-64 transition-all duration-300 z-50
-                ${isCFPOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible pointer-events-none'}
+              className={`absolute top-full left-0 pt-3 w-72 transition-all duration-300 z-50
+                ${isArdentiaOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible pointer-events-none'}
               `}
             >
               <div
@@ -65,10 +70,10 @@ const Navbar = () => {
                     isDark ? 'text-gray-400 bg-slate-900/50' : 'text-gray-500 bg-orange-50/50'
                   }`}
                 >
-                  Call for Papers
+                  Ardentia 2026
                 </div>
                 <Link
-                  href="/cfp"
+                  href="/ardentia-2026#privacy-ai-governance"
                   className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
                     isDark
                       ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-orange-500'
@@ -76,34 +81,48 @@ const Navbar = () => {
                   }`}
                 >
                   <div className="flex-1">
-                    <div className="font-semibold text-sm">Submit Proposal</div>
+                    <div className="font-semibold text-sm">Privacy & AI Governance</div>
                     <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Share your research
+                      Tracks & Sessions
                     </div>
                   </div>
                 </Link>
                 <Link
-                  href="/cfp-reviewers"
+                  href="/ardentia-2026#privacy-tech-certification"
                   className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
                     isDark
-                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-pink-500'
-                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50 border-transparent hover:border-pink-500'
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-blue-500'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-blue-50 hover:to-sky-50 border-transparent hover:border-blue-500'
                   }`}
                 >
                   <div className="flex-1">
-                    <div className="font-semibold text-sm">CFP Reviewers</div>
+                    <div className="font-semibold text-sm">ACPT Certification</div>
                     <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Meet our review team
+                      Privacy Tech Certification
                     </div>
+                  </div>
+                </Link>
+                <Link
+                  href="/ardentia-2026#call-for-papers"
+                  className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-green-500'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 border-transparent hover:border-green-500'
+                  }`}
+                >
+                  <div className="flex-1">
+                    <div className="font-semibold text-sm">Call for Papers</div>
+                    <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Closes Jan 21</div>
                   </div>
                 </Link>
               </div>
             </div>
           </div>
 
-          <Link href="/scholarship" className="hover:text-orange-500 transition-colors">
-            Scholarship
+          <Link href="/cfp-reviewers" className="hover:text-orange-500 transition-colors">
+            Reviewers
           </Link>
+
           <Link href="/schedule" className="hover:text-orange-500 transition-colors">
             Schedule
           </Link>
@@ -411,6 +430,21 @@ const Navbar = () => {
                     <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Common questions</p>
                   </div>
                 </Link>
+                <Link
+                  href="/cfp"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-green-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">Call for Papers</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Submit proposal</p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -450,20 +484,10 @@ const Navbar = () => {
               <span className="font-medium">Home</span>
             </Link>
 
-            {/* CFP Section */}
+            {/* Ardentia Section */}
             <div className={`pt-4 pb-2 px-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              <div className="flex items-center text-xs font-semibold uppercase tracking-wider">Call for Papers</div>
+              <div className="flex items-center text-xs font-semibold uppercase tracking-wider">Ardentia 2026</div>
             </div>
-
-            <Link
-              href="/cfp"
-              className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
-                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-orange-50'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="font-medium text-sm">Submit Proposal</span>
-            </Link>
 
             <Link
               href="/cfp-reviewers"
@@ -472,21 +496,41 @@ const Navbar = () => {
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span className="font-medium text-sm">CFP Reviewers</span>
+              <span className="font-medium text-sm">Reviewers</span>
+            </Link>
+
+            <Link
+              href="/ardentia-2026#privacy-ai-governance"
+              className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-medium text-sm">Privacy & AI Governance</span>
+            </Link>
+
+            <Link
+              href="/ardentia-2026#privacy-tech-certification"
+              className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-blue-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-medium text-sm">ACPT Certification</span>
+            </Link>
+
+            <Link
+              href="/ardentia-2026#call-for-papers"
+              className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-green-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-medium text-sm">Call for Papers (Jan 21)</span>
             </Link>
 
             {/* Divider */}
             <div className={`my-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`} />
-
-            <Link
-              href="/scholarship"
-              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
-                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="font-medium">Scholarship</span>
-            </Link>
 
             <Link
               href="/schedule"
@@ -644,6 +688,16 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               <span className="font-medium">About Us</span>
+            </Link>
+
+            <Link
+              href="/cfp"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-green-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-medium">Call for Papers</span>
             </Link>
 
             <Link
