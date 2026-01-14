@@ -38,6 +38,12 @@ export default function sitemap() {
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6
+    },
+    {
+      url: `${baseUrl}/ai-village`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.8
     }
   ];
 }

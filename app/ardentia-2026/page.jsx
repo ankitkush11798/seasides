@@ -3,7 +3,7 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Award, BookOpen, Brain, Calendar, CheckCircle, Clock, MapPin, Shield, Users } from 'lucide-react';
+import { BookOpen, Brain, Calendar, CheckCircle, Clock, MapPin, Shield, Users } from 'lucide-react';
 import Image from 'next/image';
 
 // Custom SVG Components for beach graphics
@@ -545,7 +545,9 @@ const Ardentia2026 = () => {
         <div className="max-w-5xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Award className="w-8 h-8 text-orange-500" />
+              <div className="relative w-12 h-12">
+                <Image src="/ardentia-2026/acpt.jpg" alt="ACPT Logo" fill className="object-contain" />
+              </div>
               <h2
                 className={`text-3xl md:text-4xl font-bold text-center ${isDark ? 'text-white' : 'text-charcoal-gray'}`}
               >

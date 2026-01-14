@@ -320,6 +320,23 @@ const Navbar = () => {
                     </p>
                   </div>
                 </Link>
+                <Link
+                  href="/ai-village"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-emerald-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-cyan-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">AI Village</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Practical AI Security
+                    </p>
+                  </div>
+                </Link>
                 <a
                   href="https://www.sevillage.in/"
                   target="_blank"
@@ -629,6 +646,18 @@ const Navbar = () => {
             >
               <div className="flex items-center">
                 <span className="font-medium text-sm">Blockchain Village</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/ai-village"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-emerald-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex items-center">
+                <span className="font-medium text-sm">AI Village</span>
               </div>
             </Link>
 
