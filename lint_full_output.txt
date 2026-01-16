@@ -1,0 +1,15 @@
+
+C:\Users\Ankit\Desktop\seasides-2026\app\ai-village\page.js
+  102:11  warning  Empty components are self-closing                                react/self-closing-comp
+  103:11  warning  Empty components are self-closing                                react/self-closing-comp
+  135:65  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Ankit\Desktop\seasides-2026\contexts\ThemeContext.js
+  59:3  warning  Newline required at end of file but not found  eol-last
+
+C:\Users\Ankit\Desktop\seasides-2026\next.config.cjs
+  99:29  warning  Newline required at end of file but not found  eol-last
+
+✖ 5 problems (1 error, 4 warnings)
+  0 errors and 4 warnings potentially fixable with the `--fix` option.
+
