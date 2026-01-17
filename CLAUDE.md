@@ -4,7 +4,7 @@
  
 ```bash  
 # Development   
-npm run dev   
+npm run dev    
      
 npm run build    
 # Linting & Formatting     
