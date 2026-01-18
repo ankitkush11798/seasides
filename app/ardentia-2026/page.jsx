@@ -257,7 +257,7 @@ const Ardentia2026 = () => {
       {/* Call for Papers Banner */}
       <section
         id="call-for-papers"
-        className={`py-8 ${isDark ? 'bg-gradient-to-r from-orange-600 to-cyan-600' : 'bg-gradient-to-r from-orange-500 to-cyan-500'}`}
+        className={`py-8 scroll-mt-28 ${isDark ? 'bg-gradient-to-r from-orange-600 to-cyan-600' : 'bg-gradient-to-r from-orange-500 to-cyan-500'}`}
       >
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white">CALL for Papers</h2>

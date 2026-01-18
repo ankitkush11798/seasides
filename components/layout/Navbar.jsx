@@ -73,7 +73,7 @@ const Navbar = () => {
                   Ardentia 2026
                 </div>
                 <Link
-                  href="/ardentia-2026#privacy-ai-governance"
+                  href="/ardentia-2026/privacy-ai-governance"
                   className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
                     isDark
                       ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-orange-500'
@@ -83,12 +83,12 @@ const Navbar = () => {
                   <div className="flex-1">
                     <div className="font-semibold text-sm">Privacy & AI Governance</div>
                     <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Tracks & Sessions
+                      Day 1 Conference Track
                     </div>
                   </div>
                 </Link>
                 <Link
-                  href="/ardentia-2026#privacy-tech-certification"
+                  href="/ardentia-2026/certification"
                   className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
                     isDark
                       ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-blue-500'
@@ -98,12 +98,12 @@ const Navbar = () => {
                   <div className="flex-1">
                     <div className="font-semibold text-sm">ACPT Certification</div>
                     <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Privacy Tech Certification
+                      Day 2 Training Program
                     </div>
                   </div>
                 </Link>
                 <Link
-                  href="/ardentia-2026#call-for-papers"
+                  href="/ardentia-2026/cfp"
                   className={`group flex items-center gap-3 px-4 py-3.5 transition-all duration-200 border-l-4 ${
                     isDark
                       ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800 border-transparent hover:border-green-500'
@@ -112,7 +112,9 @@ const Navbar = () => {
                 >
                   <div className="flex-1">
                     <div className="font-semibold text-sm">Call for Papers</div>
-                    <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Closes Jan 21</div>
+                    <div className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Deadline: Jan 21
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -304,7 +306,7 @@ const Navbar = () => {
                   </div>
                 </a>
                 <Link
-                  href="/cfp-blockchain-village"
+                  href="/blockchain-village"
                   className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-purple-500 ${
                     isDark
                       ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
@@ -528,7 +530,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/ardentia-2026#privacy-ai-governance"
+              href="/ardentia-2026/privacy-ai-governance"
               className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
                 isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-orange-50'
               }`}
@@ -538,7 +540,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/ardentia-2026#privacy-tech-certification"
+              href="/ardentia-2026/certification"
               className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
                 isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-blue-50'
               }`}
@@ -548,13 +550,13 @@ const Navbar = () => {
             </Link>
 
             <Link
-              href="/ardentia-2026#call-for-papers"
+              href="/ardentia-2026/cfp"
               className={`flex items-center px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
                 isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-green-50'
               }`}
               onClick={() => setIsOpen(false)}
             >
-              <span className="font-medium text-sm">Call for Papers (Jan 21)</span>
+              <span className="font-medium text-sm">Call for Papers</span>
             </Link>
 
             {/* Divider */}

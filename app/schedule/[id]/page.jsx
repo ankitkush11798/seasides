@@ -8,7 +8,6 @@ import {
   ArrowLeft,
   BookOpen,
   Calendar,
-  Check,
   CheckCircle2,
   ChevronDown,
   Clock,
@@ -527,7 +526,7 @@ const TrainingDetailPage = () => {
                             className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-white'} shadow-lg border ${isDark ? 'border-slate-700' : 'border-slate-200'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
                           >
                             {/* Image */}
-                            <div className="relative h-48 sm:h-56 md:h-48 overflow-hidden">
+                            <div className="relative h-64 sm:h-72 md:h-64 overflow-hidden">
                               <Image
                                 src={speaker.image}
                                 alt={speaker.name}

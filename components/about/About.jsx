@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { HelpCircle, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, HelpCircle } from 'lucide-react';
+import { useState } from 'react';
 import { SiX } from 'react-icons/si';
-import { useTheme } from '@/contexts/ThemeContext';
-import { motion } from 'framer-motion';
 
 const About = () => {
   const { isDark } = useTheme();
@@ -213,15 +212,7 @@ const About = () => {
         linkedin: 'https://www.linkedin.com/in/rahul-kumar-/'
       }
     },
-    {
-      name: 'Anurag Mishra',
-      image: 'team-photos/Anurag_Mishra.jpeg',
-      role: 'Core Team Member',
-      socialMedia: {
-        twitter: 'https://x.com/mishr_a_nurag',
-        linkedin: 'https://www.linkedin.com/in/anuragmishra06/'
-      }
-    },
+
     {
       name: 'Vedant Jain',
       image: 'team-photos/Vedant_Jain.jpeg',

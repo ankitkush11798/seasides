@@ -4,8 +4,7 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { User, Shield, Code, Database, Lock, Zap, Globe, ArrowRight, Clock } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Clock, Code, Database, Globe, Lock, Shield, User, Zap } from 'lucide-react';
 
 const BlockchainVillage = () => {
   const { isDark } = useTheme();
@@ -185,63 +184,61 @@ const BlockchainVillage = () => {
         </div>
       </section>
 
-      {/* Village Lead Showcase */}
-      <section className="py-24 relative overflow-hidden">
-        <div className={`absolute inset-0 ${isDark ? 'bg-[#0B1120]' : 'bg-gray-50'}`} />
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-900/10 to-transparent" />
+      {/* Village Leads Section */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className={`text-3xl font-bold mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>Village Leads</h2>
 
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="inline-block px-3 py-1 rounded bg-indigo-500/10 text-indigo-400 text-sm font-semibold mb-4">
-                Village Lead
-              </div>
-              <h2 className={`text-4xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h2>
-              <p className="text-xl text-purple-500 font-medium mb-6">Staff Security Engineer @ PIP Labs</p>
-
-              <div className={`space-y-4 mb-8 text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}>
-                <p>
-                  With over a decade navigating the complexities of cybersecurity at giants like Amazon, Zapier, and
-                  HackerOne, Vinod brings deep expertise to the Blockchain Village.
-                </p>
-                <p>
-                  Specializing in penetration testing, cloud security, and Web3 defense, he is a prolific writer and
-                  researcher dedicated to uncovering emerging threats in decentralized ecosystems.
-                </p>
-              </div>
-
-              <a
-                href="https://www.linkedin.com/in/securient/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0077b5] text-white font-medium hover:bg-[#006396] transition-colors shadow-lg shadow-blue-900/20"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                Connect on LinkedIn
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Vinod Tiwari */}
+            <a
+              href="https://www.linkedin.com/in/securient/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
+                isDark
+                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
+                  : 'bg-white border-gray-200 hover:border-purple-300'
+              }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-[2rem] transform rotate-3 blur-md opacity-30" />
               <div
-                className={`relative rounded-[2rem] overflow-hidden border-8 ${isDark ? 'border-[#1E293B]' : 'border-white'} shadow-2xl`}
+                className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${
+                  isDark ? 'bg-slate-700 text-purple-400' : 'bg-purple-50 text-purple-600'
+                }`}
               >
-                <Image
-                  src="/sponsors-2025/vinod.jpg"
-                  alt="Vinod Tiwari"
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover"
-                />
+                <User size={32} />
               </div>
-            </motion.div>
+              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h3>
+              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
+                <span>View LinkedIn Profile</span>
+                <ArrowRight size={16} />
+              </div>
+            </a>
+
+            {/* Deepak Rathore */}
+            <a
+              href="https://www.linkedin.com/in/deepakrathore2k10/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
+                isDark
+                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
+                  : 'bg-white border-gray-200 hover:border-purple-300'
+              }`}
+            >
+              <div
+                className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${
+                  isDark ? 'bg-slate-700 text-purple-400' : 'bg-purple-50 text-purple-600'
+                }`}
+              >
+                <User size={32} />
+              </div>
+              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Deepak Rathore</h3>
+              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
+                <span>View LinkedIn Profile</span>
+                <ArrowRight size={16} />
+              </div>
+            </a>
           </div>
         </div>
       </section>
