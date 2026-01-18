@@ -3,68 +3,12 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Activity, Brain, Code, Cpu, Lock, Network, Server, Terminal, Zap } from 'lucide-react';
+import { Brain, Code, Cpu, Terminal, Zap } from 'lucide-react';
 
 const AIVillage = () => {
   const { isDark } = useTheme();
 
-  const trainingModules = [
-    {
-      title: 'Module 1: AI in Pentesting – Foundations',
-      icon: Brain,
-      items: [
-        'Role of AI in modern pentesting',
-        'Where AI helps vs where it fails',
-        'Threat model: hallucinations, bias, OPSEC',
-        'Legal & ethical boundaries',
-        'Human-in-the-loop mindset'
-      ]
-    },
-    {
-      title: 'Module 2: Local LLMs for Security Work',
-      icon: Server,
-      items: [
-        'Why local LLMs (privacy, OPSEC, cost)',
-        'Local LLM runtimes (Ollama, OpenWebUI, LM Studio, etc.)',
-        'Model selection for security & code',
-        'Prompting techniques for pentesters',
-        'Validating AI outputs'
-      ]
-    },
-    {
-      title: 'Module 3: AI-Assisted Recon Workflows',
-      icon: Activity,
-      items: [
-        'Recon pipeline with AI integration',
-        'Passive recon analysis with LLMs',
-        'Active recon output summarization',
-        'JavaScript & API surface analysis',
-        'Prioritizing attack surface with AI'
-      ]
-    },
-    {
-      title: 'Module 4: MCP Servers for Pentesting',
-      icon: Network,
-      items: [
-        'What MCP is and why it matters',
-        'MCP architecture & components',
-        'Tool orchestration using MCP',
-        'Safe automation use cases',
-        'AI + MCP workflow patterns'
-      ]
-    },
-    {
-      title: 'Module 5: Hands-On Lab – End-to-End Recon',
-      icon: Lock,
-      items: [
-        'Reviewing scoped target data',
-        'AI-driven recon analysis',
-        'MCP-based tool chaining',
-        'Finding correlations & anomalies',
-        'Human validation of AI findings'
-      ]
-    }
-  ];
+  const trainingModules = [];
 
   const principles = [
     {
