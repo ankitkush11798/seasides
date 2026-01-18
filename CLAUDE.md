@@ -11,7 +11,7 @@ npm run build
 npm run lint          # Check for linting errors     
 npm run lint:fix      # Auto-fix linting errors        
 npm run format        # Format code with Prettier 
-npm run format:check  # Check code formatting
+npm run format:check  # Check code formatting 
 
 # Auditing 
 npm audit             # Check for security vulnerabilities
