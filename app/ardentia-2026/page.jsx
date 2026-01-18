@@ -81,24 +81,42 @@ const Ardentia2026 = () => {
     'Playbooks for regulatory notifications, breach communication, and board-level reporting'
   ];
 
-  const agenda = [
+  const agendaTrack1 = [
     { time: '09:00 – 09:30', session: 'Registration' },
     { time: '09:30 – 10:00', session: 'Breakfast & Networking' },
-    { time: '10:00 – 11:30', session: 'Automation & operationalization of manual privacy processes for DPDPA' },
+    { time: '10:00 – 11:30', session: 'Automation & Operationalisation of manual privacy processes for DPDPA' },
     {
       time: '11:30 – 13:00',
-      session: 'Data Bill of Material (DBoM) and Discovery of Personal Data to make privacy rules actionable'
+      session: 'Data Bill of Material (DBoM) & Discovery of Personal Data to make privacy rules actionable'
     },
-    { time: '13:00 – 13:45', session: 'Lunch and Networking' },
-    { time: '13:45 – 15:00', session: 'Use cases of AI for DPDPA Automation' },
+    { time: '13:00 – 14:00', session: 'Lunch & Networking' },
+    { time: '14:00 – 15:00', session: 'Use Cases of AI for DPDPA Automation' },
     { time: '15:00 – 16:00', session: 'Navigating Consent Management for Applications' },
-    { time: '16:00 – 16:15', session: 'Tea Break and Peer Networking' },
-    { time: '16:15 – 17:00', session: 'Protecting Organization with AI Threats & Risks' },
+    { time: '16:00 – 16:30', session: 'Tea Break & Peer Networking' },
+    { time: '16:30 – 17:30', session: 'Protecting Organisation with AI Threats & Risks' },
     {
-      time: '17:00 – 17:45',
+      time: '17:30 – 18:30',
       session: 'Playbooks for legal/regulatory notifications and communication with affected users and board'
     },
-    { time: '17:45 – 18:15', session: 'Assessment, Certification & Closing' }
+    { time: '18:30 – 18:45', session: 'Thank You Note & Closing' }
+  ];
+
+  const agendaTrack2 = [
+    { time: '09:00 – 09:30', session: 'Registration' },
+    { time: '09:30 – 10:00', session: 'Breakfast & Networking' },
+    { time: '10:00 – 10:30', session: 'Privacy Regulations (DPDPA) & Technology Operations Overview' },
+    { time: '10:30 – 11:20', session: 'Assessment Manager – to conduct DPIA' },
+    {
+      time: '11:20 – 13:00',
+      session: 'Data Discovery and Intelligence - to have visibility over sensitive data'
+    },
+    { time: '13:00 – 14:00', session: 'Lunch & Networking' },
+    { time: '14:00 – 14:30', session: 'Data Principal Request Management - to enable Data Principal rights' },
+    { time: '14:30 – 15:30', session: 'Universal Consent Management - to have a centralized system' },
+    { time: '15:30 – 16:00', session: 'Data Breach Management - to create audit ready reports' },
+    { time: '16:00 – 16:30', session: 'Tea Break & Peer Networking' },
+    { time: '16:30 – 17:00', session: 'Use Cases & Practical Scenarios' },
+    { time: '17:00 – 17:10', session: 'Thank You Note & Closing' }
   ];
 
   const whyAttend = [
@@ -467,21 +485,22 @@ const Ardentia2026 = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Day 2 (22nd Feb)</h3>
-                    <p className="text-sm text-cyan-500">Full-Day Training & Certification (ACPT)</p>
+                    <p className="text-sm text-cyan-500">
+                      Full Day Training & Certification (ACPT) Ardent Certified Privacy Technologist
+                    </p>
                   </div>
                 </div>
-                <p className="text-sm md:text-base mb-3">
-                  Ardent Certified Privacy Technologist - A paid, hands-on program covering:
-                </p>
+                <p className="text-sm md:text-base mb-3">A paid, hands-on program covering:</p>
                 <ul className="space-y-1 text-sm md:text-base">
-                  <li>• DPDP Act operational requirements</li>
-                  <li>• Privacy-by-design implementation</li>
-                  <li>• Consent & DPRM workflows</li>
-                  <li>• Data breach readiness</li>
-                  <li>• DPIA and AI governance fundamentals</li>
+                  <li>→ Privacy Regulations (DPDPA) & Technology Operations Overview</li>
+                  <li>→ Assessment Manager – Data Protection Impact Assessment (DPIA)</li>
+                  <li>→ Data Discovery and Intelligence</li>
+                  <li>→ Data Principal Request Management (DPRM)</li>
+                  <li>→ Universal Consent Management (UCM)</li>
+                  <li>→ Data Breach Management (DBM)</li>
                 </ul>
                 <p className="mt-3 text-sm text-orange-500 font-medium">
-                  Each participant receives official ACPT certification from Ardent Privacy.
+                  *Each participant receives official ACPT certification from Ardent Privacy.
                 </p>
               </div>
             </div>
@@ -496,41 +515,79 @@ const Ardentia2026 = () => {
             <div className="flex items-center justify-center gap-3 mb-8">
               <Clock className="w-8 h-8 text-orange-500" />
               <h2 className="text-3xl md:text-4xl font-bold text-center">
-                Feb 22nd | <span className="text-cyan-500">Draft Agenda</span>
+                Feb 22nd | <span className="text-cyan-500">Full Day Agenda</span>
               </h2>
             </div>
 
-            <div className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-50'} shadow-xl`}>
-              <div className="grid grid-cols-1">
-                {agenda.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`flex flex-col md:flex-row md:items-center p-4 ${
-                      index % 2 === 0
-                        ? isDark
-                          ? 'bg-slate-800'
-                          : 'bg-white'
-                        : isDark
-                          ? 'bg-slate-700/50'
-                          : 'bg-slate-100'
-                    } ${index !== agenda.length - 1 ? 'border-b border-slate-200 dark:border-slate-600' : ''}`}
-                  >
-                    <div className="md:w-40 flex-shrink-0 mb-2 md:mb-0">
-                      <span
-                        className={`font-mono font-bold text-sm md:text-base ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Track 1 */}
+              <div>
+                <h3 className={`text-xl font-bold mb-4 text-center ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>
+                  Track 1: Call for Papers / Use Cases
+                </h3>
+                <div className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-50'} shadow-xl`}>
+                  <div className="grid grid-cols-1">
+                    {agendaTrack1.map((item, index) => (
+                      <div
+                        key={index}
+                        className={`flex flex-col p-4 ${
+                          index % 2 === 0
+                            ? isDark
+                              ? 'bg-slate-800'
+                              : 'bg-white'
+                            : isDark
+                              ? 'bg-slate-700/50'
+                              : 'bg-slate-100'
+                        } ${index !== agendaTrack1.length - 1 ? 'border-b border-slate-200 dark:border-slate-600' : ''}`}
                       >
-                        {item.time}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-sm md:text-base">{item.session}</span>
-                    </div>
-                  </motion.div>
-                ))}
+                        <div className="mb-1">
+                          <span
+                            className={`font-mono font-bold text-sm ${isDark ? 'text-orange-400' : 'text-orange-600'}`}
+                          >
+                            {item.time}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-sm">{item.session}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Track 2 */}
+              <div>
+                <h3 className={`text-xl font-bold mb-4 text-center ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`}>
+                  Track 2: ACPT Program
+                </h3>
+                <div className={`rounded-2xl overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-50'} shadow-xl`}>
+                  <div className="grid grid-cols-1">
+                    {agendaTrack2.map((item, index) => (
+                      <div
+                        key={index}
+                        className={`flex flex-col p-4 ${
+                          index % 2 === 0
+                            ? isDark
+                              ? 'bg-slate-800'
+                              : 'bg-white'
+                            : isDark
+                              ? 'bg-slate-700/50'
+                              : 'bg-slate-100'
+                        } ${index !== agendaTrack2.length - 1 ? 'border-b border-slate-200 dark:border-slate-600' : ''}`}
+                      >
+                        <div className="mb-1">
+                          <span className={`font-mono font-bold text-sm ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`}>
+                            {item.time}
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-sm">{item.session}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

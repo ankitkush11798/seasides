@@ -4,6 +4,7 @@ import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MapPin, Tag, User } from 'lucide-react';
+import Image from 'next/image';
 
 const BlockchainVillage = () => {
   const { isDark } = useTheme();
@@ -168,6 +169,67 @@ const BlockchainVillage = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Village Lead Section */}
+      <section className={`py-16 w-full ${isDark ? 'bg-slate-800' : 'bg-gray-100'}`}>
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">
+              Village Lead
+            </h2>
+            <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              Meet the expert behind the Blockchain Security Village
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-3xl border shadow-lg ${
+              isDark ? 'bg-slate-700/50 border-slate-600' : 'bg-white border-gray-200'
+            }`}
+          >
+            {/* Photo */}
+            <div className="relative w-48 h-48 flex-shrink-0">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 blur-lg opacity-50" />
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-purple-500/30">
+                <Image src="/speakers/Vinod Tiwari.jpg" alt="Vinod Tiwari" fill className="object-cover" />
+              </div>
+            </div>
+
+            {/* Info */}
+            <div className="flex-1 text-center md:text-left">
+              <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h3>
+              <p className="text-purple-500 font-medium mb-4">Staff Security Engineer @ PIP Labs</p>
+
+              <p className={`mb-6 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                Vinod is a Staff Security Engineer at PIP Labs with over a decade of cybersecurity experience at
+                companies including Amazon, Zapier, and HackerOne. He specializes in penetration testing and cloud
+                security, writes about security on Medium, and actively researches emerging threats in both traditional
+                and Web3 environments.
+              </p>
+
+              <a
+                href="https://www.linkedin.com/in/securient/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#0077b5] text-white font-medium hover:bg-[#006396] transition-colors"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
