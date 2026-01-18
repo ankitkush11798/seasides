@@ -184,65 +184,6 @@ const BlockchainVillage = () => {
         </div>
       </section>
 
-      {/* Village Leads Section */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className={`text-3xl font-bold mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>Village Leads</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Vinod Tiwari */}
-            <a
-              href="https://www.linkedin.com/in/securient/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
-                isDark
-                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
-                  : 'bg-white border-gray-200 hover:border-purple-300'
-              }`}
-            >
-              <div
-                className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${
-                  isDark ? 'bg-slate-700 text-purple-400' : 'bg-purple-50 text-purple-600'
-                }`}
-              >
-                <User size={32} />
-              </div>
-              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h3>
-              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
-                <span>View LinkedIn Profile</span>
-                <ArrowRight size={16} />
-              </div>
-            </a>
-
-            {/* Deepak Rathore */}
-            <a
-              href="https://www.linkedin.com/in/deepakrathore2k10/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
-                isDark
-                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
-                  : 'bg-white border-gray-200 hover:border-purple-300'
-              }`}
-            >
-              <div
-                className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 ${
-                  isDark ? 'bg-slate-700 text-purple-400' : 'bg-purple-50 text-purple-600'
-                }`}
-              >
-                <User size={32} />
-              </div>
-              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Deepak Rathore</h3>
-              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
-                <span>View LinkedIn Profile</span>
-                <ArrowRight size={16} />
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Schedule Timeline */}
       <section className={`py-20 ${isDark ? 'bg-[#1E293B]' : 'bg-gray-100'}`}>
         <div className="max-w-4xl mx-auto px-6">
@@ -363,6 +304,57 @@ const BlockchainVillage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Village Leads Section */}
+      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className={`text-3xl font-bold mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>Village Leads</h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Vinod Tiwari */}
+            <a
+              href="https://www.linkedin.com/in/securient/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
+                isDark
+                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
+                  : 'bg-white border-gray-200 hover:border-purple-300'
+              }`}
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-4 ring-purple-500/20 group-hover:ring-purple-500/50 transition-all duration-300">
+                <img src="/sponsors-2025/vinod.jpg" alt="Vinod Tiwari" className="w-full h-full object-cover" />
+              </div>
+              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h3>
+              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
+                <span>View LinkedIn Profile</span>
+                <ArrowRight size={16} />
+              </div>
+            </a>
+
+            {/* Deepak Rathore */}
+            <a
+              href="https://www.linkedin.com/in/deepakrathore2k10/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col items-center ${
+                isDark
+                  ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
+                  : 'bg-white border-gray-200 hover:border-purple-300'
+              }`}
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-4 ring-purple-500/20 group-hover:ring-purple-500/50 transition-all duration-300">
+                <img src="/speakers/deepak rahore.jpg" alt="Deepak Rathore" className="w-full h-full object-cover" />
+              </div>
+              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Deepak Rathore</h3>
+              <div className="flex items-center gap-2 text-blue-500 font-medium group-hover:underline">
+                <span>View LinkedIn Profile</span>
+                <ArrowRight size={16} />
+              </div>
+            </a>
           </div>
         </div>
       </section>
