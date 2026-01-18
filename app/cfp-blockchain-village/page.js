@@ -1,23 +1,65 @@
 'use client';
+
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, MapPin, Tag, User } from 'lucide-react';
+import { User, Shield, Code, Database, Lock, Zap, Globe, ArrowRight, Clock } from 'lucide-react';
 import Image from 'next/image';
 
 const BlockchainVillage = () => {
   const { isDark } = useTheme();
 
+  // Helper for icons since we can't dynamically import easily without a map in this setup
+  function SearchIcon(props) {
+    return (
+      <svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    );
+  }
+
+  function BrainIcon(props) {
+    return (
+      <svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+      </svg>
+    );
+  }
+
   const focusAreas = [
-    'Smart Contract Vulnerabilities',
-    'Blockchain Protocol Security',
-    'DeFi & NFT Attack Surfaces',
-    'Cryptography Misuse',
-    'Wallet Forensics',
-    'Threat Modeling',
-    'Cross-chain Exploits',
-    'AI in Blockchain Security'
+    { name: 'Smart Contract Vulnerabilities', icon: Code },
+    { name: 'Blockchain Protocol Security', icon: Database },
+    { name: 'DeFi & NFT Attack Surfaces', icon: Zap },
+    { name: 'Cryptography Misuse', icon: Lock },
+    { name: 'Wallet Forensics', icon: SearchIcon },
+    { name: 'Threat Modeling', icon: Shield },
+    { name: 'Cross-chain Exploits', icon: Globe },
+    { name: 'AI in Blockchain Security', icon: BrainIcon }
   ];
 
   const schedule = [
@@ -26,142 +68,298 @@ const BlockchainVillage = () => {
       time: '10:00 AM - 11:00 AM',
       title: 'Bridging Legal Gaps in Blockchain: Compliance Requirements in Smart Contract Auditing',
       category: 'Talk',
-      presenter: 'Satyendra Prajapati'
+      presenter: 'Satyendra Prajapati',
+      type: 'Compliance'
     },
     {
       date: '19 Feb 2026',
       time: '11:00 AM - 12:00 PM',
       title: 'When AI Starts Moving Money: Securing Agentic Fintech on the Blockchain',
       category: 'Talk',
-      presenter: 'Deepak Rathore'
+      presenter: 'Deepak Rathore',
+      type: 'AI & Security'
     },
     {
       date: '19 Feb 2026',
       time: '12:00 PM - 1:00 PM',
       title: 'When "Audited" Means Nothing: How Real-World Smart Contract Attacks Bypass Clean Audit Reports',
       category: 'Talk',
-      presenter: 'Bhavesh Thakur'
+      presenter: 'Bhavesh Thakur',
+      type: 'Exploitation'
     },
     {
       date: '19 Feb 2026',
       time: '2:30 PM - 5:30 PM',
       title: 'Securing the Chain: Smart Contracts, Compliance & the AI Frontier',
       category: 'Workshop',
-      presenter: 'Harsh Tandel'
+      presenter: 'Harsh Tandel',
+      type: 'Hands-on'
     }
   ];
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className={`min-h-screen ${isDark ? 'bg-[#0B1120]' : 'bg-gray-50'}`}>
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative flex flex-col justify-center items-center text-center py-24 overflow-hidden w-full">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-600 via-purple-500 to-indigo-900 animate-[gradientMove_15s_ease-in-out_infinite] w-full" />
-        <div className="absolute inset-0 bg-black/30 w-full" />
+      {/* Modern Gradient Hero */}
+      <section className="relative min-h-[70vh] flex flex-col justify-center items-center text-center overflow-hidden pt-20">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-[#0B1120] z-0">
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 50% 50%, #4F46E5 1px, transparent 1px)',
+              backgroundSize: '40px 40px'
+            }}
+          />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px]" />
+        </div>
 
-        <div className="relative z-10 max-w-4xl px-6">
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-2 rounded-full bg-white/20 text-white text-sm font-bold mb-6 backdrop-blur-md border border-white/20"
-          >
-            Seasides 2026
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl shadow-black/50"
-          >
-            Blockchain Security Village
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-white font-medium drop-shadow-lg shadow-black/50 backdrop-blur-sm bg-white/10 rounded-2xl p-6 border border-white/10"
-          >
-            Explore the security landscape of decentralized systems, from smart contract vulnerabilities to DeFi
-            exploits and forensic analysis.
-          </motion.p>
+        <div className="relative z-10 px-6 max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+              Seasides 2026
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+              Blockchain{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+                Security
+              </span>{' '}
+              Village
+            </h1>
+
+            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Unchaining the future of security. Dive deep into smart contract vulnerabilities, DeFi protocols, and the
+              intersection of AI and blockchain forensics.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500"
+        >
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-2">
+            <div className="w-1 h-2 bg-gray-400 rounded-full animate-bounce" />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Focus Areas Grid */}
+      <section className={`py-20 ${isDark ? 'bg-[#0F172A]' : 'bg-white'}`}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+              <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Target Vectors</h2>
+              <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-xl`}>
+                Key security domains we explore in our sessions and workshops.
+              </p>
+            </div>
+            <div className="hidden md:block h-px w-32 bg-gradient-to-r from-purple-500 to-transparent" />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {focusAreas.map((area, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                className={`p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 ${
+                  isDark
+                    ? 'bg-[#1E293B] border-slate-700 hover:border-purple-500/50 hover:bg-[#1E293B]/80'
+                    : 'bg-gray-50 border-gray-100 hover:bg-white hover:shadow-lg'
+                }`}
+              >
+                <area.icon className={`w-8 h-8 mb-4 ${isDark ? 'text-purple-400' : 'text-purple-600'}`} />
+                <h3 className={`font-semibold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>{area.name}</h3>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section className={`py-16 w-full ${isDark ? 'bg-slate-900' : 'bg-gray-50'}`}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">
-              Village Schedule
+      {/* Village Lead Showcase */}
+      <section className="py-24 relative overflow-hidden">
+        <div className={`absolute inset-0 ${isDark ? 'bg-[#0B1120]' : 'bg-gray-50'}`} />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-900/10 to-transparent" />
+
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="inline-block px-3 py-1 rounded bg-indigo-500/10 text-indigo-400 text-sm font-semibold mb-4">
+                Village Lead
+              </div>
+              <h2 className={`text-4xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h2>
+              <p className="text-xl text-purple-500 font-medium mb-6">Staff Security Engineer @ PIP Labs</p>
+
+              <div className={`space-y-4 mb-8 text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}>
+                <p>
+                  With over a decade navigating the complexities of cybersecurity at giants like Amazon, Zapier, and
+                  HackerOne, Vinod brings deep expertise to the Blockchain Village.
+                </p>
+                <p>
+                  Specializing in penetration testing, cloud security, and Web3 defense, he is a prolific writer and
+                  researcher dedicated to uncovering emerging threats in decentralized ecosystems.
+                </p>
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/securient/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0077b5] text-white font-medium hover:bg-[#006396] transition-colors shadow-lg shadow-blue-900/20"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                Connect on LinkedIn
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-[2rem] transform rotate-3 blur-md opacity-30" />
+              <div
+                className={`relative rounded-[2rem] overflow-hidden border-8 ${isDark ? 'border-[#1E293B]' : 'border-white'} shadow-2xl`}
+              >
+                <Image
+                  src="/sponsors-2025/vinod.jpg"
+                  alt="Vinod Tiwari"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule Timeline */}
+      <section className={`py-20 ${isDark ? 'bg-[#1E293B]' : 'bg-gray-100'}`}>
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Agenda Breakdown
             </h2>
-            <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              Join us for cutting-edge talks and workshops
-            </p>
+            <div className="h-1 w-20 bg-purple-500 mx-auto rounded-full" />
           </div>
 
-          <div className="space-y-6">
+          <div className="relative space-y-8">
+            {/* Vertical Line */}
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-indigo-500/50 to-transparent" />
+
             {schedule.map((slot, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className={`relative overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl ${
-                  isDark
-                    ? 'bg-slate-800 border-slate-700 hover:border-purple-500/50'
-                    : 'bg-white border-gray-200 hover:border-purple-500/50'
-                }`}
+                transition={{ delay: index * 0.1 }}
+                className="relative pl-8 md:pl-20"
               >
-                {/* Accent Bar */}
-                <div
-                  className={`absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b ${
-                    slot.category === 'Workshop' ? 'from-pink-500 to-rose-500' : 'from-purple-500 to-indigo-600'
-                  }`}
-                />
+                {/* Timeline Node */}
+                <div className="absolute left-0 md:left-4 top-8 flex flex-col items-center h-full">
+                  <div
+                    className={`w-8 h-8 md:-ml-4 rounded-full border-4 flex items-center justify-center z-10 shadow-[0_0_15px_rgba(168,85,247,0.5)] ${
+                      isDark ? 'border-[#0B1120] bg-purple-600' : 'border-white bg-purple-600'
+                    }`}
+                  >
+                    <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse" />
+                  </div>
+                  {index !== schedule.length - 1 && (
+                    <div className="w-0.5 h-full bg-gradient-to-b from-purple-500 to-transparent my-2" />
+                  )}
+                </div>
 
-                <div className="p-6 md:p-8 pl-8 md:pl-10">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                    {/* Time & Meta */}
-                    <div className="md:w-1/4 flex flex-col gap-3">
-                      <div className="flex items-center gap-2 text-purple-500 font-bold">
-                        <Calendar className="w-4 h-4" />
-                        <span>{slot.date}</span>
+                {/* Card */}
+                <div
+                  className={`group relative overflow-hidden rounded-2xl p-6 md:p-8 border transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-2xl ${
+                    isDark
+                      ? 'bg-[#1E293B]/50 border-slate-700/50 hover:border-purple-500/50 hover:bg-[#1E293B]'
+                      : 'bg-white border-gray-100 hover:border-purple-200 hover:shadow-purple-500/10'
+                  }`}
+                >
+                  {isDark && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  )}
+
+                  <div className="relative z-10 flex flex-col md:flex-row gap-8 justify-between md:items-start">
+                    <div className="flex-1 space-y-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <div
+                          className={`flex items-center gap-2 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${
+                            isDark
+                              ? 'bg-purple-500/10 border-purple-500/20 text-purple-300'
+                              : 'bg-purple-50 border-purple-100 text-purple-700'
+                          }`}
+                        >
+                          <Clock size={12} />
+                          {slot.time}
+                        </div>
+
+                        <span
+                          className={`px-2 py-1 rounded-md text-xs font-bold uppercase tracking-wider border ${
+                            slot.category === 'Workshop'
+                              ? 'bg-pink-500/10 border-pink-500/20 text-pink-500'
+                              : 'bg-blue-500/10 border-blue-500/20 text-blue-400'
+                          }`}
+                        >
+                          {slot.category}
+                        </span>
                       </div>
-                      <div
-                        className={`flex items-center gap-2 font-mono text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}
-                      >
-                        <Clock className="w-5 h-5" />
-                        <span>{slot.time}</span>
-                      </div>
-                      <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold w-fit ${
-                          slot.category === 'Workshop'
-                            ? 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300'
-                            : 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300'
+
+                      <h3
+                        className={`text-2xl md:text-3xl font-bold leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300 ${
+                          isDark ? 'text-white' : 'text-slate-900'
                         }`}
                       >
-                        <Tag className="w-3 h-3" />
-                        {slot.category}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="md:w-3/4">
-                      <h3 className={`text-xl md:text-2xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         {slot.title}
                       </h3>
 
-                      <div className="flex items-center gap-3 mt-4">
-                        <div className={`p-2 rounded-full ${isDark ? 'bg-slate-700' : 'bg-gray-100'}`}>
-                          <User className="w-5 h-5 text-purple-500" />
+                      <div className="flex items-center gap-4 pt-2">
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center border ${
+                            isDark
+                              ? 'bg-slate-800 border-slate-700 text-purple-400'
+                              : 'bg-purple-50 border-purple-100 text-purple-600'
+                          }`}
+                        >
+                          <User size={18} />
                         </div>
                         <div>
-                          <p className={`font-semibold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
+                          <p className={`text-sm font-semibold ${isDark ? 'text-gray-200' : 'text-gray-900'}`}>
                             {slot.presenter}
                           </p>
+                          <p className="text-xs text-purple-500 font-medium">Presenter</p>
                         </div>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:flex items-center justify-center h-full">
+                      <div
+                        className={`p-3 rounded-full transition-all duration-300 group-hover:scale-110 ${
+                          isDark ? 'bg-white/5 group-hover:bg-purple-500/20' : 'bg-gray-50 group-hover:bg-purple-50'
+                        }`}
+                      >
+                        <ArrowRight
+                          className={`w-6 h-6 transition-colors duration-300 ${
+                            isDark
+                              ? 'text-gray-500 group-hover:text-purple-400'
+                              : 'text-gray-400 group-hover:text-purple-600'
+                          }`}
+                        />
                       </div>
                     </div>
                   </div>
@@ -172,139 +370,7 @@ const BlockchainVillage = () => {
         </div>
       </section>
 
-      {/* Village Lead Section */}
-      <section className={`py-16 w-full ${isDark ? 'bg-slate-800' : 'bg-gray-100'}`}>
-        <div className="max-w-4xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600 mb-4">
-              Village Lead
-            </h2>
-            <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              Meet the expert behind the Blockchain Security Village
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className={`flex flex-col md:flex-row items-center gap-8 p-8 rounded-3xl border shadow-lg ${
-              isDark ? 'bg-slate-700/50 border-slate-600' : 'bg-white border-gray-200'
-            }`}
-          >
-            {/* Photo */}
-            <div className="relative w-48 h-48 flex-shrink-0">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 blur-lg opacity-50" />
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-purple-500/30">
-                <Image src="/speakers/Vinod Tiwari.jpg" alt="Vinod Tiwari" fill className="object-cover" />
-              </div>
-            </div>
-
-            {/* Info */}
-            <div className="flex-1 text-center md:text-left">
-              <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Vinod Tiwari</h3>
-              <p className="text-purple-500 font-medium mb-4">Staff Security Engineer @ PIP Labs</p>
-
-              <p className={`mb-6 leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                Vinod is a Staff Security Engineer at PIP Labs with over a decade of cybersecurity experience at
-                companies including Amazon, Zapier, and HackerOne. He specializes in penetration testing and cloud
-                security, writes about security on Medium, and actively researches emerging threats in both traditional
-                and Web3 environments.
-              </p>
-
-              <a
-                href="https://www.linkedin.com/in/securient/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#0077b5] text-white font-medium hover:bg-[#006396] transition-colors"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                Connect on LinkedIn
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Focus Areas Section */}
-      <section
-        className={`${isDark ? 'bg-slate-800 text-white' : 'bg-white text-gray-900'} py-16 w-full overflow-x-hidden`}
-      >
-        <div className="max-w-5xl mx-auto px-6 w-full">
-          <h2 className="text-3xl font-bold text-center text-purple-500 mb-6">Topics Covered</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {focusAreas.map((area, index) => (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                key={index}
-                className={`flex items-center gap-2 p-4 rounded-xl text-sm font-medium transition-colors ${
-                  isDark
-                    ? 'bg-slate-700/50 border border-slate-600 hover:bg-slate-700'
-                    : 'bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-md'
-                }`}
-              >
-                <div className="w-2 h-2 rounded-full bg-purple-500 flex-shrink-0" />
-                <span>{area}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-16 px-6 max-w-5xl mx-auto w-full">
-        <div
-          className={`p-8 rounded-3xl shadow-lg text-center ${
-            isDark ? 'bg-slate-700/80 border border-slate-600' : 'bg-white/90 border border-gray-200'
-          }`}
-        >
-          <MapPin className="w-10 h-10 text-purple-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Location</h2>
-          <p className={`text-lg mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            Seasides 2026 @ The Grand Venue
-          </p>
-          <div className="inline-flex gap-4">
-            <a href="mailto:admin@seasides.net" className="text-purple-500 hover:underline">
-              Contact Organizers
-            </a>
-          </div>
-        </div>
-      </section>
-
       <Footer />
-
-      <style jsx>{`
-        @keyframes gradientMove {
-          0% {
-            background: linear-gradient(45deg, #9333ea, #a855f7, #6366f1, #4f46e5);
-            background-position: 0% 50%;
-          }
-          50% {
-            background: linear-gradient(45deg, #6366f1, #4f46e5, #9333ea, #a855f7);
-            background-position: 100% 50%;
-          }
-          100% {
-            background: linear-gradient(45deg, #9333ea, #a855f7, #6366f1, #4f46e5);
-            background-position: 0% 50%;
-          }
-        }
-        .animate-[gradientMove_15s_ease-in-out_infinite] {
-          background-size: 200% 200%;
-          width: 100%;
-          max-width: 100vw;
-          overflow: hidden;
-        }
-      `}</style>
     </div>
   );
 };

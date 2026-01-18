@@ -8,6 +8,8 @@ import {
   ArrowLeft,
   BookOpen,
   Calendar,
+  Check,
+  CheckCircle2,
   ChevronDown,
   Clock,
   ExternalLink,
@@ -124,6 +126,149 @@ const TrainingDetailPage = () => {
     { id: 'agenda', label: 'Agenda', icon: Target },
     { id: 'prerequisites', label: 'Prerequisites', icon: Users }
   ].filter(tab => event.details?.[tab.id]);
+
+  const renderFormattedText = (text, context = 'standard') => {
+    if (!text) return null;
+
+    const lines = text.split('\n');
+    const processedLines = lines.map(line => {
+      const trimmedLine = line.trim();
+      if (!trimmedLine) return { type: 'empty', content: '' };
+
+      // 1. Check for Major Headings
+      const isModuleHeading = /^(Module\s+\d+|Day\s+\d+|Step\s+\d+)/i.test(trimmedLine);
+      const isNumberedHeading =
+        /^\d+\.\s+/.test(trimmedLine) &&
+        trimmedLine.length < 100 &&
+        !trimmedLine.endsWith('.') &&
+        !trimmedLine.endsWith(',');
+      const isSectionHeading =
+        /^(Overview|Prerequisites|Agenda|Goal|Learning Outcomes|Training Approach|Takeaways|Target Vectors|Curriculum|Live Demonstrations|Key Learning Objectives|Tools for Firmware Security|Security Threats to Firmware|Introduction to Firmware|Impact of Not Securing Firmware|Audience)(:?)$/i.test(
+          trimmedLine
+        );
+
+      if (isModuleHeading || isNumberedHeading || isSectionHeading) {
+        return { type: 'major-heading', content: trimmedLine };
+      }
+
+      // 2. Check for Lab Headings
+      if (/^Lab\s+\d+[:.]/i.test(trimmedLine)) {
+        return { type: 'lab-heading', content: trimmedLine };
+      }
+
+      // 3. Check for Bullets
+      if (trimmedLine.match(/^[•-●]/)) {
+        return { type: 'explicit-bullet', content: trimmedLine };
+      }
+
+      // 4. Default to text
+      return { type: 'text', content: trimmedLine };
+    });
+
+    return processedLines.map((lineData, index) => {
+      if (lineData.type === 'empty') return <div key={index} className="h-4" />;
+
+      if (lineData.type === 'major-heading') {
+        return (
+          <h3
+            key={index}
+            className={`text-xl md:text-2xl font-bold mt-8 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-600 ${isDark ? 'to-amber-400' : 'to-amber-600'}`}
+          >
+            {lineData.content}
+          </h3>
+        );
+      }
+
+      if (lineData.type === 'lab-heading') {
+        return (
+          <h4 key={index} className={`text-lg font-bold mt-6 mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>
+            {lineData.content}
+          </h4>
+        );
+      }
+
+      if (lineData.type === 'explicit-bullet') {
+        return (
+          <div key={index} className="flex gap-3 mb-2 ml-2">
+            <span className="text-orange-500 mt-1.5 font-bold">•</span>
+            <span className={`${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+              {lineData.content.replace(/^[•-●]\s*/, '')}
+            </span>
+          </div>
+        );
+      }
+
+      // Context-specific handling for Prerequisites
+      if (context === 'prerequisites') {
+        if (!lineData.content.endsWith(':') && lineData.content.length < 200) {
+          return (
+            <div key={index} className="flex gap-3 mb-3 ml-2 items-start">
+              <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className={`${isDark ? 'text-slate-300' : 'text-slate-600'} font-medium`}>{lineData.content}</span>
+            </div>
+          );
+        }
+        if (lineData.content.endsWith(':')) {
+          return (
+            <p key={index} className={`mb-3 mt-4 font-semibold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              {lineData.content}
+            </p>
+          );
+        }
+      }
+
+      // Smart Subheading Detection for 'text' lines
+      if (lineData.type === 'text') {
+        const isShort =
+          lineData.content.length < 50 &&
+          !lineData.content.endsWith('.') &&
+          !lineData.content.endsWith(',') &&
+          !lineData.content.includes('http') &&
+          !lineData.content.endsWith('?');
+
+        if (isShort) {
+          // Look ahead to next non-empty line
+          let nextLine = null;
+          for (let i = index + 1; i < processedLines.length; i++) {
+            if (processedLines[i].type !== 'empty') {
+              nextLine = processedLines[i];
+              break;
+            }
+          }
+
+          // HEURISTIC: It is a subheading if:
+          // 1. It is short
+          // 2. The next line works as "body text" for this heading (is text, and significantly longer)
+          // 3. AND the next line is NOT a major heading.
+          const nextIsBody =
+            nextLine && nextLine.type === 'text' && nextLine.content.length > lineData.content.length * 1.5;
+
+          if (nextIsBody) {
+            return (
+              <h4 key={index} className={`text-lg font-bold mt-6 mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                {lineData.content}
+              </h4>
+            );
+          }
+
+          // Fallback: If it's short but NOT a subheading, treat as a list item (implicit bullet)
+          // checks if it looks like a list item (not a sentence)
+          return (
+            <div key={index} className="flex gap-3 mb-2 ml-2">
+              <span className="text-orange-500/50 mt-1.5 font-bold">•</span>
+              <span className={`${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{lineData.content}</span>
+            </div>
+          );
+        }
+      }
+
+      return (
+        <p key={index} className={`mb-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+          {lineData.content}
+        </p>
+      );
+    });
+  };
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-slate-950' : 'bg-slate-50'}`}>
@@ -283,18 +428,12 @@ const TrainingDetailPage = () => {
 
                 {event.details && event.details[activeTab] ? (
                   <div className={`prose max-w-none ${isDark ? 'prose-invert' : ''}`}>
-                    <div
-                      className={`text-base md:text-lg leading-relaxed whitespace-pre-wrap break-words ${isDark ? 'text-slate-300' : 'text-slate-600'}`}
-                    >
-                      {event.details[activeTab]}
+                    <div className="text-base md:text-lg">
+                      {renderFormattedText(event.details[activeTab], activeTab)}
                     </div>
                   </div>
                 ) : (
-                  <p
-                    className={`text-base md:text-lg leading-relaxed whitespace-pre-wrap break-words ${isDark ? 'text-slate-300' : 'text-slate-600'}`}
-                  >
-                    {event.description}
-                  </p>
+                  <div className="text-base md:text-lg">{renderFormattedText(event.description)}</div>
                 )}
 
                 {/* Collapsible Full Description */}
@@ -329,11 +468,9 @@ const TrainingDetailPage = () => {
                       className="overflow-hidden"
                     >
                       <div className={`pt-4 mt-2`}>
-                        <p
-                          className={`text-sm md:text-base leading-relaxed whitespace-pre-wrap break-words ${isDark ? 'text-slate-300' : 'text-slate-600'}`}
-                        >
-                          {trainingSession?.fullDescription || event.fullDescription}
-                        </p>
+                        <div className="text-sm md:text-base">
+                          {renderFormattedText(trainingSession?.fullDescription || event.fullDescription)}
+                        </div>
                       </div>
                     </motion.div>
                   </div>
