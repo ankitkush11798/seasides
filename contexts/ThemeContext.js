@@ -46,10 +46,8 @@ export const ThemeProvider = ({ children }) => {
     isLight: theme === 'light'
   };
 
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return null;
-  }
+  // Prevent flash of wrong theme logic is handled by initial state
+  // We MUST render children for SSR/SEO/LCP
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };

@@ -14,7 +14,8 @@
     "format:check": "prettier --check .",
     "audit": "npm audit --audit-level=moderate",
     "check-updates": "npm outdated",
-    "prepare": "husky"
+    "prepare": "husky",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

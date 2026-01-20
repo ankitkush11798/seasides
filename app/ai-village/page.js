@@ -90,19 +90,19 @@ const AIVillage = () => {
       linkedin: 'https://www.linkedin.com/in/jayesh-ahire/'
     },
     {
-      name: 'Akif',
+      name: 'Akif Asif',
       image: '/ai-village/Akif.jpg',
-      linkedin: 'https://www.linkedin.com/in/akif/'
+      linkedin: 'https://www.linkedin.com/in/akifasif/'
     },
     {
       name: 'Aman Bansal',
       image: '/ai-village/Aman Bansa.jpg',
-      linkedin: 'https://www.linkedin.com/in/aman-bansal/'
+      linkedin: 'https://www.linkedin.com/in/amanbansal29/'
     },
     {
       name: 'Dilip Sai',
       image: '/ai-village/Dilip Sai.jpg',
-      linkedin: 'https://www.linkedin.com/in/dilip-sai/'
+      linkedin: 'https://www.linkedin.com/in/dilip-sai-a0b3861b4/'
     },
     {
       name: 'Harsh Kahate',
@@ -115,14 +115,14 @@ const AIVillage = () => {
       linkedin: 'https://www.linkedin.com/in/manav-talreja/'
     },
     {
-      name: 'Meenakshi G',
+      name: 'Meenakshi Ganesh',
       image: '/ai-village/Meenakshi G.jpg',
-      linkedin: 'https://www.linkedin.com/in/meenakshi-g/'
+      linkedin: 'https://www.linkedin.com/in/meenakshi-ganesh-3aa2a5258/'
     },
     {
       name: 'P P Shashwath Aiyappa',
       image: '/ai-village/P P Shashwath Aiyappa.jpg',
-      linkedin: 'https://www.linkedin.com/in/shashwath-aiyappa/'
+      linkedin: 'https://www.linkedin.com/in/p-p-shashwath-aiyappa/'
     },
     {
       name: 'Smita Jha',

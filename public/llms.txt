@@ -1,0 +1,51 @@
+# Seasides 2026 - Cybersecurity Conference
+
+> The India's Most Loved FREE Cybersecurity Conference.
+
+## Summary
+
+Seasides 2026 is a 3-day cybersecurity conference taking place at the International Centre Goa, India, from February 19-21, 2026. The event features technical training sessions, workshops, keynotes, and village activities (AI, Blockchain, Hardware). It is a community-driven, free-to-attend event focused on knowledge sharing and networking in the infosec domain.
+
+## Key Information
+
+- **Dates**: February 19-21, 2026
+- **Location**: International Centre Goa, India
+- **Website**: https://www.seasides.net
+- **Cost**: Free (Invite Only / Registration Required)
+- **Organizer**: Seasides Social Welfare Foundation
+
+## Socials
+
+- **Twitter/X**: [@SeasidesInfo](https://twitter.com/SeasidesInfo)
+- **LinkedIn**: [Seasides Info](https://www.linkedin.com/company/seasides-info/)
+- **Instagram**: [@seasides_info](https://www.instagram.com/seasides_info/)
+- **YouTube**: [@SeasidesInfo](https://www.youtube.com/@SeasidesInfo)
+
+## Content
+
+### Speakers
+List of featured speakers and trainers:
+- [Speakers List](https://www.seasides.net/speakers)
+
+### Schedule
+Detailed agenda including trainings and workshops:
+- [Full Schedule](https://www.seasides.net/schedule)
+
+### Villages
+- [AI Village](https://www.seasides.net/ai-village) - Focus on AI Security, LLMs, Deepfakes.
+- [Blockchain Village](https://www.seasides.net/blockchain-village) - Focus on Web3 Security, Smart Contracts.
+- [Hardware Village](https://www.seasides.net/hardware-village) - Focus on IoT, Firmware, Hardware Hacking.
+
+## Top Topics
+- Software Supply Chain Security
+- AI & LLM Security (Red Teaming, Prompt Injection)
+- Cloud Security (AWS, EKS, Kubernetes)
+- Web Application Security
+- Android Application Security
+- Firmware Security
+- Social Engineering
+- Threat Hunting & Sigma Rules
+
+## Sponsors
+Supported by leading organizations in cybersecurity.
+- [Sponsors Page](https://www.seasides.net/sponsors)

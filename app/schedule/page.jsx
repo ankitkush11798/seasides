@@ -16,6 +16,9 @@ const TrainingTimeline = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [hoveredEvent, setHoveredEvent] = useState(null);
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedType, setSelectedType] = useState('all');
+
   // Get speaker by ID
   const getSpeakerById = useCallback(id => {
     return speakers.find(s => s.id === id) || null;
@@ -64,7 +67,26 @@ const TrainingTimeline = () => {
   }, [isAutoPlaying]);
 
   const getFilteredEvents = () => {
-    return getEventsByDay(selectedDay);
+    let filtered = getEventsByDay(selectedDay);
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(e => {
+        const titleMatch = e.title?.toLowerCase().includes(q);
+        const descMatch = e.description?.toLowerCase().includes(q);
+        const speakerMatch = e.speakerIds?.some(sid => {
+          const s = getSpeakerById(sid);
+          return s?.name.toLowerCase().includes(q);
+        });
+        return titleMatch || descMatch || speakerMatch;
+      });
+    }
+
+    if (selectedType !== 'all') {
+      filtered = filtered.filter(e => e.type === selectedType);
+    }
+
+    return filtered;
   };
 
   const navigateDay = direction => {
@@ -77,7 +99,18 @@ const TrainingTimeline = () => {
   };
 
   // Check if event is currently running
+  const [now, setNow] = useState(null);
+
+  useEffect(() => {
+    setNow(new Date());
+    // Optional: update 'now' every minute to keep "Live" badges accurate
+    const timer = setInterval(() => setNow(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
   const isEventRunning = event => {
+    if (!now) return false; // Avoid hydration mismatch
+
     const eventDates = {
       1: new Date('2026-02-19T00:00:00'),
       2: new Date('2026-02-20T00:00:00'),
@@ -87,7 +120,6 @@ const TrainingTimeline = () => {
     const eventDate = eventDates[selectedDay];
     if (!eventDate) return false;
 
-    const now = new Date();
     const isSameDay =
       now.getFullYear() === eventDate.getFullYear() &&
       now.getMonth() === eventDate.getMonth() &&
@@ -180,6 +212,58 @@ const TrainingTimeline = () => {
                     />
                   )}
                   <span className="relative z-10">Day {day.day}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Search and Filter Section */}
+          <div className="max-w-2xl mx-auto mb-10">
+            <div className={`relative mb-6 p-1 rounded-2xl ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search sessions, speakers, or topics..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className={`w-full py-3 pl-12 pr-4 rounded-xl outline-none transition-all ${
+                    isDark
+                      ? 'bg-slate-900 text-white placeholder-slate-500 focus:ring-2 focus:ring-orange-500/50'
+                      : 'bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-orange-500/20'
+                  }`}
+                />
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg
+                    className={`w-5 h-5 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              {['all', 'workshop', 'session', 'village', 'keynote'].map(type => (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(type)}
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold capitalize transition-all ${
+                    selectedType === type
+                      ? `bg-gradient-to-r ${selectedDayData.theme} text-white shadow-lg`
+                      : isDark
+                        ? 'bg-slate-800 text-slate-400 hover:text-white'
+                        : 'bg-slate-100 text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  {type}
                 </button>
               ))}
             </div>

@@ -309,7 +309,7 @@ const BlockchainVillage = () => {
       </section>
 
       {/* Village Leads Section */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <section className={`py-24 border-t ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className={`text-3xl font-bold mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>Village Leads</h2>
 

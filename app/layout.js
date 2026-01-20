@@ -1,8 +1,8 @@
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
 import LoadingScreen from '@/components/layout/LoadingScreen';
 import WebVitals from '@/components/layout/WebVitals';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,7 +22,7 @@ export const metadata = {
   metadataBase: new URL('https://www.seasides.net'),
   title: {
     default: "Seasides - India's Most Loved FREE Cybersecurity Conference",
-    template: '%s | Seasides'
+    template: '%s | Seasides 2026'
   },
   description:
     "Join India's premier FREE cybersecurity conference. 3 days of learning, workshops, networking & community at International Centre Goa. Feb 19-21, 2026.",
@@ -34,7 +34,10 @@ export const metadata = {
     'security training',
     'ethical hacking',
     'cybersecurity community',
-    'tech conference 2026'
+    'tech conference 2026',
+    'Seasides Goa',
+    'Nullcon',
+    'InfoSec'
   ],
   authors: [{ name: 'Seasides Team' }],
   creator: 'Seasides Social Welfare Foundation',
@@ -47,16 +50,16 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.seasides.net',
+    siteName: 'Seasides 2026',
     title: "Seasides - India's Most Loved FREE Cybersecurity Conference",
     description:
       "Join India's premier FREE cybersecurity conference. 3 days of learning, workshops, networking & community at International Centre Goa. Feb 19-21, 2026.",
-    siteName: 'Seasides',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Seasides Cybersecurity Conference'
+        alt: 'Seasides 2026 Cybersecurity Conference'
       }
     ]
   },
@@ -68,7 +71,8 @@ export const metadata = {
     description:
       "Join India's premier FREE cybersecurity conference. 3 days of learning, workshops, networking & community.",
     images: ['/twitter-image.jpg'],
-    creator: '@seasidesconf'
+    creator: '@SeasidesInfo',
+    site: '@SeasidesInfo'
   },
 
   // Icons
@@ -128,10 +132,53 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Seasides',
+    url: 'https://www.seasides.net',
+    logo: 'https://www.seasides.net/logo.png',
+    sameAs: [
+      'https://twitter.com/SeasidesInfo',
+      'https://www.linkedin.com/company/seasides-info/',
+      'https://www.instagram.com/seasides_info/',
+      'https://www.youtube.com/@SeasidesInfo'
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'info@seasides.net'
+    },
+    event: {
+      '@type': 'Event',
+      name: 'Seasides 2026',
+      startDate: '2026-02-19',
+      endDate: '2026-02-21',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: 'International Centre Goa',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Goa',
+          addressCountry: 'IN'
+        }
+      },
+      description: "India's Most Loved FREE Cybersecurity Conference",
+      organizer: {
+        '@type': 'Organization',
+        name: 'Seasides Social Welfare Foundation',
+        url: 'https://www.seasides.net'
+      }
+    }
+  };
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}>
         <ThemeProvider>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
           <LoadingScreen />
           <WebVitals />
           {children}

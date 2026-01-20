@@ -41,9 +41,8 @@ const RevolutionHero = () => {
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    setIsLoading(false);
 
     const handleScroll = () => {
       if (heroRef.current) {
@@ -60,7 +59,6 @@ const RevolutionHero = () => {
     window.addEventListener('scroll', throttledScroll, { passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('scroll', throttledScroll);
     };
   }, []);
@@ -209,7 +207,7 @@ const RevolutionHero = () => {
                   width={400}
                   height={800}
                   className="object-contain"
-                  priority={false}
+                  priority={true}
                   quality={85}
                 />
               </div>
