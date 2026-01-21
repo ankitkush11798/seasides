@@ -1,21 +1,21 @@
 'use client';
 
-import Image from 'next/image';
-import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react';
-import { SiX, SiWhatsapp } from 'react-icons/si'; // X and WhatsApp logos
 import { useTheme } from '@/contexts/ThemeContext';
 import { EVENT_DATE_LONG } from '@/lib/eventConfig';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+import Image from 'next/image';
+import { SiWhatsapp, SiX } from 'react-icons/si'; // X and WhatsApp logos
 
 const Footer = () => {
   const { isDark } = useTheme();
 
   const socialIcons = [
-    { Icon: Linkedin, href: 'https://www.linkedin.com/company/seasides/' },
-    { Icon: SiX, href: 'https://x.com/seasides_conf/' }, // X logo
-    { Icon: Instagram, href: 'https://www.instagram.com/seasides_conf/' },
-    { Icon: Facebook, href: 'https://www.facebook.com/seasidesconference' },
-    { Icon: Youtube, href: 'https://www.youtube.com/@seasidesgoa' },
-    { Icon: SiWhatsapp, href: 'https://whatsapp.com/channel/0029VbBUZWIBqbrHWfSlqz3I' }
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/seasides/', label: 'LinkedIn' },
+    { Icon: SiX, href: 'https://x.com/seasides_conf/', label: 'X (formerly Twitter)' }, // X logo
+    { Icon: Instagram, href: 'https://www.instagram.com/seasides_conf/', label: 'Instagram' },
+    { Icon: Facebook, href: 'https://www.facebook.com/seasidesconference', label: 'Facebook' },
+    { Icon: Youtube, href: 'https://www.youtube.com/@seasidesgoa', label: 'YouTube' },
+    { Icon: SiWhatsapp, href: 'https://whatsapp.com/channel/0029VbBUZWIBqbrHWfSlqz3I', label: 'WhatsApp' }
   ];
 
   return (
@@ -64,12 +64,13 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-4">
-            {socialIcons.map(({ Icon, href }, idx) => (
+            {socialIcons.map(({ Icon, href, label }, idx) => (
               <a
                 key={idx}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={label}
                 className={`transition-transform duration-300 hover:scale-110 hover:text-orange-500 ${
                   isDark ? 'text-gray-300' : 'text-gray-600'
                 }`}

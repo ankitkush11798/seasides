@@ -1,8 +1,8 @@
 'use client';
-import { motion } from 'framer-motion';
 import { VENUE } from '@/lib/venueConfig';
+import { motion } from 'framer-motion';
+import { CheckCircle2, Copy, MapPin, Navigation, Plane, Train } from 'lucide-react';
 import { useState } from 'react';
-import { MapPin, Copy, Plane, Train, Navigation, CheckCircle2 } from 'lucide-react';
 
 const ReachUs = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -159,16 +159,27 @@ const ReachUs = () => {
             viewport={{ once: true }}
             className="lg:sticky lg:top-24"
           >
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-[500px] lg:h-[650px]">
-              <div className="relative h-full">
-                {!mapLoaded && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-50 z-10">
-                    <div className="text-center">
-                      <div className="animate-spin w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full mx-auto mb-3" />
-                      <p className="text-sm text-gray-600 font-medium">Loading map...</p>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-[500px] lg:h-[650px] relative group">
+              {!mapLoaded ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 z-10 transition-colors hover:bg-gray-100">
+                  <div className="text-center p-6">
+                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <MapPin className="w-8 h-8 text-orange-600" />
                     </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">View Interactive Map</h3>
+                    <p className="text-gray-600 mb-6 max-w-xs mx-auto">
+                      Click to load the interactive Google Map showing the venue location.
+                    </p>
+                    <button
+                      onClick={() => setMapLoaded(true)}
+                      className="px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/30 font-semibold flex items-center justify-center gap-2 mx-auto"
+                    >
+                      <Navigation className="w-4 h-4" />
+                      <span>Load Map</span>
+                    </button>
                   </div>
-                )}
+                </div>
+              ) : (
                 <iframe
                   src={`https://www.google.com/maps?q=${VENUE.coords.lat},${VENUE.coords.lng}&z=15&output=embed`}
                   className="w-full h-full"
@@ -176,10 +187,9 @@ const ReachUs = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="International Centre Goa Location Map"
                   aria-label={`Map showing location of ${VENUE.name}`}
-                  onLoad={() => setMapLoaded(true)}
                   style={{ border: 0 }}
                 />
-              </div>
+              )}
             </div>
 
             {/* Quick Actions */}

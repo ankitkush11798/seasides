@@ -7,16 +7,16 @@ import RevolutionHero from '@/components/home/Slider';
 
 // Non-critical components lazy loaded with optimized loading states
 const Stats = dynamic(() => import('@/components/shared/Stats'), {
-  loading: () => <div className="h-64 bg-gray-200 dark:bg-gray-800 animate-pulse rounded-lg mx-6" />
+  loading: () => <div className="h-[800px] bg-gray-200 dark:bg-gray-800 animate-pulse rounded-lg mx-6" />
 });
 
 // New homepage sections with Framer Motion animations
 const About = dynamic(() => import('@/components/home/About'), {
-  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+  loading: () => <div className="h-[600px] bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
 const Villages = dynamic(() => import('@/components/home/Villages'), {
-  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+  loading: () => <div className="h-[600px] bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
 // const Reviewers = dynamic(() => import('@/components/home/Reviews'), {
@@ -24,7 +24,7 @@ const Villages = dynamic(() => import('@/components/home/Villages'), {
 // });
 
 const Sponsors = dynamic(() => import('@/components/home/Sponsors'), {
-  loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+  loading: () => <div className="h-[800px] bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
 // const NostalgiaGallery = dynamic(() => import('@/components/home/NostalgiaGallery'), {

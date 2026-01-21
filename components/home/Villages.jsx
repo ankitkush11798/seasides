@@ -105,6 +105,7 @@ const Villages = () => {
         <div className="flex justify-center gap-4 mb-8">
           <button
             onClick={() => scroll('left')}
+            aria-label="Scroll left"
             className={`p-3 rounded-full transition-all duration-300 ${
               isDark
                 ? 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-600'
@@ -115,6 +116,7 @@ const Villages = () => {
           </button>
           <button
             onClick={() => scroll('right')}
+            aria-label="Scroll right"
             className={`p-3 rounded-full transition-all duration-300 ${
               isDark
                 ? 'bg-slate-800 hover:bg-slate-700 text-white border border-slate-600'

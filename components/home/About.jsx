@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
-import { ArrowRight, Users, Calendar, Award, Globe, Zap, Shield } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
+import { ArrowRight, Award, Calendar, Globe, Play, Shield, Users, Zap } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AboutTheConference() {
   const { isDark } = useTheme();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const features = [
     {
@@ -149,15 +150,43 @@ export default function AboutTheConference() {
                   </h3>
                 </div>
                 <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-black">
-                  <iframe
-                    src="https://www.youtube.com/embed/wmB01yWTaFk?autoplay=1&mute=1"
-                    title="Seasides Conference Highlights"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="w-full h-full"
-                    loading="lazy"
-                  />
+                  <div
+                    className="relative w-full aspect-video rounded-xl overflow-hidden bg-black group cursor-pointer"
+                    onClick={() => setIsPlaying(true)}
+                  >
+                    {!isPlaying ? (
+                      <>
+                        {/* Thumbnail Image */}
+                        <img
+                          src="/gallery/gallery-61.jpeg"
+                          alt="Seasides Conference Highlights"
+                          className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
+                        />
+
+                        {/* Play Button Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+                          </div>
+                        </div>
+
+                        {/* Play Text */}
+                        <div className="absolute bottom-6 left-0 right-0 text-center">
+                          <p className="text-white font-bold text-lg drop-shadow-md">Watch Highlights</p>
+                        </div>
+                      </>
+                    ) : (
+                      <iframe
+                        src="https://www.youtube-nocookie.com/embed/wmB01yWTaFk?autoplay=1"
+                        title="Seasides Conference Highlights"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full"
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

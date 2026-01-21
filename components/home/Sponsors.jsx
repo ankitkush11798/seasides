@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useTheme } from '@/contexts/ThemeContext';
+import { sponsors as sponsorTiers } from '@/lib/data';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { sponsors as sponsorTiers } from '@/lib/data';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Sponsors = () => {
   const { isDark } = useTheme();
@@ -207,6 +207,7 @@ const Sponsors = () => {
                           height={140}
                           className="object-contain max-w-full max-h-full"
                           unoptimized
+                          sizes="280px"
                         />
                       </div>
                     </motion.a>

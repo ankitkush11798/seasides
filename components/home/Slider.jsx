@@ -209,6 +209,7 @@ const RevolutionHero = () => {
                   className="object-contain"
                   priority={true}
                   quality={85}
+                  sizes="(max-width: 768px) 100vw, 400px"
                 />
               </div>
               <svg className="absolute bottom-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 320">
@@ -243,7 +244,6 @@ const RevolutionHero = () => {
                   height={200}
                   priority={true}
                   quality={90}
-                  onLoad={handleLogoLoad}
                   className="object-contain drop-shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
                   sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 500px"
                 />
@@ -252,9 +252,7 @@ const RevolutionHero = () => {
 
             {/* Content that appears after logo loads */}
             <div
-              className={`transform transition-all duration-700 ${
-                isLogoLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              } text-center space-y-4 max-w-4xl mx-auto will-change-transform px-4 py-3 rounded-xl ${isDark ? '' : 'bg-white/40 backdrop-blur-sm'}`}
+              className={`transform transition-all duration-700 translate-y-0 opacity-100 text-center space-y-4 max-w-4xl mx-auto will-change-transform px-4 py-3 rounded-xl ${isDark ? '' : 'bg-white/40 backdrop-blur-sm'}`}
             >
               <h2
                 className={`text-lg md:text-xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-100' : 'text-gray-900'}`}
