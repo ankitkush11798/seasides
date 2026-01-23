@@ -119,16 +119,21 @@ const SponsorsPage = () => {
                           className="group"
                         >
                           <div
-                            className={`relative w-72 h-44 md:w-80 md:h-48 ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
+                            className={`relative w-72 h-44 md:w-80 md:h-48 ${
+                              sponsor.customStyles?.containerClassName ||
+                              (sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100')
+                            } rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ${
                               isDark ? 'shadow-cyan-500/10 hover:shadow-cyan-500/20' : ''
-                            }`}
+                            } overflow-hidden`}
+                            style={sponsor.customStyles?.container}
                           >
                             <Image
                               src={sponsor.logo}
                               alt={sponsor.name || 'Sponsor'}
                               fill
                               sizes="320px"
-                              className="object-contain p-4"
+                              className={`object-contain p-4 ${sponsor.forceWhite ? 'brightness-0 invert' : ''}`}
+                              style={sponsor.customStyles?.image}
                               unoptimized
                             />
                           </div>
@@ -168,14 +173,19 @@ const SponsorsPage = () => {
                             className="flex-shrink-0 transition-all duration-300 hover:scale-110"
                           >
                             <div
-                              className={`relative w-48 h-32 ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'} rounded-2xl shadow-md hover:shadow-xl transition-shadow`}
+                              className={`relative w-48 h-32 ${
+                                sponsor.customStyles?.containerClassName ||
+                                (sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100')
+                              } rounded-2xl shadow-md hover:shadow-xl transition-shadow overflow-hidden`}
+                              style={sponsor.customStyles?.container}
                             >
                               <Image
                                 src={sponsor.logo}
                                 alt="Sponsor"
                                 fill
                                 sizes="192px"
-                                className="object-contain p-4"
+                                className={`object-contain p-4 ${sponsor.forceWhite ? 'brightness-0 invert' : ''}`}
+                                style={sponsor.customStyles?.image}
                                 unoptimized
                               />
                             </div>

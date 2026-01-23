@@ -189,15 +189,17 @@ const Sponsors = () => {
                       whileHover={{ scale: 1.05, y: -5 }}
                       whileTap={{ scale: 0.95 }}
                       className={`
-                      ${sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100'}
+                      ${sponsor.customStyles?.containerClassName || (sponsor.bgClass ? sponsor.bgClass : sponsor.isLight ? 'bg-slate-700' : 'bg-gray-100')}
                       ${styles.borderColor}
                       border-2 rounded-2xl p-6 md:p-8
                       flex flex-col items-center justify-center gap-4
                       transition-all duration-300
                       hover:shadow-2xl
                       w-full
+                      overflow-hidden
                       ${tier.sponsors.length === 1 ? 'min-h-[300px] max-w-md' : 'min-h-[220px]'}
                     `}
+                      style={sponsor.customStyles?.container}
                     >
                       <div className="relative w-full h-32 flex items-center justify-center">
                         <Image
@@ -205,7 +207,8 @@ const Sponsors = () => {
                           alt={sponsor.name}
                           width={280}
                           height={140}
-                          className="object-contain max-w-full max-h-full"
+                          className={`object-contain max-w-full max-h-full ${sponsor.forceWhite ? 'brightness-0 invert' : ''}`}
+                          style={sponsor.customStyles?.image}
                           unoptimized
                           sizes="280px"
                         />
