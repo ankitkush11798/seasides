@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav
       className={`sticky top-0 z-50 backdrop-blur-md border-b shadow-md transition-all duration-300 ${
-        isDark ? 'bg-modern-sleek border-gray-600' : 'bg-white/95 border-deep-ocean-blue/20'
+        isDark ? 'bg-modern-sleek border-gray-600 text-white' : 'bg-white/95 border-deep-ocean-blue/20 text-slate-800'
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">

@@ -110,7 +110,7 @@ export default function CommunicationSkillsPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-2xl opacity-20" />
               {/* Speaker Image */}
               <div className="relative w-full h-full rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden">
-                <img src="/speakers/ridhima-batra.png" alt="Ridhima Batra" className="w-full h-full object-cover" />
+                <img src="/speakers/ridhima-batra.jpg" alt="Ridhima Batra" className="w-full h-full object-cover" />
               </div>
             </motion.div>
 
