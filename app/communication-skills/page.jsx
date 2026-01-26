@@ -3,7 +3,7 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { motion } from 'framer-motion';
-import { BookOpen, Briefcase, Calendar, Clock, Mic2, Star, UserCircle, Users } from 'lucide-react';
+import { BookOpen, Briefcase, Calendar, Clock, Mic2, Star, Users } from 'lucide-react';
 
 export default function CommunicationSkillsPage() {
   const fadeInUp = {
@@ -108,9 +108,9 @@ export default function CommunicationSkillsPage() {
               className="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-2xl opacity-20" />
-              {/* Placeholder for Speaker Image */}
-              <div className="relative w-full h-full rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
-                <UserCircle className="w-32 h-32 text-slate-400" />
+              {/* Speaker Image */}
+              <div className="relative w-full h-full rounded-full border-4 border-white dark:border-slate-800 shadow-2xl overflow-hidden">
+                <img src="/speakers/ridhima-batra.png" alt="Ridhima Batra" className="w-full h-full object-cover" />
               </div>
             </motion.div>
 
@@ -120,38 +120,50 @@ export default function CommunicationSkillsPage() {
               viewport={{ once: true }}
               className="flex-1 text-center md:text-left"
             >
-              <h2 className="text-3xl font-bold mb-2 text-slate-900 dark:text-white">Ridhima Batra</h2>
+              <h2 className="text-3xl font-bold mb-2 text-slate-900 dark:text-white">Mrs. Ridhima Batra</h2>
               <p className="text-blue-600 dark:text-blue-400 font-medium mb-6">
                 Mental Health Advocate, International Speaker & Author
               </p>
 
               <p className="text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
-                Ridhima Batra is the founder of Empathy Wellness Foundation and Ridhara Mindcare. A passionate advocate
-                for mental health and personal growth, she has impacted over 50,000 lives globally. She is an
-                international speaker and the author of "Unexpected Hope", dedicated to empowering individuals through
-                resilience, communication, and self-expression.
+                <span className="font-semibold text-slate-900 dark:text-white">Ridhima Batra</span> is a renowned Mental
+                Health Advocate, International Speaker, and Author dedicated to fostering emotional intelligence and
+                resilience. As the Founder of <span className="italic">Empathy Wellness Foundation</span> and{' '}
+                <span className="italic">Ridhara Mindcare</span>, she has positively impacted over{' '}
+                <span className="font-semibold text-blue-500">50,000 lives</span> across 10+ countries. Her expertise
+                bridges the gap between mental wellness and professional communication, empowering individuals to speak
+                with confidence and clarity.
               </p>
 
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
                 <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm rounded-md font-medium">
-                  Global Speaker
+                  Founder, Empathy Wellness
                 </span>
                 <span className="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 text-sm rounded-md font-medium">
-                  Published Author
+                  Author: "Unexpected Hope"
                 </span>
                 <span className="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-sm rounded-md font-medium">
-                  Empathy Leader
+                  500+ Workshops
                 </span>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 flex items-center justify-center md:justify-start gap-4">
+                <a
+                  href="https://www.linkedin.com/in/ridhima-batra-279498124/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-blue-500/25"
+                >
+                  <span>Connect on LinkedIn</span>
+                  <Briefcase className="w-4 h-4" />
+                </a>
                 <a
                   href="https://ridhimabatra.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-900 dark:text-white font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="inline-flex items-center gap-2 text-slate-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
                 >
-                  <span>Visit Website</span>
+                  <span>View Website</span>
                   <BookOpen className="w-4 h-4" />
                 </a>
               </div>

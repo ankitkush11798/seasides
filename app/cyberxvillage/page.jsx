@@ -3,7 +3,22 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { motion } from 'framer-motion';
-import { Cpu, Factory, Gift, Globe, HeartPulse, Plane, Shield, Users, Wifi, Zap } from 'lucide-react';
+import {
+  Activity,
+  Cpu,
+  Factory,
+  Gift,
+  Globe,
+  GraduationCap,
+  HeartPulse,
+  Plane,
+  Radio,
+  Shield,
+  Trophy,
+  Users,
+  Wifi,
+  Zap
+} from 'lucide-react';
 
 export default function CyberXVillagePage() {
   const fadeInUp = {
@@ -149,19 +164,60 @@ export default function CyberXVillagePage() {
             >
               {/* Decorative Tech Graphic Elements */}
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-2xl rounded-full" />
-              <div className="relative border border-white/10 rounded-2xl bg-[#0B1121] p-8 overflow-hidden">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <div className="h-32 rounded-lg bg-white/5 border border-white/5 animate-pulse" />
-                    <div className="h-20 rounded-lg bg-white/5 border border-white/5" />
+              <div className="relative border border-white/10 rounded-2xl bg-[#0B1121] p-6 overflow-hidden">
+                {/* Simulated System Monitor */}
+                <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-xs font-mono text-gray-400">SYSTEM_MONITOR_V2</span>
                   </div>
-                  <div className="space-y-4 pt-8">
-                    <div className="h-20 rounded-lg bg-white/5 border border-white/5" />
-                    <div className="h-32 rounded-lg bg-white/5 border border-white/5 animate-pulse delay-75" />
+                  <div className="text-xs font-mono text-cyan-500">SECURE_CONNECTION</div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Node 1 */}
+                  <div className="p-4 rounded-lg bg-blue-900/10 border border-blue-500/20 relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-blue-500/5 group-hover:bg-blue-500/10 transition-colors" />
+                    <Cpu className="w-6 h-6 text-blue-400 mb-3" />
+                    <div className="text-sm font-bold text-white mb-1">Hardware Interface</div>
+                    <div className="text-xs text-blue-300/60 font-mono">UART/JTAG ACTIVE</div>
+                  </div>
+
+                  {/* Node 2 */}
+                  <div className="p-4 rounded-lg bg-purple-900/10 border border-purple-500/20 relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-purple-500/5 group-hover:bg-purple-500/10 transition-colors" />
+                    <Radio className="w-6 h-6 text-purple-400 mb-3" />
+                    <div className="text-sm font-bold text-white mb-1">RF Analysis</div>
+                    <div className="text-xs text-purple-300/60 font-mono">SIGNAL DETECTED</div>
+                  </div>
+
+                  {/* Node 3 */}
+                  <div className="col-span-2 p-4 rounded-lg bg-cyan-900/10 border border-cyan-500/20 flex items-center justify-between relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-cyan-500/5 group-hover:bg-cyan-500/10 transition-colors" />
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded bg-cyan-500/20">
+                        <Activity className="w-5 h-5 text-cyan-400" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-white">Live Telemetry</div>
+                        <div className="text-xs text-cyan-300/60 font-mono">PACKET_LOSS: 0.0%</div>
+                      </div>
+                    </div>
+                    <div className="h-8 w-24 bg-cyan-500/10 rounded flex items-center justify-center">
+                      <div className="flex gap-1">
+                        <div className="w-1 h-3 bg-cyan-500/40 rounded-full animate-pulse" />
+                        <div className="w-1 h-4 bg-cyan-500/60 rounded-full animate-pulse delay-75" />
+                        <div className="w-1 h-2 bg-cyan-500/40 rounded-full animate-pulse delay-150" />
+                        <div className="w-1 h-5 bg-cyan-500 rounded-full animate-pulse" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-6 text-center">
-                  <p className="text-gray-400 text-sm">Where digital meets physical.</p>
+
+                <div className="mt-6 pt-4 border-t border-white/5 text-center">
+                  <code className="text-[10px] text-gray-500 font-mono">
+                    &gt; INITIALIZING ATTACK VECTORS... <span className="animate-pulse">_</span>
+                  </code>
                 </div>
               </div>
             </motion.div>
@@ -226,15 +282,24 @@ export default function CyberXVillagePage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <div className="p-6 rounded-xl bg-black/20 border border-white/5">
-                <span className="block text-4xl mb-2">🏆</span>
+              <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-cyan-500/30 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500/30 transition-colors">
+                  <Trophy className="w-6 h-6 text-amber-400" />
+                </div>
                 <h3 className="text-lg font-bold text-white mb-2">Win IoT Devices</h3>
-                <p className="text-sm text-gray-400">Take home the hardware you hack.</p>
+                <p className="text-sm text-gray-400">
+                  Outstanding researchers take home the hardware they hack for continued learning.
+                </p>
               </div>
-              <div className="p-6 rounded-xl bg-black/20 border border-white/5">
-                <span className="block text-4xl mb-2">🎓</span>
+
+              <div className="group p-6 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/30 transition-all duration-300 hover:transform hover:scale-105">
+                <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/30 transition-colors">
+                  <GraduationCap className="w-6 h-6 text-purple-400" />
+                </div>
                 <h3 className="text-lg font-bold text-white mb-2">UnoAcademy Access</h3>
-                <p className="text-sm text-gray-400">Lifetime free access to all courses for winners.</p>
+                <p className="text-sm text-gray-400">
+                  Exclusive lifetime access to premium cybersecurity courses for challenge winners.
+                </p>
               </div>
             </div>
           </motion.div>
