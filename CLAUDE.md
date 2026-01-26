@@ -1,19 +1,19 @@
-# Project Setup Documentation 
+# Project Setup Documentation
 
 ## Development Commands
- 
-```bash    
-# Development   
-npm run dev     
-     
-npm run build    
-# Linting & Formatting     
-npm run lint          # Check for linting errors        
-npm run lint:fix      # Auto-fix linting errors        
-npm run format        # Format code with Prettier 
-npm run format:check  # Check code formatting 
 
-# Auditing 
+```bash
+# Development
+npm run dev
+
+npm run build
+# Linting & Formatting
+npm run lint          # Check for linting errors
+npm run lint:fix      # Auto-fix linting errors
+npm run format        # Format code with Prettier
+npm run format:check  # Check code formatting
+
+# Auditing
 npm audit             # Check for security vulnerabilities
 npm run check-updates # Check for outdated packages
 ```
@@ -61,7 +61,7 @@ The project is ready for Vercel deployment with:
 - Automated formatting and linting
 - Pre-commit hooks for quality assurance
 
-## Component Organization 
+## Component Organization
 
 - `components/layout/` - Layout components (navbar, footer, etc.)
 - `components/home/` - Home page specific components
