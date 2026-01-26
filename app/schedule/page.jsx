@@ -155,7 +155,8 @@ const TrainingTimeline = () => {
       keynote: 'from-red-500 to-rose-600',
       village: 'from-orange-500 to-amber-600',
       session: 'from-blue-500 to-indigo-600',
-      arsenal: 'from-purple-500 to-violet-600'
+      arsenal: 'from-purple-500 to-violet-600',
+      training: 'from-cyan-500 to-blue-600'
     };
     return gradients[type] || 'from-slate-500 to-slate-600';
   };
@@ -251,7 +252,7 @@ const TrainingTimeline = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-2">
-              {['all', 'workshop', 'session', 'village', 'keynote'].map(type => (
+              {['all', 'training', 'workshop', 'session', 'village', 'keynote'].map(type => (
                 <button
                   key={type}
                   onClick={() => setSelectedType(type)}
