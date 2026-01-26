@@ -6,9 +6,9 @@
 # Development
 npm run dev
 
-npm run build
+npm run build 
 # Linting & Formattingn
-npm run lint          # Check for linting errors
+npm run lint          # Check for linting errors 
 npm run lint:fix      # Auto-fix linting errors
 npm run format        # Format code with Prettier
 npm run format:check  # Check code formatting
