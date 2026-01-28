@@ -1,13 +1,13 @@
 # Project Setup Documentation
 
 ## Development Commands
-
+ 
 ```bash
 # Development
 npm run dev
 
 npm run build 
-# Linting & Formattingn
+# Linting & Formattingn 
 npm run lint          # Check for linting errors  
 npm run lint:fix      # Auto-fix linting errors
 npm run format        # Format code with Prettier
