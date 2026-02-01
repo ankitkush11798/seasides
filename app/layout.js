@@ -1,6 +1,7 @@
 import LoadingScreen from '@/components/layout/LoadingScreen';
 import WebVitals from '@/components/layout/WebVitals';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -176,6 +177,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleTagManager gtmId="GTM-5NRW3MHX" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}>
         <ThemeProvider>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
