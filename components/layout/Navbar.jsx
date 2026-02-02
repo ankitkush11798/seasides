@@ -15,12 +15,14 @@ const Navbar = () => {
   const { isDark } = useTheme();
 
   return (
-    <nav
-      className={`sticky top-0 z-50 backdrop-blur-md border-b shadow-md transition-all duration-300 ${
-        isDark ? 'bg-modern-sleek border-gray-600 text-white' : 'bg-white/95 border-deep-ocean-blue/20 text-slate-800'
-      }`}
-    >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none flex flex-col items-center pt-6 px-4">
+      <div
+        className={`pointer-events-auto rounded-full shadow-2xl backdrop-blur-xl border transition-all duration-300 w-full max-w-5xl flex items-center justify-between px-6 py-3 ${
+          isDark
+            ? 'bg-slate-900/80 border-slate-700/50 text-white shadow-cyan-900/20'
+            : 'bg-white/90 border-white/50 text-slate-800 shadow-xl'
+        }`}
+      >
         {/* Logo */}
         <Link href="/" className="md:flex-1">
           <Image
@@ -34,7 +36,14 @@ const Navbar = () => {
 
         {/* Desktop Menu - Centered */}
         <div className="hidden md:flex items-center space-x-10 font-medium md:flex-1 justify-center">
-          <Link href="/" className="hover:text-orange-500 transition-colors">
+          <Link
+            href="/"
+            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
+              isDark
+                ? 'bg-cyan-950/50 text-cyan-400 border border-cyan-500/30'
+                : 'bg-blue-50 text-blue-600 border border-blue-200'
+            }`}
+          >
             Home
           </Link>
 
@@ -498,8 +507,8 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className={`md:hidden px-4 pb-6 pt-4 border-t transition-all duration-300 ${
-            isDark ? 'bg-modern-sleek border-gray-700' : 'bg-white/95 border-gray-200'
+          className={`pointer-events-auto md:hidden mt-2 w-full max-w-5xl rounded-2xl px-4 pb-6 pt-4 shadow-2xl backdrop-blur-xl border transition-all duration-300 ${
+            isDark ? 'bg-slate-900/95 border-slate-700' : 'bg-white/95 border-slate-200'
           }`}
         >
           <div className="space-y-1">

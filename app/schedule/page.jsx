@@ -252,7 +252,7 @@ const TrainingTimeline = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-2">
-              {['all', 'training', 'workshop', 'session', 'village', 'keynote'].map(type => (
+              {['all', 'training', 'session'].map(type => (
                 <button
                   key={type}
                   onClick={() => setSelectedType(type)}
