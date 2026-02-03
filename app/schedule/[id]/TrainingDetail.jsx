@@ -14,7 +14,6 @@ import {
   ExternalLink,
   Linkedin,
   MapPin,
-  Sparkles,
   Target,
   Twitter,
   User,
@@ -291,7 +290,7 @@ const TrainingDetailPage = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6">
           {/* Back Button */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-6 md:mb-8">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="mb-6 md:mb-8 mt-20">
             <Link
               href="/schedule"
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold transition-all ${
@@ -310,26 +309,11 @@ const TrainingDetailPage = () => {
             {/* Left - Main Info */}
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                {/* Badges */}
-                <div className="flex flex-wrap gap-2 md:gap-3 mb-4 md:mb-6">
-                  <span
-                    className={`inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-xl text-xs md:text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r ${getTypeGradient(event.type)} shadow-lg`}
-                  >
-                    <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                    {event.type}
-                  </span>
-                  {event.track !== 'all' && (
-                    <span
-                      className={`px-3 md:px-4 py-1.5 md:py-2 rounded-xl text-xs md:text-sm font-bold uppercase tracking-wider ${isDark ? 'bg-slate-800 text-slate-300 border border-slate-700' : 'bg-white text-slate-600 border border-slate-200'}`}
-                    >
-                      {event.track}
-                    </span>
-                  )}
-                </div>
+                {/* Badges Removed */}
 
                 {/* Title */}
                 <h1
-                  className={`text-3xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}
+                  className={`text-2xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}
                 >
                   {event.title}
                 </h1>
