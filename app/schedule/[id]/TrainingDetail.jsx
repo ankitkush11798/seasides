@@ -467,7 +467,14 @@ const TrainingDetailPage = () => {
               {eventSpeakers.length > 0 && (
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                   <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                    Meet the {eventSpeakers.length === 1 ? 'Trainer' : 'Trainers'}
+                    Meet the{' '}
+                    {event.type === 'panel'
+                      ? eventSpeakers.length === 1
+                        ? 'Panelist'
+                        : 'Panelists'
+                      : eventSpeakers.length === 1
+                        ? 'Trainer'
+                        : 'Trainers'}
                   </h3>
                   <div className="space-y-4">
                     {eventSpeakers.map((speaker, index) => {

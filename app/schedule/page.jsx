@@ -250,24 +250,6 @@ const TrainingTimeline = () => {
                 </div>
               </div>
             </div>
-
-            <div className="flex flex-wrap justify-center gap-2">
-              {['all', 'training', 'session'].map(type => (
-                <button
-                  key={type}
-                  onClick={() => setSelectedType(type)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-semibold capitalize transition-all ${
-                    selectedType === type
-                      ? `bg-gradient-to-r ${selectedDayData.theme} text-white shadow-lg`
-                      : isDark
-                        ? 'bg-slate-800 text-slate-400 hover:text-white'
-                        : 'bg-slate-100 text-slate-500 hover:text-slate-900'
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Events Grid - Bento Style */}
