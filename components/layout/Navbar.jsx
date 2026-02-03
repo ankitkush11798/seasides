@@ -130,6 +130,10 @@ const Navbar = () => {
             </div>
           </div>
 
+          <Link href="/schedule/ciso-panel" className="hover:text-orange-500 transition-colors">
+            CISO
+          </Link>
+
           <Link href="/schedule" className="hover:text-orange-500 transition-colors">
             Schedule
           </Link>
@@ -570,6 +574,16 @@ const Navbar = () => {
 
             {/* Divider */}
             <div className={`my-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`} />
+
+            <Link
+              href="/schedule/ciso-panel"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-800 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-medium">CISO</span>
+            </Link>
 
             <Link
               href="/schedule"

@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import dynamic from 'next/dynamic';
 
 // Critical components loaded immediately for LCP
+import CisoBanner from '@/components/home/CisoBanner';
 import RevolutionHero from '@/components/home/Slider';
 
 // Non-critical components lazy loaded with optimized loading states
@@ -42,6 +43,7 @@ export default function Home() {
       <div id="overview" className="scroll-mt-24 relative z-10">
         <RevolutionHero />
       </div>
+
       <div id="stats" className="scroll-mt-24 relative z-30">
         <Stats />
       </div>
@@ -49,6 +51,9 @@ export default function Home() {
       {/* New enhanced homepage sections */}
       <div id="about" className="scroll-mt-24 relative z-20">
         <About />
+      </div>
+      <div id="ciso-banner" className="relative z-20">
+        <CisoBanner />
       </div>
 
       <div id="villages" className="scroll-mt-24 relative z-20">
