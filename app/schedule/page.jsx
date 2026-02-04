@@ -334,31 +334,41 @@ const TrainingTimeline = () => {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
                                 {/* Stacked Avatars */}
-                                <div className="flex -space-x-2 md:-space-x-3 flex-shrink-0">
-                                  {eventSpeakers.slice(0, 3).map((speaker, idx) => {
-                                    const isPlaceholder = speaker.image?.includes('placeholder');
-                                    return (
-                                      <motion.div
-                                        key={speaker.id}
-                                        className={`relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 ${isDark ? 'border-slate-800' : 'border-white'} shadow-md flex items-center justify-center ${isPlaceholder ? (isDark ? 'bg-slate-700' : 'bg-slate-200') : ''}`}
-                                        style={{ zIndex: 3 - idx }}
-                                        animate={{
-                                          scale: isHovered ? 1.1 : 1,
-                                          x: isHovered ? idx * 4 : 0
-                                        }}
-                                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                      >
-                                        {isPlaceholder ? (
-                                          <Users
-                                            className={`w-4 h-4 md:w-5 md:h-5 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
-                                          />
-                                        ) : (
-                                          <Image src={speaker.image} alt={speaker.name} fill className="object-cover" />
-                                        )}
-                                      </motion.div>
-                                    );
-                                  })}
-                                </div>
+                                {eventSpeakers.some(s => s.image) && (
+                                  <div className="flex -space-x-2 md:-space-x-3 flex-shrink-0">
+                                    {eventSpeakers
+                                      .filter(s => s.image && s.image.trim() !== '')
+                                      .slice(0, 3)
+                                      .map((speaker, idx) => {
+                                        const isPlaceholder = speaker.image?.includes('placeholder');
+                                        return (
+                                          <motion.div
+                                            key={speaker.id}
+                                            className={`relative w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 ${isDark ? 'border-slate-800' : 'border-white'} shadow-md flex items-center justify-center ${isPlaceholder ? (isDark ? 'bg-slate-700' : 'bg-slate-200') : ''}`}
+                                            style={{ zIndex: 3 - idx }}
+                                            animate={{
+                                              scale: isHovered ? 1.1 : 1,
+                                              x: isHovered ? idx * 4 : 0
+                                            }}
+                                            transition={{ duration: 0.3, delay: idx * 0.05 }}
+                                          >
+                                            {isPlaceholder ? (
+                                              <Users
+                                                className={`w-4 h-4 md:w-5 md:h-5 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}
+                                              />
+                                            ) : (
+                                              <Image
+                                                src={speaker.image}
+                                                alt={speaker.name}
+                                                fill
+                                                className="object-cover"
+                                              />
+                                            )}
+                                          </motion.div>
+                                        );
+                                      })}
+                                  </div>
+                                )}
 
                                 {/* Speaker Names */}
                                 <div className="min-w-0 flex-1">
