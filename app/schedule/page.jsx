@@ -168,7 +168,7 @@ const TrainingTimeline = () => {
       {/* Innovative Hero Section - Journey Trek Style */}
 
       {/* Innovative Timeline Section */}
-      <section className={`py-12 md:py-20 ${isDark ? 'bg-slate-900/50' : 'bg-white'}`}>
+      <section className={`pt-48 pb-12 md:pt-56 md:pb-20 ${isDark ? 'bg-slate-900/50' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           {/* Section Header */}
           <div className="text-center mb-8 md:mb-12">
