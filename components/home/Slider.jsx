@@ -95,8 +95,7 @@ const RevolutionHero = () => {
       ) : (
         <section
           ref={heroRef}
-          className="relative w-full overflow-hidden z-10 py-24"
-          style={{ height: '600px' }}
+          className="relative w-full overflow-hidden z-10 min-h-screen flex flex-col justify-center"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -233,7 +232,7 @@ const RevolutionHero = () => {
           </div>
 
           {/* Main content */}
-          <div className="relative z-20 h-full flex flex-col items-center justify-center px-4">
+          <div className="relative z-20 h-full flex flex-col items-center justify-center px-4 mt-16">
             {/* Logo */}
             <div className="w-full max-w-3xl mx-auto mb-6">
               <div className="relative w-full flex justify-center items-center">

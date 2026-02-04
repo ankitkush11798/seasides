@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 pointer-events-none flex flex-col items-center pt-6 px-4">
       <div
-        className={`pointer-events-auto rounded-full shadow-2xl backdrop-blur-xl border transition-all duration-300 w-full max-w-5xl flex items-center justify-between px-6 py-3 ${
+        className={`pointer-events-auto rounded-full shadow-2xl backdrop-blur-xl border transition-all duration-300 w-full max-w-7xl flex items-center justify-between px-6 py-3 ${
           isDark
             ? 'bg-slate-900/80 border-slate-700/50 text-white shadow-cyan-900/20'
             : 'bg-white/90 border-white/50 text-slate-800 shadow-xl'
@@ -36,14 +36,7 @@ const Navbar = () => {
 
         {/* Desktop Menu - Centered */}
         <div className="hidden md:flex items-center space-x-10 font-medium md:flex-1 justify-center">
-          <Link
-            href="/"
-            className={`px-5 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
-              isDark
-                ? 'bg-cyan-950/50 text-cyan-400 border border-cyan-500/30'
-                : 'bg-blue-50 text-blue-600 border border-blue-200'
-            }`}
-          >
+          <Link href="/" className={`px-5 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105`}>
             Home
           </Link>
 
@@ -130,8 +123,8 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link href="/schedule/ciso-panel" className="hover:text-orange-500 transition-colors">
-            CISO
+          <Link href="/schedule/ciso-panel" className="hover:text-orange-500 transition-colors whitespace-nowrap">
+            CISO Panel
           </Link>
 
           <Link href="/schedule" className="hover:text-orange-500 transition-colors">
