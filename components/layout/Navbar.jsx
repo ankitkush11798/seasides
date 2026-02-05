@@ -381,6 +381,37 @@ const Navbar = () => {
                     </p>
                   </div>
                 </a>
+
+                <Link
+                  href="/dj-hacking"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-pink-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">DJ Hacking</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Music & Hacking</p>
+                  </div>
+                </Link>
+                <Link
+                  href="/cyberxvillage"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-sky-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">CyberX Village</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Women in Cyber</p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -704,6 +735,30 @@ const Navbar = () => {
                 <span className="font-medium text-sm">Threat Hunting Village</span>
               </div>
             </a>
+
+            <Link
+              href="/dj-hacking"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-pink-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex items-center">
+                <span className="font-medium text-sm">DJ Hacking</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/cyberxvillage"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-cyan-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex items-center">
+                <span className="font-medium text-sm">CyberX Village</span>
+              </div>
+            </Link>
 
             {/* Divider */}
             <div className={`my-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`} />
