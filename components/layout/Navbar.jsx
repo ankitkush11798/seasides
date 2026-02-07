@@ -409,7 +409,7 @@ const Navbar = () => {
                     <div className="flex items-center justify-between">
                       <p className="font-medium">CyberX Village</p>
                     </div>
-                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Women in Cyber</p>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>CyberX Village</p>
                   </div>
                 </Link>
               </div>
