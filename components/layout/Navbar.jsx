@@ -235,6 +235,21 @@ const Navbar = () => {
                     Security Villages
                   </p>
                 </div>
+                <Link
+                  href="/village-schedule"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-orange-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium text-orange-500">Village Schedule</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>View Full Schedule</p>
+                  </div>
+                </Link>
                 <a
                   href="https://hw101.me"
                   target="_blank"
@@ -410,6 +425,21 @@ const Navbar = () => {
                       <p className="font-medium">CyberX Village</p>
                     </div>
                     <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>CyberX Village</p>
+                  </div>
+                </Link>
+                <Link
+                  href="/mentor-connect"
+                  className={`flex items-start gap-3 px-4 py-3 transition-all duration-300 border-l-2 border-transparent hover:border-blue-500 ${
+                    isDark
+                      ? 'text-gray-200 hover:bg-gradient-to-r hover:from-slate-700 hover:to-slate-800'
+                      : 'text-gray-800 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50'
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <p className="font-medium">Mentor Connect</p>
+                    </div>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Career Guidance</p>
                   </div>
                 </Link>
               </div>
@@ -634,6 +664,18 @@ const Navbar = () => {
               <div className="flex items-center text-xs font-semibold uppercase tracking-wider">Security Villages</div>
             </div>
 
+            <Link
+              href="/village-schedule"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-orange-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex items-center">
+                <span className="font-medium text-sm text-orange-500">Village Schedule</span>
+              </div>
+            </Link>
+
             <a
               href="https://hw101.me"
               target="_blank"
@@ -757,6 +799,18 @@ const Navbar = () => {
             >
               <div className="flex items-center">
                 <span className="font-medium text-sm">CyberX Village</span>
+              </div>
+            </Link>
+
+            <Link
+              href="/mentor-connect"
+              className={`flex items-center justify-between px-4 py-3 ml-4 rounded-xl transition-all duration-200 group ${
+                isDark ? 'hover:bg-gray-700 text-gray-200' : 'text-gray-700 hover:bg-blue-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <div className="flex items-center">
+                <span className="font-medium text-sm">Mentor Connect</span>
               </div>
             </Link>
 
