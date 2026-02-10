@@ -142,17 +142,17 @@ export default function MentorConnectPage() {
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {mentor.image ? (
-                    <div className="w-28 h-28 mb-6 rounded-full overflow-hidden shadow-lg ring-4 ring-slate-800 group-hover:ring-blue-500/30 transition-all duration-300">
+                    <div className="w-56 h-56 mb-6 rounded-full overflow-hidden shadow-lg ring-4 ring-white group-hover:ring-blue-400 transition-all duration-300">
                       <Image
                         src={mentor.image}
                         alt={mentor.name}
-                        width={112}
-                        height={112}
+                        width={224}
+                        height={224}
                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
                   ) : (
-                    <div className="w-28 h-28 mb-6 rounded-full bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center text-slate-300 text-3xl font-bold shadow-lg ring-4 ring-slate-800 group-hover:ring-blue-500/30 transition-all duration-300">
+                    <div className="w-56 h-56 mb-6 rounded-full bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center text-slate-300 text-6xl font-bold shadow-lg ring-4 ring-white group-hover:ring-blue-400 transition-all duration-300">
                       {mentor.name.charAt(0)}
                     </div>
                   )}
