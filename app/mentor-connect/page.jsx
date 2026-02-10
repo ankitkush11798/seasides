@@ -3,7 +3,9 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 import { motion } from 'framer-motion';
-import { Calendar, GraduationCap, Handshake, MessageCircle, Users } from 'lucide-react';
+import { Calendar, GraduationCap, Handshake, Linkedin, MessageCircle, Users } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function MentorConnectPage() {
   const fadeInUp = {
@@ -18,31 +20,46 @@ export default function MentorConnectPage() {
       name: 'Karuna Singh',
       role: 'Mentor',
       desc: 'Expert in career guidance and professional development.',
-      image: '/mentors/karuna.jpg' // Placeholder or use default
+      image: '/mentor/karuna.jpeg',
+      linkedin: 'https://www.linkedin.com/in/karuna-singh-54970164/'
     },
     {
       name: 'Binit Sharma',
       role: 'Mentor',
       desc: 'Specialist in industry networking and technical mentorship.',
-      image: '/mentors/binit.jpg'
+      image: null
     },
     {
       name: 'Deepak Rathore',
       role: 'Mentor',
       desc: 'Provides insights into emerging technologies and strategic planning.',
-      image: '/mentors/deepak.jpg'
+      image: null
     },
     {
       name: 'Satyendra Prajapati',
       role: 'Mentor',
       desc: 'Focuses on leadership skills and meaningful industry connections.',
-      image: '/mentors/satyendra.jpg'
+      image: '/mentor/satyendra.jpeg'
     },
     {
-      name: 'Sartaj Shaikh',
+      name: 'Shaik Sartaj Ahmed',
       role: 'Mentor',
       desc: 'Guides professionals on navigating complex career paths.',
-      image: '/mentors/sartaj.jpg'
+      image: '/mentor/sartaj.jpeg'
+    },
+    {
+      name: 'Arnab Roy',
+      role: 'Mentor',
+      desc: 'Brings deep industry experience and strategic mentorship.',
+      image: null,
+      linkedin: 'https://www.linkedin.com/in/arnab~roy'
+    },
+    {
+      name: 'Praveen Kanniah',
+      role: 'Mentor',
+      desc: 'Provides guidance on technical excellence and career advancement.',
+      image: null,
+      linkedin: 'https://www.linkedin.com/in/praveen-kanniah/'
     }
   ];
 
@@ -108,12 +125,35 @@ export default function MentorConnectPage() {
                 className="group relative bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-white/5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 mb-4 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-3xl font-bold shadow-md">
-                    {mentor.name.charAt(0)}
-                  </div>
+                  {mentor.image ? (
+                    <div className="w-24 h-24 mb-4 rounded-full overflow-hidden shadow-md ring-2 ring-blue-400/30">
+                      <Image
+                        src={mentor.image}
+                        alt={mentor.name}
+                        width={96}
+                        height={96}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 mb-4 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-3xl font-bold shadow-md">
+                      {mentor.name.charAt(0)}
+                    </div>
+                  )}
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{mentor.name}</h3>
                   <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-3">{mentor.role}</p>
                   <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed">{mentor.desc}</p>
+                  {mentor.linkedin && (
+                    <Link
+                      href={mentor.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-sm font-medium"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      LinkedIn
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}
