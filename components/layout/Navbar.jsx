@@ -39,6 +39,12 @@ const Navbar = () => {
           <Link href="/" className={`px-5 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105`}>
             Home
           </Link>
+          <Link
+            href="/secwiser"
+            className={`px-5 py-2 rounded-full font-bold bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-105 hover:shadow-green-500/50`}
+          >
+            Register
+          </Link>
 
           {/* Ardentia Dropdown */}
           <div
@@ -579,6 +585,15 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               <span className="font-medium">Home</span>
+            </Link>
+            <Link
+              href="/secwiser"
+              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
+                isDark ? 'hover:bg-gray-700 text-green-400' : 'text-green-600 hover:bg-green-50'
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="font-bold">Register</span>
             </Link>
 
             {/* Ardentia Section */}

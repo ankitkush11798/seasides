@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   FaBlog,
@@ -25,7 +26,16 @@ export default function SecwiserPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-green-900/20 to-black z-0" />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/secwiser_banner.webp"
+            alt="Secwiser Background"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
+        </div>
         <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-emerald-600">
@@ -43,21 +53,21 @@ export default function SecwiserPage() {
             <div className="bg-gray-900/50 border border-green-500/30 p-6 rounded-xl mb-8 backdrop-blur-sm">
               <h3 className="text-xl font-semibold text-green-400 mb-2">⚡ Important for Seasides 2026</h3>
               <p className="text-gray-300">
-                To register for <strong>Training Sessions</strong>, you must use the Secwiser App. Download now to
-                secure your spot!
+                Please note that there will be on-the-spot registration available at the event. However, attendees can
+                also register through the app in advance to speed up the check-in process.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Link
-                href="https://play.google.com/store/apps/details?id=club.krisp"
+                href="https://secwiser.com/apps"
                 target="_blank"
                 className="flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-green-900/50"
               >
                 <FaGooglePlay size={24} />
                 <div className="text-left leading-tight">
-                  <div className="text-xs uppercase">Get it on</div>
-                  <div className="text-xl">Google Play</div>
+                  <div className="text-xs uppercase">Download</div>
+                  <div className="text-xl">Secwiser App</div>
                 </div>
               </Link>
               {/* <button disabled className="flex items-center justify-center gap-3 bg-gray-800 text-gray-400 px-8 py-4 rounded-full font-bold cursor-not-allowed border border-gray-700">
@@ -199,7 +209,7 @@ export default function SecwiserPage() {
           </p>
 
           <Link
-            href="https://play.google.com/store/apps/details?id=club.krisp"
+            href="https://secwiser.com/apps"
             target="_blank"
             className="inline-flex items-center justify-center gap-3 bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105"
           >

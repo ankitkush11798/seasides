@@ -12,6 +12,10 @@ const Stats = dynamic(() => import('@/components/shared/Stats'), {
 });
 
 // New homepage sections with Framer Motion animations
+const SecwiserBanner = dynamic(() => import('@/components/home/SecwiserBanner'), {
+  loading: () => <div className="h-[400px] bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
+});
+
 const About = dynamic(() => import('@/components/home/About'), {
   loading: () => <div className="h-[600px] bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
@@ -46,6 +50,10 @@ export default function Home() {
 
       <div id="stats" className="scroll-mt-24 relative z-30">
         <Stats />
+      </div>
+
+      <div id="secwiser-banner" className="relative z-20">
+        <SecwiserBanner />
       </div>
 
       {/* New enhanced homepage sections */}
