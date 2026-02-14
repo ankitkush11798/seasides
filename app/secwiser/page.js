@@ -78,7 +78,6 @@ export default function SecwiserPage() {
                 </div>
               </button> */}
             </div>
-            <p className="mt-4 text-sm text-gray-500">* iOS version coming soon</p>
           </div>
 
           <div className="flex-1 relative w-full max-w-sm md:max-w-md perspective-1000">
@@ -152,6 +151,8 @@ export default function SecwiserPage() {
           </div>
         </div>
       </section>
+
+      <RegistrationFlow />
 
       {/* Features Grid */}
       <section className="py-20 bg-gray-900/50">
@@ -233,5 +234,141 @@ function FeatureCard({ icon, title, description }) {
       <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
       <p className="text-gray-400 leading-relaxed">{description}</p>
     </div>
+  );
+}
+
+function RegistrationFlow() {
+  return (
+    <section className="py-20 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">How to Register (Free)</h2>
+          <div className="w-20 h-1 bg-green-500 mx-auto rounded-full" />
+          <p className="mt-4 text-gray-400">Follow these simple steps to secure your spot at Seasides Goa 2026</p>
+        </div>
+
+        <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32">
+          {/* Step 1: Browse Events */}
+          <div className="relative group perspective-1000">
+            <div className="transform transition-transform duration-500 hover:scale-105 hover:-rotate-1 relative z-10">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl blur opacity-20 group-hover:opacity-60 transition duration-500" />
+              <div className="relative bg-black rounded-3xl p-2 border border-green-500/30 shadow-2xl">
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg border border-green-400/50 whitespace-nowrap z-20">
+                  STEP 1: Browse Events
+                </div>
+                <div className="relative h-[500px] w-[240px] md:h-[600px] md:w-[280px] overflow-hidden rounded-2xl">
+                  <Image
+                    src="/01d93a9b-f83f-4076-a7f4-32cdfbaa0ad0.jpg"
+                    alt="Step 1: Browse Events"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Animated Arrow Connector (Desktop) */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] z-0 pointer-events-none">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 400 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="overflow-visible"
+            >
+              <defs>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#10B981" />
+                </marker>
+              </defs>
+              <path
+                d="M 20 100 Q 200 0 380 90"
+                stroke="#10B981"
+                strokeWidth="3"
+                fill="none"
+                markerEnd="url(#arrowhead)"
+                strokeDasharray="1000"
+                strokeDashoffset="1000"
+                className="animate-draw-arrow"
+                filter="url(#glow)"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  from="1000"
+                  to="0"
+                  dur="2s"
+                  fill="freeze"
+                  calcMode="spline"
+                  keySplines="0.4 0 0.2 1"
+                />
+              </path>
+            </svg>
+          </div>
+
+          {/* Mobile Arrow (Vertical) */}
+          <div className="md:hidden text-green-500 animate-bounce">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 4L12 20M12 20L6 14M12 20L18 14"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+
+          {/* Step 2: Register */}
+          <div className="relative group perspective-1000">
+            <div className="transform transition-transform duration-500 hover:scale-105 hover:rotate-1 relative z-10">
+              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-green-600 rounded-3xl blur opacity-20 group-hover:opacity-60 transition duration-500" />
+              <div className="relative bg-black rounded-3xl p-2 border border-green-500/30 shadow-2xl">
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg border border-green-400/50 whitespace-nowrap z-20">
+                  STEP 2: Complete Form
+                </div>
+                <div className="relative h-[500px] w-[240px] md:h-[600px] md:w-[280px] overflow-hidden rounded-2xl">
+                  <Image
+                    src="/fb405e0a-e5c5-4a7e-9fb0-66e70198f27a.jpg"
+                    alt="Step 2: Registration Form"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="bg-gray-800/40 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all group">
+            <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="text-2xl">🔍</span>
+            </div>
+            <h3 className="text-lg font-bold text-green-400 mb-2">1. Browse Events</h3>
+            <p className="text-gray-400 text-sm">Open the SecWiser app and navigate to the Events section.</p>
+          </div>
+          <div className="bg-gray-800/40 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all group">
+            <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="text-2xl">👆</span>
+            </div>
+            <h3 className="text-lg font-bold text-green-400 mb-2">2. Click Register</h3>
+            <p className="text-gray-400 text-sm">Tap &quot;Free Registration&quot; on the SeaSides Conference card.</p>
+          </div>
+          <div className="bg-gray-800/40 backdrop-blur-sm p-6 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all group">
+            <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <span className="text-2xl">📝</span>
+            </div>
+            <h3 className="text-lg font-bold text-green-400 mb-2">3. Fill Form</h3>
+            <p className="text-gray-400 text-sm">Complete your details to secure your spot instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

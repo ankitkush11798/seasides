@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasides Conference 2026 - Registration</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A1628 0%, #1E3A5F 50%, #0F2847 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .poster-container {
+            width: 1080px;
+            height: 1350px;
+            background: linear-gradient(135deg, #0D1B2A 0%, #1B3A52 50%, #0F2540 100%);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animated wave background */
+        .wave-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.3) 0%, transparent 50%);
+            animation: waveMove 15s ease-in-out infinite;
+        }
+
+        @keyframes waveMove {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        /* Header Section */
+        .header {
+            position: relative;
+            text-align: center;
+            padding: 60px 40px 40px;
+            z-index: 10;
+        }
+
+        .logo-area {
+            margin-bottom: 20px;
+        }
+
+        .event-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .event-year {
+            font-size: 96px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #EF4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: -20px;
+            margin-bottom: 25px;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            color: #94A3B8;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .announcement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(249, 115, 22, 0.6);
+            }
+        }
+
+        /* Main Content - Registration Flow */
+        .registration-flow {
+            position: relative;
+            padding: 60px 80px;
+            z-index: 10;
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 50px;
+        }
+
+        .phone-mockup {
+            flex: 1;
+            position: relative;
+        }
+
+        .step-label {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 50px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .step-title {
+            font-size: 28px;
+            color: #E2E8F0;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .step-desc {
+            font-size: 18px;
+            color: #94A3B8;
+            margin-top: 5px;
+        }
+
+        .phone-frame {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-10px);
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            border-radius: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .screen-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 10px;
+        }
+
+        .screen-text {
+            font-size: 16px;
+            color: #64748B;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .form-preview {
+            width: 100%;
+        }
+
+        .form-field {
+            background: #F1F5F9;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #64748B;
+        }
+
+        /* Animated Arrow */
+        .arrow-container {
+            position: relative;
+            flex: 0 0 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .curved-arrow {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .arrow-path {
+            stroke: url(#arrowGradient);
+            stroke-width: 6;
+            fill: none;
+            stroke-linecap: round;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawArrow 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.6));
+        }
+
+        @keyframes drawArrow {
+            0% {
+                stroke-dashoffset: 300;
+            }
+
+            50%,
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .arrow-head {
+            fill: url(#arrowGradient);
+            animation: arrowHeadPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowHeadPulse {
+
+            0%,
+            50% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .arrow-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-weight: 700;
+            color: #F97316;
+            text-align: center;
+            white-space: nowrap;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 0 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #E2E8F0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-text {
+            font-size: 18px;
+            color: #CBD5E1;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #60A5FA;
+            font-weight: 600;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            position: relative;
+            padding: 50px 80px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .cta-container {
+            background: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 50px rgba(249, 115, 22, 0.4);
+        }
+
+        .cta-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .download-link {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .download-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .qr-text {
+            font-size: 20px;
+            color: #E2E8F0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .powered-by {
+            font-size: 18px;
+            color: #94A3B8;
+        }
+
+        .powered-by strong {
+            color: #60A5FA;
+            font-weight: 700;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: #CBD5E1;
+        }
+
+        .benefit-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="poster-container">
+        <div class="wave-bg"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="event-title">Seasides Conference</div>
+            <div class="event-year">2026</div>
+            <div class="subtitle">Registration Update</div>
+            <div class="announcement-badge">📢 REGISTRATION NOW OPEN</div>
+        </div>
+
+        <!-- Registration Flow -->
+        <div class="registration-flow">
+            <div class="flow-container">
+                <!-- Step 1 -->
+                <div class="phone-mockup">
+                    <div class="step-label">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Download App</div>
+                        <div class="step-desc">Get Secwiser App</div>
+                    </div>
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="app-icon">🔐</div>
+                            <div class="screen-title">Secwiser</div>
+                            <div class="screen-text">Download the official Secwiser app to begin your registration</div>
+                            <button class="download-btn">Download Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Arrow -->
+                <div class="arrow-container">
+                    <svg class="curved-arrow" viewBox="0 0 150 150">
+                        <defs>
+                            <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#F97316;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#EF4444;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path class="arrow-path" d="M 20 75 Q 75 20, 130 75" />
+                        <polygon class="arrow-head" points="130,75 120,70 120,80" />
+                    </svg>
+                    <div class="arrow-text">Complete<br>Registration</div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="phone-mockup">
+                    <div class="step-label">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Fill Form</div>
+                        <div class="step-desc">Complete Details</div>
+                    </div>
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="screen-title">Registration Form</div>
+                            <div class="form-preview">
+                                <div class="form-field">Full Name</div>
+                                <div class="form-field">Email Address</div>
+                                <div class="form-field">Phone Number</div>
+                                <div class="form-field">Organization</div>
+                                <div class="form-field">Designation</div>
+                                <button class="download-btn">Submit Registration</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section">
+            <div class="info-title">Why Register in Advance?</div>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <span>Fast-track entry at venue</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <span>Reduced wait times</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <span>Seamless check-in process</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <span>Priority access to sessions</span>
+                </div>
+            </div>
+            <div class="info-text" style="margin-top: 25px; text-align: center;">
+                Event registration will be managed through the <span class="highlight">Secwiser App</span> this year.
+                Complete your registration in advance for a smooth experience!
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="bottom-section">
+            <div class="cta-container">
+                <div class="cta-title">📲 Register Now!</div>
+                <a href="https://lnkd.in/gV6Qs2tX" class="download-link">lnkd.in/gV6Qs2tX</a>
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-placeholder">Scan QR Code</div>
+                <div class="qr-text">Scan to download & register instantly</div>
+            </div>
+
+            <div class="footer">
+                <div class="powered-by">Powered by <strong>Secwiser</strong></div>
+                <div class="powered-by">Looking forward to welcoming you! 🌊</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
