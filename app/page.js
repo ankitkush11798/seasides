@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import CTFPopup from '@/components/shared/CTFPopup';
 import dynamic from 'next/dynamic';
 
 // Critical components loaded immediately for LCP
@@ -85,7 +86,7 @@ export default function Home() {
         <ReachUs />
       </div>
       <Footer />
-      {/* <CTFPopup /> */}
+      <CTFPopup />
     </main>
   );
 }

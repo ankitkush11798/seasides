@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-* {
+.transform-3d {
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
