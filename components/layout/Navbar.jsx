@@ -35,13 +35,13 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu - Centered */}
-        <div className="hidden md:flex items-center space-x-10 font-medium md:flex-1 justify-center">
-          <Link href="/" className={`px-5 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105`}>
+        <div className="hidden md:flex items-center gap-4 font-medium md:flex-1 justify-center">
+          <Link href="/" className={`px-3 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105`}>
             Home
           </Link>
           <Link
             href="/secwiser"
-            className={`px-5 py-2 rounded-full font-bold bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-105 hover:shadow-green-500/50`}
+            className={`px-3 py-2 rounded-full font-bold bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-105 hover:shadow-green-500/50`}
           >
             Register
           </Link>

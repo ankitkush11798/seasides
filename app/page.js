@@ -40,9 +40,12 @@ const ReachUs = dynamic(() => import('@/components/shared/ReachUs'), {
   loading: () => <div className="h-96 bg-gray-100 dark:bg-gray-900 animate-pulse rounded-lg mx-6" />
 });
 
+import CTFPopup from '@/components/shared/CTFPopup';
+
 export default function Home() {
   return (
     <main className="relative overflow-x-hidden">
+      <CTFPopup />
       <Navbar />
       <div id="overview" className="scroll-mt-24 relative z-10">
         <RevolutionHero />
