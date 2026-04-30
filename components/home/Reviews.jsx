@@ -31,12 +31,12 @@ const Reviews = () => {
     },
     {
       id: 3,
-      name: 'Debrup Ghosh',
-      role: 'Review Panelist',
-      image: '/review-panel/Debrup Ghosh.jpg',
+      name: 'Srajan Gupta',
+      role: 'Senior Security Engineer, Dave',
+      image: '/review-panel/srajan-gupta.jpg',
       review:
-        'Seasides continues to set the bar high for security conferences. The blend of deep technical dives and community networking creates a unique atmosphere for learning and growth.',
-      linkedin: 'https://www.linkedin.com/in/debrupghosh',
+        'Srajan Gupta is a security-focused builder and Senior Security Engineer known for helping organizations scale securely from day one. He specializes in application security, threat modeling, AI security, and designing practical guardrails that align engineering speed with strong security outcomes. Srajan is also an active researcher, open-source creator, and conference speaker focused on the future of secure AI-a  ssisted development and modern software delivery.',
+      linkedin: 'https://www.linkedin.com/in/srajan-gupta',
       stars: 5
     },
     {
