@@ -38,13 +38,13 @@ const CFPReviewersPage = () => {
     },
     {
       id: 3,
-      name: 'Debrup Ghosh',
-      role: 'Review Panelist',
-      expertise: 'Application Security & Product Management',
-      image: '/review-panel/Debrup Ghosh.jpg',
-      bio: "With over 8 years of product management experience in the SaaS application security domain, I am a strategic and results-oriented product leader at Synopsys, the world's leading provider of software security solutions. I specialize in crafting cutting-edge SaaS solutions that redefine industry standards and enable security and development teams to build secure, high-quality software faster. As the Lead Product Manager on the Polaris SaaS Platform for Application Security, I spearhead end-to-end product development, leveraging user research, competitive and market analysis, and data analytics to inform decision-making.",
+      name: 'Srajan Gupta',
+      role: 'Senior Security Engineer at Dave',
+      expertise: 'Application Security, Threat Modeling & AI Security',
+      image: '/review-panel/srajan-gupta.jpg',
+      bio: 'Srajan Gupta is a security-focused builder and Senior Security Engineer known for helping organizations scale securely from day one. He specializes in application security, threat modeling, AI security, and designing practical guardrails that align engineering speed with strong security outcomes. Srajan is also an active researcher, open-source creator, and conference speaker focused on the future of secure AI-assisted development and modern software delivery.',
       social: {
-        linkedin: 'https://www.linkedin.com/in/debrupghosh',
+        linkedin: 'https://www.linkedin.com/in/srajan-gupta',
         twitter: '#'
       }
     },
